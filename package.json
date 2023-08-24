@@ -1,0 +1,191 @@
+{
+  "name": "helpers-for-handlebars",
+  "description": "More than 130 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.",
+  "version": "0.10.11",
+  "homepage": "https://github.com/jonathas/handlebars-helpers",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "contributors": [
+    "Adrián Mugnolo (https://github.com/xymbol)",
+    "Aleš Kotnik (www.draagle.com)",
+    "Ali Sheehan-Dare (https://github.com/alisd23)",
+    "Anders D. Johnson (https://andrz.me)",
+    "Arthur Cinader (http://github.com/acinader)",
+    "Brian Woodward (https://twitter.com/doowb)",
+    "Dan Dascalescu (http://dandascalescu.com)",
+    "Dan Gorby (https://plus.google.com/+GreenRaccoon23)",
+    "Dane Petersen (https://thegreatsunra.com)",
+    "Daniel Wabyick (https://github.com/dwabyick)",
+    "Dennis Borisevich (https://github.com/DenSpirit)",
+    "Foundy (http://foundy.io)",
+    "GONZO (https://github.com/why2pac)",
+    "GracefulLight (https://brendaniel.github.io)",
+    "Hariadi Hinta (http://www.hariadi.org)",
+    "James Tsuyuki (https://github.com/jtsuyuki)",
+    "Jan Stola (https://github.com/iamstolis)",
+    "Jason Bellamy (http://jasonbellamy.com)",
+    "Jeffrey Froom (http://jfroom.com)",
+    "Jocelyn Badgley (http://www.chipersoft.com)",
+    "Joey Baker (https://www.byjoeybaker.com)",
+    "Jon Schlinkert (http://twitter.com/jonschlinkert)",
+    "Kevin Davis (kevindav.us)",
+    "Laurent Goderre (https://github.com/LaurentGoderre)",
+    "Liam Moat (http://www.liammoat.com)",
+    "Makoto Tateno (https://github.com/makotot)",
+    "Marie Hogebrandt (http://mariehogebrandt.se)",
+    "Mark Perkins (http://allmarkedup.com)",
+    "Martyn Rushton (http://swapnull.co.uk)",
+    "Max Albrecht (178.is)",
+    "Michael Sheedy (michaelsheedy.com)",
+    "Mikko Tapionlinna (http://mikko.tapionlinna.fi)",
+    "Nathan Jessen (http://nathanjessen.github.io)",
+    "Nathaniel Furniss (https://github.com/nlfurniss)",
+    "Oleg Orlov (https://github.com/efender)",
+    "Omesh (https://github.com/omeshp)",
+    "Patrick Burtchaell (https://pburtchaell.com)",
+    "Paul Welsh (paulwelsh.info)",
+    "Raymond Camden (https://www.raymondcamden.com)",
+    "Rob (https://github.com/robsilva)",
+    "Sam Tiffin (https://samtiffin.com)",
+    "Shannon Moeller (http://shannonmoeller.com)",
+    "Spud Hsu (http://spud.in)",
+    "Stephen Way (http://stephenway.net)",
+    "Thomas Jaggi (http://responsive.ch)",
+    "Tim Douglas (https://github.com/timdouglas)",
+    "(https://github.com/homersimpsons)",
+    "Jonathas Ribeiro (https://github.com/jonathas)",
+    "Jared Wray (https://github.com/jaredwray)"
+  ],
+  "repository": "jaredwray/fumanchu",
+  "bugs": {
+    "url": "https://github.com/jaredwray/fumanchu/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "helpers.js",
+    "lib",
+    "index.d.ts"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "test": "c8 mocha --reporter list",
+    "clean": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "arr-flatten": "^1.1.0",
+    "array-sort": "^1.0.0",
+    "create-frame": "^1.0.0",
+    "define-property": "^2.0.2",
+    "falsey": "^1.0.0",
+    "for-in": "^1.0.2",
+    "for-own": "^1.0.0",
+    "get-object": "^0.2.0",
+    "get-value": "^3.0.1",
+    "handlebars": "^4.7.7",
+    "handlebars-helper-create-frame": "^0.1.0",
+    "handlebars-utils": "^1.0.6",
+    "has-value": "^2.0.2",
+    "helper-date": "^1.0.1",
+    "helper-for-markdown": "^1.0.2",
+    "helper-md": "^0.2.2",
+    "html-tag": "^2.0.0",
+    "is-even": "^1.0.0",
+    "is-glob": "^4.0.3",
+    "is-number": "^7.0.0",
+    "kind-of": "^6.0.3",
+    "lazy-cache": "^2.0.2",
+    "logging-helpers": "^1.0.0",
+    "micromatch": "^4.0.5",
+    "relative": "^3.0.2",
+    "striptags": "^3.2.0",
+    "to-gfm-code-block": "^0.1.1",
+    "year": "^0.2.1"
+  },
+  "devDependencies": {
+    "c8": "^8.0.1",
+    "chai": "^4.3.8",
+    "global-modules": "^2.0.0",
+    "mocha": "^10.2.0",
+    "template-helpers": "^1.0.1",
+    "templates": "^1.2.9"
+  },
+  "keywords": [
+    "array",
+    "assemble",
+    "collection",
+    "comparison",
+    "date",
+    "handlebars",
+    "helper",
+    "helpers",
+    "html",
+    "i18n",
+    "inflection",
+    "log",
+    "logging",
+    "markdown",
+    "math",
+    "number",
+    "object",
+    "path",
+    "repeat",
+    "string",
+    "template",
+    "time",
+    "url",
+    "util",
+    "utility"
+  ],
+  "verb": {
+    "run": true,
+    "toc": true,
+    "tasks": [
+      "readme"
+    ],
+    "layout": "default",
+    "copyright": {
+      "start": "2013"
+    },
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "related": {
+      "highlight": "template-helpers",
+      "list": [
+        "assemble",
+        "template-helpers",
+        "utils"
+      ]
+    },
+    "reflinks": [
+      "falsey",
+      "helper-date",
+      "moment"
+    ],
+    "helpers": [
+      "helper-changelog",
+      "helper-coverage"
+    ],
+    "lint": {
+      "reflinks": true
+    }
+  },
+  "lintDeps": {
+    "devDependencies": {
+      "files": {
+        "patterns": [
+          "test/integration/*.js",
+          "test/support/*.js",
+          "test/utils/*.js"
+        ]
+      }
+    }
+  },
+  "auto-changelog": {
+    "output": "./CHANGELOG.md"
+  }
+}
