@@ -1,11 +1,7 @@
 const HandlebarsLib = require('handlebars');
 const helpers = require('./helpers.js');
 
-const Handlebars = HandlebarsLib.create();
+const handlebars = HandlebarsLib.create();
+helpers({ handlebars: handlebars });
 
-function Fumanchu() {
-    helpers({ handlebars: Handlebars });
-    return Handlebars;
-}
-
-module.exports = Fumanchu;
+module.exports = handlebars;

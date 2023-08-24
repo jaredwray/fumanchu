@@ -1,9 +1,9 @@
 {
-  "name": "helpers-for-handlebars",
-  "description": "More than 130 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.",
-  "version": "0.10.11",
-  "homepage": "https://github.com/jonathas/handlebars-helpers",
-  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "name": "fumanchu",
+  "description": "Handlebars + Helpers = Fumanchu",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jaredwray/fumanchu",
+  "author": "Jared Wray (me@jaredwray.com)",
   "contributors": [
     "Adrián Mugnolo (https://github.com/xymbol)",
     "Aleš Kotnik (www.draagle.com)",
@@ -69,7 +69,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "scripts": {
     "test": "c8 mocha --reporter list",
@@ -140,52 +140,9 @@
     "util",
     "utility"
   ],
-  "verb": {
-    "run": true,
-    "toc": true,
-    "tasks": [
-      "readme"
-    ],
-    "layout": "default",
-    "copyright": {
-      "start": "2013"
-    },
-    "plugins": [
-      "gulp-format-md"
-    ],
-    "related": {
-      "highlight": "template-helpers",
-      "list": [
-        "assemble",
-        "template-helpers",
-        "utils"
-      ]
-    },
-    "reflinks": [
-      "falsey",
-      "helper-date",
-      "moment"
-    ],
-    "helpers": [
-      "helper-changelog",
-      "helper-coverage"
-    ],
-    "lint": {
-      "reflinks": true
-    }
-  },
-  "lintDeps": {
-    "devDependencies": {
-      "files": {
-        "patterns": [
-          "test/integration/*.js",
-          "test/support/*.js",
-          "test/utils/*.js"
-        ]
-      }
-    }
-  },
-  "auto-changelog": {
-    "output": "./CHANGELOG.md"
-  }
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "not dead"
+  ]
 }

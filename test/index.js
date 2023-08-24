@@ -7,7 +7,7 @@ describe('Fumanchu Template Test', function() {
     it('should render name correctly', function() {
         // Use Fumanchu instead of Handlebars
         const source = 'Hello, {{name}}!';
-        const template = Fumanchu().compile(source);
+        const template = Fumanchu.compile(source);
            // Render the template with a context
         const result = template({ name: 'John' });
 
@@ -16,7 +16,7 @@ describe('Fumanchu Template Test', function() {
     });
 
     it('should return the sum of two numbers.', function() {
-        var fn = Fumanchu().compile('{{add value 5}}');
+        var fn = Fumanchu.compile('{{add value 5}}');
         assert.equal(fn({value: 5}), '10');
     });
 });
