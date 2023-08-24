@@ -3,6 +3,9 @@
 # fumanchu
 Handlebars + Helpers Together
 
+[![tests](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml/badge.svg)](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml)
+
+
 This is a drop in replacement for [handlebars](https://github.com/handlebars-lang/handlebars.js) + a supported / forked version of [handlebars-helpers](https://github.com/helpers/handlebars-helpers) as it was not being maintained.
 
 Table of Contents
