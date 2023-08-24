@@ -4,7 +4,10 @@
 Handlebars + Helpers Together
 
 [![tests](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml/badge.svg)](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml)
-
+[![codecov](https://codecov.io/gh/jaredwray/fumanchu/graph/badge.svg?token=gtYw78huva)](https://codecov.io/gh/jaredwray/fumanchu)
+[![npm version](https://img.shields.io/npm/v/fumanchu.svg)](https://npmjs.com/package/fumanchu)
+[![GitHub license](https://img.shields.io/github/license/jaredwray/fumanchu)](https://github.com/jaredwray/fumanchu/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dm/fumanchu)](https://npmjs.com/package/fumanchu)
 
 This is a drop in replacement for [handlebars](https://github.com/handlebars-lang/handlebars.js) + a supported / forked version of [handlebars-helpers](https://github.com/helpers/handlebars-helpers) as it was not being maintained.
 
