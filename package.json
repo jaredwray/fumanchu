@@ -76,8 +76,9 @@
   },
   "scripts": {
     "test": "c8 mocha --reporter list",
+    "test:ci": "c8 --reporter=lcov mocha --reporter list",
     "build": "parcel build --dist-dir dist",
-    "clean": "rm -rf node_modules"
+    "clean": "rm -rf node_modules && rm -rf dist && rm -rf .parcel-cache"
   },
   "dependencies": {
     "arr-flatten": "^1.1.0",
