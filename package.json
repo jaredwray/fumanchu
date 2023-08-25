@@ -64,15 +64,19 @@
     "index.js",
     "helpers.js",
     "lib",
+    "dist",
     "index.d.ts"
   ],
+  "source": "index.js",
   "main": "index.js",
   "types": "index.d.ts",
+  "browser": "dist/fumanchu.min.js",
   "engines": {
     "node": ">=14"
   },
   "scripts": {
     "test": "c8 mocha --reporter list",
+    "build": "parcel build --dist-dir dist",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
@@ -85,7 +89,7 @@
     "for-own": "^1.0.0",
     "get-object": "^0.2.0",
     "get-value": "^3.0.1",
-    "handlebars": "^4.7.7",
+    "handlebars": "^4.7.8",
     "handlebars-helper-create-frame": "^0.1.0",
     "handlebars-utils": "^1.0.6",
     "has-value": "^2.0.2",
@@ -110,6 +114,7 @@
     "chai": "^4.3.8",
     "global-modules": "^2.0.0",
     "mocha": "^10.2.0",
+    "parcel": "^2.9.3",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9"
   },
@@ -144,5 +149,9 @@
     "last 1 version",
     "> 1%",
     "not dead"
-  ]
+  ],
+  "targets": {
+    "main": false,
+    "types": false
+  }
 }

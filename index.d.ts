@@ -1,16 +1,16 @@
-// Type definitions for handlebars-helpers 0.5
-// Project: http://assemble.io/helpers/, https://github.com/helpers/handlebars-helpers
-// Definitions by: Toilal <https://github.com/Toilal>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.3
+// index.d.ts
 
-import Handlebars from "handlebars";
+// Importing types from the handlebars package
+import { Handlebars } from 'handlebars';
 
-declare module "fumanchu" {
-    export = Fumanchu;
-    class Fumanchu extends Handlebars {
-        constructor();
-    }
+// Assuming helpers.js exports a function. Adjust as needed.
+interface HelpersFunction {
+    (config: { handlebars: typeof Handlebars }): void;
 }
+
+// Since you're exporting the handlebars instance itself:
+declare const handlebars: typeof Handlebars;
+
+export = handlebars;
 
 
