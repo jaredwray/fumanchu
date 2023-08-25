@@ -9,23 +9,20 @@ Handlebars + Helpers Together
 [![GitHub license](https://img.shields.io/github/license/jaredwray/fumanchu)](https://github.com/jaredwray/fumanchu/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dm/fumanchu)](https://npmjs.com/package/fumanchu)
 
-This is a drop in replacement for [handlebars](https://github.com/handlebars-lang/handlebars.js) + a supported / forked version of [handlebars-helpers](https://github.com/helpers/handlebars-helpers) as it was not being maintained.
+[Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) and combines them into a single package. Easily use in your nodejs or browser projects as it is a drop in replacement when using handlebars directly.
 
-Table of Contents
-* [Installation](#installation)
-* [Usage Nodejs](#usage-nodejs)
-* [Usage Browser](#usage-browser)
+## Table of Contents
+* [Using in Nodejs](#using-in-nodejs)
+* [Using in Browser](#using-in-browser)
 * [Helpers](#helpers)
 * [How to Contribute](#how-to-contribute)
 * [License and Copyright](#license-and-copyright)
 
-## Installation
+## Usage Nodejs
 
 ```bash
 npm install fumanchu
 ```
-
-## Usage Nodejs
 
 ```javascript
 var handlebars = require('fumanchu');
@@ -34,7 +31,7 @@ var html = template({foo: 'bar'});
 console.log(html);
 ```
 
-Its just that easy!
+It's just that easy!
 
 ## Usage Browser
 
@@ -48,7 +45,7 @@ Its just that easy!
 ```
 
 ## Helpers
-More than 130 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.
+More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.
 
 ## Categories
 
