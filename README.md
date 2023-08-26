@@ -9,7 +9,7 @@ Handlebars + Helpers Together
 [![GitHub license](https://img.shields.io/github/license/jaredwray/fumanchu)](https://github.com/jaredwray/fumanchu/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dm/fumanchu)](https://npmjs.com/package/fumanchu)
 
-[Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) and combines them into a single package. Easily use in your nodejs or browser projects as it is a drop in replacement when using handlebars directly.
+[Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. Easily use in your nodejs or browser projects as it is a drop in replacement when using handlebars directly.
 
 ## Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
@@ -31,7 +31,7 @@ var html = template({foo: 'bar'});
 console.log(html);
 ```
 
-It's just that easy!
+It's just that easy! No need to add Handlebars to your project, it's already included.
 
 ## Usage Browser
 
