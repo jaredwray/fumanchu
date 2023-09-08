@@ -5,9 +5,9 @@ Handlebars + Helpers Together
 
 [![tests](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml/badge.svg)](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml)
 [![codecov](https://codecov.io/gh/jaredwray/fumanchu/graph/badge.svg?token=gtYw78huva)](https://codecov.io/gh/jaredwray/fumanchu)
-[![npm version](https://img.shields.io/npm/v/fumanchu.svg)](https://npmjs.com/package/fumanchu)
+[![npm version](https://img.shields.io/npm/v/@jaredwray/fumanchu.svg)](https://npmjs.com/package/@jaredwray/fumanchu)
 [![GitHub license](https://img.shields.io/github/license/jaredwray/fumanchu)](https://github.com/jaredwray/fumanchu/blob/master/LICENSE)
-[![npm](https://img.shields.io/npm/dm/fumanchu)](https://npmjs.com/package/fumanchu)
+[![npm](https://img.shields.io/npm/dm/@jaredwray/fumanchu)](https://npmjs.com/package/@jaredwray/fumanchu)
 
 [Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. Easily use in your nodejs or browser projects as it is a drop in replacement when using handlebars directly.
 
@@ -21,7 +21,7 @@ Handlebars + Helpers Together
 ## Usage Nodejs
 
 ```bash
-npm install fumanchu
+npm install @jaredwray/fumanchu
 ```
 
 ```javascript
@@ -33,7 +33,7 @@ console.log(html);
 
 It's just that easy! No need to add Handlebars to your project, it's already included.
 
-## Usage Browser
+## Usage Browser - NOT WORKING YET
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fumanchu/1.0.0/fumanchu.min.js"></script>
