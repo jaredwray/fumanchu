@@ -25,24 +25,13 @@ npm install @jaredwray/fumanchu
 ```
 
 ```javascript
-var handlebars = require('fumanchu');
+var handlebars = require('@jaredwray/fumanchu');
 var template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
 var html = template({foo: 'bar'});
 console.log(html);
 ```
 
 It's just that easy! No need to add Handlebars to your project, it's already included.
-
-## Usage Browser - NOT WORKING YET
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fumanchu/1.0.0/fumanchu.min.js"></script>
-<script>
-  var template = fumanchu.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
-  var html = template({foo: 'bar'});
-  console.log(html);
-</script>
-```
 
 ## Helpers
 More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.
