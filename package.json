@@ -105,6 +105,7 @@
     "test": "c8 mocha --reporter list",
     "test:ci": "c8 --reporter=lcov mocha --reporter list",
     "build": "parcel build --dist-dir dist",
+    "prepare": "npm run build",
     "clean": "rm -rf node_modules && rm -rf dist && rm -rf .parcel-cache"
   },
   "dependencies": {
