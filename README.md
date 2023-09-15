@@ -21,7 +21,9 @@ Handlebars + Helpers Together
 ## Usage Nodejs
 
 ```bash
-npm install @jaredwray/fumanchu
+npm install @jaredwray/fumanchu --save
+// or
+yarn add @jaredwray/fumanchu
 ```
 
 ```javascript
@@ -343,14 +345,14 @@ Visit the: [code](lib/string.js) | [unit tests](test/string.js) | [issues](https
 Visit the: [code](lib/url.js) | [unit tests](test/url.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+url+helpers))
 
 * **[encodeURI](#encodeURI)** ([code](lib/url.js#L19) | [tests](test/url.js#L31))
-* **[escape](#escape)** ([code](lib/url.js#L34) | [no tests])
+* **[escape](#escape)** ([code](lib/url.js#L34) | [tests](test/url.js#L81))
 * **[decodeURI](#decodeURI)** ([code](lib/url.js#L48) | [tests](test/url.js#L38))
-* **[url_encode](#url_encode)** ([code](lib/url.js#L59) | [no tests])
-* **[url_decode](#url_decode)** ([code](lib/url.js#L68) | [no tests])
+* **[url_encode](#url_encode)** ([code](lib/url.js#L59) | [tests](test/url.js#L89))
+* **[url_decode](#url_decode)** ([code](lib/url.js#L68) | [tests](test/url.js#L93))
 * **[urlResolve](#urlResolve)** ([code](lib/url.js#L82) | [tests](test/url.js#L11))
 * **[urlParse](#urlParse)** ([code](lib/url.js#L94) | [tests](test/url.js#L45))
 * **[stripQuerystring](#stripQuerystring)** ([code](lib/url.js#L106) | [tests](test/url.js#L24))
-* **[stripProtocol](#stripProtocol)** ([code](lib/url.js#L126) | [no tests])
+* **[stripProtocol](#stripProtocol)** ([code](lib/url.js#L126) | [tests](test/url.js#L53))
 
 ***
 

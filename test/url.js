@@ -77,4 +77,22 @@ describe('url', function() {
       assert.equal(fn(data), expected);
     });
   });
+
+  describe('escape', function() {
+    it('should escape a url', function() {
+      var fn = hbs.compile('{{escape "http://example.com?comment=Thyme &time=again"}}');
+      assert.equal(fn(), 'http%3A%2F%2Fexample.com%3Fcomment%3DThyme%20%26time%3Dagain');
+    });
+  });
+
+  describe('url_encode and url_decode', function() {
+    it('should return an encoded uri string.', function() {
+      var fn = hbs.compile('{{url_encode "http://example.com?comment=Thyme &time=again"}}');
+      assert.equal(fn(), 'http%3A%2F%2Fexample.com%3Fcomment%3DThyme%20%26time%3Dagain');
+    });
+    it('should return an decoded uri string.', function() {
+      var fn = hbs.compile('{{{url_decode "http%3A%2F%2Fexample.com%3Fcomment%3DThyme%20%26time%3Dagain"}}}');
+      assert.equal(fn(), 'http://example.com?comment=Thyme &time=again');
+    });
+  });
 });
