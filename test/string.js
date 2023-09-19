@@ -387,5 +387,23 @@ describe('string', function() {
       assert.equal(fn(), 'BENDER SHOULD NOT BE ALLOWED ON TV');
     });
   });
+
+  describe('downcase', function() {
+    it('should do lower case', function() {
+      var fn = hbs.compile('{{downcase "ABC"}}');
+      assert.equal(fn(), 'abc');
+    });
+  });
+
+  describe('lowercase helper with object', function() {
+    it('should do lower case', function() {
+      var str = {};
+      str.fn = function() {
+        return 'FOO BAR BAZ';
+      };
+      var result = helpers.string().lowercase(str);
+      assert.equal(result, 'foo bar baz');
+    });
+  });
 });
 
