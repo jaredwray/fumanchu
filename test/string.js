@@ -405,5 +405,76 @@ describe('string', function() {
       assert.equal(result, 'foo bar baz');
     });
   });
+
+  describe('prepend', function() {
+    it('should do prepend', function() {
+      var fn = hbs.compile('{{prepend "bar" "foo-"}}');
+      assert.equal(fn(), 'foo-bar');
+    });
+  });
+
+  describe('remove', function() {
+    it('should remove characters', function() {
+      var fn = hbs.compile('{{remove "a b a b a b" "a "}}');
+      assert.equal(fn(), 'b b b');
+    });
+
+    it('should remove characters first', function() {
+      var fn = hbs.compile('{{removeFirst "a b a b a b" "a "}}');
+      assert.equal(fn(), 'b a b a b');
+    });
+  });
+
+  describe('replaceFirst', function() {
+    it('should do replaceFirst', function() {
+      var fn = hbs.compile('{{replaceFirst "a b a b a b" "a" "z"}}');
+      assert.equal(fn(), 'z b a b a b');
+    });
+  });
+
+  describe('trimLeft and trimRight', function() {
+    it('should do trimLeft', function() {
+      var fn = hbs.compile('{{trimLeft "  ABC "}}');
+      assert.equal(fn(), 'ABC ');
+    });
+
+    it('should do trimRight', function() {
+      var fn = hbs.compile('{{trimRight "  ABC "}}');
+      assert.equal(fn(), '  ABC');
+    });
+  });
+
+  describe('truncateWords', function() {
+    it('should do a truncate', function() {
+      var fn = hbs.compile('{{truncateWords "foo bar baz" 1}}');
+      assert.equal(fn(), 'foo...');
+    });
+    it('should do a truncate', function() {
+      var fn = hbs.compile('{{truncateWords "foo bar baz" 3}}');
+      assert.equal(fn(), 'foo bar baz...');
+    });
+  });
+
+  describe('upcase', function() {
+    it('should do upcase', function() {
+      var fn = hbs.compile('{{upcase "abc"}}');
+      assert.equal(fn(), 'ABC');
+    });
+  });
+
+  describe('raw', function() {
+    it('should do raw', function() {
+      var str = {};
+      str.fn = function() {
+        return '{{foo}}';
+      };
+      var result = helpers.string().raw(str);
+      assert.equal(result, '\\{{foo}}');
+    });
+    it('should do raw via compile', function() {
+      var fn = hbs.compile('{{{{raw}}}}{{foo}}{{{{/raw}}}}');
+      assert.equal(fn(), '\\{{foo}}');
+    });
+  });
 });
 
