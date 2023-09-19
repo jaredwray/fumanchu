@@ -311,7 +311,7 @@ Visit the: [code](lib/string.js) | [unit tests](test/string.js) | [issues](https
 * **[chop](#chop)** ([code](lib/string.js#L125) | [tests](test/string.js#L58))
 * **[dashcase](#dashcase)** ([code](lib/string.js#L143) | [tests](test/string.js#L73))
 * **[dotcase](#dotcase)** ([code](lib/string.js#L162) | [tests](test/string.js#L88))
-* **[downcase](#downcase)** ([code](lib/string.js#L182) | [no tests])
+* **[downcase](#downcase)** ([code](lib/string.js#L182) | [tests](test/string.js#L391))
 * **[ellipsis](#ellipsis)** ([code](lib/string.js#L202) | [tests](test/string.js#L103))
 * **[hyphenate](#hyphenate)** ([code](lib/string.js#L223) | [tests](test/string.js#L118))
 * **[isString](#isString)** ([code](lib/string.js#L240) | [tests](test/string.js#L129))
