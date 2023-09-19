@@ -22,6 +22,18 @@ describe('string', function() {
     });
   });
 
+  describe('append', function() {
+    it('shoudl append a string', function() {
+      var fn = hbs.compile('{{append "a" "b"}}');
+      assert.equal(fn(), 'ab');
+    });
+
+    it('should not append a string', function() {
+      var fn = hbs.compile('{{append "a" foo}}');
+      assert.equal(fn(), 'a');
+    });
+  });
+
   describe('capitalize', function() {
     it('should return an empty string if undefined', function() {
       var fn = hbs.compile('{{capitalize}}');

@@ -303,7 +303,7 @@ Visit the: [code](lib/regex.js) | [unit tests](test/regex.js) | [issues](https:/
 
 Visit the: [code](lib/string.js) | [unit tests](test/string.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+string+helpers))
 
-* **[append](#append)** ([code](lib/string.js#L22) | [no tests])
+* **[append](#append)** ([code](lib/string.js#L22) | [tests](test/string.js#L9))
 * **[camelcase](#camelcase)** ([code](lib/string.js#L41) | [tests](test/string.js#L10))
 * **[capitalize](#capitalize)** ([code](lib/string.js#L60) | [tests](test/string.js#L25))
 * **[capitalizeAll](#capitalizeAll)** ([code](lib/string.js#L77) | [tests](test/string.js#L36))
