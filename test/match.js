@@ -64,4 +64,13 @@ describe('matching', function() {
       assert.equal(hbs.compile('{{isMatch "foo.js" "*.json"}}')(), 'false');
     });
   });
+  describe('test the mm deprication', function() {
+    it('should return the console statement', function() {
+      var originalConsole = console.log;
+      console.log = function() {};
+      helpers.match().mm('');
+      assert('true');
+      console.log = originalConsole;
+    });
+  });
 });
