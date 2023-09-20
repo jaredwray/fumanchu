@@ -289,7 +289,7 @@ Visit the: [code](lib/path.js) | [unit tests](test/path.js) | [issues](https://g
 * **[basename](#basename)** ([code](lib/path.js#L81) | [tests](test/path.js#L47))
 * **[stem](#stem)** ([code](lib/path.js#L100) | [tests](test/path.js#L58))
 * **[extname](#extname)** ([code](lib/path.js#L119) | [tests](test/path.js#L69))
-* **[resolve](#resolve)** ([code](lib/path.js#L138) | [no tests])
+* **[resolve](#resolve)** ([code](lib/path.js#L138) | [tests](test/path.js#L145))
 * **[segments](#segments)** ([code](lib/path.js#L166) | [tests](test/path.js#L80))
 
 ### [regex helpers](#regex)
