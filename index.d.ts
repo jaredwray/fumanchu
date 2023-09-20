@@ -1,3 +1,3 @@
 // index.d.ts
-export * from 'handlebars';
-
+import * as Handlebars from 'handlebars';
+export = Handlebars;
