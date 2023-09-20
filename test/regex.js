@@ -19,9 +19,15 @@ describe('regex', function() {
 
   it('should do a test on regex with throw', function() {
     try {
-      hbs.compile('{{test "bar" {}}}');
+      var fn = hbs.compile('{{#if (test value) }}A{{else}}B{{/if}}');  
+      fn({value: '--123777sd^^^&*'})
     } catch (err) {
       assert.equal(err.message, 'expected a regular expression');
     }
+  });
+
+  it('should do a test on regex with a false return', function() {
+    var fn = hbs.compile('{{#if (test value) }}A{{else}}B{{/if}}');
+    assert.equal(fn({value: undefined}), 'B');
   });
 });
