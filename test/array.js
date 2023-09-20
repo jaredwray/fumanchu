@@ -490,5 +490,32 @@ describe('array', function() {
       assert.equal(fn(context).toString(), 'a,b,c,d,f,g');
     });
   });
-  
+
+  describe('equalsLength', function() {
+    it('should equalsLength', function() {
+      var fn = hbs.compile('{{equalsLength [0,1,2,3] 4}}');
+      assert.equal(fn(), 'false');
+    });
+    it('should equalsLength with options', function() {
+      helpers.array().equalsLength({handlebars: hbs, options: {max: 4}});
+      var fn = hbs.compile('{{equalsLength [0,1,2,3]}}');
+      assert.equal(fn(), 'true');
+    });
+  });
+
+  describe('reverse', function() {
+    it('should reverse the characters', function() {
+      var fn = hbs.compile('{{reverse "abcd"}}');
+      assert.equal(fn(), 'dcba');
+    });
+    it('should reverse the array', function() {
+      var arr = ['a', 'b', 'c', 'd'];
+      var result = helpers.array().reverse(arr);
+      assert.equal(result, arr.reverse());
+    });
+    it('should reverse the string', function() {
+      var result = helpers.array().reverse('abcd');
+      assert.equal(result, 'dcba');
+    });
+  }); 
 });
