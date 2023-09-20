@@ -296,8 +296,8 @@ Visit the: [code](lib/path.js) | [unit tests](test/path.js) | [issues](https://g
 
 Visit the: [code](lib/regex.js) | [unit tests](test/regex.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+regex+helpers))
 
-* **[toRegex](#toRegex)** ([code](lib/regex.js#L19) | [no tests])
-* **[test](#test)** ([code](lib/regex.js#L42) | [no tests])
+* **[toRegex](#toRegex)** ([code](lib/regex.js#L19) | [tests](test/regex.js#10))
+* **[test](#test)** ([code](lib/regex.js#L42) | [tests](test/regex.js#15))
 
 ### [string helpers](#string)
 
