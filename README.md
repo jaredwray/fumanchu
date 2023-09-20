@@ -135,7 +135,7 @@ Visit the: [code](lib/comparison.js) | [unit tests](test/comparison.js) | [issue
 * **[lt](#lt)** ([code](lib/comparison.js#L411) | [tests](test/comparison.js#L449))
 * **[lte](#lte)** ([code](lib/comparison.js#L435) | [tests](test/comparison.js#L476))
 * **[neither](#neither)** ([code](lib/comparison.js#L456) | [tests](test/comparison.js#L511))
-* **[not](#not)** ([code](lib/comparison.js#L470) | [no tests])
+* **[not](#not)** ([code](lib/comparison.js#L470) | [tests](test/comparison.js#L624))
 * **[or](#or)** ([code](lib/comparison.js#L492) | [tests](test/comparison.js#L523))
 * **[unlessEq](#unlessEq)** ([code](lib/comparison.js#L518) | [tests](test/comparison.js#L556))
 * **[unlessGt](#unlessGt)** ([code](lib/comparison.js#L538) | [tests](test/comparison.js#L567))
