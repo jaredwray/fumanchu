@@ -615,4 +615,16 @@ describe('comparison', function() {
       assert.equal(fn({number: 4}), '');
     });
   });
+  describe('default value', function() {
+    it('should send back an empty string as there is no defined value', function() {
+      var fn = hbs.compile('{{#default number compare=8}}A{{/default}}');
+      assert.equal(fn({number: undefined}), '');
+    });
+  });
+  describe('not', function() {
+    it('should send back correct statement if the number is not equal', function() {
+      var fn = hbs.compile('{{#not value}}A{{/not}}');
+      assert.equal(fn({value: false}), 'A');
+    });
+  });
 });
