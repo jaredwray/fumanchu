@@ -86,4 +86,74 @@ describe('assemble', function() {
       assert.equal(hbs.compile('{{segments "a/b/c/e.js" 0 3}}')(), 'a/b/c');
     });
   });
+
+  describe('dirname', function() {
+    it('should throw the exception on undefined', function() {
+      try {
+        assert.equal(hbs.compile('{{dirname value}}')({value: undefined}), 'a/b/c');
+      } catch (err) {
+        assert.equal(err.message, 'Expected filepath to be of type string, but got undefined');
+      }
+    });
+  });
+
+  describe('relative', function() {
+    it('should throw the exception on undefined', function() {
+      try {
+        var fn = hbs.compile('{{relative pathA pathB}}');
+        fn({pathA: undefined, pathB: undefined});
+      } catch (err) {
+        assert.equal(err.message, 'Expected first path to be of type string, but got undefined');
+      }
+    });
+    it('should throw the exception on undefined for pathB', function() {
+      try {
+        var fn = hbs.compile('{{relative pathA pathB}}');
+        fn({pathA: 'examples/result/md/path.md', pathB: undefined});
+      } catch (err) {
+        assert.equal(err.message, 'Expected second path to be of type string, but got undefined');
+      }
+    });
+  });
+  describe('basename', function() {
+    it('should throw the exception on undefined', function() {
+      try {
+        assert.equal(hbs.compile('{{basename value}}')({value: undefined}), 'a/b/c');
+      } catch (err) {
+        assert.equal(err.message, 'Expected filepath to be of type string, but got undefined');
+      }
+    });
+  });
+  describe('stem', function() {
+    it('should throw the exception on undefined', function() {
+      try {
+        assert.equal(hbs.compile('{{stem value}}')({value: undefined}), 'a/b/c');
+      } catch (err) {
+        assert.equal(err.message, 'Expected filepath to be of type string, but got undefined');
+      }
+    });
+  });
+  describe('extname', function() {
+    it('should throw the exception on undefined', function() {
+      try {
+        assert.equal(hbs.compile('{{extname value}}')({value: undefined}), 'a/b/c');
+      } catch (err) {
+        assert.equal(err.message, 'Expected filepath to be of type string, but got undefined');
+      }
+    });
+  });
+  describe('resolve', function() {
+    it('should resolve an absolute path from the given `filepath`.', function() {
+      assert.equal(hbs.compile('{{resolve "../test"}}')(), path.resolve('..', 'test'));
+    });
+  });
+  describe('segments', function() {
+    it('should throw the exception on undefined', function() {
+      try {
+        assert.equal(hbs.compile('{{segments value "2" "3"}}')({value: undefined}), 'a/b/c');
+      } catch (err) {
+        assert.equal(err.message, 'Expected filepath to be of type string, but got undefined');
+      }
+    });
+  });
 });
