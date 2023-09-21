@@ -213,37 +213,37 @@ Visit the: [code](lib/match.js) | [unit tests](test/match.js) | [issues](https:/
 
 * **[match](#match)** ([code](lib/match.js#L23) | [tests](test/match.js#L13))
 * **[isMatch](#isMatch)** ([code](lib/match.js#L47) | [tests](test/match.js#L61))
-* **[mm](#mm)** ([code](lib/match.js#L56) | [no tests])
+* **[mm](#mm)** ([code](lib/match.js#L56) | [tests](test/match.js#L67))
 
 ### [math helpers](#math)
 
 Visit the: [code](lib/math.js) | [unit tests](test/math.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+math+helpers))
 
-* **[abs](#abs)** ([code](lib/math.js#L15) | [no tests])
+* **[abs](#abs)** ([code](lib/math.js#L15) | [test](test/math.js#L149))
 * **[add](#add)** ([code](lib/math.js#L31) | [tests](test/math.js#L10))
-* **[avg](#avg)** ([code](lib/math.js#L54) | [no tests])
+* **[avg](#avg)** ([code](lib/math.js#L54) | [tests](test/math.js#L25))
 * **[ceil](#ceil)** ([code](lib/math.js#L69) | [tests](test/math.js#L29))
 * **[divide](#divide)** ([code](lib/math.js#L84) | [tests](test/math.js#L36))
 * **[floor](#floor)** ([code](lib/math.js#L102) | [tests](test/math.js#L43))
-* **[minus](#minus)** ([code](lib/math.js#L118) | [no tests])
-* **[modulo](#modulo)** ([code](lib/math.js#L137) | [no tests])
+* **[minus](#minus)** ([code](lib/math.js#L118) | [tests](test/math.js#L169))
+* **[modulo](#modulo)** ([code](lib/math.js#L137) | [tests](test/math.js#L191))
 * **[multiply](#multiply)** ([code](lib/math.js#L157) | [tests](test/math.js#L50))
-* **[plus](#plus)** ([code](lib/math.js#L175) | [no tests])
+* **[plus](#plus)** ([code](lib/math.js#L175) | [tests](test/math.js#L231))
 * **[random](#random)** ([code](lib/math.js#L194) | [tests](test/math.js#L102))
 * **[remainder](#remainder)** ([code](lib/math.js#L212) | [tests](test/math.js#L57))
 * **[round](#round)** ([code](lib/math.js#L224) | [tests](test/math.js#L69))
 * **[subtract](#subtract)** ([code](lib/math.js#L241) | [tests](test/math.js#L76))
 * **[sum](#sum)** ([code](lib/math.js#L263) | [tests](test/math.js#L83))
-* **[times](#times)** ([code](lib/math.js#L286) | [no tests])
+* **[times](#times)** ([code](lib/math.js#L286) | [tests](test/math.js#L299))
 
 ### [misc helpers](#misc)
 
 Visit the: [code](lib/misc.js) | [unit tests](test/misc.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+misc+helpers))
 
-* **[frame](#frame)** ([code](lib/misc.js#L11) | [no tests])
+* **[frame](#frame)** ([code](lib/misc.js#L11) | [tests](test/misc.js#L1))
 * **[option](#option)** ([code](lib/misc.js#L26) | [tests](test/misc.js#L20))
 * **[noop](#noop)** ([code](lib/misc.js#L39) | [tests](test/misc.js#L13))
-* **[typeOf](#typeOf)** ([code](lib/misc.js#L59) | [no tests])
+* **[typeOf](#typeOf)** ([code](lib/misc.js#L59) | [tests](test/misc.js#L38))
 * **[withHash](#withHash)** ([code](lib/misc.js#L71) | [tests](test/misc.js#L38))
 
 ### [number helpers](#number)
