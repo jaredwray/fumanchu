@@ -112,4 +112,28 @@ describe('number', function() {
       assert.equal(hbs.compile('{{toAbbr number}}')({number: 99393999393 }), '99.39b');
     });
   });
+  describe('toAbbr', function() {
+    it('should set the number to 0 if not a number', function() {
+      var fn = hbs.compile('{{toAbbr number}}');
+      assert.equal(fn({number: undefined }), '0');
+    });
+  });
+  describe('toExponential', function() {
+    it('should return 0 when not a number', function() {
+      var fn = hbs.compile('{{toExponential value}}');
+      assert.equal(fn({value: undefined }), '0e+0');
+    });
+  });
+  describe('toFixed', function() {
+    it('should 0 if not a number', function() {
+      var fn = hbs.compile('{{toFixed value}}');
+      assert.equal(fn({value: undefined }), '0');
+    });
+  });
+  describe('toPrecision', function() {
+    it('should return a 0 if not a number.', function() {
+      var fn = hbs.compile('{{toPrecision value}}');
+      assert.equal(fn({value: undefined }), '0');
+    });
+  });
 });
