@@ -1,7 +1,7 @@
 {
   "name": "@jaredwray/fumanchu",
   "description": "Handlebars + Helpers = Fumanchu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "keywords": [
@@ -97,16 +97,13 @@
   "source": "index.js",
   "main": "index.js",
   "types": "index.d.ts",
-  "browser": "dist/fumanchu.min.js",
   "engines": {
     "node": ">=14"
   },
   "scripts": {
     "test": "c8 mocha --reporter list",
     "test:ci": "c8 --reporter=lcov mocha --reporter list",
-    "build": "parcel build --dist-dir dist",
-    "prepare": "npm run build",
-    "clean": "rm -rf node_modules && rm -rf dist && rm -rf .parcel-cache"
+    "clean": "rm -rf node_modules && rm -rf coverage"
   },
   "dependencies": {
     "arr-flatten": "^1.1.0",
@@ -139,22 +136,10 @@
     "year": "^0.2.1"
   },
   "devDependencies": {
-    "@parcel/watcher": "^2.3.0",
     "c8": "^8.0.1",
     "chai": "^4.3.8",
-    "global-modules": "^2.0.0",
     "mocha": "^10.2.0",
-    "parcel": "^2.9.3",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9"
-  },
-  "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "not dead"
-  ],
-  "targets": {
-    "main": false,
-    "types": false
   }
 }

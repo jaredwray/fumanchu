@@ -1,10 +1,8 @@
-name: tests
+name: release
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [released]
 
 jobs:
   build:
@@ -13,10 +11,10 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ['14', '16', '18']
+        node-version: [18]
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -26,10 +24,18 @@ jobs:
       run: yarn
 
     - name: Testing    
-      run: yarn test:ci
+      run: yarn test
 
     - name: Code Coverage
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_KEY }}
         verbose: true
+
+    - name: Publish
+      run: |
+        npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+        npm publish --ignore-scripts
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
