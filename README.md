@@ -13,7 +13,6 @@ Handlebars + Helpers Together
 
 ## Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
-* [Using in Browser](#using-in-browser)
 * [Helpers](#helpers)
 * [How to Contribute](#how-to-contribute)
 * [License and Copyright](#license-and-copyright)
