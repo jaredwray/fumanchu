@@ -5,3 +5,4 @@ const handlebars = HandlebarsLib.create();
 helpers({ handlebars: handlebars });
 
 module.exports = handlebars;
+module.exports.handlebarHelpers = helpers;
