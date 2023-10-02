@@ -13,6 +13,7 @@ Handlebars + Helpers Together
 
 ## Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
+* [Just using Handlebar Helpers](#using-handlebars-helpers)
 * [Helpers](#helpers)
 * [How to Contribute](#how-to-contribute)
 * [License and Copyright](#license-and-copyright)
@@ -33,6 +34,20 @@ console.log(html);
 ```
 
 It's just that easy! No need to add Handlebars to your project, it's already included.
+
+## Using Handlebars Helpers
+
+If you only want to use handlebar helpers you can easily do that by doing the following:
+
+```javascript
+var helpers = require('@jaredwray/fumanchu').handlebarHelpers;
+var handlebars = require('handlebars');
+helpers({ handlebars: handlebars });
+var fn = handlebars.compile('{{add value 5}}');
+console.log(fn);
+```
+
+Notice that in this scenario you are accessing helpers via `handlebarHelpers` from `fumanchu` instead of just using handlebars via fumanchu directly.
 
 ## Helpers
 More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.
