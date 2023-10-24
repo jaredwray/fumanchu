@@ -137,7 +137,7 @@
   },
   "devDependencies": {
     "c8": "^8.0.1",
-    "chai": "^4.3.8",
+    "chai": "^4.3.10",
     "mocha": "^10.2.0",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9"
