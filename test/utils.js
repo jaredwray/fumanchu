@@ -16,6 +16,12 @@ describe('utils', function() {
     it('should remove non-word characters from end of string', function() {
       assert.equal(utils.chop('foo bar baz _- '), 'foo bar baz');
     });
+    it('should throw an error if it is over 1000 characters long', function() {
+      var str = 'foo bar baz _- '.repeat(1001);
+      assert.throws(function() {
+        utils.chop(str);
+      }, /utils\.chop\(\) regex is too long!/);
+    });
   });
 
   describe('changecase', function() {
