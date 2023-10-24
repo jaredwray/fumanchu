@@ -33,6 +33,15 @@ var html = template({foo: 'bar'});
 console.log(html);
 ```
 
+If using it with es6 you can access both `handlebars` via destructuring:
+
+```javascript
+import handlebars from '@jaredwray/fumanchu';
+const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
+const html = template({foo: 'bar'});
+console.log(html);
+```
+
 It's just that easy! No need to add Handlebars to your project, it's already included.
 
 ## Using Handlebars Helpers
@@ -40,14 +49,25 @@ It's just that easy! No need to add Handlebars to your project, it's already inc
 If you only want to use handlebar helpers you can easily do that by doing the following:
 
 ```javascript
-var helpers = require('@jaredwray/fumanchu').handlebarHelpers;
+var helpers = require('@jaredwray/fumanchu').helpers;
 var handlebars = require('handlebars');
 helpers({ handlebars: handlebars });
 var fn = handlebars.compile('{{add value 5}}');
 console.log(fn);
 ```
 
-Notice that in this scenario you are accessing helpers via `handlebarHelpers` from `fumanchu` instead of just using handlebars via fumanchu directly.
+If using it with es6 you can access both `helpers` via destructuring:
+
+```javascript
+import helpers from '@jaredwray/fumanchu';
+import handlebars from 'handlebars';
+helpers({ handlebars: handlebars });
+const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
+const html = template({foo: 'bar'});
+console.log(html);
+```
+
+Notice that in this scenario you are accessing helpers via `helpers` from `fumanchu` instead of just using handlebars via fumanchu directly.
 
 ## Helpers
 More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.
