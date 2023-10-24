@@ -1,4 +1,4 @@
-import {handlebars, helpers} from '../index.js';
+import handlebars from '../index.js';
 import {expect} from 'chai';
 
 describe('testing es6 examples', function() {
@@ -11,7 +11,9 @@ describe('testing es6 examples', function() {
 
         // Assert the rendered output
         expect(result).to.equal('Hello, John!');
-        expect(helpers).to.be.a('function');
-        expect(helpers).to.be.a('function');
+        
+        //testing the export of handlebarHelpers
+        const {handlebarHelpers} = handlebars;
+        expect(handlebarHelpers).to.be.a('function');
     });
 });
