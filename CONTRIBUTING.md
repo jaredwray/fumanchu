@@ -9,10 +9,7 @@ We release new versions of this project (maintenance/features) on a monthly cade
 You can contribute changes to this repo by opening a pull request:
 
 1) After forking this repository to your Git account, make the proposed changes on your forked branch.
-2) Run tests and linting locally.
-	- Make sure to have an `.env` file with `FIREBASE_CERT` and `SENDGRID_API_KEY` values plus the `firebase-cert.json` file and valid cert. 
-	- Run `npm install`.
-	- Run `npm test`.
+2) Run tests and linting locally by doing `yarn && yarn test`.
 3) Commit your changes and push them to your forked repository.
 4) Navigate to the main `Fumanchu` repository and select the *Pull Requests* tab.
 5) Click the *New pull request* button, then select the option "Compare across forks"
@@ -24,4 +21,4 @@ You can contribute changes to this repo by opening a pull request:
 If you need more information on the steps to create a pull request, you can find a detailed walkthrough in the [Github documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
 
 # Code of Conduct
-Please refer to our [Code of Conduct](https://github.com/jaredwray/fumanchu/blob/main/CODE_OF_CONDUCT.md) readme for how to contribute to this open source project and work within the community. 
+Please refer to our [Code of Conduct](CODE_OF_CONDUCT.md) readme for how to contribute to this open source project and work within the community. 
