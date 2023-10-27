@@ -33,7 +33,7 @@ var html = template({foo: 'bar'});
 console.log(html);
 ```
 
-If using it with es6 you can access both `handlebars` via destructuring:
+If using it with es6 you can access `handlebars` via destructuring:
 
 ```javascript
 import handlebars from '@jaredwray/fumanchu';
@@ -56,7 +56,7 @@ var fn = handlebars.compile('{{add value 5}}');
 console.log(fn);
 ```
 
-If using it with es6 you can access both `helpers` via destructuring:
+If using it with es6 you can access `helpers` via destructuring:
 
 ```javascript
 import fumanchu from '@jaredwray/fumanchu';
