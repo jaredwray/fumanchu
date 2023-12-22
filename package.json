@@ -103,7 +103,7 @@
   "scripts": {
     "test": "c8 mocha --reporter list",
     "test:ci": "c8 --reporter=lcov mocha --reporter list",
-    "clean": "rm -rf node_modules && rm -rf coverage"
+    "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json"
   },
   "dependencies": {
     "arr-flatten": "^1.1.0",
@@ -139,6 +139,7 @@
     "c8": "^8.0.1",
     "chai": "^4.3.10",
     "mocha": "^10.2.0",
+    "rimraf": "^5.0.5",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9"
   }
