@@ -49,7 +49,7 @@ It's just that easy! No need to add Handlebars to your project, it's already inc
 If you only want to use handlebar helpers you can easily do that by doing the following:
 
 ```javascript
-var helpers = require('@jaredwray/fumanchu').helpers;
+var helpers = require('@jaredwray/fumanchu').handlebarHelpers;
 var handlebars = require('handlebars');
 helpers({ handlebars: handlebars });
 var fn = handlebars.compile('{{add value 5}}');
