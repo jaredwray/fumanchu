@@ -1,5 +1,3 @@
-![Fumanchu](logo.png "Fumanchu")
-
 
 # fumanchu
 Handlebars + Helpers Together

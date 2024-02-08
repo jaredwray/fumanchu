@@ -103,7 +103,9 @@
   "scripts": {
     "test": "c8 mocha --reporter list",
     "test:ci": "c8 --reporter=lcov mocha --reporter list",
-    "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json"
+    "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json",
+    "website:build": "rimraf ./site/readme.md && npx -y writr build -s ./site -o ./dist-site",
+    "website:serve": "rimraf ./site/readme.md && npx -y writr serve -s ./site -o ./dist-site"
   },
   "dependencies": {
     "arr-flatten": "^1.1.0",
@@ -138,6 +140,7 @@
   "devDependencies": {
     "c8": "^8.0.1",
     "chai": "^4.3.10",
+    "fs-extra": "^11.2.0",
     "mocha": "^10.2.0",
     "rimraf": "^5.0.5",
     "template-helpers": "^1.0.1",
