@@ -27,9 +27,6 @@ jobs:
       run: yarn
       
     - name: Build Website
-      run: yarn build
-    
-    - name: Build Website
       run: yarn website:build
 
     - name: Publish to Cloudflare Pages
