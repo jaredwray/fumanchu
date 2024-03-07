@@ -132,3 +132,5 @@ dist
 yarn.lock
 package-lock.json
 pnpm-lock.yaml
+site/README.md
+dist-site
