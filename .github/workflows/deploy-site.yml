@@ -19,15 +19,15 @@ jobs:
 
     # Test
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
     - name: Install Dependencies  
-      run: yarn
+      run: npm install
       
     - name: Build Website
-      run: yarn website:build
+      run: npm run website:build
 
     - name: Publish to Cloudflare Pages
       uses: cloudflare/pages-action@1

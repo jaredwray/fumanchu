@@ -16,17 +16,17 @@ jobs:
         node-version: ['18', '20']
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
     - name: Install Dependencies
-      run: yarn
+      run: npm install
 
     - name: Testing    
-      run: yarn test:ci
+      run: npm run test:ci
 
     - name: Code Coverage
       uses: codecov/codecov-action@v3
