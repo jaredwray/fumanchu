@@ -97,6 +97,10 @@
   "source": "index.js",
   "main": "index.js",
   "types": "index.d.ts",
+  "exports": {
+    "import": "./index.mjs",
+    "require": "./index.js"
+  },
   "engines": {
     "node": ">=14"
   },
