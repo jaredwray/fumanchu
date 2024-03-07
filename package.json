@@ -1,7 +1,7 @@
 {
   "name": "@jaredwray/fumanchu",
   "description": "Handlebars + Helpers = Fumanchu",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "keywords": [
@@ -89,6 +89,7 @@
   "license": "MIT",
   "files": [
     "index.js",
+    "index.mjs",
     "helpers.js",
     "lib",
     "dist",
