@@ -21,8 +21,6 @@ Handlebars + Helpers Together
 
 ```bash
 npm install @jaredwray/fumanchu --save
-// or
-yarn add @jaredwray/fumanchu
 ```
 
 ```javascript
@@ -404,7 +402,7 @@ Returns all of the items in an array after the specified index. Opposite of [bef
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{after array 1}}
 <!-- results in: '["c"]' -->
@@ -421,7 +419,7 @@ Cast the given `value` to an array.
 
 **Example**
 
-```handlebars
+```html
 {{arrayify "foo"}}
 <!-- results in: [ "foo" ] -->
 ```
@@ -438,7 +436,7 @@ Return all of the items in the collection before the specified count. Opposite o
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{before array 2}}
 <!-- results in: '["a", "b"]' -->
@@ -454,7 +452,7 @@ Return all of the items in the collection before the specified count. Opposite o
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] -->
 {{#eachIndex array}}
   {{item}} is {{index}}
@@ -474,7 +472,7 @@ Block helper that filters the given array and renders the block for values that 
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{#filter array "foo"}}AAA{{else}}BBB{{/filter}}
 <!-- results in: 'BBB' -->
@@ -492,7 +490,7 @@ Returns the first item, or first `n` items of an array.
 
 **Example**
 
-```handlebars
+```html
 {{first "['a', 'b', 'c', 'd', 'e']" 2}}
 <!-- results in: '["a", "b"]' -->
 ```
@@ -515,7 +513,7 @@ private variables may be defined as hash arguments.
 
 **Example**
 
-```handlebars
+```html
 <!-- accounts = [
 {'name': 'John', 'email': 'john@example.com'},
 {'name': 'Malcolm', 'email': 'malcolm@example.com'},
@@ -542,7 +540,7 @@ Block helper that renders the block if an array has the given `value`. Optionall
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{#inArray array "d"}}
   foo
@@ -563,7 +561,7 @@ Returns true if `value` is an es5 array.
 
 **Example**
 
-```handlebars
+```html
 {{isArray "abc"}}
 <!-- results in: false -->
 
@@ -584,7 +582,7 @@ Returns the item from `array` at index `idx`.
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{itemAt array 1}}
 <!-- results in: 'b' -->
@@ -602,7 +600,7 @@ Join all elements of array into a string, optionally using a given separator.
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{join array}}
 <!-- results in: 'a, b, c' -->
@@ -610,7 +608,6 @@ Join all elements of array into a string, optionally using a given separator.
 {{join array '-'}}
 <!-- results in: 'a-b-c' -->
 ```
-
 ### [{{equalsLength}}](lib/array.js#L313)
 
 Returns true if the the length of the given `value` is equal
@@ -635,7 +632,7 @@ Returns the last item, or last `n` items of an array or string. Opposite of [fir
 
 **Example**
 
-```handlebars
+```html
 <!-- var value = ['a', 'b', 'c', 'd', 'e'] -->
 
 {{last value}}
@@ -659,7 +656,7 @@ Returns the length of the given string or array.
 
 **Example**
 
-```handlebars
+```html
 {{length '["a", "b", "c"]'}}
 <!-- results in: 3 -->
 
@@ -688,7 +685,7 @@ Returns a new array, created by calling `function` on each element of the given 
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'], and "double" is a
 fictitious function that duplicates letters -->
 {{map array double}}
@@ -707,7 +704,7 @@ Map over the given object or array or objects and create an array of values from
 
 **Example**
 
-```handlebars
+```html
 // {{pluck items "data.title"}}
 <!-- results in: '["aa", "bb", "cc"]' -->
 ```
@@ -723,7 +720,7 @@ Reverse the elements in an array, or the characters in a string.
 
 **Example**
 
-```handlebars
+```html
 <!-- value: 'abcd' -->
 {{reverse value}}
 <!-- results in: 'dcba' -->
@@ -745,7 +742,7 @@ Block helper that returns the block if the callback returns true for some value 
 
 **Example**
 
-```handlebars
+```html
 <!-- array: [1, 'b', 3] -->
 {{#some array isString}}
   Render me if the array has a string.
@@ -766,7 +763,7 @@ Sort the given `array`. If an array of objects is passed, you may optionally pas
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['b', 'a', 'c'] -->
 {{sort array}}
 <!-- results in: '["a", "b", "c"]' -->
@@ -783,7 +780,7 @@ Sort an `array`. If an array of objects is passed, you may optionally pass a `ke
 
 **Example**
 
-```handlebars
+```html
 <!-- array: [{a: 'zzz'}, {a: 'aaa'}] -->
 {{sortBy array "a"}}
 <!-- results in: '[{"a":"aaa"}, {"a":"zzz"}]' -->
@@ -802,7 +799,7 @@ Use the items in the array _after_ the specified index as context inside a block
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c', 'd', 'e'] -->
 {{#withAfter array 3}}
   {{this}}
@@ -823,7 +820,7 @@ Use the items in the array _before_ the specified index as context inside a bloc
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c', 'd', 'e'] -->
 {{#withBefore array 3}}
   {{this}}
@@ -844,7 +841,7 @@ Use the first item in a collection inside a handlebars block expression. Opposit
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{#withFirst array}}
   {{this}}
@@ -865,7 +862,7 @@ Block helper that groups array elements by given group `size`.
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a','b','c','d','e','f','g','h'] -->
 {{#withGroup array 4}}
   {{#each this}}
@@ -891,7 +888,7 @@ Use the last item or `n` items in an array as context inside a block. Opposite o
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'b', 'c'] -->
 {{#withLast array}}
   {{this}}
@@ -912,7 +909,7 @@ Block helper that sorts a collection and exposes the sorted collection as contex
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['b', 'a', 'c'] -->
 {{#withSort array}}{{this}}{{/withSort}}
 <!-- results in: 'abc' -->
@@ -930,13 +927,11 @@ Block helper that return an array with all duplicate values removed. Best used a
 
 **Example**
 
-```handlebars
+```html
 <!-- array: ['a', 'a', 'c', 'b', 'e', 'e'] -->
 {{#each (unique array)}}{{.}}{{/each}}
 <!-- results in: 'acbe' -->
 ```
-
-## code
 
 ### [{{embed}}](lib/code.js#L23)
 
@@ -950,7 +945,7 @@ Embed code from an external file as preformatted text.
 
 **Example**
 
-```handlebars
+```html
 {{embed 'path/to/file.js'}}
 <!-- optionally specify the language to use -->
 {{embed 'path/to/file.hbs' 'html')}}
@@ -967,7 +962,7 @@ Embed a GitHub Gist using only the id of the Gist
 
 **Example**
 
-```handlebars
+```html
 {{gist "12345"}}
 ```
 
@@ -982,7 +977,7 @@ Generate the HTML for a jsFiddle link with the given `params`
 
 **Example**
 
-```handlebars
+```html
 {{jsfiddle id="0dfk10ks" tabs="true"}}
 ```
 
@@ -1000,7 +995,7 @@ Inline, subexpression, or block helper that returns true (or the block) if the g
 
 **Example**
 
-```handlebars
+```html
 <!-- array: [] -->
 {{#isEmpty array}}AAA{{else}}BBB{{/isEmpty}}
 <!-- results in: 'AAA' -->
@@ -1038,7 +1033,7 @@ Helper that renders the block if **both** of the given values are truthy. If an 
 
 **Example**
 
-```handlebars
+```html
 <!-- {great: true, magnificent: true} -->
 {{#and great magnificent}}A{{else}}B{{/and}}
 <!-- results in: 'A' -->
@@ -1072,7 +1067,7 @@ Block helper that renders the block if `collection` has the given `value`, using
 
 **Example**
 
-```handlebars
+```html
 <!-- array = ['a', 'b', 'c'] -->
 {{#contains array "d"}}
   This will not be rendered.
@@ -1081,9 +1076,9 @@ Block helper that renders the block if `collection` has the given `value`, using
 {{/contains}}
 ```
 
-### [{{default}}](lib/comparison.js#L143)
+### [`{{default}}`](lib/comparison.js#L143)
 
-Returns the first value that is not undefined, otherwise the "default" value is returned.
+Returns the first value that is not undefined, otherwise the `default` value is returned.
 
 **Params**
 
@@ -1183,7 +1178,7 @@ Return true if the given value is an even number.
 
 **Example**
 
-```handlebars
+```html
 {{#ifEven value}}
   render A
 {{else}}
@@ -1216,7 +1211,7 @@ Block helper that renders a block if `value` is **an odd number**. If an inverse
 
 **Example**
 
-```handlebars
+```html
 {{#ifOdd value}}
   render A
 {{else}}
@@ -1224,7 +1219,7 @@ Block helper that renders a block if `value` is **an odd number**. If an inverse
 {{/ifOdd}}
 ```
 
-### [{{is}}](lib/comparison.js#L367)
+### [`{{is}}`](lib/comparison.js#L367)
 
 Block helper that renders a block if `a` is **equal to** `b`.
 If an inverse block is specified it will be rendered when falsy.
@@ -1237,7 +1232,7 @@ Similar to [eq](#eq) but does not do strict equality.
 * `options` **{Object}**: Handlebars provided options object
 * `returns` **{String}**
 
-### [{{isnt}}](lib/comparison.js#L389)
+### [`{{isnt}}`](lib/comparison.js#L389)
 
 Block helper that renders a block if `a` is **not equal to** `b`.
 If an inverse block is specified it will be rendered when falsy.
@@ -1251,7 +1246,7 @@ comparisons.
 * `options` **{Object}**: Handlebars provided options object
 * `returns` **{String}**
 
-### [{{lt}}](lib/comparison.js#L411)
+### [`{{lt}}`](lib/comparison.js#L411)
 
 Block helper that renders a block if `a` is **less than** `b`.
 
@@ -1265,7 +1260,7 @@ second value.
 * `options` **{Object}**: Handlebars provided options object
 * `returns` **{String}**: Block, or inverse block if specified and falsey.
 
-### [{{lte}}](lib/comparison.js#L435)
+### [`{{lte}}`](lib/comparison.js#L435)
 
 Block helper that renders a block if `a` is **less than or equal to** `b`.
 
@@ -1280,7 +1275,7 @@ second value.
 * `options` **{Object}**: Handlebars provided options object
 * `returns` **{String}**: Block, or inverse block if specified and falsey.
 
-### [{{neither}}](lib/comparison.js#L456)
+### [`{{neither}}`](lib/comparison.js#L456)
 
 Block helper that renders a block if **neither of** the given values
 are truthy. If an inverse block is specified it will be rendered
@@ -1293,7 +1288,7 @@ when falsy.
 * `options` **{}**: Handlebars options object
 * `returns` **{String}**: Block, or inverse block if specified and falsey.
 
-### [{{not}}](lib/comparison.js#L470)
+### [`{{not}}`](lib/comparison.js#L470)
 
 Returns true if `val` is falsey. Works as a block or inline helper.
 
@@ -1303,19 +1298,19 @@ Returns true if `val` is falsey. Works as a block or inline helper.
 * `options` **{Object}**: Handlebars provided options object
 * `returns` **{String}**
 
-### [{{or}}](lib/comparison.js#L492)
+### [`{{or}}`](lib/comparison.js#L492)
 
 Block helper that renders a block if **any of** the given values is truthy. If an inverse block is specified it will be rendered when falsy.
 
 **Params**
 
-* `arguments` **{...any}**: Variable number of arguments
+* `args` **{any}**: Variable number of arguments
 * `options` **{Object}**: Handlebars options object
 * `returns` **{String}**: Block, or inverse block if specified and falsey.
 
 **Example**
 
-```handlebars
+```html
 {{#or a b c}}
   If any value is true this will be rendered.
 {{/or}}
@@ -1389,7 +1384,7 @@ Get the current year.
 
 **Example**
 
-```handlebars
+```html
 {{year}}
 <!-- 2017 -->
 ```
@@ -1411,7 +1406,7 @@ Read a file from the file system. This is useful in composing "include"-style he
 
 **Example**
 
-```handlebars
+```html
 {{read "a/b/c.js"}}
 {{someHelper (read "a/b/c.md")}}
 ```
@@ -1439,7 +1434,7 @@ Stringify attributes on the options `hash`.
 
 **Example**
 
-```handlebars
+```html
 <!-- value = 'bar' -->
 <div{{attr foo=value}}></div>
 <!-- results in: <div foo="bar"></div>
@@ -1456,7 +1451,7 @@ Add an array of `<link>` tags. Automatically resolves relative paths to `options
 
 **Example**
 
-```handlebars
+```html
 <!-- {stylesheets: ['foo.css', 'bar.css']} -->
 {{css stylesheets}}
 
@@ -1476,7 +1471,7 @@ Generate one or more `<script></script>` tags with paths/urls to javascript or c
 
 **Example**
 
-```handlebars
+```html
 {{js scripts}}
 ```
 
@@ -1491,7 +1486,7 @@ Strip HTML tags from a string, so that only the text nodes are preserved.
 
 **Example**
 
-```handlebars
+```html
 {{sanitize "<span>foo</span>"}}
 <!-- results in: 'foo' -->
 ```
@@ -1558,7 +1553,7 @@ Returns either the `singular` or `plural` inflection of a word based on the give
 
 **Example**
 
-```handlebars
+```html
 {{inflect 0 "string" "strings"}}
 <!-- "strings" -->
 {{inflect 1 "string" "strings"}}
@@ -1582,7 +1577,7 @@ Returns an ordinalized number as a string.
 
 **Example**
 
-```handlebars
+```html
 {{ordinalize 1}}
 <!-- '1st' -->
 {{ordinalize 21}}
@@ -1611,7 +1606,7 @@ Block helper that converts a string of inline markdown to HTML.
 
 **Example**
 
-```handlebars
+```html
 {{#markdown}}
 # Foo
 {{/markdown}}
@@ -1630,7 +1625,7 @@ Read a markdown file from the file system and inject its contents after converti
 
 **Example**
 
-```handlebars
+```html
 {{md "foo/bar.md"}}
 ```
 
@@ -1650,7 +1645,7 @@ Returns an array of strings that match the given glob pattern(s). Options may be
 
 **Example**
 
-```handlebars
+```html
 {{match (readdir "foo") "*.js"}}
 {{match (readdir "foo") (toRegex "\\.js$")}}
 ```
@@ -1668,7 +1663,7 @@ Returns true if a filepath contains the given pattern. Options may be passed on 
 
 **Example**
 
-```handlebars
+```html
 {{isMatch "foo.md" "*.md"}}
 <!-- results in: true -->
 ```
@@ -1705,7 +1700,7 @@ Returns the average of all numbers in the given array.
 
 **Example**
 
-```handlebars
+```html
 {{avg "[1, 2, 3, 4, 5]"}}
 <!-- results in: '3' -->
 ```
@@ -1824,7 +1819,7 @@ Returns the sum of all numbers in the given array.
 
 **Example**
 
-```handlebars
+```html
 {{sum "[1, 2, 3, 4, 5]"}}
 <!-- results in: '15' -->
 ```
@@ -1852,7 +1847,7 @@ Return the given value of `prop` from `this.options`.
 
 **Example**
 
-```handlebars
+```html
 <!-- context = {options: {a: {b: {c: 'ddd'}}}} -->
 {{option "a.b.c"}}
 <!-- results => `ddd` -->
@@ -1878,7 +1873,7 @@ Get the native type of the given `value`
 
 **Example**
 
-```handlebars
+```html
 {{typeOf 1}}
 //=> 'number'
 {{typeOf "1"}}
@@ -1955,7 +1950,7 @@ Returns a string representing the given number in exponential notation.
 
 **Example**
 
-```handlebars
+```html
 {{toExponential number digits}};
 ```
 
@@ -1971,7 +1966,7 @@ Formats the given number using fixed-point notation.
 
 **Example**
 
-```handlebars
+```html
 {{toFixed "1.1234" 2}}
 //=> '1.12'
 ```
@@ -2002,7 +1997,7 @@ Returns a string representing the `Number` object to the specified precision.
 
 **Example**
 
-```handlebars
+```html
 {{toPrecision "1.1234" 2}}
 //=> '1.1'
 ```
@@ -2088,7 +2083,7 @@ Return true if `key` is an own, enumerable property of the given `context` objec
 
 **Example**
 
-```handlebars
+```html
 {{hasOwn context key}}
 ```
 
@@ -2103,7 +2098,7 @@ Return true if `value` is an object.
 
 **Example**
 
-```handlebars
+```html
 {{isObject "foo"}}
 //=> false
 ```
@@ -2118,7 +2113,7 @@ Parses the given string using `JSON.parse`.
 
 **Example**
 
-```handlebars
+```html
 <!-- string: '{"foo": "bar"}' -->
 {{JSONparse string}}
 <!-- results in: { foo: 'bar' } -->
@@ -2135,7 +2130,7 @@ Stringify an object using `JSON.stringify`.
 
 **Example**
 
-```handlebars
+```html
 <!-- object: { foo: 'bar' } -->
 {{JSONstringify object}}
 <!-- results in: '{"foo": "bar"}' -->
@@ -2176,7 +2171,7 @@ Get the directory path segment from the given `filepath`.
 
 **Example**
 
-```handlebars
+```html
 {{absolute "docs/toc.md"}}
 <!-- results in: 'docs' -->
 ```
@@ -2192,7 +2187,7 @@ Get the directory path segment from the given `filepath`.
 
 **Example**
 
-```handlebars
+```html
 {{dirname "docs/toc.md"}}
 <!-- results in: 'docs' -->
 ```
@@ -2209,7 +2204,7 @@ Get the relative filepath from `a` to `b`.
 
 **Example**
 
-```handlebars
+```html
 {{relative a b}}
 ```
 
@@ -2224,7 +2219,7 @@ Get the file extension from the given `filepath`.
 
 **Example**
 
-```handlebars
+```html
 {{basename "docs/toc.md"}}
 <!-- results in: 'toc.md' -->
 ```
@@ -2240,7 +2235,7 @@ Get the "stem" from the given `filepath`.
 
 **Example**
 
-```handlebars
+```html
 {{stem "docs/toc.md"}}
 <!-- results in: 'toc' -->
 ```
@@ -2256,7 +2251,7 @@ Get the file extension from the given `filepath`.
 
 **Example**
 
-```handlebars
+```html
 {{extname "docs/toc.md"}}
 <!-- results in: '.md' -->
 ```
@@ -2272,7 +2267,7 @@ Resolve an absolute path from the given `filepath`.
 
 **Example**
 
-```handlebars
+```html
 {{resolve "docs/toc.md"}}
 <!-- results in: '/User/dev/docs/toc.md' -->
 ```
@@ -2288,7 +2283,7 @@ Get specific (joined) segments of a file path by passing a range of array indice
 
 **Example**
 
-```handlebars
+```html
 {{segments "a/b/c/d" "2" "3"}}
 <!-- results in: 'c/d' -->
 
@@ -2312,7 +2307,7 @@ Convert the given string to a regular expression.
 
 **Example**
 
-```handlebars
+```html
 {{toRegex "foo"}}
 <!-- results in: /foo/ -->
 ```
@@ -2328,7 +2323,7 @@ Returns true if the given `str` matches the given regex. A regex can be passed o
 
 **Example**
 
-```handlebars
+```html
 {{test "bar" (toRegex "foo")}}
 <!-- results in: false -->
 {{test "foobar" (toRegex "foo")}}
@@ -2351,7 +2346,7 @@ Append the specified `suffix` to the given string.
 
 **Example**
 
-```handlebars
+```html
 <!-- given that "item.stem" is "foo" -->
 {{append item.stem ".html"}}
 <!-- results in:  'foo.html' -->
@@ -2368,7 +2363,7 @@ camelCase the characters in the given `string`.
 
 **Example**
 
-```handlebars
+```html
 {{camelcase "foo bar baz"}};
 <!-- results in:  'fooBarBaz' -->
 ```
@@ -2384,7 +2379,7 @@ Capitalize the first word in a sentence.
 
 **Example**
 
-```handlebars
+```html
 {{capitalize "foo bar baz"}}
 <!-- results in:  "Foo bar baz" -->
 ```
@@ -2400,7 +2395,7 @@ Capitalize all words in a string.
 
 **Example**
 
-```handlebars
+```html
 {{capitalizeAll "foo bar baz"}}
 <!-- results in:  "Foo Bar Baz" -->
 ```
@@ -2426,7 +2421,7 @@ Like trim, but removes both extraneous whitespace **and non-word characters** fr
 
 **Example**
 
-```handlebars
+```html
 {{chop "_ABC_"}}
 <!-- results in:  'ABC' -->
 
@@ -2448,7 +2443,7 @@ dash-case the characters in `string`. Replaces non-word characters and periods w
 
 **Example**
 
-```handlebars
+```html
 {{dashcase "a-b-c d_e"}}
 <!-- results in:  'a-b-c-d-e' -->
 ```
@@ -2464,7 +2459,7 @@ dot.case the characters in `string`.
 
 **Example**
 
-```handlebars
+```html
 {{dotcase "a-b-c d_e"}}
 <!-- results in:  'a.b.c.d.e' -->
 ```
@@ -2480,7 +2475,7 @@ Lowercase all of the characters in the given string. Alias for [lowercase](#lowe
 
 **Example**
 
-```handlebars
+```html
 {{downcase "aBcDeF"}}
 <!-- results in:  'abcdef' -->
 ```
@@ -2497,7 +2492,7 @@ Truncates a string to the specified `length`, and appends it with an elipsis, `�
 
 **Example**
 
-```handlebars
+```html
 {{ellipsis (sanitize "<span>foo bar baz</span>"), 7}}
 <!-- results in:  'foo bar…' -->
 {{ellipsis "foo bar baz", 7}}
@@ -2515,7 +2510,7 @@ Replace spaces in a string with hyphens.
 
 **Example**
 
-```handlebars
+```html
 {{hyphenate "foo bar baz qux"}}
 <!-- results in:  "foo-bar-baz-qux" -->
 ```
@@ -2531,7 +2526,7 @@ Return true if `value` is a string.
 
 **Example**
 
-```handlebars
+```html
 {{isString "foo"}}
 <!-- results in:  'true' -->
 ```
@@ -2547,7 +2542,7 @@ Lowercase all characters in the given string.
 
 **Example**
 
-```handlebars
+```html
 {{lowercase "Foo BAR baZ"}}
 <!-- results in:  'foo bar baz' -->
 ```
@@ -2564,7 +2559,7 @@ Return the number of occurrences of `substring` within the given `string`.
 
 **Example**
 
-```handlebars
+```html
 {{occurrences "foo bar foo bar baz" "foo"}}
 <!-- results in:  2 -->
 ```
@@ -2580,7 +2575,7 @@ PascalCase the characters in `string`.
 
 **Example**
 
-```handlebars
+```html
 {{pascalcase "foo bar baz"}}
 <!-- results in:  'FooBarBaz' -->
 ```
@@ -2596,7 +2591,7 @@ path/case the characters in `string`.
 
 **Example**
 
-```handlebars
+```html
 {{pathcase "a-b-c d_e"}}
 <!-- results in:  'a/b/c/d/e' -->
 ```
@@ -2612,7 +2607,7 @@ Replace spaces in the given string with pluses.
 
 **Example**
 
-```handlebars
+```html
 {{plusify "foo bar baz"}}
 <!-- results in:  'foo+bar+baz' -->
 ```
@@ -2629,7 +2624,7 @@ Prepends the given `string` with the specified `prefix`.
 
 **Example**
 
-```handlebars
+```html
 <!-- given that "val" is "bar" -->
 {{prepend val "foo-"}}
 <!-- results in:  'foo-bar' -->
@@ -2646,7 +2641,7 @@ Render a block without processing mustache templates inside the block.
 
 **Example**
 
-```handlebars
+```html
 {{{{#raw}}}}
 {{foo}}
 {{{{/raw}}}}
@@ -2665,7 +2660,7 @@ Remove all occurrences of `substring` from the given `str`.
 
 **Example**
 
-```handlebars
+```html
 {{remove "a b a b a b" "a "}}
 <!-- results in:  'b b b' -->
 ```
@@ -2682,7 +2677,7 @@ Remove the first occurrence of `substring` from the given `str`.
 
 **Example**
 
-```handlebars
+```html
 {{remove "a b a b a b" "a"}}
 <!-- results in:  ' b a b a b' -->
 ```
@@ -2700,7 +2695,7 @@ Replace all occurrences of substring `a` with substring `b`.
 
 **Example**
 
-```handlebars
+```html
 {{replace "a b a b a b" "a" "z"}}
 <!-- results in:  'z b z b z b' -->
 ```
@@ -2718,7 +2713,7 @@ Replace the first occurrence of substring `a` with substring `b`.
 
 **Example**
 
-```handlebars
+```html
 {{replace "a b a b a b" "a" "z"}}
 <!-- results in:  'z b a b a b' -->
 ```
@@ -2734,7 +2729,7 @@ Reverse a string.
 
 **Example**
 
-```handlebars
+```html
 {{reverse "abcde"}}
 <!-- results in:  'edcba' -->
 ```
@@ -2750,7 +2745,7 @@ Sentence case the given string
 
 **Example**
 
-```handlebars
+```html
 {{sentence "hello world. goodbye world."}}
 <!-- results in:  'Hello world. Goodbye world.' -->
 ```
@@ -2766,7 +2761,7 @@ snake_case the characters in the given `string`.
 
 **Example**
 
-```handlebars
+```html
 {{snakecase "a-b-c d_e"}}
 <!-- results in:  'a_b_c_d_e' -->
 ```
@@ -2782,7 +2777,7 @@ Split `string` by the given `character`.
 
 **Example**
 
-```handlebars
+```html
 {{split "a,b,c" ","}}
 <!-- results in:  ['a', 'b', 'c'] -->
 ```
@@ -2800,7 +2795,7 @@ Tests whether a string begins with the given prefix.
 
 **Example**
 
-```handlebars
+```html
 {{#startsWith "Goodbye" "Hello, world!"}}
   Whoops
 {{else}}
@@ -2819,7 +2814,7 @@ Title case the given string.
 
 **Example**
 
-```handlebars
+```html
 {{titleize "this is title case"}}
 <!-- results in:  'This Is Title Case' -->
 ```
@@ -2835,7 +2830,7 @@ Removes extraneous whitespace from the beginning and end of a string.
 
 **Example**
 
-```handlebars
+```html
 {{trim " ABC "}}
 <!-- results in:  'ABC' -->
 ```
@@ -2851,7 +2846,7 @@ Removes extraneous whitespace from the beginning of a string.
 
 **Example**
 
-```handlebars
+```html
 {{trim " ABC "}}
 <!-- results in:  'ABC ' -->
 ```
@@ -2867,7 +2862,7 @@ Removes extraneous whitespace from the end of a string.
 
 **Example**
 
-```handlebars
+```html
 {{trimRight " ABC "}}
 <!-- results in:  ' ABC' -->
 ```
@@ -2885,7 +2880,7 @@ Truncate a string to the specified `length`. Also see [ellipsis](#ellipsis).
 
 **Example**
 
-```handlebars
+```html
 truncate("foo bar baz", 7);
 <!-- results in:  'foo bar' -->
 truncate(sanitize("<span>foo bar baz</span>", 7));
@@ -2905,7 +2900,7 @@ Truncate a string to have the specified number of words. Also see [truncate](#tr
 
 **Example**
 
-```handlebars
+```html
 truncateWords("foo bar baz", 1);
 <!-- results in:  'foo…' -->
 truncateWords("foo bar baz", 2);
@@ -2925,7 +2920,7 @@ Uppercase all of the characters in the given string. Alias for [uppercase](#uppe
 
 **Example**
 
-```handlebars
+```html
 {{upcase "aBcDeF"}}
 <!-- results in:  'ABCDEF' -->
 ```
@@ -2942,7 +2937,7 @@ Uppercase all of the characters in the given string. If used as a block helper i
 
 **Example**
 
-```handlebars
+```html
 {{uppercase "aBcDeF"}}
 <!-- results in:  'ABCDEF' -->
 ```
@@ -3028,7 +3023,7 @@ Strip protocol from a `url`. Useful for displaying media that may have an 'http'
 
 **Example**
 
-```handlebars
+```html
 <!-- url = 'http://foo.bar' -->
 {{stripProtocol url}}
 <!-- results in: '//foo.bar' -->
@@ -3051,7 +3046,7 @@ Change casing on the given `string`, optionally passing a delimiter to use betwe
 
 **Example**
 
-```handlebars
+```html
 utils.changecase('fooBarBaz');
 //=> 'foo bar baz'
 
@@ -3068,8 +3063,6 @@ Generate a random number
 * `min` **{Number}**
 * `max` **{Number}**
 * `returns` **{Number}**
-
-***
 
 ## How to Contribute
 Now that you've set up your workspace, you're ready to contribute changes to the `fumanchu` repository you can refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.
