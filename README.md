@@ -1393,7 +1393,7 @@ Get the current year.
 
 ### [{{moment}}](lib/date.js#L24)
 
-Use [moment](http://momentjs.com) as a helper. See [helper-date](https://github.com/jonathas/helper-date) for more details.
+Use [moment](http://momentjs.com) as a helper. See [helper-date](https://github.com/helpers/helper-date) for more details.
 
 ## fs
 
