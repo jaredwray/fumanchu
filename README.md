@@ -3067,7 +3067,7 @@ Generate a random number
 * `returns` **{Number}**
 
 ## How to Contribute
-Now that you've set up your workspace, you're ready to contribute changes to the `fumanchu` repository you can refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.
+clone the repository locally and run 'npm i' in the root. Now that you've set up your workspace, you're ready to contribute changes to the `fumanchu` repository you can refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.
 
 ## License and Copyright
 [MIT](LICENSE) and codebase after 2023 will be copyright of Jared Wray.
