@@ -145,7 +145,7 @@
   "devDependencies": {
     "c8": "^9.1.0",
     "chai": "^4.3.10",
-    "mocha": "^10.3.0",
+    "mocha": "^10.4.0",
     "rimraf": "^5.0.5",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9"
