@@ -15,7 +15,6 @@ describe('markdown', function() {
       assert.equal(template({title: 'Markdown Test'}), '<h2>Markdown Test</h2>\n');
     });
     it('should define the object', function() {
-      markdownHelper.markdown = require('helper-for-markdown')();
       assert.equal(typeof markdownHelper.markdown, 'function');
     });
   });
