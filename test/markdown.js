@@ -17,6 +17,35 @@ describe('markdown', function() {
     it('should define the object', function() {
       assert.equal(typeof markdownHelper.markdown, 'function');
     });
+    it('should set the object', function() {
+      markdownHelper.markdown = function() {};
+      assert.equal(typeof markdownHelper.markdown, 'function');
+    });
+  });
+
+  describe('helpers for markdown', function() {
+    it('should apply the correct config', function() {
+      var markdown = markdownHelper.helpersForMarkdown({html: true, breaks: true, highlight: function() {}});
+      assert.equal(typeof markdown, 'function');
+      var markdownAgain = markdownHelper.helpersForMarkdown('foo');
+      assert.equal(typeof markdownAgain, 'string');
+    });
+    it('should the lang property', function() {
+      var markdown = markdownHelper.helpersForMarkdown({html: true, breaks: true, highlight: function() {}});
+      var md = '## foo\n\n```js\nvar foo = "bar";\n```';
+      var locals = {};
+      var options = {lang: 'en'};
+      markdown(md, locals, options);
+      assert.equal(typeof markdown, 'function');
+    });
+    it('test that highlighjs renders', function() {
+      var result = markdownHelper.highlightFormMarkdown('var foo = "bar";', 'js');
+      assert.equal(result, '<span class="hljs-keyword">var</span> foo = <span class="hljs-string">&quot;bar&quot;</span>;');
+    });
+    it('test that highlighjs no lang', function() {
+      var result = markdownHelper.highlightFormMarkdown('var foo = "bar";');
+      assert.equal(result, 'var foo <span class="hljs-operator">=</span> <span class="hljs-string">&quot;bar&quot;</span><span class="hljs-comment">;</span>');
+    });
   });
 
   describe('md', function() {
