@@ -236,8 +236,6 @@ Visit the: [code](lib/logging.js) | [unit tests](test/logging.js) | [issues](htt
 
 ### [markdown helpers](#markdown)
 
-Visit the: [code](lib/markdown.js) | [unit tests](test/markdown.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+markdown+helpers))
-
 * **[markdown](#markdown)** ([code](lib/markdown.js#Lundefined) | [tests](test/markdown.js#L10))
 * **[md](#md)** ([code](lib/markdown.js#L55) | [tests](test/markdown.js#L18))
 
