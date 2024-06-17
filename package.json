@@ -117,6 +117,7 @@
     "array-sort": "^1.0.0",
     "create-frame": "^1.0.0",
     "define-property": "^2.0.2",
+    "ent": "^2.2.0",
     "falsey": "^1.0.0",
     "for-in": "^1.0.2",
     "for-own": "^1.0.0",
@@ -127,7 +128,6 @@
     "handlebars-utils": "^1.0.6",
     "has-value": "^2.0.2",
     "helper-date": "^1.0.1",
-    "helper-md": "^0.2.2",
     "highlight.js": "^11.9.0",
     "html-tag": "^2.0.0",
     "is-even": "^1.0.0",
@@ -138,6 +138,7 @@
     "logging-helpers": "^1.0.0",
     "micromatch": "^4.0.5",
     "relative": "^3.0.2",
+    "remarkable": "^2.0.1",
     "striptags": "^3.2.0",
     "to-gfm-code-block": "^0.1.1",
     "year": "^0.2.1"
@@ -145,6 +146,7 @@
   "devDependencies": {
     "c8": "^9.1.0",
     "chai": "^4.3.10",
+    "lodash": "^4.17.21",
     "mocha": "^10.4.0",
     "rimraf": "^5.0.5",
     "template-helpers": "^1.0.1",
