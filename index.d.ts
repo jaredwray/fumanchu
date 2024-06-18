@@ -1,26 +1,28 @@
-// Import necessary types from the Handlebars library
-import { HelperDelegate, HandlebarsLib as HandlebarsNamespace } from 'handlebars';
+import { TemplateDelegate, RuntimeOptions, HelperDelegate, TemplateSpecification, compile, registerHelper } from 'handlebars';
 
-// Define a type for the Handlebars instance
-export interface HandlebarsInstance extends HandlebarsNamespace {
-  create: () => HandlebarsInstance;
-  registerHelper: (name: string, fn: HelperDelegate) => void;
+declare module 'handlebars' {
+    interface Handlebars {
+        create(): typeof Handlebars;
+    }
 }
 
-// Define the type for the parameters of the helpers function
-interface HelpersParams {
-  handlebars: HandlebarsInstance;
+declare namespace Helpers {
+    type HelperFunction = (options?: { handlebars: typeof Handlebars }) => void;
 }
 
-// Define the type for the helpers function
-declare function helpers(params: HelpersParams): void;
+declare const handlebars: {
+    compile: typeof compile;
+    registerHelper: typeof registerHelper;
+    TemplateDelegate: typeof TemplateDelegate;
+    RuntimeOptions: typeof RuntimeOptions;
+    HelperDelegate: typeof HelperDelegate;
+    TemplateSpecification: typeof TemplateSpecification;
+    create: typeof HandlebarsLib.create;
+}
 
-// Declare the variable to hold the helpers function, which may be undefined initially
-declare let handlebarHelpers: typeof helpers | undefined;
+declare const helpers: Helpers.HelperFunction;
 
-// Declare the Handlebars instance as a HandlebarsInstance and export it as the default export
-declare const handlebars: HandlebarsInstance;
-export default handlebars;
+declare const handlebarHelpers: Helpers.HelperFunction;
 
-// Export the helpers function as a named export
+export = handlebars;
 export { handlebarHelpers };
