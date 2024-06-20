@@ -136,7 +136,7 @@
     "kind-of": "^6.0.3",
     "lazy-cache": "^2.0.2",
     "logging-helpers": "^1.0.0",
-    "micromatch": "^4.0.5",
+    "micromatch": "^4.0.7",
     "relative": "^3.0.2",
     "remarkable": "^2.0.1",
     "striptags": "^3.2.0",
