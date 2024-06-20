@@ -148,7 +148,7 @@
     "chai": "^4.3.10",
     "lodash": "^4.17.21",
     "mocha": "^10.4.0",
-    "rimraf": "^5.0.5",
+    "rimraf": "^5.0.7",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9",
     "typescript": "^5.5.2"
