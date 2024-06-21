@@ -1,5 +1,4 @@
-import HandlebarsLib from 'handlebars';
-declare const handlebars: typeof HandlebarsLib;
-declare let handlebarHelpers: any;
-export default handlebars;
+import * as Handlebars from 'handlebars';
+import { handlebarHelpers } from './handlebarHelpers';
+export = Handlebars;
 export { handlebarHelpers };
