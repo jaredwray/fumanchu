@@ -4,6 +4,7 @@ require('mocha');
 var assert = require('assert');
 var utils = require('../lib/utils');
 var HTML = require('../lib/utils/html');
+const { expect } = require('chai');
 
 describe('utils', function() {
   describe('chop', function() {
@@ -34,6 +35,39 @@ describe('utils', function() {
     it('should lowercase a single character', function() {
       assert.equal(utils.changecase('f'), 'f');
       assert.equal(utils.changecase('A'), 'a');
+    });
+  });
+
+  describe('falsey', function() {
+    it('should return true if the value is falsey', function() {
+      assert(utils.falsey(''));
+      assert(utils.falsey('0'));
+      assert(utils.falsey('false'));
+      assert(utils.falsey('nada'));
+      assert(utils.falsey('nil'));
+      assert(utils.falsey('nay'));
+      assert(utils.falsey('nah'));
+      assert(utils.falsey('negative'));
+      assert(utils.falsey('no'));
+      assert(utils.falsey('none'));
+      assert(utils.falsey('nope'));
+      assert(utils.falsey('nul'));
+      assert(utils.falsey('null'));
+      assert(utils.falsey('nix'));
+      assert(utils.falsey('nyet'));
+      assert(utils.falsey('uh-uh'));
+      assert(utils.falsey('veto'));
+      assert(utils.falsey('zero'));
+    });
+    it('should return values on an array of keywords', function() {
+      assert(utils.falsey('zero', ['zero']));
+      assert(utils.falsey('zero'));
+      assert(utils.falsey('Zero'));
+      expect(utils.falsey('zero', ['zero', 'one'])).to.be.true;
+      expect(utils.falsey('Zero', ['zero', 'one'])).to.be.true;
+    });
+    it('should be false if the keywords are not not set correctly', function() {
+      expect(utils.falsey('false', 1)).to.be.false;
     });
   });
 
