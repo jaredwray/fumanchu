@@ -153,6 +153,6 @@
     "rimraf": "^5.0.7",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.4"
   }
 }
