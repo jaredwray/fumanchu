@@ -130,7 +130,11 @@ describe('highlight:', function(argument) {
       highlight: function(code, lang) {
         try {
           try {
-            return hljs.highlight(lang, code).value;
+            if(lang) {
+            return hljs.highlight(code,{language: lang}).value;
+            } else {
+              return hljs.highlightAuto(code).value;
+            }
           } catch (err) {
             if (!/Unknown language/i.test(err.message)) {
               throw err;
