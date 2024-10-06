@@ -58,9 +58,8 @@ console.log(fn);
 If using it with es6 you can access `helpers` via destructuring:
 
 ```javascript
-import fumanchu from '@jaredwray/fumanchu';
+import fumanchu, {handlebarHelpers} from '@jaredwray/fumanchu';
 import handlebars from 'handlebars';
-const {handlebarHelpers} = fumanchu;
 handlebarHelpers({ handlebars: handlebars });
 const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
 const html = template({foo: 'bar'});

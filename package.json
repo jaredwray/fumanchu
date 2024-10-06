@@ -98,13 +98,6 @@
   "source": "index.js",
   "main": "index.js",
   "types": "index.d.ts",
-  "exports": {
-    "import": "./index.mjs",
-    "require": "./index.js"
-  },
-  "engines": {
-    "node": ">=20"
-  },
   "scripts": {
     "test": "c8 mocha --reporter list",
     "test:ci": "c8 --reporter=lcov mocha --reporter list",
