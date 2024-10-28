@@ -146,6 +146,6 @@
     "rimraf": "^6.0.1",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.3"
   }
 }
