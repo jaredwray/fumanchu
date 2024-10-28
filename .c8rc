@@ -1,0 +1,9 @@
+{
+    "exclude": [
+        "test/**",
+        "dist/**",
+        "**/*.test.js",
+        "**/*.spec.ts",
+        "node_modules/**"
+    ]
+}

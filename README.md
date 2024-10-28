@@ -12,63 +12,95 @@ Handlebars + Helpers Together
 
 [Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. Easily use in your nodejs as it is a drop in replacement when using handlebars directly.
 
-## Table of Contents
+We plan to make significant changes over time with this project such as the following:
+- **(Completed)** Remove all dependencies on `handlebars-helpers` and maintain all helpers in this project
+- **(In Progress)** Migrate to Typescript with full typing support
+- **(In Progress)** Replace module dependencies that are no longer supported with supported ones
+- Migration to ESM and CJS support using cross compatible code
+- Migration to `vitest` as a testing framework
+- Migration to `xo` as a linting framework
+- Move to better documentation and examples where it makes sense
+- Add in browser support via CDN (this will remove the nodejs specific helpers)
+
+# Breaking Changes from v2 to v3
+
+Because of the complexity in the legacy helpers library we have moved to exporting the libraries and a helper function to make it easier to use. Here are the exports:
+
+- `handlebars` - This is an instance of handlebars library without any helpers. It is the same as calling `Handlebars.create()`
+- `helpers` - This is a function that takes an object with a `handlebars` key and adds all the helpers to the handlebars instance. This is the same as calling `helpers({ handlebars: handlebars })`
+- `createHandlebars` - This is an async function that returns a handlebars instance with all the helpers added. This is the same as calling `helpers({ handlebars: handlebars })` but async.
+- `Handlebars` - This is the handlebars library itself. It is the same as calling `require('handlebars')`
+
+Please see the examples below for how to use the library.
+
+# Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
 * [Helpers](#helpers)
 * [How to Contribute](#how-to-contribute)
 * [License and Copyright](#license-and-copyright)
 
-## Usage Nodejs
+
+# Usage Nodejs
 
 ```bash
 npm install @jaredwray/fumanchu --save
 ```
 
 ```javascript
-var handlebars = require('@jaredwray/fumanchu');
+var {handlebars, helpers} = require('@jaredwray/fumanchu');
+helpers({ handlebars: handlebars });
 var template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
 var html = template({foo: 'bar'});
 console.log(html);
 ```
 
-If using it with es6 you can access `handlebars` via destructuring:
+If using it with es6 you can access `handlebars` and `helpers`:
 
 ```javascript
-import handlebars from '@jaredwray/fumanchu';
+import {handlebars, helpers} from '@jaredwray/fumanchu';
+helpers({ handlebars: handlebars });
 const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
 const html = template({foo: 'bar'});
 console.log(html);
 ```
 
+If you want to just get an instance of handlebars via `createHandlebars` you can do the following **(it is async)**:
+
+```javascript
+import {createHandlebars} from '@jaredwray/fumanchu';
+const handlebars = await createHandlebars(); //this will return a handlebars instance with all helpers
+const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
+const html = template({foo: 'bar'});
+console.log(html); // <p>Foo is bar</p>
+```
+
 It's just that easy! No need to add Handlebars to your project, it's already included.
 
-## Using Handlebars Helpers
+# Using Handlebars Helpers
 
 If you only want to use handlebar helpers you can easily do that by doing the following:
 
 ```javascript
-var helpers = require('@jaredwray/fumanchu').handlebarHelpers;
+var {helpers} = require('@jaredwray/fumanchu');
 var handlebars = require('handlebars');
 helpers({ handlebars: handlebars });
 var fn = handlebars.compile('{{add value 5}}');
-console.log(fn);
+console.log(fn); // 10
 ```
 
 If using it with es6 you can access `helpers` via destructuring:
 
 ```javascript
-import fumanchu, {handlebarHelpers} from '@jaredwray/fumanchu';
+import {helpers} from '@jaredwray/fumanchu';
 import handlebars from 'handlebars';
-handlebarHelpers({ handlebars: handlebars });
+helpers({ handlebars: handlebars });
 const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
 const html = template({foo: 'bar'});
-console.log(html);
+console.log(html); // <p>Foo is bar</p>
 ```
 
-Notice that in this scenario you are accessing helpers via `helpers` from `fumanchu` instead of just using handlebars via fumanchu directly.
-
-## Helpers
+# Helpers
 More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.
 
 ## Categories
@@ -96,7 +128,7 @@ Currently **189 helpers** in **20 categories**:
 * **[string](#string)** ([code](lib/string.js) | [unit tests](test/string.js))
 * **[url](#url)** ([code](lib/url.js) | [unit tests](test/url.js))
 
-## All helpers
+# All helpers
 
 ### [array helpers](#array)
 

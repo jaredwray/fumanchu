@@ -1,7 +1,7 @@
 {
   "name": "@jaredwray/fumanchu",
   "description": "Handlebars + Helpers = Fumanchu",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "keywords": [
@@ -88,19 +88,17 @@
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "index.mjs",
-    "helpers.js",
-    "lib",
     "dist",
-    "index.d.ts"
+    "license"
   ],
-  "source": "index.js",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "source": "dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "c8 mocha --reporter list",
-    "test:ci": "c8 --reporter=lcov mocha --reporter list",
+    "test": "npm run build && c8 mocha --reporter list",
+    "test:ci": "npm run build && c8 --reporter=lcov mocha --reporter list",
+    "build": "rimraf ./dist && tsup ./index.ts --format cjs --dts --clean",
+    "prepare": "npm run build",
     "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./dist-site",
     "website:build": "rimraf ./site/readme.md && npx -y docula build -s ./site -o ./dist-site",
     "website:serve": "rimraf ./site/readme.md && npx -y docula serve -s ./site -o ./dist-site"
@@ -141,11 +139,14 @@
   "devDependencies": {
     "c8": "^10.1.2",
     "chai": "^4.3.10",
+    "docula": "^0.9.4",
     "lodash": "^4.17.21",
     "mocha": "^10.7.3",
     "rimraf": "^6.0.1",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9",
+    "tsup": "^8.3.5",
+    "typecript": "^0.0.1-security",
     "typescript": "^5.6.3"
   }
 }
