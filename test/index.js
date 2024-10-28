@@ -31,5 +31,12 @@ describe('Fumanchu Template Test', function() {
         var fn = handlebars.compile('{{add value 5}}');
         assert.equal(fn({value: 5}), '10');
     });
+
+    it('should have the handlebars object exported', function() {
+        var {handlebars, helpers} = require('../dist/index.js');
+        helpers({ handlebars: handlebars });
+        var fn = handlebars.compile('{{add value 5}}');
+        assert.equal(fn({value: 5}), '10');
+    });
 });
 
