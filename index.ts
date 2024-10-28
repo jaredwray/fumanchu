@@ -2,7 +2,13 @@ import * as HandlebarsLib from 'handlebars';
 import helpersLib from './helpers.js';
 
 /**
- * Fumanchu Handlebars instance
+ * Handlebars library not initiated with helpers
+ * @type {Handlebars}
+ */
+export const Handlebars = HandlebarsLib;
+
+/**
+ * Fumanchu Handlebars instance not initiated with helpers
  * @type {Handlebars}
  */
 export const handlebars = HandlebarsLib.create();
