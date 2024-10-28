@@ -1,5 +1,5 @@
 import * as HandlebarsLib from 'handlebars';
-import helpersLib from './helpers.js';
+import helpersLib from '../helpers/helpers.js';
 
 /**
  * Handlebars library not initiated with helpers
@@ -23,7 +23,7 @@ export const helpers = helpersLib;
  */
 export async function createHandlebars() {
   const handlebars = HandlebarsLib.create();
-  const helpersFunction = await import('./helpers.js');
+  const helpersFunction = await import('../helpers/helpers.js');
   helpersFunction.default({ handlebars: handlebars });
   return handlebars;
 }

@@ -3,7 +3,7 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('../helpers.js');
+var helpers = require('../helpers/helpers.js');
 helpers.inflection({handlebars: hbs});
 
 describe('inflection', function() {

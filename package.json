@@ -97,7 +97,7 @@
   "scripts": {
     "test": "npm run build && c8 mocha --reporter list",
     "test:ci": "npm run build && c8 --reporter=lcov mocha --reporter list",
-    "build": "rimraf ./dist && tsup ./index.ts --format cjs --dts --clean",
+    "build": "rimraf ./dist && tsup ./src/index.ts --format cjs --dts --clean",
     "prepare": "npm run build",
     "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./dist-site",
     "website:build": "rimraf ./site/readme.md && npx -y docula build -s ./site -o ./dist-site",
