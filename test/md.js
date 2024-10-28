@@ -12,7 +12,7 @@ var assert = require('assert');
 var handlebars = require('handlebars');
 var Templates = require('templates');
 var hljs = require('highlight.js');
-var md = require('../lib/md.js');
+var md = require('../helpers/lib/md.js');
 var _ = require('lodash');
 var app;
 

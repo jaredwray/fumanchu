@@ -2,8 +2,8 @@
 
 require('mocha');
 var assert = require('assert');
-var utils = require('../lib/utils');
-var HTML = require('../lib/utils/html');
+var utils = require('../helpers/lib/utils');
+var HTML = require('../helpers/lib/utils/html');
 const { expect } = require('chai');
 
 describe('utils', function() {

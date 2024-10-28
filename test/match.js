@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('../helpers.js');
+var helpers = require('../helpers/helpers.js');
 helpers.match({handlebars: hbs});
 
 var testFiles = fs.readdirSync(__dirname);

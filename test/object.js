@@ -4,7 +4,7 @@ require('mocha');
 var assert = require('assert');
 var support = require('./support');
 var expected = support.expected('object');
-var helpers = require('../helpers.js');
+var helpers = require('../helpers/helpers.js');
 var hbs = require('handlebars').create();
 helpers.math({handlebars: hbs});
 helpers.object({handlebars: hbs});

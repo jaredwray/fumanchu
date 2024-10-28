@@ -11,9 +11,9 @@
         "declaration": true // Generate corresponding .d.ts file
     },
     "include": [
-        "helpers.js",
+        "helpers/**/*.js",
         "src/**/*.js",
-        "index.ts"
+        "src/index.ts"
     ],
     "exclude": [
         "node_modules",
