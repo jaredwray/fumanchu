@@ -1,7 +1,7 @@
 var assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
-const {createHandlebars} = require('../dist/index.js');
+const {createHandlebars, fumanchu} = require('../dist/index.js');
 
 describe('Fumanchu Template Test', function() {
     it('should render name correctly', async function() {
@@ -37,6 +37,12 @@ describe('Fumanchu Template Test', function() {
         helpers({ handlebars: handlebars });
         var fn = handlebars.compile('{{add value 5}}');
         assert.equal(fn({value: 5}), '10');
+    });
+
+    it('does fumanchu register year', function() {
+        var handlebars = fumanchu();
+        var fn = handlebars.compile('{{year}}');
+        assert.equal(fn(), new Date().getFullYear().toString());
     });
 });
 
