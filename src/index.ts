@@ -1,4 +1,5 @@
 import * as HandlebarsLib from 'handlebars';
+import { HelperRegistry } from './helper-registry.js';
 import helpersLib from '../helpers/helpers.js';
 
 /**
@@ -25,5 +26,12 @@ export async function createHandlebars() {
   const handlebars = HandlebarsLib.create();
   const helpersFunction = await import('../helpers/helpers.js');
   helpersFunction.default({ handlebars: handlebars });
+  return handlebars;
+}
+
+export function fumanchu() {
+  const registry = new HelperRegistry();
+  const handlebars = HandlebarsLib.create();
+  registry.loadHandlebars(handlebars);
   return handlebars;
 }
