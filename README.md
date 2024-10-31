@@ -1,4 +1,4 @@
-![Fumanchu](logo.png "Fumanchu")
+![Fumanchu](site/logo.svg "Fumanchu")
 
 
 # fumanchu
