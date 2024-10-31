@@ -55,7 +55,6 @@ export class HelperRegistry {
 
 	public loadHandlebars(handlebars: any) {
 		this._helpers.forEach(helper => {
-			console.log(helper);
 			handlebars.registerHelper(helper.name, helper.fn);
 		});
 	}
