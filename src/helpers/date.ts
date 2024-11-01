@@ -1,8 +1,8 @@
-import {Helper} from '../helper-registry.js';
+import {type Helper} from '../helper-registry.js';
 
 const year = () => new Date().getFullYear();
 
-export const helpers: Array<Helper> = [
+export const helpers: Helper[] = [
 	{
 		name: 'year',
 		category: 'date',
