@@ -3,7 +3,7 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('../helpers/helpers.js');
+var helpers = require('../helpers.js');
 helpers.i18n({handlebars: hbs});
 
 var context = {language: 'en', en: {key: 'value', a: {b: 'c'}}, fr: {key: 'valeur'}};

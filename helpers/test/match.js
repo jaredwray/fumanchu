@@ -4,23 +4,23 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('../helpers/helpers.js');
-helpers.match({handlebars: hbs});
+var helpers = require('../helpers.js');
+helpers({handlebars: hbs});
 
-var testFiles = fs.readdirSync(__dirname);
-var rootFiles = fs.readdirSync(path.join(__dirname, '..'));
+var testFiles = fs.readdirSync(path.join(__dirname, '../lib'));
+var rootFiles = fs.readdirSync(path.join(__dirname, '../../'));
 
 describe('matching', function() {
   describe('match', function() {
     it('should use the main micromatch function to filter an array', function() {
       var fn = hbs.compile('{{match files "(a|u)*.js"}}');
-      assert.equal(fn({files: testFiles}), 'array.js,url.js,utils.js');
+      assert.equal(fn({files: testFiles}), 'array.js,url.js');
     });
 
     it('should take an array of patterns', function() {
       var ctx = {files: testFiles, patterns: ['(a|u)*.js', 'f*.js']};
       var fn = hbs.compile('{{match files patterns}}');
-      assert.equal(fn(ctx), 'array.js,url.js,utils.js,fs.js');
+      assert.equal(fn(ctx), 'array.js,url.js,fs.js');
     });
 
     it('should take options from the "options[helper name]" object', function() {
@@ -37,7 +37,7 @@ describe('matching', function() {
 
     it('should use return matching items', function() {
       var fn = hbs.compile('{{match files "(a|u)*.js"}}');
-      assert.equal(fn({files: testFiles}), 'array.js,url.js,utils.js');
+      assert.equal(fn({files: testFiles}), 'array.js,url.js');
     });
 
     it('should take options from the "options[helper name]" object', function() {

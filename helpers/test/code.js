@@ -3,13 +3,13 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('../helpers/helpers.js');
+var helpers = require('../helpers.js');
 helpers.code({handlebars: hbs});
 
 describe('code', function() {
   describe('embed', function() {
     it('should embed markdown:', function() {
-      assert.equal(hbs.compile('{{{embed "test/fixtures/simple.md"}}}')(), [
+      assert.equal(hbs.compile('{{{embed "helpers/test/fixtures/simple.md"}}}')(), [
         '```markdown',
         '## Some Markdown\n',
         ' - one',
@@ -21,7 +21,7 @@ describe('code', function() {
     });
 
     it('should determine the language from the file extension', function() {
-      assert.equal(hbs.compile('{{{embed "test/fixtures/embedded.md"}}}')(), [
+      assert.equal(hbs.compile('{{{embed "helpers/test/fixtures/embedded.md"}}}')(), [
         '```markdown',
         '## Markdown',
         '',
@@ -40,7 +40,7 @@ describe('code', function() {
     });
 
     it('should use the language defined in the last argument', function() {
-      var template = hbs.compile('{{{embed "test/fixtures/index.html" "hbs"}}}');
+      var template = hbs.compile('{{{embed "helpers/test/fixtures/index.html" "hbs"}}}');
       assert.equal(template(), [
         '```hbs',
         '<!DOCTYPE html>',

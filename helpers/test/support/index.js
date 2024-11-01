@@ -30,7 +30,7 @@ utils.read = function(fp) {
 
 utils.fixture = function(type) {
   return function(fp) {
-    return utils.read('test/fixtures/' + type + '/' + fp);
+    return utils.read('helpers/test/fixtures/' + type + '/' + fp);
   };
 };
 
@@ -45,6 +45,6 @@ utils.fixture = function(type) {
 
 utils.expected = function(type) {
   return function(fp) {
-    return utils.read('test/expected/' + type + '/' + fp);
+    return utils.read('helpers/test/expected/' + type + '/' + fp);
   };
 };

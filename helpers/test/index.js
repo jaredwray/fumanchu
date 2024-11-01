@@ -1,7 +1,7 @@
 var assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
-const {createHandlebars, fumanchu} = require('../dist/index.js');
+const {createHandlebars, fumanchu} = require('../../dist/index.js');
 
 describe('Fumanchu Template Test', function() {
     it('should render name correctly', async function() {
@@ -24,7 +24,7 @@ describe('Fumanchu Template Test', function() {
     });
 
     it('should have the helper class exported', function() {
-        var helpers = require('../dist/index.js').helpers;
+        var helpers = require('../../dist/index.js').helpers;
         const HandlebarsLib = require('handlebars');
         const handlebars = HandlebarsLib.create();
         helpers({ handlebars: handlebars });
@@ -33,7 +33,7 @@ describe('Fumanchu Template Test', function() {
     });
 
     it('should have the handlebars object exported', function() {
-        var {handlebars, helpers} = require('../dist/index.js');
+        var {handlebars, helpers} = require('../../dist/index.js');
         helpers({ handlebars: handlebars });
         var fn = handlebars.compile('{{add value 5}}');
         assert.equal(fn({value: 5}), '10');

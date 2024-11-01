@@ -12,7 +12,7 @@ var assert = require('assert');
 var handlebars = require('handlebars');
 var Templates = require('templates');
 var hljs = require('highlight.js');
-var md = require('../helpers/lib/md.js');
+var md = require('../lib/md.js');
 var _ = require('lodash');
 var app;
 
@@ -43,19 +43,19 @@ describe('sync', function() {
   });
 
   it('should support rendering markdown from a file:', function() {
-    assert.equal(md.sync('test/fixtures/a.md'), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
+    assert.equal(md.sync('helpers/test/fixtures/a.md'), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
   });
 
   describe('handlebars:', function() {
     it('should support rendering markdown from a file:', function() {
       handlebars.registerHelper('md', md.sync);
-      assert.equal(handlebars.compile('{{{md "test/fixtures/a.md"}}}')(), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
+      assert.equal(handlebars.compile('{{{md "helpers/test/fixtures/a.md"}}}')(), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
     });
 
     it('should use the `render` function passed on the locals to render templates in partials :', function() {
       handlebars.registerHelper('md', md.sync);
       var locals = {name: 'CCC', compile: handlebars.compile};
-      assert.equal(handlebars.compile('{{{md "test/fixtures/c.md"}}}')(locals), '<h1>CCC</h1>\n<p>This is CCC</p>\n');
+      assert.equal(handlebars.compile('{{{md "helpers/test/fixtures/c.md"}}}')(locals), '<h1>CCC</h1>\n<p>This is CCC</p>\n');
     });
   });
 });
@@ -87,7 +87,7 @@ describe('async', function() {
   });
 
   it('should support rendering from a file', function(cb) {
-    app.page('home.md', {content: '<%= md("test/fixtures/d.md") %>'});
+    app.page('home.md', {content: '<%= md("helpers/test/fixtures/d.md") %>'});
 
     app.render('home.md', {name: 'DDD'}, function(err, view) {
       if (err) return cb(err);
@@ -111,22 +111,22 @@ describe('async', function() {
 describe('lodash:', function() {
   it('should work as a lodash mixin:', function() {
     _.mixin({md: md.sync});
-    assert.equal(_.template('<%= _.md("test/fixtures/a.md") %>', {})(), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
+    assert.equal(_.template('<%= _.md("helpers/test/fixtures/a.md") %>', {})(), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
   });
 
   it('should work when passed to lodash on the locals:', function() {
-    assert.equal(_.template('<%= _.md("test/fixtures/a.md") %>')({md: md.sync}), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
+    assert.equal(_.template('<%= _.md("helpers/test/fixtures/a.md") %>')({md: md.sync}), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
   });
 
   it('should work as a lodash import:', function() {
     var settings = {imports: {md: md.sync}};
-    assert.equal(_.template('<%= _.md("test/fixtures/a.md") %>', {}, settings)(), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
+    assert.equal(_.template('<%= _.md("helpers/test/fixtures/a.md") %>', {}, settings)(), '<h1>AAA</h1>\n<blockquote>\n<p>this is aaa</p>\n</blockquote>\n');
   });
 });
 
 describe('highlight:', function(argument) {
   it('should support syntax highlighting', function() {
-    var actual = md.sync('test/fixtures/e.md', {
+    var actual = md.sync('helpers/test/fixtures/e.md', {
       highlight: function(code, lang) {
         try {
           try {

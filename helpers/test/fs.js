@@ -5,9 +5,9 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-require('../helpers/helpers.js')({handlebars: hbs});
+require('../helpers.js')({handlebars: hbs});
 
-var libFiles = fs.readdirSync(path.join(__dirname, '../helpers/lib'))
+var libFiles = fs.readdirSync(path.join(__dirname, '../lib'))
   .map(function(fp) {
     return path.join('helpers/lib', fp);
   });
@@ -16,7 +16,7 @@ describe('fs', function() {
   describe('read', function() {
     it('should read a file from the file system', function() {
       var fn = hbs.compile('{{read filepath}}');
-      assert.equal(fn({filepath: 'test/fixtures/read/a.txt'}), 'abc');
+      assert.equal(fn({filepath: 'helpers/test/fixtures/read/a.txt'}), 'abc');
     });
   });
 

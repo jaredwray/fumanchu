@@ -4,8 +4,8 @@ require('mocha');
 var assert = require('assert');
 var fs = require('fs');
 var hbs = require('handlebars').create();
-var helpers = require('../helpers/helpers.js');
-var markdownHelper = require('../helpers/lib/markdown.js');
+var helpers = require('../helpers.js');
+var markdownHelper = require('../lib/markdown.js');
 helpers.markdown({handlebars: hbs});
 
 describe('markdown', function() {
@@ -50,9 +50,9 @@ describe('markdown', function() {
 
   describe('md', function() {
     it('should render markdown from a file using the {{md}} inline helper', function() {
-      var expected = fs.readFileSync('test/expected/simple.html', 'utf8');
+      var expected = fs.readFileSync('helpers/test/expected/simple.html', 'utf8');
       var template = hbs.compile('{{{md fp}}}');
-      var actual = template({fp: 'test/fixtures/simple.md'});
+      var actual = template({fp: 'helpers/test/fixtures/simple.md'});
       assert.equal(actual, expected);
     });
   });
