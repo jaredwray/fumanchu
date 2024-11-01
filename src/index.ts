@@ -13,6 +13,7 @@ export const Handlebars = HandlebarsLib;
  * @type {Handlebars}
  */
 export const handlebars = HandlebarsLib.create();
+
 /**
  * Fumanchu Handlebars helpers
  */
@@ -29,6 +30,10 @@ export async function createHandlebars() {
   return handlebars;
 }
 
+/**
+ * Will return a Handlebars instance with Fumanchu helpers (experimental)
+ * @returns {Handlebars} Handlebars instance with helpers
+ */
 export function fumanchu() {
   const registry = new HelperRegistry();
   const handlebars = HandlebarsLib.create();

@@ -4,6 +4,18 @@
   "version": "3.0.0",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
+  "source": "dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "npm run build && xo --fix && c8 mocha",
+    "test:ci": "npm run build && xo && c8 --reporter=lcov mocha",
+    "build": "rimraf ./dist && tsup ./src/index.ts --format cjs --dts --clean",
+    "prepare": "npm run build",
+    "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./dist-site",
+    "website:build": "rimraf ./site/readme.md && npx -y docula build -s ./site -o ./dist-site",
+    "website:serve": "rimraf ./site/readme.md && npx -y docula serve -s ./site -o ./dist-site"
+  },
   "keywords": [
     "array",
     "assemble",
@@ -31,7 +43,75 @@
     "util",
     "utility"
   ],
+  "repository": "jaredwray/fumanchu",
+  "bugs": {
+    "url": "https://github.com/jaredwray/fumanchu/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "license"
+  ],
+  "dependencies": {
+    "arr-flatten": "^1.1.0",
+    "array-sort": "^1.0.0",
+    "cacheable": "^1.8.2",
+    "create-frame": "^1.0.0",
+    "define-property": "^2.0.2",
+    "ent": "^2.2.1",
+    "extend-shallow": "^3.0.2",
+    "for-in": "^1.0.2",
+    "for-own": "^1.0.0",
+    "fs-exists-sync": "^0.1.0",
+    "get-object": "^0.2.0",
+    "get-value": "^3.0.1",
+    "handlebars": "^4.7.8",
+    "handlebars-helper-create-frame": "^0.1.0",
+    "handlebars-utils": "^1.0.6",
+    "has-value": "^2.0.2",
+    "helper-date": "^1.0.1",
+    "highlight.js": "^11.10.0",
+    "html-tag": "^2.0.0",
+    "is-even": "^1.0.0",
+    "is-glob": "^4.0.3",
+    "is-number": "^7.0.0",
+    "kind-of": "^6.0.3",
+    "lazy-cache": "^2.0.2",
+    "logging-helpers": "^1.0.0",
+    "micromatch": "^4.0.8",
+    "path": "^0.12.7",
+    "relative": "^3.0.2",
+    "remarkable": "^2.0.1",
+    "striptags": "^3.2.0",
+    "to-gfm-code-block": "^0.1.1",
+    "year": "^0.2.1"
+  },
+  "devDependencies": {
+    "c8": "^10.1.2",
+    "chai": "^4.3.10",
+    "docula": "^0.9.4",
+    "engine-handlebars": "^1.1.0",
+    "lodash": "^4.17.21",
+    "mocha": "^10.7.3",
+    "rimraf": "^6.0.1",
+    "template-helpers": "^1.0.1",
+    "templates": "^1.2.9",
+    "tsup": "^8.3.5",
+    "typecript": "^0.0.1-security",
+    "typescript": "^5.6.3",
+    "xo": "^0.59.3"
+  },
+  "xo": {
+    "ignores": [
+      "dist/**",
+      "dist-site/**",
+      "site/**",
+      "helpers/**",
+      "src/index.ts"
+    ]
+  },
   "contributors": [
+    "Jared Wray (https://jaredwray.com)",
     "Adrián Mugnolo (https://github.com/xymbol)",
     "Aleš Kotnik (www.draagle.com)",
     "Ali Sheehan-Dare (https://github.com/alisd23)",
@@ -81,74 +161,5 @@
     "(https://github.com/homersimpsons)",
     "Jonathas Ribeiro (https://github.com/jonathas)",
     "Jared Wray (https://github.com/jaredwray)"
-  ],
-  "repository": "jaredwray/fumanchu",
-  "bugs": {
-    "url": "https://github.com/jaredwray/fumanchu/issues"
-  },
-  "license": "MIT",
-  "files": [
-    "dist",
-    "license"
-  ],
-  "source": "dist/index.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "test": "npm run build && c8 mocha",
-    "test:ci": "npm run build && c8 --reporter=lcov mocha",
-    "build": "rimraf ./dist && tsup ./src/index.ts --format cjs --dts --clean",
-    "prepare": "npm run build",
-    "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./dist-site",
-    "website:build": "rimraf ./site/readme.md && npx -y docula build -s ./site -o ./dist-site",
-    "website:serve": "rimraf ./site/readme.md && npx -y docula serve -s ./site -o ./dist-site"
-  },
-  "dependencies": {
-    "arr-flatten": "^1.1.0",
-    "array-sort": "^1.0.0",
-    "cacheable": "^1.8.2",
-    "create-frame": "^1.0.0",
-    "define-property": "^2.0.2",
-    "ent": "^2.2.1",
-    "extend-shallow": "^3.0.2",
-    "for-in": "^1.0.2",
-    "for-own": "^1.0.0",
-    "fs-exists-sync": "^0.1.0",
-    "get-object": "^0.2.0",
-    "get-value": "^3.0.1",
-    "handlebars": "^4.7.8",
-    "handlebars-helper-create-frame": "^0.1.0",
-    "handlebars-utils": "^1.0.6",
-    "has-value": "^2.0.2",
-    "helper-date": "^1.0.1",
-    "highlight.js": "^11.10.0",
-    "html-tag": "^2.0.0",
-    "is-even": "^1.0.0",
-    "is-glob": "^4.0.3",
-    "is-number": "^7.0.0",
-    "kind-of": "^6.0.3",
-    "lazy-cache": "^2.0.2",
-    "logging-helpers": "^1.0.0",
-    "micromatch": "^4.0.8",
-    "path": "^0.12.7",
-    "relative": "^3.0.2",
-    "remarkable": "^2.0.1",
-    "striptags": "^3.2.0",
-    "to-gfm-code-block": "^0.1.1",
-    "year": "^0.2.1"
-  },
-  "devDependencies": {
-    "c8": "^10.1.2",
-    "chai": "^4.3.10",
-    "docula": "^0.9.4",
-    "engine-handlebars": "^1.1.0",
-    "lodash": "^4.17.21",
-    "mocha": "^10.7.3",
-    "rimraf": "^6.0.1",
-    "template-helpers": "^1.0.1",
-    "templates": "^1.2.9",
-    "tsup": "^8.3.5",
-    "typecript": "^0.0.1-security",
-    "typescript": "^5.6.3"
-  }
+  ]
 }
