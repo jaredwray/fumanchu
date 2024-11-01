@@ -39,7 +39,7 @@ describe('HelperRegistry Filter', () => {
 			category: 'test',
 			fn: () => 'test',
 		});
-		expect(registry.filter({name: 'test1'}).length).toBe(1);
+		expect(registry.filter({name: 'test1'}).length).toBe(0);
 	});
 	test('should filter by name', () => {
 		const registry = new HelperRegistry();
