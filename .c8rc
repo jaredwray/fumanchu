@@ -1,9 +1,13 @@
 {
     "exclude": [
+        "helpers/test/**",
         "test/**",
         "dist/**",
         "**/*.test.js",
         "**/*.spec.ts",
         "node_modules/**"
+    ],
+    "include": [
+        "helpers/**/*.js"
     ]
 }

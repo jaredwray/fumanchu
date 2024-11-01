@@ -1,0 +1,8 @@
+{
+    "extension": ["js"],        
+    "spec": "helpers/test/**/*.js",      
+    "reporter": "list",               
+    "timeout": 5000,                  
+    "recursive": true                
+  }
+  

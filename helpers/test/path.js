@@ -6,7 +6,7 @@ var assert = require('assert');
 var path = require('path');
 var hbs = require('handlebars').create();
 var gm = require('global-modules');
-var helpers = require('../helpers/helpers.js');
+var helpers = require('../helpers.js');
 helpers.path({handlebars: hbs});
 
 describe('assemble', function() {

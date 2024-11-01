@@ -3,7 +3,7 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('../helpers/helpers.js');
+var helpers = require('../helpers.js');
 helpers.string({handlebars: hbs});
 
 describe('string', function() {
