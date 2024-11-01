@@ -92,7 +92,7 @@
     "docula": "^0.9.4",
     "engine-handlebars": "^1.1.0",
     "lodash": "^4.17.21",
-    "mocha": "^10.7.3",
+    "mocha": "^10.8.2",
     "rimraf": "^6.0.1",
     "template-helpers": "^1.0.1",
     "templates": "^1.2.9",
