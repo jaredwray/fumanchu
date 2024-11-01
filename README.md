@@ -3098,6 +3098,8 @@ Generate a random number
 ## How to Contribute
 clone the repository locally and run 'npm i' in the root. Now that you've set up your workspace, you're ready to contribute changes to the `fumanchu` repository you can refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.
 
+To test the legacy helpers, you can run `npm run test:legacy` to run the tests. If you want to test the new helpers, you can run `npm run test`.
+
 ## License and Copyright
 [MIT](LICENSE) and codebase after 2023 will be copyright of Jared Wray.
 

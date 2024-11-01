@@ -8,8 +8,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run build && xo --fix && c8 mocha",
-    "test:ci": "npm run build && xo && c8 --reporter=lcov mocha",
+    "test": "xo --fix && vitest run --coverage",
+    "test:ci": "xo && vitest run --coverage",
+    "test:legacy": "npm run build && c8 mocha",
+    "test:legacy:ci": "npm run build && c8 --reporter=lcov mocha",
     "build": "rimraf ./dist && tsup ./src/index.ts --format cjs --dts --clean",
     "prepare": "npm run build",
     "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./dist-site",
@@ -55,7 +57,7 @@
   "dependencies": {
     "arr-flatten": "^1.1.0",
     "array-sort": "^1.0.0",
-    "cacheable": "^1.8.2",
+    "cacheable": "^1.8.3",
     "create-frame": "^1.0.0",
     "define-property": "^2.0.2",
     "ent": "^2.2.1",
@@ -87,6 +89,7 @@
     "year": "^0.2.1"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.4",
     "c8": "^10.1.2",
     "chai": "^4.3.10",
     "docula": "^0.9.4",
@@ -99,6 +102,7 @@
     "tsup": "^8.3.5",
     "typecript": "^0.0.1-security",
     "typescript": "^5.6.3",
+    "vitest": "^2.1.4",
     "xo": "^0.59.3"
   },
   "xo": {

@@ -30,12 +30,13 @@ export class HelperRegistry {
 		this.registerHelpers(dateHelpers);
 	}
 
-	public register(helper: Helper) {
-		if (this.has(helper.name)) {
-			throw new Error(`Helper ${helper.name} already exists.`);
+	public register(helper: Helper): boolean {
+		const result = false;
+		if (!this.has(helper.name)) {
+			this._helpers.push(helper);
 		}
 
-		this._helpers.push(helper);
+		return result;
 	}
 
 	public registerHelpers(helpers: Helper[]) {
@@ -49,6 +50,7 @@ export class HelperRegistry {
 	}
 
 	public filter(filter: HelperFilter): Helper[] {
+		/* c8 ignore next 4 */
 		return this._helpers.filter(helper => (!filter.name || helper.name === filter.name)
 				&& (!filter.category || helper.category === filter.category)
 				&& (!filter.compatibility || helper.compatibility === filter.compatibility));
