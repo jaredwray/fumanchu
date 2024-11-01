@@ -24,8 +24,11 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    - name: Testing    
-      run: npm run test
+    - name: Testing Legacy Helpers   
+      run: npm run test:legacy:ci
+
+    - name: Testing Fumanchu   
+      run: npm run test:ci
 
     - name: Code Coverage
       uses: codecov/codecov-action@v3
