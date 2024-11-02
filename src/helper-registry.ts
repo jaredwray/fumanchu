@@ -62,4 +62,13 @@ export class HelperRegistry {
 			handlebars.registerHelper(helper.name, helper.fn);
 		}
 	}
+
+	public swapHelpers(handlebars: any) {
+		for (const helper of this._helpers) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+			handlebars.unregisterHelper(helper.name);
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+			handlebars.registerHelper(helper.name, helper.fn);
+		}
+	}
 }
