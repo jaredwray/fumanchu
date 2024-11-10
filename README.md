@@ -14,11 +14,11 @@ Handlebars + Helpers Together
 
 We plan to make significant changes over time with this project such as the following:
 - **(Completed)** Remove all dependencies on `handlebars-helpers` and maintain all helpers in this project
+- **(Completed)** Migration to `vitest` as a testing framework
+- **(Completed)** Migration to `xo` as a linting framework
 - **(In Progress)** Migrate to Typescript with full typing support
 - **(In Progress)** Replace module dependencies that are no longer supported with supported ones
 - Migration to ESM and CJS support using cross compatible code
-- Migration to `vitest` as a testing framework
-- Migration to `xo` as a linting framework
 - Move to better documentation and examples where it makes sense
 - Add in browser support via CDN (this will remove the nodejs specific helpers)
 
