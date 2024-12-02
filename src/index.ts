@@ -67,3 +67,5 @@ export function fumanchu(options?: FumanchuOptions) {
   registry.loadHandlebars(handlebars);
   return handlebars;
 }
+
+export { HelperRegistry, HelperFilter };
