@@ -10,15 +10,27 @@ describe('fumanchu', () => {
 
 	test('should have handlebars', () => {
 		expect(handlebars).toBeDefined();
+		const result = handlebars.compile('{{year}}');
+		expect(result({})).toBe('');
 	});
 
 	test('should be able to createHandlebars', async () => {
 		const handlebars = await createHandlebars();
 		expect(handlebars).toBeDefined();
+		const result = handlebars.compile('{{year}}');
+		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
 
 	test('should be able to run fumanchu()', () => {
 		const handlebars = fumanchu();
 		expect(handlebars).toBeDefined();
+		const result = handlebars.compile('{{year}}');
+		expect(result({})).toBe(new Date().getFullYear().toString());
+	});
+
+	test('should be able to set helpers', async () => {
+		helpers({handlebars});
+		const result = handlebars.compile('{{year}}');
+		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
 });
