@@ -90,7 +90,7 @@
     "year": "^0.2.1"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^2.1.4",
+    "@vitest/coverage-v8": "^2.1.8",
     "c8": "^10.1.2",
     "chai": "^4.3.10",
     "docula": "^0.9.4",
@@ -103,7 +103,7 @@
     "tsup": "^8.3.5",
     "typecript": "^0.0.1-security",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.4",
+    "vitest": "^2.1.8",
     "xo": "^0.60.0"
   },
   "xo": {
