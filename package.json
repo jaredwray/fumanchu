@@ -93,7 +93,7 @@
     "@vitest/coverage-v8": "^2.1.8",
     "c8": "^10.1.2",
     "chai": "^4.3.10",
-    "docula": "^0.9.4",
+    "docula": "^0.9.5",
     "engine-handlebars": "^1.1.0",
     "lodash": "^4.17.21",
     "mocha": "^10.8.2",
