@@ -102,7 +102,7 @@
     "templates": "^1.2.9",
     "tsup": "^8.3.5",
     "typecript": "^0.0.1-security",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "vitest": "^2.1.4",
     "xo": "^0.60.0"
   },
