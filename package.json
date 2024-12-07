@@ -58,7 +58,7 @@
   "dependencies": {
     "arr-flatten": "^1.1.0",
     "array-sort": "^1.0.0",
-    "cacheable": "^1.8.4",
+    "cacheable": "^1.8.5",
     "create-frame": "^1.0.0",
     "define-property": "^2.0.2",
     "ent": "^2.2.1",
