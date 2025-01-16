@@ -58,7 +58,7 @@
   "dependencies": {
     "arr-flatten": "^1.1.0",
     "array-sort": "^1.0.0",
-    "cacheable": "^1.8.5",
+    "cacheable": "^1.8.7",
     "chrono-node": "^2.7.7",
     "create-frame": "^1.0.0",
     "dayjs": "^1.11.13",
