@@ -63,7 +63,7 @@
     "create-frame": "^1.0.0",
     "dayjs": "^1.11.13",
     "define-property": "^2.0.2",
-    "ent": "^2.2.1",
+    "ent": "^2.2.2",
     "extend-shallow": "^3.0.2",
     "for-in": "^1.0.2",
     "for-own": "^1.0.0",
