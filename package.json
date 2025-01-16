@@ -10,6 +10,7 @@
   "scripts": {
     "test": "xo --fix && vitest run --coverage",
     "test:ci": "xo && vitest run --coverage",
+    "test:all": "npm run test && npm run test:legacy",
     "test:legacy": "npm run build && c8 mocha",
     "test:legacy:ci": "npm run build && c8 --reporter=lcov mocha",
     "build": "rimraf ./dist && tsup ./src/index.ts --format cjs --dts --clean",
@@ -75,7 +76,7 @@
     "handlebars-utils": "^1.0.6",
     "has-value": "^2.0.2",
     "helper-date": "^1.0.1",
-    "highlight.js": "^11.10.0",
+    "highlight.js": "^11.11.1",
     "html-tag": "^2.0.0",
     "is-even": "^1.0.0",
     "is-glob": "^4.0.3",
