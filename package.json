@@ -10,6 +10,7 @@
   "scripts": {
     "test": "xo --fix && vitest run --coverage",
     "test:ci": "xo && vitest run --coverage",
+    "test:all": "npm run test && npm run test:legacy",
     "test:legacy": "npm run build && c8 mocha",
     "test:legacy:ci": "npm run build && c8 --reporter=lcov mocha",
     "build": "rimraf ./dist && tsup ./src/index.ts --format cjs --dts --clean",
