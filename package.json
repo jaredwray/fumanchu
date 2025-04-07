@@ -105,7 +105,7 @@
     "templates": "^1.2.9",
     "tsup": "^8.4.0",
     "typecript": "^0.0.1-security",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.3",
     "vitest": "^3.1.1",
     "xo": "^0.60.0"
   },
