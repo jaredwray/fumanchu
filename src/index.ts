@@ -26,8 +26,8 @@ export const helpers = helpersLib;
 export async function createHandlebars() {
   const registry = new HelperRegistry();
   const handlebars = HandlebarsLib.create();
-  const helpersFunction = await import('../helpers/helpers.js');
-  helpersFunction.default({ handlebars: handlebars });
+  const helpersFunction = await helpersLib;
+  helpersFunction({ handlebars: handlebars });
   registry.swapHelpers(handlebars);
   return handlebars;
 }

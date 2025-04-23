@@ -63,7 +63,8 @@ If you only want to use handlebar helpers you can easily do that by doing the fo
 ```javascript
 var {helpers} = require('@jaredwray/fumanchu');
 var handlebars = require('handlebars');
-helpers({ handlebars: handlebars });
+var helpersFunction = await helpers();
+helpersFunction({ handlebars: handlebars });
 var fn = handlebars.compile('{{add value 5}}');
 console.log(fn); // 10
 ```
@@ -73,7 +74,8 @@ If using it with es6 you can access `helpers` via destructuring:
 ```javascript
 import {helpers} from '@jaredwray/fumanchu';
 import handlebars from 'handlebars';
-helpers({ handlebars: handlebars });
+const helpersFunction = await helpers();
+helpersFunction({ handlebars: handlebars });
 const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
 const html = template({foo: 'bar'});
 console.log(html); // <p>Foo is bar</p>

@@ -21,6 +21,16 @@ describe('fumanchu', () => {
 		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
 
+	test('should be able to createHandlebars', async () => {
+		const handlebars = await createHandlebars();
+		expect(handlebars).toBeDefined();
+		const year = new Date().getFullYear();
+		const name = 'Fumanchu';
+		const result = handlebars.compile('this is an amazing {{year}} for {{name}}');
+
+		expect(result({name, year})).toBe(`this is an amazing ${year} for ${name}`);
+	});
+
 	test('should be able to run fumanchu()', () => {
 		const handlebars = fumanchu();
 		expect(handlebars).toBeDefined();
