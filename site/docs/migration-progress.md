@@ -19,8 +19,8 @@ We are working to migrate all legacy helpers to a modern helper approach with le
 
 # Legacy Helper Migration Status to Fumanchu Helper Registry
 
-| Helper | Migration Status | Notes |
-| --- | --- |
+| Helper Type | Status |
+| ---------------------- | ---------------------- |
 | `array` | No |
 | `code` | No |
 | `collection` | No |

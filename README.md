@@ -15,7 +15,7 @@ Handlebars + Helpers Together
 # Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
-* [Helpers](#helpers)
+* [Legacy Helpers](#helpers)
   * [array](https://fumanchu.org/docs/legacy-helpers/array/)
   * [code](https://fumanchu.org/docs/legacy-helpers/code/)
   * [comparison](https://fumanchu.org/docs/legacy-helpers/comparison/)
