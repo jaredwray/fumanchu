@@ -19,7 +19,7 @@ Handlebars + Helpers Together
   * [array](https://fumanchu.org/docs/legacy-helpers/array/)
   * [code](https://fumanchu.org/docs/legacy-helpers/code/)
   * [comparison](https://fumanchu.org/docs/legacy-helpers/comparison/)
-  * **[collection](#collection)** ([code](lib/collection.js) | [unit tests](test/collection.js))
+  * [collection](https://fumanchu.org/docs/legacy-helpers/collection/)
   * **[date](#date)** ([code](lib/date.js) | [unit tests](test/date.js))
   * **[fs](#fs)** ([code](lib/fs.js) | [unit tests](test/fs.js))
   * **[html](#html)** ([code](lib/html.js) | [unit tests](test/html.js))
@@ -360,42 +360,6 @@ Generate the HTML for a jsFiddle link with the given `params`
 {{jsfiddle id="0dfk10ks" tabs="true"}}
 ```
 
-## collection
-
-### [{{isEmpty}}](lib/collection.js#L31)
-
-Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the colleciton is not empty.
-
-**Params**
-
-* `collection` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
-
-**Example**
-
-```html
-<!-- array: [] -->
-{{#isEmpty array}}AAA{{else}}BBB{{/isEmpty}}
-<!-- results in: 'AAA' -->
-
-<!-- array: [] -->
-{{isEmpty array}}
-<!-- results in: true -->
-```
-
-### [{{iterate}}](lib/collection.js#L59)
-
-Block helper that iterates over an array or object. If
-an array is given, `.forEach` is called, or if an object
-is given, `.forOwn` is called, otherwise the inverse block
-is returned.
-
-**Params**
-
-* `collection` **{Object|Array}**: The collection to iterate over
-* `options` **{Object}**
-* `returns` **{String}**
 
 ## date
 
