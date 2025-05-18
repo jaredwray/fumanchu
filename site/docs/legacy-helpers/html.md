@@ -62,3 +62,53 @@ Generate one or more `<script></script>` tags with paths/urls to javascript or c
 ```html
 {{js scripts}}
 ```
+
+### [{{sanitize}}](lib/html.js#L121)
+
+Strip HTML tags from a string, so that only the text nodes are preserved.
+
+**Params**
+
+* `str` **{String}**: The string of HTML to sanitize.
+* `returns` **{String}**
+
+**Example**
+
+```html
+{{sanitize "<span>foo</span>"}}
+<!-- results in: 'foo' -->
+```
+
+### [{{ul}}](lib/html.js#L135)
+
+Block helper for creating unordered lists (`<ul></ul>`)
+
+**Params**
+
+* `context` **{Object}**
+* `options` **{Object}**
+* `returns` **{String}**
+
+### [{{ol}}](lib/html.js#L154)
+
+Block helper for creating ordered lists  (`<ol></ol>`)
+
+**Params**
+
+* `context` **{Object}**
+* `options` **{Object}**
+* `returns` **{String}**
+
+### [{{thumbnailImage}}](lib/html.js#L176)
+
+Returns a `<figure>` with a thumbnail linked to a full picture
+
+**Params**
+
+* `context` **{Object}**: Object with values/attributes to add to the generated elements:
+* `context.alt` **{String}**
+* `context.src` **{String}**
+* `context.width` **{Number}**
+* `context.height` **{Number}**
+* `returns` **{String}**: HTML `<figure>` element with image and optional caption/link.
+

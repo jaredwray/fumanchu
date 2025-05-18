@@ -101,53 +101,6 @@ console.log(html); // <p>Foo is bar</p>
 ```
 
 
-### [{{embed}}](lib/code.js#L23)
-
-Embed code from an external file as preformatted text.
-
-**Params**
-
-* `filepath` **{String}**: filepath to the file to embed.
-* `language` **{String}**: Optionally specify the language to use for syntax highlighting.
-* `returns` **{String}**
-
-**Example**
-
-```html
-{{embed 'path/to/file.js'}}
-<!-- optionally specify the language to use -->
-{{embed 'path/to/file.hbs' 'html')}}
-```
-
-### [{{gist}}](lib/code.js#L45)
-
-Embed a GitHub Gist using only the id of the Gist
-
-**Params**
-
-* `id` **{String}**
-* `returns` **{String}**
-
-**Example**
-
-```html
-{{gist "12345"}}
-```
-
-### [{{jsfiddle}}](lib/code.js#L60)
-
-Generate the HTML for a jsFiddle link with the given `params`
-
-**Params**
-
-* `params` **{Object}**
-* `returns` **{String}**
-
-**Example**
-
-```html
-{{jsfiddle id="0dfk10ks" tabs="true"}}
-```
 
 
 
@@ -155,54 +108,7 @@ Generate the HTML for a jsFiddle link with the given `params`
 
 
 
-### [{{sanitize}}](lib/html.js#L121)
 
-Strip HTML tags from a string, so that only the text nodes are preserved.
-
-**Params**
-
-* `str` **{String}**: The string of HTML to sanitize.
-* `returns` **{String}**
-
-**Example**
-
-```html
-{{sanitize "<span>foo</span>"}}
-<!-- results in: 'foo' -->
-```
-
-### [{{ul}}](lib/html.js#L135)
-
-Block helper for creating unordered lists (`<ul></ul>`)
-
-**Params**
-
-* `context` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
-
-### [{{ol}}](lib/html.js#L154)
-
-Block helper for creating ordered lists  (`<ol></ol>`)
-
-**Params**
-
-* `context` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
-
-### [{{thumbnailImage}}](lib/html.js#L176)
-
-Returns a `<figure>` with a thumbnail linked to a full picture
-
-**Params**
-
-* `context` **{Object}**: Object with values/attributes to add to the generated elements:
-* `context.alt` **{String}**
-* `context.src` **{String}**
-* `context.width` **{Number}**
-* `context.height` **{Number}**
-* `returns` **{String}**: HTML `<figure>` element with image and optional caption/link.
 
 
 
