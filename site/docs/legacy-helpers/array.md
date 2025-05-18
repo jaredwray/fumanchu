@@ -7,7 +7,7 @@ order: 1
 parent: legacy-helpers
 ---
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/array.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/array.js) | [issues](https://github.com/jaredwray/fumanchu/issues)
+Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/array.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/array.js)
 
 * **[after](#after)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/array.js#L22) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/array.js#L13))
 * **[arrayify](#arrayify)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/array.js#L39) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/array.js#L29))
