@@ -22,7 +22,7 @@ Handlebars + Helpers Together
   * [collection](https://fumanchu.org/docs/legacy-helpers/collection/)
   * [date](https://fumanchu.org/docs/legacy-helpers/date/)
   * [fs](https://fumanchu.org/docs/legacy-helpers/fs/)
-  * **[html](#html)** ([code](lib/html.js) | [unit tests](test/html.js))
+  * [html](https://fumanchu.org/docs/legacy-helpers/html/)
   * **[i18n](#i18n)** ([code](lib/i18n.js) | [unit tests](test/i18n.js))
   * **[inflection](#inflection)** ([code](lib/inflection.js) | [unit tests](test/inflection.js))
   * **[logging](#logging)** ([code](lib/logging.js) | [unit tests](test/logging.js))
@@ -365,60 +365,6 @@ Generate the HTML for a jsFiddle link with the given `params`
 
 
 
-## html
-
-### [{{attr}}](lib/html.js#L23)
-
-Stringify attributes on the options `hash`.
-
-**Params**
-
-* `options` **{Object}**
-* `returns` **{String}**
-
-**Example**
-
-```html
-<!-- value = 'bar' -->
-<div{{attr foo=value}}></div>
-<!-- results in: <div foo="bar"></div>
-```
-
-### [{{css}}](lib/html.js#L45)
-
-Add an array of `<link>` tags. Automatically resolves relative paths to `options.assets` if passed on the context.
-
-**Params**
-
-* `list` **{String|Array}**: One or more stylesheet urls.
-* `returns` **{String}**
-
-**Example**
-
-```html
-<!-- {stylesheets: ['foo.css', 'bar.css']} -->
-{{css stylesheets}}
-
-<!-- results in: -->
-<!-- <link type="text/css" rel="stylesheet" href="foo.css"> -->
-<!-- <link type="text/css" rel="stylesheet" href="bar.css"> -->
-```
-
-
-### [{{js}}](lib/html.js#L89)
-
-Generate one or more `<script></script>` tags with paths/urls to javascript or coffeescript files.
-
-**Params**
-
-* `context` **{Object}**
-* `returns` **{String}**
-
-**Example**
-
-```html
-{{js scripts}}
-```
 
 ### [{{sanitize}}](lib/html.js#L121)
 
