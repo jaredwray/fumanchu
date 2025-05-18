@@ -20,8 +20,8 @@ Handlebars + Helpers Together
   * [code](https://fumanchu.org/docs/legacy-helpers/code/)
   * [comparison](https://fumanchu.org/docs/legacy-helpers/comparison/)
   * [collection](https://fumanchu.org/docs/legacy-helpers/collection/)
-  * **[date](#date)** ([code](lib/date.js) | [unit tests](test/date.js))
-  * **[fs](#fs)** ([code](lib/fs.js) | [unit tests](test/fs.js))
+  * [date](https://fumanchu.org/docs/legacy-helpers/date/)
+  * [fs](https://fumanchu.org/docs/legacy-helpers/fs/)
   * **[html](#html)** ([code](lib/html.js) | [unit tests](test/html.js))
   * **[i18n](#i18n)** ([code](lib/i18n.js) | [unit tests](test/i18n.js))
   * **[inflection](#inflection)** ([code](lib/inflection.js) | [unit tests](test/inflection.js))
@@ -361,50 +361,7 @@ Generate the HTML for a jsFiddle link with the given `params`
 ```
 
 
-## date
 
-### [{{year}}](lib/date.js#L15)
-
-Get the current year.
-
-**Example**
-
-```html
-{{year}}
-<!-- 2017 -->
-```
-
-### [{{moment}}](lib/date.js#L24)
-
-Use [moment](http://momentjs.com) as a helper. See [helper-date](https://github.com/helpers/helper-date) for more details.
-
-## fs
-
-### [{{read}}](lib/fs.js#L29)
-
-Read a file from the file system. This is useful in composing "include"-style helpers using sub-expressions.
-
-**Params**
-
-* `filepath` **{String}**
-* `returns` **{String}**
-
-**Example**
-
-```html
-{{read "a/b/c.js"}}
-{{someHelper (read "a/b/c.md")}}
-```
-
-### [{{readdir}}](lib/fs.js#L42)
-
-Return an array of files from the given
-directory.
-
-**Params**
-
-* `directory` **{String}**
-* `returns` **{Array}**
 
 
 
