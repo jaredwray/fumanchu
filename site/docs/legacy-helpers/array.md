@@ -1,5 +1,5 @@
 ---
-title: Array
+title: Array Helpers
 description: >
   Handlebars provides a set of built-in helpers for working with arrays.
   These helpers allow you to iterate over arrays, check their length, and perform other common operations.
