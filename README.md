@@ -23,7 +23,7 @@ Handlebars + Helpers Together
   * [date](https://fumanchu.org/docs/legacy-helpers/date/)
   * [fs](https://fumanchu.org/docs/legacy-helpers/fs/)
   * [html](https://fumanchu.org/docs/legacy-helpers/html/)
-  * **[i18n](#i18n)** ([code](lib/i18n.js) | [unit tests](test/i18n.js))
+  * [i18n](https://fumanchu.org/docs/legacy-helpers/i18n/)
   * **[inflection](#inflection)** ([code](lib/inflection.js) | [unit tests](test/inflection.js))
   * **[logging](#logging)** ([code](lib/logging.js) | [unit tests](test/logging.js))
   * **[markdown](#markdown)** ([code](lib/markdown.js) | [unit tests](test/markdown.js))
@@ -415,18 +415,6 @@ Returns a `<figure>` with a thumbnail linked to a full picture
 * `context.height` **{Number}**
 * `returns` **{String}**: HTML `<figure>` element with image and optional caption/link.
 
-## i18n
-
-### [{{i18n}}](lib/i18n.js#L18)
-
-i18n helper. See [button-i18n](https://github.com/assemble/buttons)
-for a working example.
-
-**Params**
-
-* `key` **{String}**
-* `options` **{Object}**
-* `returns` **{String}**
 
 ## inflection
 
