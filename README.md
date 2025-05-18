@@ -88,8 +88,8 @@ More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Ass
 
 Currently **189 helpers** in **20 categories**:
 
-* **[array](#array)** ([code](lib/array.js) | [unit tests](test/array.js))
-* **[code](#code)** ([code](lib/code.js) | [unit tests](test/code.js))
+* **[array](#array)** - https://fumanchu.org/docs/legacy-helpers/array/
+* **[code](#code)** - https://fumanchu.org/docs/legacy-helpers/code/
 * **[collection](#collection)** ([code](lib/collection.js) | [unit tests](test/collection.js))
 * **[comparison](#comparison)** ([code](lib/comparison.js) | [unit tests](test/comparison.js))
 * **[date](#date)** ([code](lib/date.js) | [unit tests](test/date.js))
@@ -111,20 +111,7 @@ Currently **189 helpers** in **20 categories**:
 
 # All helpers
 
-### [code helpers](#code)
 
-Visit the: [code](lib/code.js) | [unit tests](test/code.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+code+helpers))
-
-* **[embed](#embed)** ([code](lib/code.js#L23) | [tests](test/code.js#L10))
-* **[gist](#gist)** ([code](lib/code.js#L45) | [tests](test/code.js#L62))
-* **[jsfiddle](#jsfiddle)** ([code](lib/code.js#L60) | [tests](test/code.js#L69))
-
-### [collection helpers](#collection)
-
-Visit the: [code](lib/collection.js) | [unit tests](test/collection.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+collection+helpers))
-
-* **[isEmpty](#isEmpty)** ([code](lib/collection.js#L31) | [tests](test/collection.js#L14))
-* **[iterate](#iterate)** ([code](lib/collection.js#L59) | [tests](test/collection.js#L68))
 
 ### [comparison helpers](#comparison)
 
