@@ -8,32 +8,6 @@ parent: legacy-helpers
 
 Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js)
 
-* **[and](#and)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L27) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L10))
-* **[compare](#compare)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L57) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L41))
-* **[contains](#contains)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L124) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L167))
-* **[default](#default)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L143) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L204))
-* **[eq](#eq)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L165) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L351))
-* **[gt](#gt)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L188) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L214))
-* **[gte](#gte)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L212) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L245))
-* **[has](#has)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L232) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L260))
-* **[isFalsey](#isFalsey)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L274) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L327))
-* **[isTruthy](#isTruthy)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L289) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L339))
-* **[ifEven](#ifEven)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L310) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L368))
-* **[ifNth](#ifNth)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L327) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L380))
-* **[ifOdd](#ifOdd)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L350) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L403))
-* **[is](#is)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L274) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L327))
-* **[isnt](#isnt)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L389) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L432))
-* **[lt](#lt)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L411) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L449))
-* **[lte](#lte)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L435) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L476))
-* **[neither](#neither)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L456) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L511))
-* **[not](#not)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L470) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L624))
-* **[or](#or)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L492) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L523))
-* **[unlessEq](#unlessEq)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L518) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L556))
-* **[unlessGt](#unlessGt)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L538) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L567))
-* **[unlessLt](#unlessLt)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L558) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L578))
-* **[unlessGteq](#unlessGteq)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L578) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L589))
-* **[unlessLteq](#unlessLteq)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L598) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js#L604))
-
 ## comparison
 
 ### [{{and}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js#L27)
