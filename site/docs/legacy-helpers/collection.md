@@ -8,6 +8,8 @@ parent: legacy-helpers
 
 ## collection
 
+Visit the: [collection](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/collection.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/collection.js)
+
 ### [{{isEmpty}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/collection.js#L31)
 
 Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the colleciton is not empty.

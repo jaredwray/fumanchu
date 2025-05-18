@@ -13,10 +13,3 @@ Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/co
 * **[embed](#embed)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/code.js#L23) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/code.js#L10))
 * **[gist](#gist)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/code.js#L45) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/code.js#L62))
 * **[jsfiddle](#jsfiddle)** ([code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/code.js#L60) | [tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/code.js#L69))
-
-### [collection helpers](#collection)
-
-Visit the: [code](lib/collection.js) | [unit tests](test/collection.js) | [issues](https://github.com/jonathas/handlebars-helpers/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+collection+helpers))
-
-* **[isEmpty](#isEmpty)** ([code](lib/collection.js#L31) | [tests](test/collection.js#L14))
-* **[iterate](#iterate)** ([code](lib/collection.js#L59) | [tests](test/collection.js#L68))

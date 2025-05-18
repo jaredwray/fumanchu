@@ -8,6 +8,8 @@ parent: legacy-helpers
 
 ## html
 
+Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/html.js)
+
 ### [{{attr}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js#L23)
 
 Stringify attributes on the options `hash`.

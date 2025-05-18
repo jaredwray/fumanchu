@@ -8,6 +8,8 @@ parent: legacy-helpers
 
 ## fs
 
+Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/fs.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/fs.js)
+
 ### [{{read}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/fs.js#L29)
 
 Read a file from the file system. This is useful in composing "include"-style helpers using sub-expressions.

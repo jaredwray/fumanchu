@@ -8,6 +8,8 @@ parent: legacy-helpers
 
 ## date
 
+Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/date.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/date.js)
+
 ### [{{year}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/date.js#L15)
 
 Get the current year.
