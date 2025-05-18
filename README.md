@@ -28,7 +28,7 @@ Handlebars + Helpers Together
   * [logging](https://github.com/jonathas/logging-helpers)
   * [markdown](https://fumanchu.org/docs/helpers/markdown/)
   * [match](https://fumanchu.org/docs/helpers/match/)
-  * [math]()(https://fumanchu.org/docs/helpers/math/)
+  * [math](https://fumanchu.org/docs/helpers/math/)
   * [misc](https://fumanchu.org/docs/helpers/misc/)
   * [number](https://fumanchu.org/docs/helpers/number/)
   * [object](https://fumanchu.org/docs/helpers/object/)
