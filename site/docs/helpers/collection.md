@@ -3,7 +3,7 @@ title: Collection Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with collections. These helpers are used to manipulate and format collections, making it easier to work with data in templates.
 order: 4
-parent: legacy-helpers
+parent: helpers
 ---
 
 ## collection

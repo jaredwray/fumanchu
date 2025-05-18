@@ -3,7 +3,7 @@ title: Markdown Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with markdown. These helpers are used to format and manipulate markdown content, making it easier to display markdown in a readable format.
 order: 10
-parent: legacy-helpers
+parent: helpers
 ---
 
 ## markdown

@@ -3,7 +3,7 @@ title: Math Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with math. These helpers are used to perform mathematical operations, making it easier to manipulate numbers in templates.
 order: 12
-parent: legacy-helpers
+parent: helpers
 ---
 
 ## math

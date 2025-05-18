@@ -3,7 +3,7 @@ title: Misc Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with miscellaneous tasks. These helpers are used to perform various operations, making it easier to manipulate data in templates.
 order: 13
-parent: legacy-helpers
+parent: helpers
 ---
 
 ## misc

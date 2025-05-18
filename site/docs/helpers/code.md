@@ -3,7 +3,7 @@ title: Code Helpers
 description: >
   Handlebars provides a set of built-in helpers for working with code. These helpers are used to format and manipulate code snippets, making it easier to display code in a readable format.
 order: 2
-parent: legacy-helpers
+parent: helpers
 ---
 
 # Code Helpers

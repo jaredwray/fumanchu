@@ -3,7 +3,7 @@ title: Comparison Helpers
 description: >
     Handlebars provides a set of built-in helpers for performing comparisons. These helpers are used to compare values, making it easier to implement conditional logic in your templates.
 order: 3
-parent: legacy-helpers
+parent: helpers
 ---
 
 Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/comparison.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/comparison.js)

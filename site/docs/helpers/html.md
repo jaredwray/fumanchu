@@ -3,7 +3,7 @@ title: Html Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with HTML. These helpers are used to manipulate and format HTML elements, making it easier to work with HTML data in templates.
 order: 7
-parent: legacy-helpers
+parent: helpers
 ---
 
 ## html
