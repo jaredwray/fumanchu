@@ -23,10 +23,10 @@ jobs:
         node-version: 22
 
     - name: Install Dependencies
-      run: npm install
+      run: npm install -g pnpm && pnpm install
 
     - name: Testing    
-      run: npm run test:ci
+      run: pnpm test:ci
 
     - name: Code Coverage
       uses: codecov/codecov-action@v3
