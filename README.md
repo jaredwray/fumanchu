@@ -10,15 +10,34 @@ Handlebars + Helpers Together
 [![GitHub license](https://img.shields.io/github/license/jaredwray/fumanchu)](https://github.com/jaredwray/fumanchu/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dm/@jaredwray/fumanchu)](https://npmjs.com/package/@jaredwray/fumanchu)
 
-[Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. Easily use it as a drop in replacement when using handlebars directly.
+[Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. Easily use it as a drop in replacement when using handlebars directly. More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project. Currently **189 helpers** in **20 categories**! 🎉
 
 # Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
 * [Helpers](#helpers)
+  * [array](https://fumanchu.org/docs/legacy-helpers/array/)
+  * [code](https://fumanchu.org/docs/legacy-helpers/code/)
+  * **[collection](#collection)** ([code](lib/collection.js) | [unit tests](test/collection.js))
+  * **[comparison](#comparison)** ([code](lib/comparison.js) | [unit tests](test/comparison.js))
+  * **[date](#date)** ([code](lib/date.js) | [unit tests](test/date.js))
+  * **[fs](#fs)** ([code](lib/fs.js) | [unit tests](test/fs.js))
+  * **[html](#html)** ([code](lib/html.js) | [unit tests](test/html.js))
+  * **[i18n](#i18n)** ([code](lib/i18n.js) | [unit tests](test/i18n.js))
+  * **[inflection](#inflection)** ([code](lib/inflection.js) | [unit tests](test/inflection.js))
+  * **[logging](#logging)** ([code](lib/logging.js) | [unit tests](test/logging.js))
+  * **[markdown](#markdown)** ([code](lib/markdown.js) | [unit tests](test/markdown.js))
+  * **[match](#match)** ([code](lib/match.js) | [unit tests](test/match.js))
+  * **[math](#math)** ([code](lib/math.js) | [unit tests](test/math.js))
+  * **[misc](#misc)** ([code](lib/misc.js) | [unit tests](test/misc.js))
+  * **[number](#number)** ([code](lib/number.js) | [unit tests](test/number.js))
+  * **[object](#object)** ([code](lib/object.js) | [unit tests](test/object.js))
+  * **[path](#path)** ([code](lib/path.js) | [unit tests](test/path.js))
+  * **[regex](#regex)** ([code](lib/regex.js) | [unit tests](test/regex.js))
+  * **[string](#string)** ([code](lib/string.js) | [unit tests](test/string.js))
+  * **[url](#url)** ([code](lib/url.js) | [unit tests](test/url.js))
 * [How to Contribute](#how-to-contribute)
 * [License and Copyright](#license-and-copyright)
-
 
 # Usage Nodejs
 
@@ -80,38 +99,7 @@ const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/i
 const html = template({foo: 'bar'});
 console.log(html); // <p>Foo is bar</p>
 ```
-
-# Helpers
-More than 180 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.
-
-## Categories
-
-Currently **189 helpers** in **20 categories**:
-
-* **[array](#array)** - https://fumanchu.org/docs/legacy-helpers/array/
-* **[code](#code)** - https://fumanchu.org/docs/legacy-helpers/code/
-* **[collection](#collection)** ([code](lib/collection.js) | [unit tests](test/collection.js))
-* **[comparison](#comparison)** ([code](lib/comparison.js) | [unit tests](test/comparison.js))
-* **[date](#date)** ([code](lib/date.js) | [unit tests](test/date.js))
-* **[fs](#fs)** ([code](lib/fs.js) | [unit tests](test/fs.js))
-* **[html](#html)** ([code](lib/html.js) | [unit tests](test/html.js))
-* **[i18n](#i18n)** ([code](lib/i18n.js) | [unit tests](test/i18n.js))
-* **[inflection](#inflection)** ([code](lib/inflection.js) | [unit tests](test/inflection.js))
-* **[logging](#logging)** ([code](lib/logging.js) | [unit tests](test/logging.js))
-* **[markdown](#markdown)** ([code](lib/markdown.js) | [unit tests](test/markdown.js))
-* **[match](#match)** ([code](lib/match.js) | [unit tests](test/match.js))
-* **[math](#math)** ([code](lib/math.js) | [unit tests](test/math.js))
-* **[misc](#misc)** ([code](lib/misc.js) | [unit tests](test/misc.js))
-* **[number](#number)** ([code](lib/number.js) | [unit tests](test/number.js))
-* **[object](#object)** ([code](lib/object.js) | [unit tests](test/object.js))
-* **[path](#path)** ([code](lib/path.js) | [unit tests](test/path.js))
-* **[regex](#regex)** ([code](lib/regex.js) | [unit tests](test/regex.js))
-* **[string](#string)** ([code](lib/string.js) | [unit tests](test/string.js))
-* **[url](#url)** ([code](lib/url.js) | [unit tests](test/url.js))
-
 # All helpers
-
-
 
 ### [comparison helpers](#comparison)
 
