@@ -1,4 +1,5 @@
 import {helpers as dateHelpers} from './helpers/date.js';
+import {helpers as arrayHelpers} from './helpers/array.js';
 
 export enum HelperRegistryCompatibility {
 	NODEJS = 'nodejs',
@@ -25,10 +26,12 @@ export class HelperRegistry {
 		this.init();
 	}
 
-	public init() {
-		// Date
-		this.registerHelpers(dateHelpers);
-	}
+        public init() {
+                // Date
+                this.registerHelpers(dateHelpers);
+                // Array
+                this.registerHelpers(arrayHelpers);
+        }
 
 	public register(helper: Helper): boolean {
 		const result = false;

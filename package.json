@@ -10,11 +10,11 @@
   "scripts": {
     "test": "xo --fix && vitest run --coverage",
     "test:ci": "xo && vitest run --coverage",
-    "test:all": "npm run test && npm run test:legacy",
-    "test:legacy": "npm run build && c8 mocha",
-    "test:legacy:ci": "npm run build && c8 --reporter=lcov mocha",
+    "test:all": "pnpm run test && pnpm run test:legacy",
+    "test:legacy": "pnpm run build && c8 mocha",
+    "test:legacy:ci": "pnpm run build && c8 --reporter=lcov mocha",
     "build": "rimraf ./dist && tsup ./src/index.ts --format cjs --dts --clean",
-    "prepare": "npm run build",
+    "prepare": "pnpm run build",
     "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./dist-site",
     "website:build": "rimraf ./site/readme.md && npx -y docula build -s ./site -o ./dist-site",
     "website:serve": "rimraf ./site/readme.md && npx -y docula serve -s ./site -o ./dist-site"
