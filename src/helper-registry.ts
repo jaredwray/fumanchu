@@ -30,14 +30,14 @@ export class HelperRegistry {
 		this.registerHelpers(dateHelpers);
 	}
 
-	public register(helper: Helper): boolean {
-		const result = false;
-		if (!this.has(helper.name)) {
-			this._helpers.push(helper);
-		}
+    public register(helper: Helper): boolean {
+            if (!this.has(helper.name)) {
+                    this._helpers.push(helper);
+                    return true;
+            }
 
-		return result;
-	}
+            return false;
+    }
 
 	public registerHelpers(helpers: Helper[]) {
 		for (const helper of helpers) {

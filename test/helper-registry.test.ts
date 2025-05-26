@@ -9,15 +9,25 @@ describe('HelperRegistry', () => {
 });
 
 describe('HelperRegistry Register', () => {
-	test('should register a helper', () => {
-		const registry = new HelperRegistry();
-		registry.register({
-			name: 'test',
-			category: 'test',
-			fn: () => 'test',
-		});
-		expect(registry.has('test')).toBeTruthy();
-	});
+        test('should register a helper', () => {
+                const registry = new HelperRegistry();
+                registry.register({
+                        name: 'test',
+                        category: 'test',
+                        fn: () => 'test',
+                });
+                expect(registry.has('test')).toBeTruthy();
+        });
+
+        test('register should return true on first registration', () => {
+                const registry = new HelperRegistry();
+                const result = registry.register({
+                        name: 'test-return',
+                        category: 'test',
+                        fn: () => 'test',
+                });
+                expect(result).toBeTruthy();
+        });
 
 	test('should not register a helper twice', () => {
 		const registry = new HelperRegistry();
