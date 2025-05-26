@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "ES6", // or your preferred target version
+        "target": "ES2016", // or your preferred target version
         "module": "commonjs", // or your preferred module type
         "allowJs": true, // Enable JavaScript files in the project
         "checkJs": false, // Set to true if you want type-checking for JS files

@@ -26,12 +26,12 @@ export class HelperRegistry {
 		this.init();
 	}
 
-        public init() {
-                // Date
-                this.registerHelpers(dateHelpers);
-                // Array
-                this.registerHelpers(arrayHelpers);
-        }
+	public init() {
+		// Date
+		this.registerHelpers(dateHelpers);
+		// Array
+		this.registerHelpers(arrayHelpers);
+	}
 
 	public register(helper: Helper): boolean {
 		const result = false;
