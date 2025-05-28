@@ -1,7 +1,7 @@
 {
   "name": "@jaredwray/fumanchu",
   "description": "Handlebars + Helpers = Fumanchu",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "source": "dist/index.js",
@@ -60,7 +60,7 @@
     "arr-flatten": "^1.1.0",
     "array-sort": "^1.0.0",
     "cacheable": "^1.9.0",
-    "chrono-node": "^2.8.0",
+    "chrono-node": "2.7.5",
     "create-frame": "^1.0.0",
     "dayjs": "^1.11.13",
     "define-property": "^2.0.2",
