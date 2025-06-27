@@ -98,6 +98,7 @@
     "chai": "^4.3.10",
     "docula": "^0.12.0",
     "engine-handlebars": "^1.1.0",
+    "global-modules": "^2.0.0",
     "lodash": "^4.17.21",
     "mocha": "^10.8.2",
     "rimraf": "^6.0.1",
@@ -107,7 +108,7 @@
     "typecript": "^0.0.1-security",
     "typescript": "^5.8.3",
     "vitest": "^3.1.3",
-    "xo": "^0.60.0"
+    "xo": "^1.1.1"
   },
   "xo": {
     "ignores": [

@@ -52,8 +52,8 @@ export class HelperRegistry {
 	public filter(filter: HelperFilter): Helper[] {
 		/* c8 ignore next 4 */
 		return this._helpers.filter(helper => (!filter.name || helper.name === filter.name)
-				&& (!filter.category || helper.category === filter.category)
-				&& (!filter.compatibility || helper.compatibility === filter.compatibility));
+			&& (!filter.category || helper.category === filter.category)
+			&& (!filter.compatibility || helper.compatibility === filter.compatibility));
 	}
 
 	public loadHandlebars(handlebars: any) {
