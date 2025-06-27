@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import {describe, it, expect} from 'vitest';
 import dayjs from 'dayjs';
 import {parseDate} from 'chrono-node';
@@ -34,7 +35,7 @@ describe('date', () => {
 		expect(dateHelper).toBeDefined();
 
 		const formattedDate = dateHelper?.fn('5 years ago', 'YYYY');
-		const expectedDate = dayjs().subtract(5, 'years').format('YYYY');
+		const expectedDate = dayjs().subtract(5, 'years').format('YYYY') as string;
 		expect(formattedDate).toBe(expectedDate);
 	});
 
@@ -43,7 +44,7 @@ describe('date', () => {
 		expect(dateHelper).toBeDefined();
 
 		const formattedDate = dateHelper?.fn('next Friday', 'MM/DD/YYYY');
-		const expectedDate = dayjs(parseDate('next Friday')).format('MM/DD/YYYY');
+		const expectedDate = dayjs(parseDate('next Friday')).format('MM/DD/YYYY') as string;
 		expect(formattedDate).toBe(expectedDate);
 	});
 
@@ -51,8 +52,6 @@ describe('date', () => {
 		const dateHelper = helpers.find(helper => helper.name === 'date');
 		expect(dateHelper).toBeDefined();
 
-		expect(() => dateHelper?.fn('invalid date', 'YYYY')).toThrowError(
-			'Unable to parse date: invalid date',
-		);
+		expect(() => dateHelper?.fn('invalid date', 'YYYY')).toThrowError('Unable to parse date: invalid date');
 	});
 });

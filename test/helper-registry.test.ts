@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import {describe, test, expect} from 'vitest';
 import {HelperRegistry, HelperRegistryCompatibility} from '../src/helper-registry.js';
 

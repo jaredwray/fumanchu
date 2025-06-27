@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment */
 import {describe, test, expect} from 'vitest';
 import {
 	helpers, handlebars, createHandlebars, fumanchu,
