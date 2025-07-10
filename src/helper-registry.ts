@@ -1,4 +1,6 @@
+import type Handlebars from 'handlebars';
 import {helpers as dateHelpers} from './helpers/date.js';
+import {helpers as mdHelpers} from './helpers/md.js';
 
 export enum HelperRegistryCompatibility {
 	NODEJS = 'nodejs',
@@ -15,7 +17,7 @@ export type Helper = {
 	name: string;
 	category: string;
 	compatibility?: HelperRegistryCompatibility;
-	fn: ((...arguments_: any[]) => string);
+	fn: ((...arguments_: any[]) => string) | ((...arguments_: any[]) => Handlebars.SafeString);
 };
 
 export class HelperRegistry {
@@ -28,6 +30,8 @@ export class HelperRegistry {
 	public init() {
 		// Date
 		this.registerHelpers(dateHelpers);
+		// Markdown
+		this.registerHelpers(mdHelpers);
 	}
 
 	public register(helper: Helper): boolean {

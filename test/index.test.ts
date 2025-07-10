@@ -44,4 +44,11 @@ describe('fumanchu', () => {
 		const result = handlebars.compile('{{year}}');
 		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
+
+	test('should be able to do markdown', async () => {
+		const handlebars = await createHandlebars();
+		expect(handlebars).toBeDefined();
+		const result = handlebars.compile('{{md "# Hello World"}}');
+		expect(result({})).toBe('<h1>Hello World</h1>\n');
+	});
 });
