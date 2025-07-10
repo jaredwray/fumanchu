@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return */
 import {describe, it, expect} from 'vitest';
 import dayjs from 'dayjs';
 import {parseDate} from 'chrono-node';
