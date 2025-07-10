@@ -31,7 +31,7 @@ We are working to migrate all legacy helpers to a modern helper approach with le
 | `i18n` | No |
 | `inflection` | No |
 | `logging` | No |
-| `markdown` | No |
+| `markdown` | ✅ |
 | `match` | No |
 | `misc` | No |
 | `number` | No |

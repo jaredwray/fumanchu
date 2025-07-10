@@ -8,9 +8,9 @@ parent: helpers
 
 ## markdown
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/markdown.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/markdown.js)
+Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/md.ts) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/test/md.test.ts)
 
-### [{{markdown}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/markdown.js#L28)
+### [{{markdown}}](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/md.ts)
 
 Block helper that converts a string of inline markdown to HTML.
 
@@ -29,7 +29,7 @@ Block helper that converts a string of inline markdown to HTML.
 <!-- results in: <h1>Foo</h1> -->
 ```
 
-### [{{md}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/markdown.js#L55)
+### [{{md}}](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/md.ts)
 
 Read a markdown file from the file system and inject its contents after converting it to HTML.
 
