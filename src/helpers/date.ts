@@ -1,6 +1,6 @@
-import {parseDate} from 'chrono-node';
-import dayjs from 'dayjs';
-import {type Helper} from '../helper-registry.js';
+import { parseDate } from "chrono-node";
+import dayjs from "dayjs";
+import type { Helper } from "../helper-registry.js";
 
 const year = () => new Date().getFullYear().toString();
 
@@ -16,19 +16,19 @@ const date = (humanReadableDate: string, formatString: string): string => {
 
 export const helpers: Helper[] = [
 	{
-		name: 'year',
-		category: 'date',
+		name: "year",
+		category: "date",
 		fn: year,
 	},
 	{
-		name: 'date',
-		category: 'date',
+		name: "date",
+		category: "date",
 		fn: date,
 	},
 	{
 		/* Adding this in for legacy support */
-		name: 'moment',
-		category: 'date',
+		name: "moment",
+		category: "date",
 		fn: date,
 	},
 ];
