@@ -1,6 +1,6 @@
-import * as HandlebarsLib from 'handlebars';
-import { HelperRegistry, HelperFilter } from './helper-registry.js';
-import helpersLib from '../helpers/helpers.js';
+import * as HandlebarsLib from "handlebars";
+import helpersLib from "../helpers/helpers.js";
+import { HelperFilter, HelperRegistry } from "./helper-registry.js";
 
 /**
  * Handlebars library not initiated with helpers
@@ -24,12 +24,12 @@ export const helpers = helpersLib;
  * @returns {Promise<Handlebars>}
  */
 export async function createHandlebars() {
-  const registry = new HelperRegistry();
-  const handlebars = HandlebarsLib.create();
-  const helpersFunction = await helpersLib;
-  helpersFunction({ handlebars: handlebars });
-  registry.swapHelpers(handlebars);
-  return handlebars;
+	const registry = new HelperRegistry();
+	const handlebars = HandlebarsLib.create();
+	const helpersFunction = await helpersLib;
+	helpersFunction({ handlebars: handlebars });
+	registry.swapHelpers(handlebars);
+	return handlebars;
 }
 
 /**
@@ -49,23 +49,26 @@ export type FumanchuCachingOptions = {
 };
 
 export type FumanchuOptions = {
-  handlebars?: typeof HandlebarsLib;
-  helpers?: Record<string, Function>;
-  name?: string | string[];
-  include?: HelperFilter[];
-  exclude?: HelperFilter[];
-  caching?: boolean | FumanchuCachingOptions;
+	handlebars?: typeof HandlebarsLib;
+	// biome-ignore lint/complexity/noBannedTypes: this is for handlebars
+	helpers?: Record<string, Function>;
+	name?: string | string[];
+	include?: HelperFilter[];
+	exclude?: HelperFilter[];
+	caching?: boolean | FumanchuCachingOptions;
 };
 
 /**
  * Will return a Handlebars instance with Fumanchu helpers (experimental)
+ * @param {FumanchuOptions} [options] - Options for Fumanchu
  * @returns {Handlebars} Handlebars instance with helpers
  */
+// biome-ignore lint/correctness/noUnusedFunctionParameters: this is for handlebars
 export function fumanchu(options?: FumanchuOptions) {
-  const registry = new HelperRegistry();
-  const handlebars = HandlebarsLib.create();
-  registry.loadHandlebars(handlebars);
-  return handlebars;
+	const registry = new HelperRegistry();
+	const handlebars = HandlebarsLib.create();
+	registry.loadHandlebars(handlebars);
+	return handlebars;
 }
 
 export { HelperRegistry, HelperFilter };

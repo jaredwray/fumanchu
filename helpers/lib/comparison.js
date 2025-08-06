@@ -55,7 +55,6 @@ helpers.and = function() {
  */
 
 helpers.compare = function(a, operator, b, options) {
-  /*eslint eqeqeq: 0*/
 
   if (arguments.length < 4) {
     throw new Error('handlebars Helper {{compare}} expects 4 arguments');
