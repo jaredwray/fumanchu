@@ -60,7 +60,7 @@
     "arr-flatten": "^1.1.0",
     "array-sort": "^1.0.0",
     "cacheable": "^1.10.3",
-    "chrono-node": "2.8.3",
+    "chrono-node": "2.8.4",
     "create-frame": "^1.0.0",
     "dayjs": "^1.11.13",
     "define-property": "^2.0.2",
