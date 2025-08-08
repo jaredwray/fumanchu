@@ -169,6 +169,7 @@ export {
 	gt,
 	gte,
 	has,
+	falsey,
 	isFalsey,
 	isTruthy,
 	ifEven,
