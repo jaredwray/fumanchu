@@ -25,6 +25,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("attr")).toBeTruthy();
 	});
+	test("includes i18n helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("i18n")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
