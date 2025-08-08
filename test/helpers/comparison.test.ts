@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { helpers } from "../../src/helpers/comparison.js";
+import { falsey, helpers } from "../../src/helpers/comparison.js";
 
 type HelperFn = (...args: unknown[]) => unknown;
 
@@ -24,8 +24,25 @@ describe("compare", () => {
 	it("supports == operator", () => {
 		expect(fn("5", "==", 5)).toBe(true);
 	});
-	it("supports >= operator", () => {
-		expect(fn(3, ">=", 5)).toBe(false);
+	const cases: [unknown, string, unknown, boolean][] = [
+		[5, "===", 5, true],
+		[5, "!=", 6, true],
+		[5, "!==", "5", true],
+		[1, "<", 2, true],
+		[2, ">", 1, true],
+		[2, "<=", 2, true],
+		[3, ">=", 5, false],
+		["foo", "typeof", "string", true],
+	];
+	for (const [a, op, b, expected] of cases) {
+		it(`${op} operator`, () => {
+			expect(fn(a, op, b)).toBe(expected);
+		});
+	}
+	it("throws on invalid operator", () => {
+		expect(() => fn(1, "??", 2)).toThrow(
+			/helper \{\{compare\}\}: invalid operator: '\?\?'/,
+		);
 	});
 });
 
@@ -38,6 +55,14 @@ describe("contains", () => {
 	it("detects values in arrays", () => {
 		expect(fn([1, 2, 3], 2)).toBe(true);
 		expect(fn([1, 2, 3], 4)).toBe(false);
+	});
+	it("detects keys in objects", () => {
+		expect(fn({ a: 1 }, "a")).toBe(true);
+		expect(fn({ a: 1 }, "b")).toBe(false);
+	});
+	it("handles null and non-collections", () => {
+		expect(fn(null, "a")).toBe(false);
+		expect(fn(5, 1)).toBe(false);
 	});
 });
 
@@ -74,12 +99,20 @@ describe("utility helpers", () => {
 		expect(fn([1, 2, 3], 2)).toBe(true);
 		expect(fn({ a: 1 }, "a")).toBe(true);
 		expect(fn({ a: 1 }, "b")).toBe(false);
+		expect(fn(5, 1)).toBe(false);
+		expect(fn(null, "a")).toBe(false);
+		expect(fn([1, 2, 3], null)).toBe(false);
 	});
 	it("isFalsey/isTruthy", () => {
 		const isFalsey = getHelper("isFalsey");
 		const isTruthy = getHelper("isTruthy");
 		expect(isFalsey(0)).toBe(true);
+		expect(isFalsey("NO")).toBe(true);
 		expect(isTruthy(1)).toBe(true);
+	});
+	it("falsey with custom keywords", () => {
+		expect(falsey("foo", ["foo"])).toBe(true);
+		expect(falsey("bar", "bar")).toBe(true);
 	});
 	it("ifEven/ifOdd", () => {
 		const ifEven = getHelper("ifEven");
