@@ -9,6 +9,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry).toBeDefined();
 	});
+	test("includes array helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("after")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
