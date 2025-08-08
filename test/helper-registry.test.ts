@@ -13,6 +13,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("after")).toBeTruthy();
 	});
+	test("includes comparison helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("and")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
