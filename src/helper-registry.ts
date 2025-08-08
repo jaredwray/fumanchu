@@ -1,6 +1,7 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: this is for handlebars
 import type Handlebars from "handlebars";
 import { helpers as arrayHelpers } from "./helpers/array.js";
+import { helpers as codeHelpers } from "./helpers/code.js";
 import { helpers as dateHelpers } from "./helpers/date.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
 
@@ -36,6 +37,8 @@ export class HelperRegistry {
 		this.registerHelpers(arrayHelpers);
 		// Date
 		this.registerHelpers(dateHelpers);
+		// Code
+		this.registerHelpers(codeHelpers);
 		// Markdown
 		this.registerHelpers(mdHelpers);
 	}
