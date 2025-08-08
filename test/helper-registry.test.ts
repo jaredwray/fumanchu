@@ -17,6 +17,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("and")).toBeTruthy();
 	});
+	test("includes fs helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("read")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {

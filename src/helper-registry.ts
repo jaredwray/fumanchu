@@ -5,6 +5,7 @@ import { helpers as codeHelpers } from "./helpers/code.js";
 import { helpers as collectionHelpers } from "./helpers/collection.js";
 import { helpers as comparisonHelpers } from "./helpers/comparison.js";
 import { helpers as dateHelpers } from "./helpers/date.js";
+import { helpers as fsHelpers } from "./helpers/fs.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
 
 export enum HelperRegistryCompatibility {
@@ -41,6 +42,8 @@ export class HelperRegistry {
 		this.registerHelpers(collectionHelpers);
 		// Date
 		this.registerHelpers(dateHelpers);
+		// File System
+		this.registerHelpers(fsHelpers);
 		// Code
 		this.registerHelpers(codeHelpers);
 		// Markdown
