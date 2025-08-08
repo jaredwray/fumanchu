@@ -21,6 +21,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("read")).toBeTruthy();
 	});
+	test("includes html helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("attr")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
