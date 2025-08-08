@@ -2,6 +2,7 @@
 import type Handlebars from "handlebars";
 import { helpers as arrayHelpers } from "./helpers/array.js";
 import { helpers as codeHelpers } from "./helpers/code.js";
+import { helpers as comparisonHelpers } from "./helpers/comparison.js";
 import { helpers as dateHelpers } from "./helpers/date.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
 
@@ -39,6 +40,8 @@ export class HelperRegistry {
 		this.registerHelpers(dateHelpers);
 		// Code
 		this.registerHelpers(codeHelpers);
+		// Comparison
+		this.registerHelpers(comparisonHelpers);
 		// Markdown
 		this.registerHelpers(mdHelpers);
 	}
