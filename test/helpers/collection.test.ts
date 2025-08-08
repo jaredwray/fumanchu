@@ -26,6 +26,9 @@ describe("isEmpty", () => {
 	it("returns true for empty object", () => {
 		expect(isEmptyFn({})).toBe(true);
 	});
+	it("returns false for non-collection values", () => {
+		expect(isEmptyFn(5)).toBe(false);
+	});
 });
 
 describe("iterate", () => {
@@ -54,5 +57,8 @@ describe("iterate", () => {
 				() => "B",
 			),
 		).toBe("B");
+	});
+	it("returns empty string when inverse is not provided", () => {
+		expect(iterateFn(undefined, () => "A")).toBe("");
 	});
 });
