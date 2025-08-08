@@ -16,6 +16,9 @@ describe("attr", () => {
 		expect(attrFn({ hash: { class: "btn" } })).toBe(' class="btn"');
 		expect(attrFn({ hash: {} })).toBe("");
 	});
+	it("handles undefined options", () => {
+		expect(attrFn()).toBe("");
+	});
 });
 
 describe("css", () => {
