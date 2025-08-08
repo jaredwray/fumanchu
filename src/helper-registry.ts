@@ -8,6 +8,7 @@ import { helpers as dateHelpers } from "./helpers/date.js";
 import { helpers as fsHelpers } from "./helpers/fs.js";
 import { helpers as htmlHelpers } from "./helpers/html.js";
 import { helpers as i18nHelpers } from "./helpers/i18n.js";
+import { helpers as inflectionHelpers } from "./helpers/inflection.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
 
 export enum HelperRegistryCompatibility {
@@ -56,6 +57,8 @@ export class HelperRegistry {
 		this.registerHelpers(comparisonHelpers);
 		// i18n
 		this.registerHelpers(i18nHelpers);
+		// Inflection
+		this.registerHelpers(inflectionHelpers);
 	}
 
 	public register(helper: Helper): boolean {
