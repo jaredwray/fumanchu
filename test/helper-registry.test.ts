@@ -29,6 +29,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("i18n")).toBeTruthy();
 	});
+	test("includes inflection helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("inflect")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {

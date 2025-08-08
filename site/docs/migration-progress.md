@@ -29,7 +29,7 @@ We are working to migrate all legacy helpers to a modern helper approach with le
 | `fs` | No |
 | `html` | No |
 | `i18n` | No |
-| `inflection` | No |
+| `inflection` | ✅ |
 | `logging` | No |
 | `markdown` | ✅ |
 | `match` | No |
