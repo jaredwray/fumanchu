@@ -26,6 +26,9 @@ describe("css", () => {
 	it("returns empty string when no styles", () => {
 		expect(cssFn.call({})).toBe("");
 	});
+	it("handles undefined list with options", () => {
+		expect(cssFn.call({}, undefined, { hash: {} })).toBe("");
+	});
 	it("uses a path passed as string", () => {
 		expect(cssFn.call({}, "abc.css", { hash: {} })).toBe(
 			'<link type="text/css" rel="stylesheet" href="abc.css">',
@@ -35,6 +38,11 @@ describe("css", () => {
 		expect(
 			cssFn.call({ options: { assets: "foo" } }, "abc.css", { hash: {} }),
 		).toBe('<link type="text/css" rel="stylesheet" href="foo/abc.css">');
+	});
+	it("falls back when assets option missing", () => {
+		expect(cssFn.call({ options: {} }, "abc.css", { hash: {} })).toBe(
+			'<link type="text/css" rel="stylesheet" href="abc.css">',
+		);
 	});
 	it("uses the href attribute", () => {
 		expect(cssFn.call({}, { hash: { href: "abc.css" } })).toBe(
@@ -61,6 +69,9 @@ describe("js", () => {
 	const jsFn = getHelper("js");
 	it("creates an empty script tag", () => {
 		expect(jsFn({ hash: {} })).toBe("<script></script>");
+	});
+	it("handles object without hash", () => {
+		expect(jsFn({})).toBe("<script></script>");
 	});
 	it("uses a path passed as string", () => {
 		expect(jsFn("abc.js")).toBe('<script src="abc.js"></script>');
@@ -111,6 +122,10 @@ describe("ul", () => {
 			'<ul class="names"><li>AAA BBB</li>\n<li>CCC DDD</li></ul>',
 		);
 	});
+	it("handles string items without attributes", () => {
+		const result = ulFn(["A", "B"], { fn: (i: any) => i });
+		expect(result).toBe("<ul><li>A</li>\n<li>B</li></ul>");
+	});
 });
 
 describe("ol", () => {
@@ -127,6 +142,10 @@ describe("ol", () => {
 		expect(result).toBe(
 			'<ol class="names"><li>AAA BBB</li>\n<li>CCC DDD</li></ol>',
 		);
+	});
+	it("handles string items without attributes", () => {
+		const result = olFn(["A", "B"], { fn: (i: any) => i });
+		expect(result).toBe("<ol><li>A</li>\n<li>B</li></ol>");
 	});
 });
 
