@@ -2,6 +2,7 @@
 import type Handlebars from "handlebars";
 import { helpers as arrayHelpers } from "./helpers/array.js";
 import { helpers as codeHelpers } from "./helpers/code.js";
+import { helpers as collectionHelpers } from "./helpers/collection.js";
 import { helpers as dateHelpers } from "./helpers/date.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
 
@@ -35,6 +36,8 @@ export class HelperRegistry {
 	public init() {
 		// Array
 		this.registerHelpers(arrayHelpers);
+		// Collection
+		this.registerHelpers(collectionHelpers);
 		// Date
 		this.registerHelpers(dateHelpers);
 		// Code
