@@ -33,6 +33,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("inflect")).toBeTruthy();
 	});
+	test("includes logging helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("log")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
