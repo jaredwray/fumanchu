@@ -45,6 +45,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("noop")).toBeTruthy();
 	});
+	test("includes path helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("basename")).toBeTruthy();
+	});
 	test("includes object helpers by default", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("extend")).toBeTruthy();
