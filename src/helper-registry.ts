@@ -13,6 +13,7 @@ import { helpers as loggingHelpers } from "./helpers/logging.js";
 import { helpers as matchHelpers } from "./helpers/match.js";
 import { helpers as mathHelpers } from "./helpers/math.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
+import { helpers as miscHelpers } from "./helpers/misc.js";
 
 export enum HelperRegistryCompatibility {
 	NODEJS = "nodejs",
@@ -68,6 +69,8 @@ export class HelperRegistry {
 		this.registerHelpers(matchHelpers);
 		// Math
 		this.registerHelpers(mathHelpers);
+		// Misc
+		this.registerHelpers(miscHelpers);
 	}
 
 	public register(helper: Helper): boolean {
