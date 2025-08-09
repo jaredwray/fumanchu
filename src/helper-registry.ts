@@ -18,6 +18,7 @@ import { helpers as numberHelpers } from "./helpers/number.js";
 import { helpers as objectHelpers } from "./helpers/object.js";
 import { helpers as pathHelpers } from "./helpers/path.js";
 import { helpers as regexHelpers } from "./helpers/regex.js";
+import { helpers as stringHelpers } from "./helpers/string.js";
 
 export enum HelperRegistryCompatibility {
 	NODEJS = "nodejs",
@@ -81,6 +82,8 @@ export class HelperRegistry {
 		this.registerHelpers(pathHelpers);
 		// Regex
 		this.registerHelpers(regexHelpers);
+		// String
+		this.registerHelpers(stringHelpers);
 		// Object
 		this.registerHelpers(objectHelpers);
 	}
