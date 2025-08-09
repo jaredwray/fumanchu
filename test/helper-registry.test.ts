@@ -37,6 +37,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("log")).toBeTruthy();
 	});
+	test("includes match helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("match")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
