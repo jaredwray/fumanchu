@@ -29,13 +29,13 @@ export enum HelperRegistryCompatibility {
 export type HelperFilter = {
 	name?: string;
 	category?: string;
-	compatibility?: HelperRegistryCompatibility;
+	compatibility?: HelperRegistryCompatibility[];
 };
 
 export type Helper = {
 	name: string;
 	category: string;
-	compatibility?: HelperRegistryCompatibility;
+	compatibility?: HelperRegistryCompatibility[];
 	fn:
 		| ((...arguments_: any[]) => string)
 		| ((...arguments_: any[]) => Handlebars.SafeString);
