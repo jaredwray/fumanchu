@@ -41,6 +41,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("match")).toBeTruthy();
 	});
+	test("includes misc helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("noop")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
