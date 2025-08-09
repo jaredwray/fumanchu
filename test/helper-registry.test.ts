@@ -53,6 +53,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("extend")).toBeTruthy();
 	});
+	test("includes regex helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("toRegex")).toBeTruthy();
+	});
 });
 
 describe("HelperRegistry Register", () => {
@@ -82,43 +86,43 @@ describe("HelperRegistry Filter", () => {
 	test("should return nothing filter by name", () => {
 		const registry = new HelperRegistry();
 		registry.register({
-			name: "test",
-			category: "test",
-			fn: () => "test",
+			name: "demo",
+			category: "demo",
+			fn: () => "demo",
 		});
-		expect(registry.filter({ name: "test1" }).length).toBe(0);
+		expect(registry.filter({ name: "demo1" }).length).toBe(0);
 	});
 	test("should filter by name", () => {
 		const registry = new HelperRegistry();
 		registry.register({
-			name: "test",
-			category: "test",
-			fn: () => "test",
+			name: "demo",
+			category: "demo",
+			fn: () => "demo",
 		});
-		expect(registry.filter({ name: "test" }).length).toBe(1);
+		expect(registry.filter({ name: "demo" }).length).toBe(1);
 	});
 	test("should filter by category", () => {
 		const registry = new HelperRegistry();
 		registry.register({
-			name: "test",
-			category: "test",
-			fn: () => "test",
+			name: "demo",
+			category: "demo",
+			fn: () => "demo",
 		});
 		registry.register({
-			name: "test2",
-			category: "test2",
-			fn: () => "test2",
+			name: "demo2",
+			category: "demo2",
+			fn: () => "demo2",
 		});
-		expect(registry.filter({ category: "test" }).length).toBe(1);
+		expect(registry.filter({ category: "demo" }).length).toBe(1);
 	});
 
 	test("should filter by compatibility", () => {
 		const registry = new HelperRegistry();
 		registry.register({
-			name: "test",
-			category: "test",
+			name: "demo",
+			category: "demo",
 			compatibility: HelperRegistryCompatibility.BROWSER,
-			fn: () => "test",
+			fn: () => "demo",
 		});
 		expect(
 			registry.filter({ compatibility: HelperRegistryCompatibility.BROWSER })
