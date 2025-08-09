@@ -15,6 +15,7 @@ import { helpers as mathHelpers } from "./helpers/math.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
 import { helpers as miscHelpers } from "./helpers/misc.js";
 import { helpers as numberHelpers } from "./helpers/number.js";
+import { helpers as objectHelpers } from "./helpers/object.js";
 
 export enum HelperRegistryCompatibility {
 	NODEJS = "nodejs",
@@ -74,6 +75,8 @@ export class HelperRegistry {
 		this.registerHelpers(miscHelpers);
 		// Number
 		this.registerHelpers(numberHelpers);
+		// Object
+		this.registerHelpers(objectHelpers);
 	}
 
 	public register(helper: Helper): boolean {
