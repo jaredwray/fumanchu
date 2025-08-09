@@ -49,6 +49,10 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("basename")).toBeTruthy();
 	});
+	test("includes string helpers by default", () => {
+		const registry = new HelperRegistry();
+		expect(registry.has("camelcase")).toBeTruthy();
+	});
 	test("includes object helpers by default", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("extend")).toBeTruthy();
