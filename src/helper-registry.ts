@@ -11,6 +11,7 @@ import { helpers as i18nHelpers } from "./helpers/i18n.js";
 import { helpers as inflectionHelpers } from "./helpers/inflection.js";
 import { helpers as loggingHelpers } from "./helpers/logging.js";
 import { helpers as matchHelpers } from "./helpers/match.js";
+import { helpers as mathHelpers } from "./helpers/math.js";
 import { helpers as mdHelpers } from "./helpers/md.js";
 
 export enum HelperRegistryCompatibility {
@@ -65,6 +66,8 @@ export class HelperRegistry {
 		this.registerHelpers(loggingHelpers);
 		// Match
 		this.registerHelpers(matchHelpers);
+		// Math
+		this.registerHelpers(mathHelpers);
 	}
 
 	public register(helper: Helper): boolean {
