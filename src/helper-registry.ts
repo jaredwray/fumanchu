@@ -37,8 +37,8 @@ export type Helper = {
 };
 
 export type HelperFilter = {
-	name?: string;
-	category?: string;
+	names?: string[];
+	categories?: string[];
 	compatibility?: HelperRegistryCompatibility[];
 };
 
@@ -143,11 +143,13 @@ export class HelperRegistry {
 	 */
 	public filter(filter: HelperFilter): Helper[] {
 		let result = this._helpers;
-		if (filter.name) {
-			result = result.filter((helper) => helper.name === filter.name);
+		if (filter.names) {
+			result = result.filter((helper) => filter.names?.includes(helper.name));
 		}
-		if (filter.category) {
-			result = result.filter((helper) => helper.category === filter.category);
+		if (filter.categories) {
+			result = result.filter((helper) =>
+				filter.categories?.includes(helper.category),
+			);
 		}
 		if (filter.compatibility) {
 			result = result.filter((helper) =>
