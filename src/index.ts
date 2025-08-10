@@ -27,7 +27,7 @@ export type HelpersOptions = {
  */
 export function helpers(options: HelpersOptions) {
 	const registry = new HelperRegistry();
-	registry.loadHandlebars(options.handlebars ?? options.hbs);
+	registry.load(options.handlebars ?? options.hbs);
 }
 
 /**
@@ -38,7 +38,7 @@ export function helpers(options: HelpersOptions) {
 export async function createHandlebars() {
 	const registry = new HelperRegistry();
 	const handlebars = HandlebarsLib.create();
-	registry.loadHandlebars(handlebars);
+	registry.load(handlebars);
 
 	if (process.env.NODE_ENV === "development") {
 		console.warn(
@@ -82,7 +82,7 @@ export function fumanchu(options?: FumanchuOptions) {
 	if (options?.handlebars) {
 		handlebars = options.handlebars;
 	}
-	registry.loadHandlebars(handlebars);
+	registry.load(handlebars);
 	return handlebars;
 }
 
