@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import ent from "ent";
 import Handlebars from "handlebars";
 import { Remarkable } from "remarkable";
 import type { Helper } from "../helper-registry.js";
@@ -24,7 +25,7 @@ const renderMarkdown = (
 		string_ = fs.readFileSync(filepath, "utf8");
 	}
 
-	return new Handlebars.SafeString(md.render(string_));
+	return new Handlebars.SafeString(ent.decode(md.render(string_)));
 };
 
 export const helpers: Helper[] = [
