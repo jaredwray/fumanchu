@@ -1,26 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: this is for handlebars
 import type Handlebars from "handlebars";
 
-export enum HelperRegistryCompatibility {
-	NODEJS = "nodejs",
-	BROWSER = "browser",
-}
-
-export type Helper = {
-	name: string;
-	category: string;
-	compatibility?: HelperRegistryCompatibility[];
-	fn:
-		| ((...arguments_: any[]) => string)
-		| ((...arguments_: any[]) => Handlebars.SafeString);
-};
-
-export type HelperFilter = {
-	name?: string;
-	category?: string;
-	compatibility?: HelperRegistryCompatibility[];
-};
-
 import { helpers as arrayHelpers } from "./helpers/array.js";
 import { helpers as codeHelpers } from "./helpers/code.js";
 import { helpers as collectionHelpers } from "./helpers/collection.js";
@@ -42,6 +22,26 @@ import { helpers as regexHelpers } from "./helpers/regex.js";
 import { helpers as stringHelpers } from "./helpers/string.js";
 import { helpers as urlHelpers } from "./helpers/url.js";
 
+export enum HelperRegistryCompatibility {
+	NODEJS = "nodejs",
+	BROWSER = "browser",
+}
+
+export type Helper = {
+	name: string;
+	category: string;
+	compatibility?: HelperRegistryCompatibility[];
+	fn:
+		| ((...arguments_: any[]) => string)
+		| ((...arguments_: any[]) => Handlebars.SafeString);
+};
+
+export type HelperFilter = {
+	name?: string;
+	category?: string;
+	compatibility?: HelperRegistryCompatibility[];
+};
+
 export class HelperRegistry {
 	private readonly _helpers: Helper[] = [];
 
@@ -49,10 +49,17 @@ export class HelperRegistry {
 		this.init();
 	}
 
+	/**
+	 * Get all registered helpers.
+	 * @returns {Helper[]} The array of registered helpers.
+	 */
 	public get helpers(): Helper[] {
 		return this._helpers;
 	}
 
+	/**
+	 * Initialize the helper registry. This is performed during the construction of the registry such as new HelperRegistry().
+	 */
 	public init() {
 		// Array
 		this.registerHelpers(arrayHelpers);
@@ -96,6 +103,11 @@ export class HelperRegistry {
 		this.registerHelpers(objectHelpers);
 	}
 
+	/**
+	 * Register a helper.
+	 * @param {Helper} helper The helper to register.
+	 * @returns True if the helper was registered, false otherwise.
+	 */
 	public register(helper: Helper): boolean {
 		const result = false;
 		if (!this.has(helper.name)) {
@@ -105,16 +117,30 @@ export class HelperRegistry {
 		return result;
 	}
 
+	/**
+	 * Register multiple helpers.
+	 * @param {Helper[]} helpers The array of helpers to register.
+	 */
 	public registerHelpers(helpers: Helper[]) {
 		for (const helper of helpers) {
 			this.register(helper);
 		}
 	}
 
+	/**
+	 * Check if a helper is registered.
+	 * @param name The name of the helper.
+	 * @returns True if the helper is registered, false otherwise.
+	 */
 	public has(name: string): boolean {
 		return this._helpers.some((helper) => helper.name === name);
 	}
 
+	/**
+	 * Filter helpers by the given criteria.
+	 * @param filter The filter criteria.
+	 * @returns The filtered helpers.
+	 */
 	public filter(filter: HelperFilter): Helper[] {
 		let result = this._helpers;
 		if (filter.name) {
@@ -131,13 +157,23 @@ export class HelperRegistry {
 		return result;
 	}
 
-	public loadHandlebars(handlebars: any) {
+	/**
+	 * Load Handlebars helpers.
+	 * @param handlebars The Handlebars instance.
+	 * @returns {void}
+	 */
+	public load(handlebars: any) {
 		for (const helper of this._helpers) {
 			handlebars.registerHelper(helper.name, helper.fn);
 		}
 	}
 
-	public swapHelpers(handlebars: any) {
+	/**
+	 * Swap Handlebars helpers. This is used when you want to swap out legacy helpers for fumanchu helpers.
+	 * @param handlebars The Handlebars instance.
+	 * @returns {void}
+	 */
+	public swap(handlebars: any) {
 		for (const helper of this._helpers) {
 			handlebars.unregisterHelper(helper.name);
 			handlebars.registerHelper(helper.name, helper.fn);
