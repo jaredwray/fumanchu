@@ -15,7 +15,7 @@ const readFn = getHelper("read");
 const readdirFn = getHelper("readdir");
 const fileSizeFn = getHelper("fileSize");
 
-const libDir = path.join("helpers", "lib");
+const libDir = path.join("src", "helpers");
 const libFiles = fs.readdirSync(libDir).map((fp) => path.join(libDir, fp));
 
 describe("fileSize", () => {
@@ -37,7 +37,7 @@ describe("fileSize", () => {
 
 describe("read", () => {
 	it("reads file contents", () => {
-		const result = readFn("helpers/test/fixtures/read/a.txt");
+		const result = readFn("test/fixtures/read/a.txt");
 		expect(result).toBe("abc");
 	});
 });
