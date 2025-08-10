@@ -49,6 +49,10 @@ export class HelperRegistry {
 		this.init();
 	}
 
+	public get helpers(): Helper[] {
+		return this._helpers;
+	}
+
 	public init() {
 		// Array
 		this.registerHelpers(arrayHelpers);
