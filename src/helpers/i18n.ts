@@ -52,6 +52,13 @@ const i18n = function (
 	return String(result);
 };
 
-export const helpers: Helper[] = [{ name: "i18n", category: "i18n", fn: i18n }];
+export const helpers: Helper[] = [
+	{
+		name: "i18n",
+		category: "i18n",
+		compatibility: ["browser", "nodejs"],
+		fn: i18n,
+	},
+];
 
 export { i18n };

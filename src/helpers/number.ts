@@ -84,15 +84,60 @@ const toPrecision = (value: unknown, precision?: unknown): string => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "bytes", category: "number", fn: bytes },
-	{ name: "addCommas", category: "number", fn: addCommas },
-	{ name: "phoneNumber", category: "number", fn: phoneNumber },
-	{ name: "toAbbr", category: "number", fn: toAbbr },
-	{ name: "toExponential", category: "number", fn: toExponential },
-	{ name: "toFixed", category: "number", fn: toFixed },
-	{ name: "toFloat", category: "number", fn: toFloat },
-	{ name: "toInt", category: "number", fn: toInt },
-	{ name: "toPrecision", category: "number", fn: toPrecision },
+	{
+		name: "bytes",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: bytes,
+	},
+	{
+		name: "addCommas",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: addCommas,
+	},
+	{
+		name: "phoneNumber",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: phoneNumber,
+	},
+	{
+		name: "toAbbr",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: toAbbr,
+	},
+	{
+		name: "toExponential",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: toExponential,
+	},
+	{
+		name: "toFixed",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: toFixed,
+	},
+	{
+		name: "toFloat",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: toFloat,
+	},
+	{
+		name: "toInt",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: toInt,
+	},
+	{
+		name: "toPrecision",
+		category: "number",
+		compatibility: ["browser", "nodejs"],
+		fn: toPrecision,
+	},
 ];
 
 export {

@@ -33,11 +33,36 @@ function withHash(
 }
 
 export const helpers: Helper[] = [
-	{ name: "frame", category: "misc", fn: frame as any },
-	{ name: "option", category: "misc", fn: option },
-	{ name: "noop", category: "misc", fn: noop },
-	{ name: "typeOf", category: "misc", fn: typeOf as any },
-	{ name: "withHash", category: "misc", fn: withHash },
+	{
+		name: "frame",
+		category: "misc",
+		compatibility: ["browser", "nodejs"],
+		fn: frame as any,
+	},
+	{
+		name: "option",
+		category: "misc",
+		compatibility: ["browser", "nodejs"],
+		fn: option,
+	},
+	{
+		name: "noop",
+		category: "misc",
+		compatibility: ["browser", "nodejs"],
+		fn: noop,
+	},
+	{
+		name: "typeOf",
+		category: "misc",
+		compatibility: ["browser", "nodejs"],
+		fn: typeOf as any,
+	},
+	{
+		name: "withHash",
+		category: "misc",
+		compatibility: ["browser", "nodejs"],
+		fn: withHash,
+	},
 ];
 
 export { frame, option, noop, typeOf, withHash };

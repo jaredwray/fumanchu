@@ -31,8 +31,18 @@ const iterate = <T>(
 };
 
 export const helpers: Helper[] = [
-	{ name: "isEmpty", category: "collection", fn: isEmpty },
-	{ name: "iterate", category: "collection", fn: iterate },
+	{
+		name: "isEmpty",
+		category: "collection",
+		compatibility: ["browser", "nodejs"],
+		fn: isEmpty,
+	},
+	{
+		name: "iterate",
+		category: "collection",
+		compatibility: ["browser", "nodejs"],
+		fn: iterate,
+	},
 ];
 
 export { isEmpty, iterate };

@@ -103,22 +103,102 @@ const sum = (...values: Array<number | number[]>): number => {
 const times = (a: unknown, b: unknown): number => multiply(a, b);
 
 export const helpers: Helper[] = [
-	{ name: "abs", category: "math", fn: abs },
-	{ name: "add", category: "math", fn: add },
-	{ name: "avg", category: "math", fn: avg },
-	{ name: "ceil", category: "math", fn: ceil },
-	{ name: "divide", category: "math", fn: divide },
-	{ name: "floor", category: "math", fn: floor },
-	{ name: "minus", category: "math", fn: minus },
-	{ name: "modulo", category: "math", fn: modulo },
-	{ name: "multiply", category: "math", fn: multiply },
-	{ name: "plus", category: "math", fn: plus },
-	{ name: "random", category: "math", fn: random },
-	{ name: "remainder", category: "math", fn: remainder },
-	{ name: "round", category: "math", fn: round },
-	{ name: "subtract", category: "math", fn: subtract },
-	{ name: "sum", category: "math", fn: sum },
-	{ name: "times", category: "math", fn: times },
+	{
+		name: "abs",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: abs,
+	},
+	{
+		name: "add",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: add,
+	},
+	{
+		name: "avg",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: avg,
+	},
+	{
+		name: "ceil",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: ceil,
+	},
+	{
+		name: "divide",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: divide,
+	},
+	{
+		name: "floor",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: floor,
+	},
+	{
+		name: "minus",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: minus,
+	},
+	{
+		name: "modulo",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: modulo,
+	},
+	{
+		name: "multiply",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: multiply,
+	},
+	{
+		name: "plus",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: plus,
+	},
+	{
+		name: "random",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: random,
+	},
+	{
+		name: "remainder",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: remainder,
+	},
+	{
+		name: "round",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: round,
+	},
+	{
+		name: "subtract",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: subtract,
+	},
+	{
+		name: "sum",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: sum,
+	},
+	{
+		name: "times",
+		category: "math",
+		compatibility: ["browser", "nodejs"],
+		fn: times,
+	},
 ];
 
 export {

@@ -32,8 +32,18 @@ const ordinalize = (value: number | string): string => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "inflect", category: "inflection", fn: inflect },
-	{ name: "ordinalize", category: "inflection", fn: ordinalize },
+	{
+		name: "inflect",
+		category: "inflection",
+		compatibility: ["browser", "nodejs"],
+		fn: inflect,
+	},
+	{
+		name: "ordinalize",
+		category: "inflection",
+		compatibility: ["browser", "nodejs"],
+		fn: ordinalize,
+	},
 ];
 
 export { inflect, ordinalize };
