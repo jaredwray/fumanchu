@@ -12,7 +12,7 @@ We are working to migrate all legacy helpers to a modern helper approach with le
 - ✅ Migration to `vitest` as a testing framework
 - ✅ Migration to `xo` as a linting framework
 - ✅ Migrate to Typescript with full typing support
-- **(In Progress)** Replace module dependencies that are no longer supported with supported ones. Please see the [Legacy Helper Migration Status to Fumanchu Helper Registry](#legacy-helper-migration-status-to-fumanchu-helper-registry) table below for more information.
+- ✅ Replace module dependencies that are ✅ longer supported with supported ones. Please see the [Legacy Helper Migration Status to Fumanchu Helper Registry](#legacy-helper-migration-status-to-fumanchu-helper-registry) table below for more information.
 - Migration to ESM and CJS support using cross compatible code
 - Move to better documentation and examples where it makes sense
 - Add in browser support via CDN (this will remove the nodejs specific helpers)
@@ -21,22 +21,22 @@ We are working to migrate all legacy helpers to a modern helper approach with le
 
 | Helper Type | Status |
 | ---------------------- | ---------------------- |
-| `array` | No |
-| `code` | No |
-| `collection` | No |
-| `comparrison` | No |
+| `array` | ✅ |
+| `code` | ✅ |
+| `collection` | ✅ |
+| `comparrison` | ✅ |
 | `date` | ✅ |
-| `fs` | No |
-| `html` | No |
-| `i18n` | No |
+| `fs` | ✅ |
+| `html` | ✅ |
+| `i18n` | ✅ |
 | `inflection` | ✅ |
-| `logging` | No |
+| `logging` | ✅ |
 | `markdown` | ✅ |
-| `match` | No |
-| `misc` | No |
-| `number` | No |
-| `object` | No |
-| `path` | No |
-| `regex` | No |
-| `string` | No |
-| `url` | No |
+| `match` | ✅ |
+| `misc` | ✅ |
+| `number` | ✅ |
+| `object` | ✅ |
+| `path` | ✅ |
+| `regex` | ✅ |
+| `string` | ✅ |
+| `url` | ✅ |
