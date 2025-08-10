@@ -28,4 +28,10 @@ describe("md helper", () => {
 		expect(result.toHTML()).toBe("<h1>File</h1>\n");
 		fs.rmSync(temporaryDir, { recursive: true, force: true });
 	});
+
+	it("should decode HTML entities", () => {
+		const mdHelper = helpers.find((helper) => helper.name === "md");
+		const result = mdHelper?.fn("&amp;") as Handlebars.SafeString;
+		expect(result.toHTML()).toBe("<p>&</p>\n");
+	});
 });
