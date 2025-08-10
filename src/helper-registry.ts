@@ -116,14 +116,19 @@ export class HelperRegistry {
 	}
 
 	public filter(filter: HelperFilter): Helper[] {
-		/* c8 ignore next 4 */
-		return this._helpers.filter(
-			(helper) =>
-				(!filter.name || helper.name === filter.name) &&
-				(!filter.category || helper.category === filter.category) &&
-				(!filter.compatibility ||
-					helper.compatibility === filter.compatibility),
-		);
+		let result = this._helpers;
+		if (filter.name) {
+			result = result.filter((helper) => helper.name === filter.name);
+		}
+		if (filter.category) {
+			result = result.filter((helper) => helper.category === filter.category);
+		}
+		if (filter.compatibility) {
+			result = result.filter((helper) =>
+				helper.compatibility?.some((c) => filter.compatibility?.includes(c)),
+			);
+		}
+		return result;
 	}
 
 	public loadHandlebars(handlebars: any) {
