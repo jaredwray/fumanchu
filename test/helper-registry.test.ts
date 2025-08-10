@@ -104,7 +104,7 @@ describe("HelperRegistry Filter", () => {
 			category: "demo",
 			fn: () => "demo",
 		});
-		expect(registry.filter({ name: "demo1" }).length).toBe(0);
+		expect(registry.filter({ names: ["demo1"] }).length).toBe(0);
 	});
 	test("should filter by name", () => {
 		const registry = new HelperRegistry();
@@ -113,7 +113,7 @@ describe("HelperRegistry Filter", () => {
 			category: "demo",
 			fn: () => "demo",
 		});
-		expect(registry.filter({ name: "demo" }).length).toBe(1);
+		expect(registry.filter({ names: ["demo"] }).length).toBe(1);
 	});
 	test("should filter by category", () => {
 		const registry = new HelperRegistry();
@@ -127,7 +127,13 @@ describe("HelperRegistry Filter", () => {
 			category: "demo2",
 			fn: () => "demo2",
 		});
-		expect(registry.filter({ category: "demo" }).length).toBe(1);
+		registry.register({
+			name: "demo3",
+			category: "demo2",
+			fn: () => "demo3",
+		});
+		expect(registry.filter({ categories: ["demo"] }).length).toBe(1);
+		expect(registry.filter({ categories: ["demo", "demo2"] }).length).toBe(3);
 	});
 
 	test("helpers should filter by name", () => {
@@ -137,7 +143,7 @@ describe("HelperRegistry Filter", () => {
 			category: "demo",
 			fn: () => "demo",
 		});
-		expect(registry.filter({ name: "demo" }).length).toBe(1);
+		expect(registry.filter({ names: ["demo"] }).length).toBe(1);
 	});
 
 	test("helpers property should be greater than 160", () => {
@@ -157,5 +163,21 @@ describe("HelperRegistry Filter", () => {
 			registry.filter({ compatibility: [HelperRegistryCompatibility.BROWSER] })
 				.length,
 		).toBeGreaterThan(130);
+	});
+
+	test("should filter by compatibility", () => {
+		const registry = new HelperRegistry();
+		registry.register({
+			name: "demo",
+			category: "demo",
+			compatibility: [HelperRegistryCompatibility.BROWSER],
+			fn: () => "demo",
+		});
+		expect(
+			registry.filter({
+				names: ["demo"],
+				compatibility: [HelperRegistryCompatibility.BROWSER],
+			}).length,
+		).toBe(1);
 	});
 });
