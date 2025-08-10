@@ -190,4 +190,17 @@ describe("HelperRegistry Filter", () => {
 			}).length,
 		).toBe(1);
 	});
+
+	test("should be able to swap out helpers", () => {
+		const registry = new HelperRegistry();
+		const hbs = handlebars;
+		registry.load(hbs);
+		const registeredHelpers = Object.keys(hbs.helpers);
+		expect(registeredHelpers).toContain("md");
+		expect(registeredHelpers).toContain("year");
+		registry.swap(hbs);
+		const swappedHelpers = Object.keys(hbs.helpers);
+		expect(swappedHelpers).toContain("md");
+		expect(swappedHelpers).toContain("year");
+	});
 });

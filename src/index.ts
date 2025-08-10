@@ -33,18 +33,20 @@ export function helpers(options: HelpersOptions) {
 /**
  * Create a new Handlebars instance with Fumanchu helpers
  * @returns {Promise<Handlebars>}
- * @deprecated Will be deprecated in future versions, use `fumanchu` instead.
+ * @deprecated Will be deprecated in future versions, use `fumanchu()` instead.
  */
 export async function createHandlebars() {
 	const registry = new HelperRegistry();
 	const handlebars = HandlebarsLib.create();
 	registry.load(handlebars);
 
+	/* c8 ignore start */
 	if (process.env.NODE_ENV === "development") {
 		console.warn(
 			"createHandlebars will be deprecated in future versions, use `fumanchu` instead.",
 		);
 	}
+	/* c8 ignore end */
 
 	return handlebars;
 }
