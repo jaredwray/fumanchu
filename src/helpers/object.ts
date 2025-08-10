@@ -1,5 +1,5 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
-
+// @ts-expect-error
 import getObject from "get-object";
 import get from "get-value";
 import type { Helper } from "../helper-registry.js";

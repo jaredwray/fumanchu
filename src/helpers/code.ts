@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import tag from "html-tag";
+// @ts-ignore
 import codeBlock from "to-gfm-code-block";
 import type { Helper } from "../helper-registry.js";
 

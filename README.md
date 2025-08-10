@@ -15,6 +15,7 @@ Handlebars + Helpers Together
 # Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
+* [Migrating from v3 to v4](#migrating-from-v3-to-v4)
 * [Helpers](https://fumanchu.org/docs/helpers/)
   * [array](https://fumanchu.org/docs/helpers/array/)
   * [code](https://fumanchu.org/docs/helpers/code/)
@@ -46,29 +47,11 @@ Handlebars + Helpers Together
 npm install @jaredwray/fumanchu --save
 ```
 
-```javascript
-var {handlebars, helpers} = require('@jaredwray/fumanchu');
-helpers({ handlebars: handlebars });
-var template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
-var html = template({foo: 'bar'});
-console.log(html);
-```
-
-If using it with es6 you can access `handlebars` and `helpers`:
+To use Handlebars with all the helpers:
 
 ```javascript
-import {handlebars, helpers} from '@jaredwray/fumanchu';
-helpers({ handlebars: handlebars });
-const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
-const html = template({foo: 'bar'});
-console.log(html);
-```
-
-If you want to just get an instance of handlebars via `createHandlebars` you can do the following **(it is async)**:
-
-```javascript
-import {createHandlebars} from '@jaredwray/fumanchu';
-const handlebars = await createHandlebars(); //this will return a handlebars instance with all helpers
+import {fumanchu} from '@jaredwray/fumanchu';
+const handlebars = fumanchu(); // this will return handlebars with all the helpers
 const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
 const html = template({foo: 'bar'});
 console.log(html); // <p>Foo is bar</p>
@@ -81,17 +64,6 @@ It's just that easy! No need to add Handlebars to your project, it's already inc
 If you only want to use handlebar helpers you can easily do that by doing the following:
 
 ```javascript
-var {helpers} = require('@jaredwray/fumanchu');
-var handlebars = require('handlebars');
-var helpersFunction = await helpers();
-helpersFunction({ handlebars: handlebars });
-var fn = handlebars.compile('{{add value 5}}');
-console.log(fn); // 10
-```
-
-If using it with es6 you can access `helpers` via destructuring:
-
-```javascript
 import {helpers} from '@jaredwray/fumanchu';
 import handlebars from 'handlebars';
 const helpersFunction = await helpers();
@@ -100,6 +72,51 @@ const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/i
 const html = template({foo: 'bar'});
 console.log(html); // <p>Foo is bar</p>
 ```
+
+If using it with es6 you can access `handlebars` and `helpers`:
+
+```javascript
+import {handlebars, helpers} from '@jaredwray/fumanchu';
+helpers({ handlebars: handlebars });
+const template = handlebars.compile('{{#if (eq foo "bar")}}<p>Foo is bar</p>{{/if}}');
+const html = template({foo: 'bar'});
+console.log(html);
+```
+
+# Using the Helper Registry
+
+The helper registry allows you to manage and use Handlebars helpers more easily. You can register new helpers, filter existing ones, and access them in your templates.
+
+```js
+import { HelperRegistry, handlebars } from '@jaredwray/fumanchu';
+
+const registry = new HelperRegistry();
+registry.register('eq', (a, b) => a === b);
+registry.register('if', (condition, template) => condition ? template() : '');
+const hbs = handlebars;
+registry.load(hbs); // Load all helpers into Handlebars
+```
+
+If you want to do filtering you can use the `HelperFilter` on `load`:
+
+```js
+import { HelperRegistry, handlebars } from '@jaredwray/fumanchu';
+
+const registry = new HelperRegistry();
+registry.register('eq', (a, b) => a === b);
+registry.register('if', (condition, template) => condition ? template() : '');
+const hbs = handlebars;
+registry.load(hbs, { names: ['if']}); // Load the helpers into Handlebars
+```
+
+In addition, we have made the helper functions have a compatibility such as `HelperRegistryCompatibility.NODEJS` or `HelperRegistryCompatibility.BROWSER`. This will allow you to filter out based on your environment!
+
+# Migrating from v3 to v4
+
+We have made some breaking changes in v4:
+* We no longer support the legacy helpers that were in this project as we have migrated to a new helper system.
+* `createHandlebars` is now deprecated in favor of just using `fumanchu()` and no more needing async.
+* The `FumanchuOptions` has been changed on filtering and also now fully supported with `fumanchu()`
 
 ## How to Contribute
 Clone the repository locally refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.

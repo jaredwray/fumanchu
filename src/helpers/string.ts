@@ -1,7 +1,5 @@
 import type { Helper } from "../helper-registry.js";
 
-const all = ["browser", "nodejs"] as const;
-
 const chop = (str: string): string =>
 	str.trim().replace(/^[-_.\W\s]+|[-_.\W\s]+$/g, "");
 
@@ -216,73 +214,198 @@ const uppercase = (str: unknown): string => {
 const upcase = (...args: unknown[]): string => uppercase(...args);
 
 export const helpers: Helper[] = [
-	{ name: "append", category: "string", compatibility: all, fn: append },
-	{ name: "camelcase", category: "string", compatibility: all, fn: camelcase },
+	{
+		name: "append",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: append,
+	},
+	{
+		name: "camelcase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: camelcase,
+	},
 	{
 		name: "capitalize",
 		category: "string",
-		compatibility: all,
+		compatibility: ["browser", "nodejs"],
 		fn: capitalize,
 	},
 	{
 		name: "capitalizeAll",
 		category: "string",
-		compatibility: all,
+		compatibility: ["browser", "nodejs"],
 		fn: capitalizeAll,
 	},
-	{ name: "center", category: "string", compatibility: all, fn: center },
-	{ name: "chop", category: "string", compatibility: all, fn: chopStr },
-	{ name: "dashcase", category: "string", compatibility: all, fn: dashcase },
-	{ name: "dotcase", category: "string", compatibility: all, fn: dotcase },
-	{ name: "ellipsis", category: "string", compatibility: all, fn: ellipsis },
-	{ name: "hyphenate", category: "string", compatibility: all, fn: hyphenate },
-	{ name: "isString", category: "string", compatibility: all, fn: isString },
-	{ name: "lowercase", category: "string", compatibility: all, fn: lowercase },
-	{ name: "downcase", category: "string", compatibility: all, fn: downcase },
+	{
+		name: "center",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: center,
+	},
+	{
+		name: "chop",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: chopStr,
+	},
+	{
+		name: "dashcase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: dashcase,
+	},
+	{
+		name: "dotcase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: dotcase,
+	},
+	{
+		name: "ellipsis",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: ellipsis,
+	},
+	{
+		name: "hyphenate",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: hyphenate,
+	},
+	{
+		name: "isString",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: isString,
+	},
+	{
+		name: "lowercase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: lowercase,
+	},
+	{
+		name: "downcase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: downcase,
+	},
 	{
 		name: "occurrences",
 		category: "string",
-		compatibility: all,
+		compatibility: ["browser", "nodejs"],
 		fn: occurrences,
 	},
 	{
 		name: "pascalcase",
 		category: "string",
-		compatibility: all,
+		compatibility: ["browser", "nodejs"],
 		fn: pascalcase,
 	},
-	{ name: "pathcase", category: "string", compatibility: all, fn: pathcase },
-	{ name: "plusify", category: "string", compatibility: all, fn: plusify },
-	{ name: "prepend", category: "string", compatibility: all, fn: prepend },
-	{ name: "remove", category: "string", compatibility: all, fn: remove },
+	{
+		name: "pathcase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: pathcase,
+	},
+	{
+		name: "plusify",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: plusify,
+	},
+	{
+		name: "prepend",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: prepend,
+	},
+	{
+		name: "remove",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: remove,
+	},
 	{
 		name: "removeFirst",
 		category: "string",
-		compatibility: all,
+		compatibility: ["browser", "nodejs"],
 		fn: removeFirst,
 	},
-	{ name: "replace", category: "string", compatibility: all, fn: replace },
+	{
+		name: "replace",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: replace,
+	},
 	{
 		name: "replaceFirst",
 		category: "string",
-		compatibility: all,
+		compatibility: ["browser", "nodejs"],
 		fn: replaceFirst,
 	},
-	{ name: "reverse", category: "string", compatibility: all, fn: reverse },
-	{ name: "sentence", category: "string", compatibility: all, fn: sentence },
-	{ name: "snakecase", category: "string", compatibility: all, fn: snakecase },
-	{ name: "trim", category: "string", compatibility: all, fn: trim },
-	{ name: "trimLeft", category: "string", compatibility: all, fn: trimLeft },
-	{ name: "trimRight", category: "string", compatibility: all, fn: trimRight },
-	{ name: "truncate", category: "string", compatibility: all, fn: truncate },
+	{
+		name: "reverse",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: reverse,
+	},
+	{
+		name: "sentence",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: sentence,
+	},
+	{
+		name: "snakecase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: snakecase,
+	},
+	{
+		name: "trim",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: trim,
+	},
+	{
+		name: "trimLeft",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: trimLeft,
+	},
+	{
+		name: "trimRight",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: trimRight,
+	},
+	{
+		name: "truncate",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: truncate,
+	},
 	{
 		name: "truncateWords",
 		category: "string",
-		compatibility: all,
+		compatibility: ["browser", "nodejs"],
 		fn: truncateWordsAlias,
 	},
-	{ name: "uppercase", category: "string", compatibility: all, fn: uppercase },
-	{ name: "upcase", category: "string", compatibility: all, fn: upcase },
+	{
+		name: "uppercase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: uppercase,
+	},
+	{
+		name: "upcase",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: upcase,
+	},
 ];
 
 export {
