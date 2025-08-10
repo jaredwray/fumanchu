@@ -40,11 +40,13 @@ export async function createHandlebars() {
 	const handlebars = HandlebarsLib.create();
 	registry.load(handlebars);
 
+	/* c8 ignore start */
 	if (process.env.NODE_ENV === "development") {
 		console.warn(
 			"createHandlebars will be deprecated in future versions, use `fumanchu` instead.",
 		);
 	}
+	/* c8 ignore end */
 
 	return handlebars;
 }
