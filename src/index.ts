@@ -33,7 +33,7 @@ export function helpers(options: HelpersOptions) {
 /**
  * Create a new Handlebars instance with Fumanchu helpers
  * @returns {Promise<Handlebars>}
- * @deprecated Will be deprecated in future versions, use `fumanchu` instead.
+ * @deprecated Will be deprecated in future versions, use `fumanchu()` instead.
  */
 export async function createHandlebars() {
 	const registry = new HelperRegistry();
