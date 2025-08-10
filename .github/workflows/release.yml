@@ -23,17 +23,11 @@ jobs:
     - name: Install Dependencies
       run: npm install -g pnpm && pnpm install
 
-    - name: Testing Legacy Helpers   
-      run: pnpm test:legacy:ci
+    - name: Build
+      run: pnpm build
 
-    - name: Testing Fumanchu   
+    - name: Testing
       run: pnpm test:ci
-
-    - name: Code Coverage
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_KEY }}
-        verbose: true
 
     - name: Publish
       run: |

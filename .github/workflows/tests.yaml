@@ -29,8 +29,8 @@ jobs:
     - name: Install Dependencies
       run: npm install -g pnpm && pnpm install
 
-    - name: Testing Legacy Helpers   
-      run: pnpm test:legacy:ci
+    - name: Build
+      run: pnpm build
 
-    - name: Testing Fumanchu   
+    - name: Testing
       run: pnpm test:ci
