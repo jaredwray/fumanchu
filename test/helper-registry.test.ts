@@ -164,4 +164,20 @@ describe("HelperRegistry Filter", () => {
 				.length,
 		).toBeGreaterThan(130);
 	});
+
+	test("should filter by compatibility", () => {
+		const registry = new HelperRegistry();
+		registry.register({
+			name: "demo",
+			category: "demo",
+			compatibility: [HelperRegistryCompatibility.BROWSER],
+			fn: () => "demo",
+		});
+		expect(
+			registry.filter({
+				names: ["demo"],
+				compatibility: [HelperRegistryCompatibility.BROWSER],
+			}).length,
+		).toBe(1);
+	});
 });
