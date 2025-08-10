@@ -1,7 +1,9 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
 
 import get from "get-value";
+// @ts-expect-error
 import createFrame from "handlebars-helper-create-frame";
+// @ts-expect-error
 import util from "handlebars-utils";
 import kindOf from "kind-of";
 import type { Helper } from "../helper-registry.js";

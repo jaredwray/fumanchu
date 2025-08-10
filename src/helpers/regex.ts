@@ -1,4 +1,5 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: this is for handlebars
+// @ts-expect-error
 import util from "handlebars-utils";
 import type { Helper } from "../helper-registry.js";
 

@@ -157,7 +157,6 @@ describe("HelperRegistry Filter", () => {
 		const hbs = handlebars;
 		registry.load(hbs, { names: ["md"] });
 		const registeredHelpers = Object.keys(hbs.helpers);
-		console.log(registeredHelpers);
 		expect(registeredHelpers).toContain("md");
 		expect(registeredHelpers).to.not.contain("year");
 	});

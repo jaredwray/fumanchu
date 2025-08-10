@@ -1,3 +1,4 @@
+// @ts-expect-error
 import loggingHelpers from "logging-helpers";
 import type { Helper } from "../helper-registry.js";
 
