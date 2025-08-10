@@ -12,16 +12,16 @@ const getHelper = (name: string): HelperFn => {
 describe("embed", () => {
 	const embedFn = getHelper("embed");
 	it("embeds code and detects language from extension", () => {
-		const result = embedFn("helpers/test/fixtures/simple.md");
+		const result = embedFn("test/fixtures/simple.md");
 		expect(result.startsWith("```markdown")).toBe(true);
 		expect(result.endsWith("```\n")).toBe(true);
 	});
 	it("escapes backticks in markdown", () => {
-		const result = embedFn("helpers/test/fixtures/embedded.md");
+		const result = embedFn("test/fixtures/embedded.md");
 		expect(result.includes("&#x60&#x60&#x60js")).toBe(true);
 	});
 	it("uses provided language", () => {
-		const result = embedFn("helpers/test/fixtures/index.html", "hbs");
+		const result = embedFn("test/fixtures/index.html", "hbs");
 		expect(result.startsWith("```hbs")).toBe(true);
 	});
 });
