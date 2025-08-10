@@ -11,10 +11,15 @@ describe("fumanchu", () => {
 		expect(helpers).toBeDefined();
 	});
 
-	test("should have handlebars", () => {
-		expect(handlebars).toBeDefined();
-		const result = handlebars.compile("{{year}}");
+	test("can use handlebars and helpers", async () => {
+		const hb = handlebars;
+		expect(hb).toBeDefined();
+		const result = hb.compile("{{year}}");
 		expect(result({})).toBe("");
+		// and in helpers
+		helpers({ handlebars: hb });
+		const result2 = hb.compile("{{year}}");
+		expect(result2({})).toBe(new Date().getFullYear().toString());
 	});
 
 	test("should be able to createHandlebars", async () => {

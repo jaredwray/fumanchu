@@ -9,6 +9,12 @@ describe("HelperRegistry", () => {
 		const registry = new HelperRegistry();
 		expect(registry).toBeDefined();
 	});
+
+	test("should be able to access helpers", () => {
+		const registry = new HelperRegistry();
+		expect(registry.helpers).toBeDefined();
+	});
+
 	test("includes array helpers by default", () => {
 		const registry = new HelperRegistry();
 		expect(registry.has("after")).toBeTruthy();
@@ -120,17 +126,32 @@ describe("HelperRegistry Filter", () => {
 		expect(registry.filter({ category: "demo" }).length).toBe(1);
 	});
 
+	test("helpers should filter by name", () => {
+		const registry = new HelperRegistry();
+		registry.register({
+			name: "demo",
+			category: "demo",
+			fn: () => "demo",
+		});
+		expect(registry.filter({ name: "demo" }).length).toBe(1);
+	});
+
+	test("helpers property should be greater than 160", () => {
+		const registry = new HelperRegistry();
+		expect(registry.helpers.length).toBeGreaterThan(160);
+	});
+
 	test("should filter by compatibility", () => {
 		const registry = new HelperRegistry();
 		registry.register({
 			name: "demo",
 			category: "demo",
-			compatibility: HelperRegistryCompatibility.BROWSER,
+			compatibility: [HelperRegistryCompatibility.BROWSER],
 			fn: () => "demo",
 		});
 		expect(
-			registry.filter({ compatibility: HelperRegistryCompatibility.BROWSER })
+			registry.filter({ compatibility: [HelperRegistryCompatibility.BROWSER] })
 				.length,
-		).toBe(1);
+		).toBeGreaterThan(130);
 	});
 });
