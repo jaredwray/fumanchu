@@ -1,6 +1,5 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: this is for handlebars
 import type Handlebars from "handlebars";
-
 import { helpers as arrayHelpers } from "./helpers/array.js";
 import { helpers as codeHelpers } from "./helpers/code.js";
 import { helpers as collectionHelpers } from "./helpers/collection.js";
@@ -161,11 +160,17 @@ export class HelperRegistry {
 
 	/**
 	 * Load Handlebars helpers.
-	 * @param handlebars The Handlebars instance.
+	 * @param {Handlebars} handlebars The Handlebars instance.
 	 * @returns {void}
 	 */
-	public load(handlebars: any) {
-		for (const helper of this._helpers) {
+	public load(handlebars: any, filters?: HelperFilter) {
+		let helpers = this._helpers;
+
+		if (filters) {
+			helpers = this.filter(filters);
+		}
+
+		for (const helper of helpers) {
 			handlebars.registerHelper(helper.name, helper.fn);
 		}
 	}

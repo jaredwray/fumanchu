@@ -3,6 +3,7 @@ import {
 	HelperRegistry,
 	HelperRegistryCompatibility,
 } from "../src/helper-registry.js";
+import { handlebars } from "../src/index.js";
 
 describe("HelperRegistry", () => {
 	test("should have helpers", () => {
@@ -149,6 +150,16 @@ describe("HelperRegistry Filter", () => {
 	test("helpers property should be greater than 160", () => {
 		const registry = new HelperRegistry();
 		expect(registry.helpers.length).toBeGreaterThan(160);
+	});
+
+	test("should load with filter", () => {
+		const registry = new HelperRegistry();
+		const hbs = handlebars;
+		registry.load(hbs, { names: ["md"] });
+		const registeredHelpers = Object.keys(hbs.helpers);
+		console.log(registeredHelpers);
+		expect(registeredHelpers).toContain("md");
+		expect(registeredHelpers).to.not.contain("year");
 	});
 
 	test("should filter by compatibility", () => {
