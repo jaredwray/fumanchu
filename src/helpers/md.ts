@@ -31,6 +31,7 @@ export const helpers: Helper[] = [
 	{
 		name: "md",
 		category: "markdown",
+		compatibility: ["nodejs"],
 		fn: renderMarkdown,
 	},
 ];

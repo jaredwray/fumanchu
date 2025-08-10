@@ -58,13 +58,48 @@ const join = (array: unknown, separator = ", "): string => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "after", category: "array", fn: after },
-	{ name: "before", category: "array", fn: before },
-	{ name: "arrayify", category: "array", fn: arrayify },
-	{ name: "first", category: "array", fn: first },
-	{ name: "last", category: "array", fn: last },
-	{ name: "length", category: "array", fn: length },
-	{ name: "join", category: "array", fn: join },
+	{
+		name: "after",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: after,
+	},
+	{
+		name: "before",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: before,
+	},
+	{
+		name: "arrayify",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: arrayify,
+	},
+	{
+		name: "first",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: first,
+	},
+	{
+		name: "last",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: last,
+	},
+	{
+		name: "length",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: length,
+	},
+	{
+		name: "join",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: join,
+	},
 ];
 
 export { after, before, arrayify, first, last, length, join };

@@ -145,13 +145,48 @@ const thumbnailImage = (context: ThumbnailContext): string => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "attr", category: "html", fn: attr },
-	{ name: "css", category: "html", fn: css },
-	{ name: "js", category: "html", fn: js },
-	{ name: "sanitize", category: "html", fn: sanitize },
-	{ name: "ul", category: "html", fn: ul },
-	{ name: "ol", category: "html", fn: ol },
-	{ name: "thumbnailImage", category: "html", fn: thumbnailImage },
+	{
+		name: "attr",
+		category: "html",
+		compatibility: ["browser", "nodejs"],
+		fn: attr,
+	},
+	{
+		name: "css",
+		category: "html",
+		compatibility: ["nodejs"],
+		fn: css,
+	},
+	{
+		name: "js",
+		category: "html",
+		compatibility: ["nodejs"],
+		fn: js,
+	},
+	{
+		name: "sanitize",
+		category: "html",
+		compatibility: ["browser", "nodejs"],
+		fn: sanitize,
+	},
+	{
+		name: "ul",
+		category: "html",
+		compatibility: ["browser", "nodejs"],
+		fn: ul,
+	},
+	{
+		name: "ol",
+		category: "html",
+		compatibility: ["browser", "nodejs"],
+		fn: ol,
+	},
+	{
+		name: "thumbnailImage",
+		category: "html",
+		compatibility: ["browser", "nodejs"],
+		fn: thumbnailImage,
+	},
 ];
 
 export { attr, css, js, sanitize, ul, ol, thumbnailImage };

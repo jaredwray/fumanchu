@@ -3,6 +3,8 @@ import { escape as qsEscape } from "node:querystring";
 import { format, parse, resolve } from "node:url";
 import type { Helper } from "../helper-registry.js";
 
+const all = ["browser", "nodejs"] as const;
+
 const encodeUri = (str: unknown): string | undefined => {
 	if (typeof str === "string") {
 		return encodeURIComponent(str);
@@ -49,15 +51,60 @@ const stripProtocol = (str: unknown): string | undefined => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "encodeURI", category: "url", fn: encodeUri as any },
-	{ name: "escape", category: "url", fn: escapeFn as any },
-	{ name: "decodeURI", category: "url", fn: decodeUri as any },
-	{ name: "url_encode", category: "url", fn: urlEncode as any },
-	{ name: "url_decode", category: "url", fn: urlDecode as any },
-	{ name: "urlResolve", category: "url", fn: urlResolve },
-	{ name: "urlParse", category: "url", fn: urlParse as any },
-	{ name: "stripQuerystring", category: "url", fn: stripQuerystring as any },
-	{ name: "stripProtocol", category: "url", fn: stripProtocol as any },
+	{
+		name: "encodeURI",
+		category: "url",
+		compatibility: all,
+		fn: encodeUri as any,
+	},
+	{
+		name: "escape",
+		category: "url",
+		compatibility: ["nodejs"],
+		fn: escapeFn as any,
+	},
+	{
+		name: "decodeURI",
+		category: "url",
+		compatibility: all,
+		fn: decodeUri as any,
+	},
+	{
+		name: "url_encode",
+		category: "url",
+		compatibility: all,
+		fn: urlEncode as any,
+	},
+	{
+		name: "url_decode",
+		category: "url",
+		compatibility: all,
+		fn: urlDecode as any,
+	},
+	{
+		name: "urlResolve",
+		category: "url",
+		compatibility: ["nodejs"],
+		fn: urlResolve,
+	},
+	{
+		name: "urlParse",
+		category: "url",
+		compatibility: ["nodejs"],
+		fn: urlParse as any,
+	},
+	{
+		name: "stripQuerystring",
+		category: "url",
+		compatibility: all,
+		fn: stripQuerystring as any,
+	},
+	{
+		name: "stripProtocol",
+		category: "url",
+		compatibility: ["nodejs"],
+		fn: stripProtocol as any,
+	},
 ];
 
 export {

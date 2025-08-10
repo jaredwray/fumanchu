@@ -18,17 +18,20 @@ export const helpers: Helper[] = [
 	{
 		name: "year",
 		category: "date",
+		compatibility: ["browser", "nodejs"],
 		fn: year,
 	},
 	{
 		name: "date",
 		category: "date",
+		compatibility: ["browser", "nodejs"],
 		fn: date,
 	},
 	{
 		/* Adding this in for legacy support */
 		name: "moment",
 		category: "date",
+		compatibility: ["browser", "nodejs"],
 		fn: date,
 	},
 ];

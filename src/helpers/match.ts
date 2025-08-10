@@ -30,9 +30,24 @@ const mm = (...args: Parameters<typeof match>): ReturnType<typeof match> => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "match", category: "match", fn: match as any },
-	{ name: "isMatch", category: "match", fn: isMatch as any },
-	{ name: "mm", category: "match", fn: mm as any },
+	{
+		name: "match",
+		category: "match",
+		compatibility: ["browser", "nodejs"],
+		fn: match as any,
+	},
+	{
+		name: "isMatch",
+		category: "match",
+		compatibility: ["browser", "nodejs"],
+		fn: isMatch as any,
+	},
+	{
+		name: "mm",
+		category: "match",
+		compatibility: ["browser", "nodejs"],
+		fn: mm as any,
+	},
 ];
 
 export { match, isMatch, mm };

@@ -72,9 +72,24 @@ const readdir = (
 };
 
 export const helpers: Helper[] = [
-	{ name: "fileSize", category: "fs", fn: fileSize as any },
-	{ name: "read", category: "fs", fn: read as any },
-	{ name: "readdir", category: "fs", fn: readdir as any },
+	{
+		name: "fileSize",
+		category: "fs",
+		compatibility: ["nodejs"],
+		fn: fileSize as any,
+	},
+	{
+		name: "read",
+		category: "fs",
+		compatibility: ["nodejs"],
+		fn: read as any,
+	},
+	{
+		name: "readdir",
+		category: "fs",
+		compatibility: ["nodejs"],
+		fn: readdir as any,
+	},
 ];
 
 export { fileSize, read, readdir };

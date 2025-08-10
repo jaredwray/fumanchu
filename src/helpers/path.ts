@@ -91,14 +91,54 @@ const segments = (filepath: unknown, a: unknown, b: unknown): string => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "absolute", category: "path", fn: absolute as any },
-	{ name: "dirname", category: "path", fn: dirname as any },
-	{ name: "relative", category: "path", fn: relative as any },
-	{ name: "basename", category: "path", fn: basename as any },
-	{ name: "stem", category: "path", fn: stem as any },
-	{ name: "extname", category: "path", fn: extname as any },
-	{ name: "resolve", category: "path", fn: resolveFn as any },
-	{ name: "segments", category: "path", fn: segments as any },
+	{
+		name: "absolute",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: absolute as any,
+	},
+	{
+		name: "dirname",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: dirname as any,
+	},
+	{
+		name: "relative",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: relative as any,
+	},
+	{
+		name: "basename",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: basename as any,
+	},
+	{
+		name: "stem",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: stem as any,
+	},
+	{
+		name: "extname",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: extname as any,
+	},
+	{
+		name: "resolve",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: resolveFn as any,
+	},
+	{
+		name: "segments",
+		category: "path",
+		compatibility: ["nodejs"],
+		fn: segments as any,
+	},
 ];
 
 export {

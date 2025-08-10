@@ -116,20 +116,90 @@ const pick = (props: string | string[], context: any, options?: any): any => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "extend", category: "object", fn: extend },
-	{ name: "forIn", category: "object", fn: forIn as any },
-	{ name: "forOwn", category: "object", fn: forOwn as any },
-	{ name: "toPath", category: "object", fn: toPath as any },
-	{ name: "get", category: "object", fn: getHelper as any },
-	{ name: "getObject", category: "object", fn: getObjectHelper as any },
-	{ name: "hasOwn", category: "object", fn: hasOwn as any },
-	{ name: "isObject", category: "object", fn: isObject as any },
-	{ name: "JSONparse", category: "object", fn: JSONparse as any },
-	{ name: "JSONstringify", category: "object", fn: JSONstringify as any },
-	{ name: "merge", category: "object", fn: merge as any },
-	{ name: "parseJSON", category: "object", fn: parseJSON as any },
-	{ name: "pick", category: "object", fn: pick as any },
-	{ name: "stringify", category: "object", fn: stringify as any },
+	{
+		name: "extend",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: extend,
+	},
+	{
+		name: "forIn",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: forIn as any,
+	},
+	{
+		name: "forOwn",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: forOwn as any,
+	},
+	{
+		name: "toPath",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: toPath as any,
+	},
+	{
+		name: "get",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: getHelper as any,
+	},
+	{
+		name: "getObject",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: getObjectHelper as any,
+	},
+	{
+		name: "hasOwn",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: hasOwn as any,
+	},
+	{
+		name: "isObject",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: isObject as any,
+	},
+	{
+		name: "JSONparse",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: JSONparse as any,
+	},
+	{
+		name: "JSONstringify",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: JSONstringify as any,
+	},
+	{
+		name: "merge",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: merge as any,
+	},
+	{
+		name: "parseJSON",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: parseJSON as any,
+	},
+	{
+		name: "pick",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: pick as any,
+	},
+	{
+		name: "stringify",
+		category: "object",
+		compatibility: ["browser", "nodejs"],
+		fn: stringify as any,
+	},
 ];
 
 export {

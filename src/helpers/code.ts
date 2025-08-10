@@ -47,9 +47,24 @@ const jsfiddle = (options: JsfiddleOptions): string => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "embed", category: "code", fn: embed },
-	{ name: "gist", category: "code", fn: gist },
-	{ name: "jsfiddle", category: "code", fn: jsfiddle },
+	{
+		name: "embed",
+		category: "code",
+		compatibility: ["nodejs"],
+		fn: embed,
+	},
+	{
+		name: "gist",
+		category: "code",
+		compatibility: ["browser", "nodejs"],
+		fn: gist,
+	},
+	{
+		name: "jsfiddle",
+		category: "code",
+		compatibility: ["browser", "nodejs"],
+		fn: jsfiddle,
+	},
 ];
 
 export { embed, gist, jsfiddle };

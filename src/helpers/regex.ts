@@ -18,8 +18,18 @@ const test = (str: unknown, regex: RegExp): boolean => {
 };
 
 export const helpers: Helper[] = [
-	{ name: "toRegex", category: "regex", fn: toRegex as any },
-	{ name: "test", category: "regex", fn: test as any },
+	{
+		name: "toRegex",
+		category: "regex",
+		compatibility: ["browser", "nodejs"],
+		fn: toRegex as any,
+	},
+	{
+		name: "test",
+		category: "regex",
+		compatibility: ["browser", "nodejs"],
+		fn: test as any,
+	},
 ];
 
 export { toRegex, test };

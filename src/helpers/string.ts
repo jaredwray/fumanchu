@@ -1,5 +1,7 @@
 import type { Helper } from "../helper-registry.js";
 
+const all = ["browser", "nodejs"] as const;
+
 const chop = (str: string): string =>
 	str.trim().replace(/^[-_.\W\s]+|[-_.\W\s]+$/g, "");
 
@@ -214,38 +216,73 @@ const uppercase = (str: unknown): string => {
 const upcase = (...args: unknown[]): string => uppercase(...args);
 
 export const helpers: Helper[] = [
-	{ name: "append", category: "string", fn: append },
-	{ name: "camelcase", category: "string", fn: camelcase },
-	{ name: "capitalize", category: "string", fn: capitalize },
-	{ name: "capitalizeAll", category: "string", fn: capitalizeAll },
-	{ name: "center", category: "string", fn: center },
-	{ name: "chop", category: "string", fn: chopStr },
-	{ name: "dashcase", category: "string", fn: dashcase },
-	{ name: "dotcase", category: "string", fn: dotcase },
-	{ name: "ellipsis", category: "string", fn: ellipsis },
-	{ name: "hyphenate", category: "string", fn: hyphenate },
-	{ name: "isString", category: "string", fn: isString },
-	{ name: "lowercase", category: "string", fn: lowercase },
-	{ name: "downcase", category: "string", fn: downcase },
-	{ name: "occurrences", category: "string", fn: occurrences },
-	{ name: "pascalcase", category: "string", fn: pascalcase },
-	{ name: "pathcase", category: "string", fn: pathcase },
-	{ name: "plusify", category: "string", fn: plusify },
-	{ name: "prepend", category: "string", fn: prepend },
-	{ name: "remove", category: "string", fn: remove },
-	{ name: "removeFirst", category: "string", fn: removeFirst },
-	{ name: "replace", category: "string", fn: replace },
-	{ name: "replaceFirst", category: "string", fn: replaceFirst },
-	{ name: "reverse", category: "string", fn: reverse },
-	{ name: "sentence", category: "string", fn: sentence },
-	{ name: "snakecase", category: "string", fn: snakecase },
-	{ name: "trim", category: "string", fn: trim },
-	{ name: "trimLeft", category: "string", fn: trimLeft },
-	{ name: "trimRight", category: "string", fn: trimRight },
-	{ name: "truncate", category: "string", fn: truncate },
-	{ name: "truncateWords", category: "string", fn: truncateWordsAlias },
-	{ name: "uppercase", category: "string", fn: uppercase },
-	{ name: "upcase", category: "string", fn: upcase },
+	{ name: "append", category: "string", compatibility: all, fn: append },
+	{ name: "camelcase", category: "string", compatibility: all, fn: camelcase },
+	{
+		name: "capitalize",
+		category: "string",
+		compatibility: all,
+		fn: capitalize,
+	},
+	{
+		name: "capitalizeAll",
+		category: "string",
+		compatibility: all,
+		fn: capitalizeAll,
+	},
+	{ name: "center", category: "string", compatibility: all, fn: center },
+	{ name: "chop", category: "string", compatibility: all, fn: chopStr },
+	{ name: "dashcase", category: "string", compatibility: all, fn: dashcase },
+	{ name: "dotcase", category: "string", compatibility: all, fn: dotcase },
+	{ name: "ellipsis", category: "string", compatibility: all, fn: ellipsis },
+	{ name: "hyphenate", category: "string", compatibility: all, fn: hyphenate },
+	{ name: "isString", category: "string", compatibility: all, fn: isString },
+	{ name: "lowercase", category: "string", compatibility: all, fn: lowercase },
+	{ name: "downcase", category: "string", compatibility: all, fn: downcase },
+	{
+		name: "occurrences",
+		category: "string",
+		compatibility: all,
+		fn: occurrences,
+	},
+	{
+		name: "pascalcase",
+		category: "string",
+		compatibility: all,
+		fn: pascalcase,
+	},
+	{ name: "pathcase", category: "string", compatibility: all, fn: pathcase },
+	{ name: "plusify", category: "string", compatibility: all, fn: plusify },
+	{ name: "prepend", category: "string", compatibility: all, fn: prepend },
+	{ name: "remove", category: "string", compatibility: all, fn: remove },
+	{
+		name: "removeFirst",
+		category: "string",
+		compatibility: all,
+		fn: removeFirst,
+	},
+	{ name: "replace", category: "string", compatibility: all, fn: replace },
+	{
+		name: "replaceFirst",
+		category: "string",
+		compatibility: all,
+		fn: replaceFirst,
+	},
+	{ name: "reverse", category: "string", compatibility: all, fn: reverse },
+	{ name: "sentence", category: "string", compatibility: all, fn: sentence },
+	{ name: "snakecase", category: "string", compatibility: all, fn: snakecase },
+	{ name: "trim", category: "string", compatibility: all, fn: trim },
+	{ name: "trimLeft", category: "string", compatibility: all, fn: trimLeft },
+	{ name: "trimRight", category: "string", compatibility: all, fn: trimRight },
+	{ name: "truncate", category: "string", compatibility: all, fn: truncate },
+	{
+		name: "truncateWords",
+		category: "string",
+		compatibility: all,
+		fn: truncateWordsAlias,
+	},
+	{ name: "uppercase", category: "string", compatibility: all, fn: uppercase },
+	{ name: "upcase", category: "string", compatibility: all, fn: upcase },
 ];
 
 export {
