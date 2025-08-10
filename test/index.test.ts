@@ -11,7 +11,7 @@ describe("fumanchu", () => {
 		expect(helpers).toBeDefined();
 	});
 
-	test('can use handlebars and helpers', async () => {
+	test("can use handlebars and helpers", async () => {
 		const hb = handlebars;
 		expect(hb).toBeDefined();
 		const result = hb.compile("{{year}}");
