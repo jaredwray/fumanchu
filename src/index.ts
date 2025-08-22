@@ -1,4 +1,4 @@
-import * as HandlebarsLib from "handlebars";
+import HandlebarsLib from "handlebars";
 import { HelperFilter, HelperRegistry } from "./helper-registry.js";
 
 /**
