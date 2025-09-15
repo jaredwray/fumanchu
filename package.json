@@ -67,7 +67,6 @@
     "dayjs": "^1.11.18",
     "ent": "^2.2.2",
     "get-object": "^0.2.0",
-    "get-value": "^4.0.1",
     "handlebars": "^4.7.8",
     "handlebars-helper-create-frame": "^0.1.0",
     "handlebars-utils": "^1.0.6",
@@ -83,7 +82,6 @@
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
     "@types/ent": "^2.2.8",
-    "@types/get-value": "^3.0.5",
     "@types/html-tag": "^2.0.2",
     "@types/is-glob": "^4.0.4",
     "@types/kind-of": "^6.0.3",
