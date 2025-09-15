@@ -2,8 +2,7 @@
 title: Url Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with URLs. These helpers are used to manipulate and format URLs, making it easier to work with web links in templates.
-order: 19
-parent: helpers
+order: 24
 ---
 
 ## url

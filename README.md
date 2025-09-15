@@ -15,29 +15,30 @@ Handlebars + Helpers Together
 # Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
-* [Migrating from v3 to v4](#migrating-from-v3-to-v4)
-* [Helpers](https://fumanchu.org/docs/helpers/)
-  * [array](https://fumanchu.org/docs/helpers/array/)
-  * [code](https://fumanchu.org/docs/helpers/code/)
-  * [comparison](https://fumanchu.org/docs/helpers/comparison/)
-  * [collection](https://fumanchu.org/docs/helpers/collection/)
-  * [date](https://fumanchu.org/docs/helpers/date/)
-  * [fs](https://fumanchu.org/docs/helpers/fs/)
-  * [html](https://fumanchu.org/docs/helpers/html/)
-  * [i18n](https://fumanchu.org/docs/helpers/i18n/)
-  * [inflection](https://fumanchu.org/docs/helpers/inflection/)
+* [Migrating from v2 to v3](https://fumanchu.org/docs/v2-to-v3/)
+* [Migrating from v3 to v4](https://fumanchu.org/docs/v3-to-v4/)
+* [Helpers](https://fumanchu.org/docs/)
+  * [array](https://fumanchu.org/docs/array/)
+  * [code](https://fumanchu.org/docs/code/)
+  * [comparison](https://fumanchu.org/docs/comparison/)
+  * [collection](https://fumanchu.org/docs/collection/)
+  * [date](https://fumanchu.org/docs/date/)
+  * [fs](https://fumanchu.org/docs/fs/)
+  * [html](https://fumanchu.org/docs/html/)
+  * [i18n](https://fumanchu.org/docs/i18n/)
+  * [inflection](https://fumanchu.org/docs/inflection/)
   * [logging](https://github.com/jonathas/logging-helpers)
-  * [markdown](https://fumanchu.org/docs/helpers/markdown/)
-  * [match](https://fumanchu.org/docs/helpers/match/)
-  * [math](https://fumanchu.org/docs/helpers/math/)
-  * [misc](https://fumanchu.org/docs/helpers/misc/)
-  * [number](https://fumanchu.org/docs/helpers/number/)
-  * [object](https://fumanchu.org/docs/helpers/object/)
-  * [path](https://fumanchu.org/docs/helpers/path/)
-  * [regex](https://fumanchu.org/docs/helpers/regex/)
-  * [string](https://fumanchu.org/docs/helpers/string/)
-  * [url](https://fumanchu.org/docs/helpers/url/)
-  * [utils](https://fumanchu.org/docs/helpers/utils/)
+  * [markdown](https://fumanchu.org/docs/markdown/)
+  * [match](https://fumanchu.org/docs/match/)
+  * [math](https://fumanchu.org/docs/math/)
+  * [misc](https://fumanchu.org/docs/misc/)
+  * [number](https://fumanchu.org/docs/number/)
+  * [object](https://fumanchu.org/docs/object/)
+  * [path](https://fumanchu.org/docs/path/)
+  * [regex](https://fumanchu.org/docs/regex/)
+  * [string](https://fumanchu.org/docs/string/)
+  * [url](https://fumanchu.org/docs/url/)
+  * [utils](https://fumanchu.org/docs/utils/)
 * [How to Contribute](#how-to-contribute)
 * [License and Copyright](#license-and-copyright)
 
@@ -110,13 +111,6 @@ registry.load(hbs, { names: ['if']}); // Load the helpers into Handlebars
 ```
 
 In addition, we have made the helper functions have a compatibility such as `HelperRegistryCompatibility.NODEJS` or `HelperRegistryCompatibility.BROWSER`. This will allow you to filter out based on your environment!
-
-# Migrating from v3 to v4
-
-We have made some breaking changes in v4:
-* We no longer support the legacy helpers that were in this project as we have migrated to a new helper system.
-* `createHandlebars` is now deprecated in favor of just using `fumanchu()` and no more needing async.
-* The `FumanchuOptions` has been changed on filtering and also now fully supported with `fumanchu()`
 
 ## How to Contribute
 Clone the repository locally refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.

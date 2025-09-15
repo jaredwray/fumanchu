@@ -2,8 +2,7 @@
 title: Date Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with dates. These helpers are used to format and manipulate dates, making it easier to display date information in a readable format.
-order: 5
-parent: helpers
+order: 10
 ---
 
 ## date

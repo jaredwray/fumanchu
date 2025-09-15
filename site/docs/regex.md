@@ -2,8 +2,7 @@
 title: Regex Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with regular expressions. These helpers are used to manipulate and format strings using regex patterns, making it easier to work with complex string matching in templates.
-order: 17
-parent: helpers
+order: 22
 ---
 
 ## regex

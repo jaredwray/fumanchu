@@ -2,8 +2,7 @@
 title: Utils Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with utility functions. These helpers are used to manipulate and format data, making it easier to work with complex data structures in templates.
-order: 20
-parent: helpers
+order: 25
 ---
 
 ## Utils

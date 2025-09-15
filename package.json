@@ -21,9 +21,9 @@
     "test:ci": "pnpm lint:ci && vitest run --coverage",
     "build": "rimraf ./dist && tsup ./src/index.ts --format cjs,esm --dts --clean",
     "prepare": "pnpm build",
-    "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./dist-site",
-    "website:build": "rimraf ./site/readme.md && npx -y docula build -s ./site -o ./dist-site",
-    "website:serve": "rimraf ./site/readme.md && npx -y docula serve -s ./site -o ./dist-site"
+    "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./site/dist",
+    "website:build": "rimraf ./site/readme.md && npx -y docula build -o ./site/dist",
+    "website:serve": "rimraf ./site/readme.md && npx -y docula serve -o ./site/dist"
   },
   "keywords": [
     "array",
@@ -91,7 +91,7 @@
     "@types/node": "^24.2.1",
     "@types/remarkable": "^2.0.8",
     "@vitest/coverage-v8": "^3.2.4",
-    "docula": "^0.13.1",
+    "docula": "^0.20.0",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",

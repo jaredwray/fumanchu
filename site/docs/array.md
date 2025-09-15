@@ -3,8 +3,7 @@ title: Array Helpers
 description: >
   Handlebars provides a set of built-in helpers for working with arrays.
   These helpers allow you to iterate over arrays, check their length, and perform other common operations.
-order: 1
-parent: helpers
+order: 5
 ---
 
 Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/array.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/array.js)
