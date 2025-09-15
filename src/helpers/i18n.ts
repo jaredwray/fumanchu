@@ -1,6 +1,7 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any
-import get from "get-value";
+
 import type { Helper } from "../helper-registry.js";
+import { get } from "../utils.js";
 
 const i18n = function (
 	this: any,
