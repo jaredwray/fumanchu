@@ -1,8 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
-// @ts-expect-error
-import getObject from "get-object";
 import type { Helper } from "../helper-registry.js";
-import { get } from "../utils.js";
+import { get, getObject } from "../utils.js";
 import { arrayify } from "./array.js";
 
 const isOptions = (value: any): value is { hash: Record<string, any> } => {
