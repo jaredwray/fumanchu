@@ -108,7 +108,7 @@ const ifNth = (a: any, b: any): boolean =>
 const ifOdd = (val: any): boolean =>
 	typeof val === "number" && Math.abs(val % 2) === 1;
 
-const is = (a: any, b: any): boolean => a == b; 
+const is = (a: any, b: any): boolean => a == b;
 
 const isnt = (a: any, b: any): boolean => a != b;
 
