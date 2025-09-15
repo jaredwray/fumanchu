@@ -185,4 +185,14 @@ describe("getObject", () => {
 		const obj = { a: { b: "value" } };
 		expect(getObject(obj, "a.c")).toBeUndefined();
 	});
+
+	it("returns undefined when intermediate value becomes null during navigation", () => {
+		const obj = { a: null };
+		expect(getObject(obj, "a.b.c")).toBeUndefined();
+	});
+
+	it("returns undefined when intermediate value becomes non-object during navigation", () => {
+		const obj = { a: "string" };
+		expect(getObject(obj, "a.b.c")).toBeUndefined();
+	});
 });
