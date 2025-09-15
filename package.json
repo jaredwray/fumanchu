@@ -66,7 +66,6 @@
     "chrono-node": "2.8.4",
     "dayjs": "^1.11.18",
     "ent": "^2.2.2",
-    "get-object": "^0.2.0",
     "handlebars": "^4.7.8",
     "handlebars-helper-create-frame": "^0.1.0",
     "handlebars-utils": "^1.0.6",
