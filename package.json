@@ -19,7 +19,7 @@
     "lint:ci": "biome check --error-on-warnings",
     "test": "pnpm lint && vitest run --coverage",
     "test:ci": "pnpm lint:ci && vitest run --coverage",
-    "build": "rimraf ./dist && tsup ./src/index.ts --format cjs,esm --dts --clean",
+    "build": "rimraf ./dist && tsup ./src/index.ts --format cjs,esm --dts --clean --minify",
     "prepare": "pnpm build",
     "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./site/dist",
     "website:build": "rimraf ./site/readme.md && npx -y docula build -o ./site/dist",
