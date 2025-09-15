@@ -1,20 +1,7 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any
-// Native implementation to replace get-value
-const get = (object: any, path: string | string[]): any => {
-	if (!object || typeof object !== "object") return undefined;
-
-	const keys = Array.isArray(path) ? path : path.split(".");
-	let result = object;
-
-	for (const key of keys) {
-		if (result == null || typeof result !== "object") return undefined;
-		result = result[key];
-	}
-
-	return result;
-};
 
 import type { Helper } from "../helper-registry.js";
+import { get } from "../utils.js";
 
 const i18n = function (
 	this: any,
