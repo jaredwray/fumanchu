@@ -2,8 +2,7 @@
 title: Number Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with numbers. These helpers are used to format and manipulate numbers, making it easier to display numerical information in a readable format.
-order: 14
-parent: helpers
+order: 19
 ---
 
 ## number

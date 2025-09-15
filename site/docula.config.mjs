@@ -10,9 +10,6 @@ export const options = {
 	siteTitle: 'Fumanchu',
 	siteDescription: 'Handlebars + Helpers Together',
 	siteUrl: 'https://fumanchu.org',
-	sections: [
-		{ name: 'Legacy Helpers', path: 'legacy-helpers', order: 3 },
-	],
 };
 
 export const onPrepare = async config => {

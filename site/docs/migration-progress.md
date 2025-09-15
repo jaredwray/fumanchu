@@ -10,7 +10,7 @@ order: 2
 We are working to migrate all legacy helpers to a modern helper approach with less reliance on node modules. We plan to make significant changes over time with this project such as the following:
 - ✅ Remove all dependencies on `handlebars-helpers` and maintain all helpers in this project
 - ✅ Migration to `vitest` as a testing framework
-- ✅ Migration to `xo` as a linting framework
+- ✅ Migration to `biomejs` as a linting framework
 - ✅ Migrate to Typescript with full typing support
 - ✅ Replace module dependencies that are ✅ longer supported with supported ones. Please see the [Legacy Helper Migration Status to Fumanchu Helper Registry](#legacy-helper-migration-status-to-fumanchu-helper-registry) table below for more information.
 - Migration to ESM and CJS support using cross compatible code

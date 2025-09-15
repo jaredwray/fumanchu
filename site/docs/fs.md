@@ -2,8 +2,7 @@
 title: File System Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with the file system. These helpers are used to read and manipulate files, making it easier to work with file data in templates.
-order: 6
-parent: helpers
+order: 11
 ---
 
 ## fs

@@ -2,8 +2,7 @@
 title: String Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with strings. These helpers are used to manipulate and format strings, making it easier to work with text in templates.
-order: 18
-parent: helpers
+order: 23
 ---
 
 ## string

@@ -2,8 +2,7 @@
 title: Path Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with file paths. These helpers are used to manipulate and format file paths, making it easier to work with files in templates.
-order: 16
-parent: helpers
+order: 21
 ---
 
 ## path

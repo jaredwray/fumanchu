@@ -2,8 +2,7 @@
 title: Object Helpers
 description: >
     Handlebars provides a set of built-in helpers for working with objects. These helpers are used to manipulate and format objects, making it easier to work with complex data structures in templates.
-order: 15
-parent: helpers
+order: 20
 ---
 
 ## object
