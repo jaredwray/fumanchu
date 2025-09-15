@@ -6,11 +6,11 @@ const and = (...values: any[]): boolean => values.every(Boolean);
 const compare = (a: any, operator: string, b: any): boolean => {
 	switch (operator) {
 		case "==":
-			return a == b; // eslint-disable-line eqeqeq
+			return a == b;
 		case "===":
 			return a === b;
 		case "!=":
-			return a != b; // eslint-disable-line eqeqeq
+			return a != b;
 		case "!==":
 			return a !== b;
 		case "<":
@@ -108,9 +108,9 @@ const ifNth = (a: any, b: any): boolean =>
 const ifOdd = (val: any): boolean =>
 	typeof val === "number" && Math.abs(val % 2) === 1;
 
-const is = (a: any, b: any): boolean => a == b; // eslint-disable-line eqeqeq
+const is = (a: any, b: any): boolean => a == b; 
 
-const isnt = (a: any, b: any): boolean => a != b; // eslint-disable-line eqeqeq
+const isnt = (a: any, b: any): boolean => a != b;
 
 const lt = (a: any, b: any): boolean => a < b;
 
