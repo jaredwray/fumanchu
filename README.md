@@ -15,7 +15,8 @@ Handlebars + Helpers Together
 # Table of Contents
 * [Using in Nodejs](#using-in-nodejs)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
-* [Migrating from v3 to v4](#migrating-from-v3-to-v4)
+* [Migrating from v2 to v3](https://fumanchu.org/docs/v2-to-v3/)
+* [Migrating from v3 to v4](https://fumanchu.org/docs/v3-to-v4/)
 * [Helpers](https://fumanchu.org/docs/)
   * [array](https://fumanchu.org/docs/array/)
   * [code](https://fumanchu.org/docs/code/)
@@ -110,13 +111,6 @@ registry.load(hbs, { names: ['if']}); // Load the helpers into Handlebars
 ```
 
 In addition, we have made the helper functions have a compatibility such as `HelperRegistryCompatibility.NODEJS` or `HelperRegistryCompatibility.BROWSER`. This will allow you to filter out based on your environment!
-
-# Migrating from v3 to v4
-
-We have made some breaking changes in v4:
-* We no longer support the legacy helpers that were in this project as we have migrated to a new helper system.
-* `createHandlebars` is now deprecated in favor of just using `fumanchu()` and no more needing async.
-* The `FumanchuOptions` has been changed on filtering and also now fully supported with `fumanchu()`
 
 ## How to Contribute
 Clone the repository locally refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.

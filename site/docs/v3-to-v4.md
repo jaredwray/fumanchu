@@ -9,6 +9,7 @@ order: 4
 
 We are now fully migrated 🎉 and all helpers are in typescript and working correctly
 
-- `fumanchu` should be used as the primary way to do things now as `createHandlebars` is now deprecated!
-- `FumanchuOptions` now enables you to do filtering
+- We no longer support the legacy helpers that were in this project as we have migrated to a new helper system.
+- `createHandlebars` is now deprecated in favor of just using `fumanchu()` and no more needing async.
+- The `FumanchuOptions` has been changed on filtering and also now fully supported with `fumanchu()`
 - Caching is now enabled by default! 🚀
