@@ -64,7 +64,7 @@
   ],
   "dependencies": {
     "chrono-node": "2.8.4",
-    "dayjs": "^1.11.13",
+    "dayjs": "^1.11.18",
     "ent": "^2.2.2",
     "get-object": "^0.2.0",
     "get-value": "^4.0.1",
