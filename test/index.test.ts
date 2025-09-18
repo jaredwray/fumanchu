@@ -1,3 +1,4 @@
+import Handlebars from "handlebars";
 import { describe, expect, test } from "vitest";
 import {
 	createHandlebars,
@@ -56,10 +57,32 @@ describe("fumanchu", () => {
 		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
 
+	test("fumanchu should include existing partials", () => {
+		Handlebars.registerPartial("fumanchuPartial", "Hello {{name}}");
+		try {
+			const instance = fumanchu();
+			const template = instance.compile("{{> fumanchuPartial}}");
+			expect(template({ name: "World" })).toBe("Hello World");
+		} finally {
+			Handlebars.unregisterPartial("fumanchuPartial");
+		}
+	});
+
 	test("should be able to do markdown", async () => {
 		const handlebars = await createHandlebars();
 		expect(handlebars).toBeDefined();
 		const result = handlebars.compile('{{md "# Hello World"}}');
 		expect(result({})).toBe("<h1>Hello World</h1>\n");
+	});
+
+	test("createHandlebars should include existing partials", async () => {
+		Handlebars.registerPartial("fumanchuCreatePartial", "Hi {{name}}");
+		try {
+			const instance = await createHandlebars();
+			const template = instance.compile("{{> fumanchuCreatePartial}}");
+			expect(template({ name: "World" })).toBe("Hi World");
+		} finally {
+			Handlebars.unregisterPartial("fumanchuCreatePartial");
+		}
 	});
 });
