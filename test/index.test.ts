@@ -57,6 +57,18 @@ describe("fumanchu", () => {
 		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
 
+	test("registers helpers when using hbs alias", () => {
+		const hbs = Handlebars.create();
+
+		expect(hbs.helpers.year).toBeUndefined();
+
+		helpers({ hbs });
+
+		expect(typeof hbs.helpers.year).toBe("function");
+		const template = hbs.compile("{{year}}");
+		expect(template({})).toBe(new Date().getFullYear().toString());
+	});
+
 	test("fumanchu should include existing partials", () => {
 		Handlebars.registerPartial("fumanchuPartial", "Hello {{name}}");
 		try {

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { ForEachOptions } from "../../src/helpers/array.js";
 import { helpers } from "../../src/helpers/array.js";
 
 type HelperFn = (...args: unknown[]) => unknown;
@@ -91,5 +92,267 @@ describe("join", () => {
 	});
 	it("returns empty string for non-string/non-array", () => {
 		expect(joinFn(123)).toBe("");
+	});
+});
+
+describe("forEach", () => {
+	type ForEachHelper = (
+		this: unknown,
+		collection: unknown,
+		options?: ForEachOptions<Record<string, unknown>>,
+	) => string;
+
+	const forEachFn = getHelper("forEach") as ForEachHelper;
+
+	it("iterates arrays and exposes metadata", () => {
+		const accounts = [
+			{ name: "John", email: "john@example.com" },
+			{ name: "Malcolm", email: "malcolm@example.com" },
+			{ name: "David", email: "david@example.com" },
+		];
+
+		const contexts: Array<Record<string, unknown>> = [];
+
+		const result = forEachFn.call({ company: "Initech" }, accounts, {
+			hash: { company: "Initech" },
+			data: { root: { description: "accounts" } },
+			fn(context) {
+				const account = context as {
+					name: string;
+					email: string;
+					index: number;
+					total: number;
+					isFirst: boolean;
+					isLast: boolean;
+					company: string;
+				};
+
+				contexts.push({
+					name: account.name,
+					email: account.email,
+					index: account.index,
+					total: account.total,
+					isFirst: account.isFirst,
+					isLast: account.isLast,
+					company: account.company,
+				});
+				return account.name;
+			},
+		});
+
+		expect(result).toBe("JohnMalcolmDavid");
+		expect(contexts).toEqual([
+			{
+				name: "John",
+				email: "john@example.com",
+				index: 0,
+				total: 3,
+				isFirst: true,
+				isLast: false,
+				company: "Initech",
+			},
+			{
+				name: "Malcolm",
+				email: "malcolm@example.com",
+				index: 1,
+				total: 3,
+				isFirst: false,
+				isLast: false,
+				company: "Initech",
+			},
+			{
+				name: "David",
+				email: "david@example.com",
+				index: 2,
+				total: 3,
+				isFirst: false,
+				isLast: true,
+				company: "Initech",
+			},
+		]);
+	});
+
+	it("provides private data frame values", () => {
+		const indexes: Array<number | undefined> = [];
+		const totals: Array<number | undefined> = [];
+		const extras: Array<string | undefined> = [];
+
+		forEachFn.call({}, ["alpha", "beta"], {
+			hash: { extra: "value" },
+			data: { root: { type: "strings" } },
+			fn: (_context, frame) => {
+				indexes.push(frame?.data?.index as number | undefined);
+				totals.push(frame?.data?.total as number | undefined);
+				extras.push(frame?.data?.extra as string | undefined);
+				return "";
+			},
+		});
+
+		expect(indexes).toEqual([0, 1]);
+		expect(totals).toEqual([2, 2]);
+		expect(extras).toEqual(["value", "value"]);
+	});
+
+	it("renders inverse block when collection is missing or empty", () => {
+		let inverseContext: unknown;
+		const inverseResult = forEachFn.call({ foo: "bar" }, undefined, {
+			inverse(context?: unknown) {
+				inverseContext = context;
+				return "inverse";
+			},
+		});
+
+		expect(inverseResult).toBe("inverse");
+		expect(inverseContext).toEqual({ foo: "bar" });
+
+		const fallbackResult = forEachFn.call({}, undefined, {
+			inverse() {
+				return undefined;
+			},
+		});
+
+		expect(fallbackResult).toBe("");
+
+		let fnCalled = false;
+		const emptyResult = forEachFn.call({}, [], {
+			fn() {
+				fnCalled = true;
+				return "";
+			},
+			inverse() {
+				return "empty";
+			},
+		});
+
+		expect(emptyResult).toBe("empty");
+		expect(fnCalled).toBe(false);
+
+		const emptyFallback = forEachFn.call({}, [], {
+			fn() {
+				throw new Error("should not run");
+			},
+			inverse() {
+				return undefined;
+			},
+		});
+
+		expect(emptyFallback).toBe("");
+	});
+
+	it("returns empty string for empty arrays without inverse", () => {
+		let executions = 0;
+		const result = forEachFn.call({}, [], {
+			fn() {
+				executions += 1;
+				return "should not render";
+			},
+		});
+
+		expect(result).toBe("");
+		expect(executions).toBe(0);
+	});
+
+	it("returns empty string for non-arrays without inverse", () => {
+		let fnCalls = 0;
+		const output = forEachFn.call(
+			{},
+			{ not: "array" },
+			{
+				fn() {
+					fnCalls += 1;
+					return "should not run";
+				},
+			},
+		);
+
+		expect(output).toBe("");
+		expect(fnCalls).toBe(0);
+	});
+
+	it("propagates metadata when hash and data are omitted", () => {
+		const contexts: Array<Record<string, unknown>> = [];
+		const frames: Array<Record<string, unknown> | undefined> = [];
+
+		const output = forEachFn.call({}, ["x", "y"], {
+			fn(context, frame) {
+				contexts.push({ ...context } as Record<string, unknown>);
+				frames.push(frame?.data);
+				return context.value as string;
+			},
+		});
+
+		expect(output).toBe("xy");
+		expect(contexts).toEqual([
+			{
+				value: "x",
+				index: 0,
+				total: 2,
+				isFirst: true,
+				isLast: false,
+			},
+			{
+				value: "y",
+				index: 1,
+				total: 2,
+				isFirst: false,
+				isLast: true,
+			},
+		]);
+		expect(frames).toEqual([
+			{
+				index: 0,
+				total: 2,
+				isFirst: true,
+				isLast: false,
+			},
+			{
+				index: 1,
+				total: 2,
+				isFirst: false,
+				isLast: true,
+			},
+		]);
+	});
+
+	it("falls back to Object.prototype when wrapper is not an object", () => {
+		const sentinel = Symbol("sentinel");
+		const originalObject = globalThis.Object;
+		const mockedObject = new Proxy(originalObject, {
+			apply(target, thisArg, argArray) {
+				const [value] = argArray;
+				if (value === sentinel) {
+					return 0 as never;
+				}
+				return Reflect.apply(target, thisArg, argArray);
+			},
+			construct(target, argArray, newTarget) {
+				return Reflect.construct(target, argArray, newTarget);
+			},
+			get(target, property, receiver) {
+				return Reflect.get(target, property, receiver);
+			},
+			set(target, property, value, receiver) {
+				return Reflect.set(target, property, value, receiver);
+			},
+		}) as typeof Object;
+
+		globalThis.Object = mockedObject;
+
+		const contexts: Array<Record<string, unknown>> = [];
+		try {
+			forEachFn.call({}, [sentinel], {
+				fn(context) {
+					contexts.push(context as Record<string, unknown>);
+					return "";
+				},
+			});
+		} finally {
+			globalThis.Object = originalObject;
+		}
+
+		expect(contexts).toHaveLength(1);
+		const context = contexts[0];
+		expect(context.value).toBe(sentinel);
+		expect(Object.getPrototypeOf(context)).toBe(Object.prototype);
 	});
 });
