@@ -38,6 +38,9 @@ export function helpers(options: HelpersOptions) {
 export async function createHandlebars() {
 	const registry = new HelperRegistry();
 	const handlebars = HandlebarsLib.create();
+	if (Object.keys(HandlebarsLib.partials).length > 0) {
+		handlebars.registerPartial(HandlebarsLib.partials);
+	}
 	registry.load(handlebars);
 
 	/* c8 ignore start */
@@ -83,6 +86,8 @@ export function fumanchu(options?: FumanchuOptions) {
 	let handlebars = HandlebarsLib.create();
 	if (options?.handlebars) {
 		handlebars = options.handlebars;
+	} else if (Object.keys(HandlebarsLib.partials).length > 0) {
+		handlebars.registerPartial(HandlebarsLib.partials);
 	}
 	registry.load(handlebars);
 	return handlebars;
