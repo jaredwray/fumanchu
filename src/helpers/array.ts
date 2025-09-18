@@ -1,5 +1,12 @@
 import type { Helper } from "../helper-registry.js";
 
+type ForEachOptions<T> = {
+	fn?: (context: T, frame?: { data: Record<string, unknown> }) => string;
+	inverse?: (context?: unknown) => string;
+	hash?: Record<string, unknown>;
+	data?: Record<string, unknown>;
+};
+
 const after = <T>(array: unknown, n: number): T[] => {
 	if (!Array.isArray(array)) return [];
 	return array.slice(n);
@@ -57,6 +64,72 @@ const join = (array: unknown, separator = ", "): string => {
 	return array.join(separator);
 };
 
+const createContext = (value: unknown): Record<string, unknown> => {
+	if (
+		value != null &&
+		(typeof value === "object" || typeof value === "function")
+	) {
+		return Object.create(value) as Record<string, unknown>;
+	}
+
+	const wrapper = Object(value);
+	const context = Object.create(
+		wrapper && typeof wrapper === "object" ? wrapper : Object.prototype,
+	) as Record<string, unknown>;
+
+	if (typeof value !== "object" || value === null) {
+		context.value = value as unknown;
+	}
+
+	return context;
+};
+
+const forEach = function <T>(
+	this: unknown,
+	collection: unknown,
+	options?: ForEachOptions<Record<string, unknown>>,
+): string {
+	if (
+		!Array.isArray(collection) ||
+		!options ||
+		typeof options.fn !== "function"
+	) {
+		return options?.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	if (collection.length === 0) {
+		return options.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	const total = collection.length;
+	const hash = options.hash ?? {};
+	const baseData = options.data ? { ...options.data } : undefined;
+	let result = "";
+
+	for (let index = 0; index < total; index++) {
+		const value = collection[index];
+		const meta = {
+			index,
+			total,
+			isFirst: index === 0,
+			isLast: index === total - 1,
+		} satisfies Record<string, unknown>;
+
+		const data = {
+			...(baseData ? { ...baseData } : {}),
+			...hash,
+			...meta,
+		} satisfies Record<string, unknown>;
+
+		const context = createContext(value);
+		Object.assign(context, hash, meta);
+
+		result += options.fn(context as T, { data });
+	}
+
+	return result;
+};
+
 export const helpers: Helper[] = [
 	{
 		name: "after",
@@ -100,6 +173,13 @@ export const helpers: Helper[] = [
 		compatibility: ["browser", "nodejs"],
 		fn: join,
 	},
+	{
+		name: "forEach",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: forEach as Helper["fn"],
+	},
 ];
 
-export { after, before, arrayify, first, last, length, join };
+export { after, before, arrayify, first, last, length, join, forEach };
+export type { ForEachOptions };
