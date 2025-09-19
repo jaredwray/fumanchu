@@ -64,28 +64,6 @@ const join = (array: unknown, separator = ", "): string => {
 	return array.join(separator);
 };
 
-const createContext = (value: unknown): Record<string, unknown> => {
-	if (
-		value != null &&
-		(typeof value === "object" || typeof value === "function")
-	) {
-		return Object.create(value) as Record<string, unknown>;
-	}
-
-	const wrapper = Object(value);
-	const context = Object.create(
-		wrapper && typeof wrapper === "object" ? wrapper : Object.prototype,
-	) as Record<string, unknown>;
-
-	// Values reaching this branch are primitives or null, so the assignment always runs.
-	/* c8 ignore next */
-	if (typeof value !== "object" || value === null) {
-		context.value = value as unknown;
-	}
-
-	return context;
-};
-
 const forEach = function <T>(
 	this: unknown,
 	collection: unknown,
@@ -123,8 +101,16 @@ const forEach = function <T>(
 			...meta,
 		} satisfies Record<string, unknown>;
 
-		const context = createContext(value);
-		Object.assign(context, hash, meta);
+		// For objects and arrays, create a shallow copy with metadata
+		// For primitives, create a wrapper object with the value and metadata
+		let context: Record<string, unknown>;
+		if (value != null && typeof value === "object") {
+			// Create a plain object with all properties from value and metadata
+			context = { ...value, ...hash, ...meta };
+		} else {
+			// For primitives, create a wrapper with value property
+			context = { value, ...hash, ...meta };
+		}
 
 		result += options.fn(context as T, { data });
 	}

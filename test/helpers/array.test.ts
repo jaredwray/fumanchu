@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { ForEachOptions } from "../../src/helpers/array.js";
 import { helpers } from "../../src/helpers/array.js";
+import { fumanchu } from "../../src/index.js";
 
 type HelperFn = (...args: unknown[]) => unknown;
 
@@ -314,45 +315,94 @@ describe("forEach", () => {
 		]);
 	});
 
-	it("falls back to Object.prototype when wrapper is not an object", () => {
+	it("handles symbols and other primitive types", () => {
 		const sentinel = Symbol("sentinel");
-		const originalObject = globalThis.Object;
-		const mockedObject = new Proxy(originalObject, {
-			apply(target, thisArg, argArray) {
-				const [value] = argArray;
-				if (value === sentinel) {
-					return 0 as never;
-				}
-				return Reflect.apply(target, thisArg, argArray);
-			},
-			construct(target, argArray, newTarget) {
-				return Reflect.construct(target, argArray, newTarget);
-			},
-			get(target, property, receiver) {
-				return Reflect.get(target, property, receiver);
-			},
-			set(target, property, value, receiver) {
-				return Reflect.set(target, property, value, receiver);
-			},
-		}) as typeof Object;
-
-		globalThis.Object = mockedObject;
-
 		const contexts: Array<Record<string, unknown>> = [];
-		try {
-			forEachFn.call({}, [sentinel], {
-				fn(context) {
-					contexts.push(context as Record<string, unknown>);
-					return "";
-				},
-			});
-		} finally {
-			globalThis.Object = originalObject;
-		}
 
-		expect(contexts).toHaveLength(1);
-		const context = contexts[0];
-		expect(context.value).toBe(sentinel);
-		expect(Object.getPrototypeOf(context)).toBe(Object.prototype);
+		forEachFn.call({}, [sentinel, 123, "test", true, null, undefined], {
+			fn(context) {
+				contexts.push(context as Record<string, unknown>);
+				return "";
+			},
+		});
+
+		expect(contexts).toHaveLength(6);
+		expect(contexts[0].value).toBe(sentinel);
+		expect(contexts[0].index).toBe(0);
+		expect(contexts[0].isFirst).toBe(true);
+
+		expect(contexts[1].value).toBe(123);
+		expect(contexts[2].value).toBe("test");
+		expect(contexts[3].value).toBe(true);
+		expect(contexts[4].value).toBe(null);
+		expect(contexts[5].value).toBe(undefined);
+		expect(contexts[5].isLast).toBe(true);
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#forEach items}}" +
+				"{{#if isFirst}}First: {{/if}}" +
+				"{{#if isLast}}Last: {{/if}}" +
+				"Item {{index}}: {{name}} ({{email}})" +
+				"{{#unless isLast}}, {{/unless}}" +
+				"{{/forEach}}",
+		);
+
+		const data = {
+			items: [
+				{ name: "Alice", email: "alice@example.com" },
+				{ name: "Bob", email: "bob@example.com" },
+				{ name: "Charlie", email: "charlie@example.com" },
+			],
+		};
+
+		const result = template(data);
+		expect(result).toBe(
+			"First: Item 0: Alice (alice@example.com), " +
+				"Item 1: Bob (bob@example.com), " +
+				"Last: Item 2: Charlie (charlie@example.com)",
+		);
+	});
+
+	it("works with Handlebars markup template using else block", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#forEach items}}" +
+				"- {{title}}" +
+				"{{else}}" +
+				"No items found" +
+				"{{/forEach}}",
+		);
+
+		const withItems = template({
+			items: [{ title: "Task 1" }, { title: "Task 2" }],
+		});
+		expect(withItems).toBe("- Task 1- Task 2");
+
+		const withoutItems = template({ items: [] });
+		expect(withoutItems).toBe("No items found");
+
+		const withNull = template({ items: null });
+		expect(withNull).toBe("No items found");
+	});
+
+	it("works with Handlebars markup template with primitive values", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#forEach items}}" +
+				"{{#if isFirst}}[{{/if}}" +
+				"{{value}}" +
+				"{{#if isLast}}]{{else}}, {{/if}}" +
+				"{{/forEach}}",
+		);
+
+		const data = {
+			items: ["apple", "banana", "cherry"],
+		};
+
+		const result = template(data);
+		expect(result).toBe("[apple, banana, cherry]");
 	});
 });
