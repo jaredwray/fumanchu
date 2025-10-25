@@ -1,14 +1,39 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
 
-// @ts-expect-error
-import createFrame from "handlebars-helper-create-frame";
+import Handlebars from "handlebars";
 // @ts-expect-error
 import util from "handlebars-utils";
 import kindOf from "kind-of";
 import type { Helper } from "../helper-registry.js";
 import { get } from "../utils.js";
 
-const frame = createFrame as (this: any, ...args: any[]) => any;
+/**
+ * Block helper for exposing private `@` variables on the context
+ * Replaces the external handlebars-helper-create-frame package
+ */
+function frame(this: any, context: any, options: any): any {
+	// Handle parameter reassignment if context is an object with a hash property
+	if (typeof context === "object" && context !== null && "hash" in context) {
+		options = context;
+		context = options.data;
+	}
+
+	// Create a new frame using Handlebars' built-in createFrame
+	const data = Handlebars.createFrame(context || {});
+
+	// Ensure options is an object
+	if (typeof options !== "object" || options === null) {
+		options = {};
+	}
+
+	// Extend the frame with hash arguments
+	if (options.hash && typeof options.hash === "object") {
+		Object.assign(data, options.hash);
+	}
+
+	// Execute the block function with the frame data
+	return options.fn(this, { data });
+}
 
 function option(this: any, prop: string, locals?: any, options?: any): any {
 	return get(util.options(this, locals, options), prop);
