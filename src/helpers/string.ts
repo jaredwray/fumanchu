@@ -13,7 +13,7 @@ const append = (str: unknown, suffix: unknown): string | unknown => {
 	if (typeof str === "string" && typeof suffix === "string") {
 		return str + suffix;
 	}
-	return str as string;
+	return str;
 };
 
 const camelcase = (str: unknown): string =>
@@ -88,7 +88,7 @@ const lowercase = (str: unknown): string => {
 	return str.toLowerCase();
 };
 
-const downcase = (...args: unknown[]): string => lowercase(...args);
+const downcase = (str: unknown): string => lowercase(str);
 
 const occurrences = (str: unknown, substring: string): number | string => {
 	if (typeof str !== "string") return "";
@@ -120,7 +120,7 @@ const plusify = (str: unknown, ch?: string): string => {
 const prepend = (str: unknown, prefix: unknown): string | unknown => {
 	return typeof str === "string" && typeof prefix === "string"
 		? prefix + str
-		: (str as unknown);
+		: str;
 };
 
 const remove = (str: unknown, ch: unknown): string => {
@@ -213,7 +213,7 @@ const uppercase = (str: unknown): string => {
 	return str.toUpperCase();
 };
 
-const upcase = (...args: unknown[]): string => uppercase(...args);
+const upcase = (str: unknown): string => uppercase(str);
 
 export const helpers: Helper[] = [
 	{
