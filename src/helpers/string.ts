@@ -88,7 +88,7 @@ const lowercase = (str: unknown): string => {
 	return str.toLowerCase();
 };
 
-const downcase = (...args: unknown[]): string => lowercase(...args);
+const downcase = (str: unknown): string => lowercase(str);
 
 const occurrences = (str: unknown, substring: string): number | string => {
 	if (typeof str !== "string") return "";
@@ -213,7 +213,7 @@ const uppercase = (str: unknown): string => {
 	return str.toUpperCase();
 };
 
-const upcase = (...args: unknown[]): string => uppercase(...args);
+const upcase = (str: unknown): string => uppercase(str);
 
 export const helpers: Helper[] = [
 	{
