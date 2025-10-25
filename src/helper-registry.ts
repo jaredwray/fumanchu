@@ -33,6 +33,8 @@ export type Helper = {
 	fn:
 		| ((...arguments_: any[]) => string)
 		| ((...arguments_: any[]) => number)
+		| ((...arguments_: any[]) => boolean)
+		| ((...arguments_: any[]) => unknown)
 		| ((...arguments_: any[]) => number | string)
 		| ((...arguments_: any[]) => Handlebars.SafeString);
 };
