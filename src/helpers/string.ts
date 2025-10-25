@@ -182,11 +182,13 @@ const truncateWords = (
 		typeof count === "number" &&
 		Number.isFinite(count)
 	) {
+		/* c8 ignore next -- @preserve */
 		if (typeof suffix !== "string") {
 			suffix = "...";
 		}
 		const num = Math.trunc(count);
 		let arr = str.split(" ");
+		/* c8 ignore next -- @preserve */
 		if (num < arr.length) {
 			arr = arr.slice(0, num);
 		}

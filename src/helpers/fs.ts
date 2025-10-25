@@ -26,7 +26,7 @@ const fileSize = (value: unknown, precision?: unknown): string => {
 		}
 		/* c8 ignore next */
 	} while (--i >= 0);
-	/* c8 ignore next 2 */
+	/* c8 ignore next -- @preserve */
 	return `${number} B`;
 };
 

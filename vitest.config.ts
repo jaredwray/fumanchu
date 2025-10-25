@@ -6,7 +6,6 @@ export default defineConfig({
 			reporter: ['lcov', 'text'],
 			exclude: [
 				'**/node_modules/**',
-				'helpers/**',
 				'vitest.config.ts',
 				'site/**',
 				'dist/**',

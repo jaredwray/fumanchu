@@ -42,14 +42,12 @@ export async function createHandlebars() {
 		handlebars.registerPartial(HandlebarsLib.partials);
 	}
 	registry.load(handlebars);
-
-	/* c8 ignore start */
+	/* c8 ignore next -- @preserve */
 	if (process.env.NODE_ENV === "development") {
 		console.warn(
 			"createHandlebars will be deprecated in future versions, use `fumanchu` instead.",
 		);
 	}
-	/* c8 ignore end */
 
 	return handlebars;
 }
@@ -84,6 +82,7 @@ export type FumanchuOptions = {
 export function fumanchu(options?: FumanchuOptions) {
 	const registry = new HelperRegistry();
 	let handlebars = HandlebarsLib.create();
+	/* c8 ignore next -- @preserve */
 	if (options?.handlebars) {
 		handlebars = options.handlebars;
 	} else if (Object.keys(HandlebarsLib.partials).length > 0) {
