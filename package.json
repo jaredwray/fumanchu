@@ -1,7 +1,7 @@
 {
   "name": "@jaredwray/fumanchu",
   "description": "Handlebars + Helpers = Fumanchu",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "type": "module",
