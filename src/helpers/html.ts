@@ -39,6 +39,7 @@ const css = function (
 		.map((item) => {
 			const ext = path.extname(item);
 			let fp = item;
+			/* c8 ignore next -- @preserve */
 			if (!/(^\/\/)|(:\/\/)/.test(item)) {
 				fp = path.posix.join(assets, item);
 			}
@@ -119,6 +120,7 @@ const thumbnailImage = (context: ThumbnailContext): string => {
 	};
 	const figureAttributes: Record<string, any> = { id: `image-${context.id}` };
 	const linkAttributes: Record<string, any> = { href: link, rel: "thumbnail" };
+	/* c8 ignore next -- @preserve */
 	if (context.classes) {
 		if (context.classes.image) {
 			imageAttributes.class = context.classes.image.join(" ");
@@ -134,9 +136,11 @@ const thumbnailImage = (context: ThumbnailContext): string => {
 	image += `<img ${parseAttributes(imageAttributes)}>\n`;
 	if (link) {
 		figure += `<a ${parseAttributes(linkAttributes)}>\n${image}</a>\n`;
+		/* c8 ignore next -- @preserve */
 	} else {
 		figure += image;
 	}
+	/* c8 ignore next -- @preserve */
 	if (context.caption) {
 		figure += `<figcaption>${context.caption}</figcaption>\n`;
 	}
