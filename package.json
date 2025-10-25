@@ -63,7 +63,7 @@
     "license"
   ],
   "dependencies": {
-    "chrono-node": "2.8.4",
+    "chrono-node": "2.9.0",
     "dayjs": "^1.11.18",
     "ent": "^2.2.2",
     "handlebars": "^4.7.8",
