@@ -67,7 +67,6 @@
     "dayjs": "^1.11.18",
     "ent": "^2.2.2",
     "handlebars": "^4.7.8",
-    "handlebars-helper-create-frame": "^0.1.0",
     "handlebars-utils": "^1.0.6",
     "html-tag": "^2.0.0",
     "is-glob": "^4.0.3",
