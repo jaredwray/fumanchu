@@ -77,7 +77,7 @@
     "to-gfm-code-block": "^0.1.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.0",
+    "@biomejs/biome": "^2.3.6",
     "@types/ent": "^2.2.8",
     "@types/html-tag": "^2.0.2",
     "@types/is-glob": "^4.0.4",
@@ -85,12 +85,12 @@
     "@types/micromatch": "^4.0.10",
     "@types/node": "^24.9.1",
     "@types/remarkable": "^2.0.8",
-    "@vitest/coverage-v8": "^4.0.3",
+    "@vitest/coverage-v8": "^4.0.10",
     "docula": "^0.31.0",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.3"
+    "vitest": "^4.0.10"
   },
   "contributors": [
     "Jared Wray (https://jaredwray.com)",
