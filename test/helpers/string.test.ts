@@ -370,3 +370,75 @@ describe("upcase", () => {
 		expect(fn(123 as unknown)).toBe("");
 	});
 });
+
+describe("split", () => {
+	const fn = getHelper("split");
+	it("splits string by character", () => {
+		expect(fn("a,b,c", ",")).toEqual(["a", "b", "c"]);
+	});
+	it("splits by empty string", () => {
+		expect(fn("abc", "")).toEqual(["a", "b", "c"]);
+	});
+	it("splits by default empty string when no character", () => {
+		expect(fn("abc")).toEqual(["a", "b", "c"]);
+	});
+	it("returns empty for non-string", () => {
+		expect(fn(123 as unknown, ",")).toBe("");
+	});
+	it("handles non-string character", () => {
+		expect(fn("a,b,c", 123 as unknown)).toEqual(["a", ",", "b", ",", "c"]);
+	});
+});
+
+describe("startsWith", () => {
+	const fn = getHelper("startsWith");
+	it("returns true when string starts with prefix", () => {
+		expect(fn("Hello", "Hello, world!")).toBe(true);
+	});
+	it("returns false when string does not start with prefix", () => {
+		expect(fn("Goodbye", "Hello, world!")).toBe(false);
+	});
+	it("returns false for non-string prefix", () => {
+		expect(fn(123 as unknown, "Hello")).toBe(false);
+	});
+	it("returns false for non-string testString", () => {
+		expect(fn("Hello", 123 as unknown)).toBe(false);
+	});
+	it("handles case sensitivity", () => {
+		expect(fn("hello", "Hello")).toBe(false);
+	});
+});
+
+describe("titleize", () => {
+	const fn = getHelper("titleize");
+	it("titleizes string", () => {
+		expect(fn("this is title case")).toBe("This Is Title Case");
+	});
+	it("handles mixed case", () => {
+		expect(fn("hELLo WoRLd")).toBe("Hello World");
+	});
+	it("returns empty for non-string", () => {
+		expect(fn(123 as unknown)).toBe("");
+	});
+	it("handles single word", () => {
+		expect(fn("hello")).toBe("Hello");
+	});
+});
+
+describe("raw", () => {
+	const fn = getHelper("raw");
+	it("returns raw template content", () => {
+		expect(fn({ fn: () => "{{foo}}" })).toBe("{{foo}}");
+	});
+	it("returns empty when no fn", () => {
+		expect(fn({})).toBe("");
+	});
+	it("returns empty when no options", () => {
+		expect(fn()).toBe("");
+	});
+	it("handles complex template", () => {
+		expect(fn({ fn: () => "{{#each items}}{{name}}{{/each}}" })).toBe(
+			"{{#each items}}{{name}}{{/each}}",
+		);
+	});
+});

@@ -215,6 +215,37 @@ const uppercase = (str: unknown): string => {
 
 const upcase = (str: unknown): string => uppercase(str);
 
+const split = (str: unknown, character?: string): string[] | string => {
+	if (typeof str !== "string") return "";
+	if (typeof character !== "string") character = "";
+	return str.split(character);
+};
+
+const startsWith = (
+	prefix: unknown,
+	testString: unknown,
+	_options?: unknown,
+): boolean | string => {
+	if (typeof prefix !== "string" || typeof testString !== "string") {
+		return false;
+	}
+	return testString.startsWith(prefix);
+};
+
+const titleize = (str: unknown): string => {
+	if (typeof str !== "string") return "";
+	return str.replace(/\w\S*/g, (word) => {
+		return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+	});
+};
+
+const raw = (options?: { fn?: () => string }): string => {
+	if (options && typeof options.fn === "function") {
+		return options.fn();
+	}
+	return "";
+};
+
 export const helpers: Helper[] = [
 	{
 		name: "append",
@@ -408,6 +439,30 @@ export const helpers: Helper[] = [
 		compatibility: ["browser", "nodejs"],
 		fn: upcase,
 	},
+	{
+		name: "split",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: split,
+	},
+	{
+		name: "startsWith",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: startsWith,
+	},
+	{
+		name: "titleize",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: titleize,
+	},
+	{
+		name: "raw",
+		category: "string",
+		compatibility: ["browser", "nodejs"],
+		fn: raw,
+	},
 ];
 
 export {
@@ -429,6 +484,7 @@ export {
 	pathcase,
 	plusify,
 	prepend,
+	raw,
 	remove,
 	removeFirst,
 	replace,
@@ -436,6 +492,9 @@ export {
 	reverse,
 	sentence,
 	snakecase,
+	split,
+	startsWith,
+	titleize,
 	trim,
 	trimLeft,
 	trimRight,
