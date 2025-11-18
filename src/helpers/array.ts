@@ -64,7 +64,7 @@ const join = (array: unknown, separator = ", "): string => {
 	return array.join(separator);
 };
 
-const forEach = function <T>(
+const forEach = function <T extends Record<string, unknown>>(
 	this: unknown,
 	collection: unknown,
 	options?: ForEachOptions<Record<string, unknown>>,
@@ -113,6 +113,341 @@ const forEach = function <T>(
 		}
 
 		result += options.fn(context as T, { data });
+	}
+
+	return result;
+};
+
+type BlockHelperOptions = {
+	fn?: (context?: unknown) => string;
+	inverse?: (context?: unknown) => string;
+	hash?: Record<string, unknown>;
+	data?: Record<string, unknown>;
+};
+
+const inArray = function (
+	this: unknown,
+	array: unknown,
+	value: unknown,
+	options?: BlockHelperOptions,
+): string {
+	if (!Array.isArray(array) || !options) {
+		return "";
+	}
+
+	const found = array.includes(value);
+
+	if (found && options.fn) {
+		return options.fn(this);
+	}
+
+	if (!found && options.inverse) {
+		return options.inverse(this);
+	}
+
+	return "";
+};
+
+const isArray = (value: unknown): boolean => {
+	return Array.isArray(value);
+};
+
+const itemAt = <T>(array: unknown, idx: number): T | undefined => {
+	if (!Array.isArray(array)) return undefined;
+	return array[idx];
+};
+
+const equalsLength = function (
+	this: unknown,
+	value: unknown,
+	targetLength: number,
+	options?: BlockHelperOptions,
+): string | boolean {
+	const actualLength = length(value);
+	const isEqual = actualLength === targetLength;
+
+	// If used as a block helper (has fn or inverse)
+	if (options && (options.fn || options.inverse)) {
+		if (isEqual && options.fn) {
+			return options.fn(this);
+		}
+		if (!isEqual && options.inverse) {
+			return options.inverse(this);
+		}
+		return "";
+	}
+
+	// If used as an inline helper
+	return isEqual;
+};
+
+const some = function (
+	this: unknown,
+	array: unknown,
+	iter: (value: unknown) => boolean,
+	options?: BlockHelperOptions,
+): string {
+	if (!Array.isArray(array) || typeof iter !== "function" || !options) {
+		return options?.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	const hasSome = array.some(iter);
+
+	if (hasSome && options.fn) {
+		return options.fn(this);
+	}
+
+	if (!hasSome && options.inverse) {
+		return options.inverse(this);
+	}
+
+	return "";
+};
+
+const eachIndex = function (
+	this: unknown,
+	array: unknown,
+	options?: BlockHelperOptions,
+): string {
+	if (!Array.isArray(array) || !options || typeof options.fn !== "function") {
+		return options?.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	if (array.length === 0) {
+		return options.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	let result = "";
+
+	for (let index = 0; index < array.length; index++) {
+		const context = {
+			item: array[index],
+			index,
+		};
+		result += options.fn(context);
+	}
+
+	return result;
+};
+
+const withAfter = function (
+	this: unknown,
+	array: unknown,
+	idx: number,
+	options?: BlockHelperOptions,
+): string {
+	if (!Array.isArray(array) || !options || typeof options.fn !== "function") {
+		return "";
+	}
+
+	const sliced = array.slice(idx + 1);
+
+	if (sliced.length === 0) {
+		return options.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	let result = "";
+	for (const item of sliced) {
+		result += options.fn(item);
+	}
+
+	return result;
+};
+
+const withBefore = function (
+	this: unknown,
+	array: unknown,
+	idx: number,
+	options?: BlockHelperOptions,
+): string {
+	if (!Array.isArray(array) || !options || typeof options.fn !== "function") {
+		return "";
+	}
+
+	const sliced = array.slice(0, idx);
+
+	if (sliced.length === 0) {
+		return options.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	let result = "";
+	for (const item of sliced) {
+		result += options.fn(item);
+	}
+
+	return result;
+};
+
+const withFirst = function (
+	this: unknown,
+	array: unknown,
+	n: number | BlockHelperOptions | undefined,
+	options?: BlockHelperOptions,
+): string {
+	// Handle optional n parameter
+	let count = 1;
+	let opts = options;
+
+	if (typeof n === "object" && n !== null && !Array.isArray(n)) {
+		opts = n as BlockHelperOptions;
+	} else if (typeof n === "number") {
+		count = n;
+	}
+
+	if (!Array.isArray(array) || !opts || typeof opts.fn !== "function") {
+		return "";
+	}
+
+	if (array.length === 0) {
+		return opts.inverse ? (opts.inverse(this) ?? "") : "";
+	}
+
+	const items = array.slice(0, count);
+	let result = "";
+
+	for (const item of items) {
+		result += opts.fn(item);
+	}
+
+	return result;
+};
+
+const withLast = function (
+	this: unknown,
+	array: unknown,
+	n: number | BlockHelperOptions | undefined,
+	options?: BlockHelperOptions,
+): string {
+	// Handle optional n parameter
+	let count = 1;
+	let opts = options;
+
+	if (typeof n === "object" && n !== null && !Array.isArray(n)) {
+		opts = n as BlockHelperOptions;
+	} else if (typeof n === "number") {
+		count = n;
+	}
+
+	if (!Array.isArray(array) || !opts || typeof opts.fn !== "function") {
+		return "";
+	}
+
+	if (array.length === 0) {
+		return opts.inverse ? (opts.inverse(this) ?? "") : "";
+	}
+
+	const items = array.slice(-count);
+	let result = "";
+
+	for (const item of items) {
+		result += opts.fn(item);
+	}
+
+	return result;
+};
+
+const withGroup = function (
+	this: unknown,
+	array: unknown,
+	size: number,
+	options?: BlockHelperOptions,
+): string {
+	if (
+		!Array.isArray(array) ||
+		typeof size !== "number" ||
+		size <= 0 ||
+		!options ||
+		typeof options.fn !== "function"
+	) {
+		return "";
+	}
+
+	if (array.length === 0) {
+		return options.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	let result = "";
+	const groups: unknown[][] = [];
+
+	for (let i = 0; i < array.length; i += size) {
+		groups.push(array.slice(i, i + size));
+	}
+
+	for (const group of groups) {
+		result += options.fn(group);
+	}
+
+	return result;
+};
+
+const withSort = function (
+	this: unknown,
+	array: unknown,
+	prop: string | BlockHelperOptions | undefined,
+	options?: BlockHelperOptions,
+): string {
+	// Handle optional prop parameter
+	let sortProp: string | undefined;
+	let opts = options;
+
+	if (typeof prop === "object" && prop !== null && !Array.isArray(prop)) {
+		opts = prop as BlockHelperOptions;
+	} else if (typeof prop === "string") {
+		sortProp = prop;
+	}
+
+	if (!Array.isArray(array) || !opts || typeof opts.fn !== "function") {
+		return "";
+	}
+
+	if (array.length === 0) {
+		return opts.inverse ? (opts.inverse(this) ?? "") : "";
+	}
+
+	// Create a copy to avoid mutating the original array
+	const sorted = [...array];
+
+	// Sort the array
+	if (sortProp) {
+		// Sort by property
+		sorted.sort((a, b) => {
+			const aVal = a?.[sortProp];
+			const bVal = b?.[sortProp];
+
+			if (aVal === bVal) return 0;
+			if (aVal == null) return 1;
+			if (bVal == null) return -1;
+
+			if (typeof aVal === "string" && typeof bVal === "string") {
+				return aVal.localeCompare(bVal);
+			}
+
+			return aVal < bVal ? -1 : 1;
+		});
+	} else {
+		// Sort primitives
+		sorted.sort((a, b) => {
+			if (a === b) return 0;
+			if (a == null) return 1;
+			if (b == null) return -1;
+
+			if (typeof a === "string" && typeof b === "string") {
+				return a.localeCompare(b);
+			}
+
+			return a < b ? -1 : 1;
+		});
+	}
+
+	// Check for reverse option in hash
+	const shouldReverse = opts.hash?.reverse === true || opts.hash?.reverse === "true";
+	if (shouldReverse) {
+		sorted.reverse();
+	}
+
+	let result = "";
+	for (const item of sorted) {
+		result += opts.fn(item);
 	}
 
 	return result;
@@ -167,7 +502,58 @@ export const helpers: Helper[] = [
 		compatibility: ["browser", "nodejs"],
 		fn: forEach as Helper["fn"],
 	},
+	{
+		name: "inArray",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: inArray as Helper["fn"],
+	},
+	{
+		name: "isArray",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: isArray,
+	},
+	{
+		name: "itemAt",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: itemAt,
+	},
+	{
+		name: "equalsLength",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: equalsLength as Helper["fn"],
+	},
+	{
+		name: "some",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: some as Helper["fn"],
+	},
+	{
+		name: "eachIndex",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: eachIndex as Helper["fn"],
+	},
 ];
 
-export { after, before, arrayify, first, last, length, join, forEach };
-export type { ForEachOptions };
+export {
+	after,
+	before,
+	arrayify,
+	first,
+	last,
+	length,
+	join,
+	forEach,
+	inArray,
+	isArray,
+	itemAt,
+	equalsLength,
+	some,
+	eachIndex,
+};
+export type { ForEachOptions, BlockHelperOptions };
