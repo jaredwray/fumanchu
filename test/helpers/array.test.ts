@@ -892,3 +892,570 @@ describe("eachIndex", () => {
 		expect(template({ array: [] })).toBe("empty array");
 	});
 });
+
+describe("withAfter", () => {
+	type WithAfterHelper = (
+		this: unknown,
+		array: unknown,
+		idx: number,
+		options?: BlockHelperOptions,
+	) => string;
+
+	const withAfterFn = getHelper("withAfter") as WithAfterHelper;
+
+	it("uses items after the specified index as context", () => {
+		const contexts: unknown[] = [];
+
+		const result = withAfterFn.call({}, ["a", "b", "c", "d", "e"], 2, {
+			fn(context) {
+				contexts.push(context);
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("de");
+		expect(contexts).toEqual(["d", "e"]);
+	});
+
+	it("returns empty string when no items after index", () => {
+		const result = withAfterFn.call({}, ["a", "b", "c"], 2, {
+			fn() {
+				throw new Error("should not run");
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("renders inverse when no items after index", () => {
+		const result = withAfterFn.call({}, ["a", "b"], 5, {
+			fn() {
+				return "found";
+			},
+			inverse() {
+				return "none";
+			},
+		});
+
+		expect(result).toBe("none");
+	});
+
+	it("returns empty string for non-arrays", () => {
+		const result = withAfterFn.call({}, "not array", 1, {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when options not provided", () => {
+		const result = withAfterFn.call({}, ["a", "b", "c"], 1, undefined);
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when fn not provided", () => {
+		const result = withAfterFn.call({}, ["a", "b", "c"], 1, {});
+		expect(result).toBe("");
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withAfter array 2}}" + "{{this}}" + "{{/withAfter}}",
+		);
+
+		expect(template({ array: ["a", "b", "c", "d", "e"] })).toBe("de");
+	});
+});
+
+describe("withBefore", () => {
+	type WithBeforeHelper = (
+		this: unknown,
+		array: unknown,
+		idx: number,
+		options?: BlockHelperOptions,
+	) => string;
+
+	const withBeforeFn = getHelper("withBefore") as WithBeforeHelper;
+
+	it("uses items before the specified index as context", () => {
+		const contexts: unknown[] = [];
+
+		const result = withBeforeFn.call({}, ["a", "b", "c", "d", "e"], 3, {
+			fn(context) {
+				contexts.push(context);
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("abc");
+		expect(contexts).toEqual(["a", "b", "c"]);
+	});
+
+	it("returns empty string when no items before index", () => {
+		const result = withBeforeFn.call({}, ["a", "b", "c"], 0, {
+			fn() {
+				throw new Error("should not run");
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("renders inverse when no items before index", () => {
+		const result = withBeforeFn.call({}, ["a", "b"], 0, {
+			fn() {
+				return "found";
+			},
+			inverse() {
+				return "none";
+			},
+		});
+
+		expect(result).toBe("none");
+	});
+
+	it("returns empty string for non-arrays", () => {
+		const result = withBeforeFn.call({}, "not array", 1, {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when options not provided", () => {
+		const result = withBeforeFn.call({}, ["a", "b", "c"], 1, undefined);
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when fn not provided", () => {
+		const result = withBeforeFn.call({}, ["a", "b", "c"], 1, {});
+		expect(result).toBe("");
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withBefore array 3}}" + "{{this}}" + "{{/withBefore}}",
+		);
+
+		expect(template({ array: ["a", "b", "c", "d", "e"] })).toBe("abc");
+	});
+});
+
+describe("withFirst", () => {
+	type WithFirstHelper = (
+		this: unknown,
+		array: unknown,
+		n?: number | BlockHelperOptions,
+		options?: BlockHelperOptions,
+	) => string;
+
+	const withFirstFn = getHelper("withFirst") as WithFirstHelper;
+
+	it("uses first item as context by default", () => {
+		const result = withFirstFn.call({}, ["a", "b", "c"], {
+			fn(context) {
+				return `[${context}]`;
+			},
+		});
+
+		expect(result).toBe("[a]");
+	});
+
+	it("uses first n items as context when n is specified", () => {
+		const contexts: unknown[] = [];
+
+		const result = withFirstFn.call({}, ["a", "b", "c", "d"], 2, {
+			fn(context) {
+				contexts.push(context);
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("ab");
+		expect(contexts).toEqual(["a", "b"]);
+	});
+
+	it("renders inverse for empty arrays", () => {
+		const result = withFirstFn.call({}, [], {
+			fn() {
+				return "found";
+			},
+			inverse() {
+				return "empty";
+			},
+		});
+
+		expect(result).toBe("empty");
+	});
+
+	it("returns empty string for non-arrays", () => {
+		const result = withFirstFn.call({}, "not array", {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when options not provided", () => {
+		const result = withFirstFn.call({}, ["a", "b"], undefined);
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when fn not provided", () => {
+		const result = withFirstFn.call({}, ["a", "b"], {});
+		expect(result).toBe("");
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withFirst array}}" + "{{this}}" + "{{/withFirst}}",
+		);
+
+		expect(template({ array: ["a", "b", "c"] })).toBe("a");
+	});
+
+	it("works with Handlebars markup template with n parameter", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withFirst array 2}}" + "{{this}}" + "{{/withFirst}}",
+		);
+
+		expect(template({ array: ["a", "b", "c", "d"] })).toBe("ab");
+	});
+});
+
+describe("withLast", () => {
+	type WithLastHelper = (
+		this: unknown,
+		array: unknown,
+		n?: number | BlockHelperOptions,
+		options?: BlockHelperOptions,
+	) => string;
+
+	const withLastFn = getHelper("withLast") as WithLastHelper;
+
+	it("uses last item as context by default", () => {
+		const result = withLastFn.call({}, ["a", "b", "c"], {
+			fn(context) {
+				return `[${context}]`;
+			},
+		});
+
+		expect(result).toBe("[c]");
+	});
+
+	it("uses last n items as context when n is specified", () => {
+		const contexts: unknown[] = [];
+
+		const result = withLastFn.call({}, ["a", "b", "c", "d"], 2, {
+			fn(context) {
+				contexts.push(context);
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("cd");
+		expect(contexts).toEqual(["c", "d"]);
+	});
+
+	it("renders inverse for empty arrays", () => {
+		const result = withLastFn.call({}, [], {
+			fn() {
+				return "found";
+			},
+			inverse() {
+				return "empty";
+			},
+		});
+
+		expect(result).toBe("empty");
+	});
+
+	it("returns empty string for non-arrays", () => {
+		const result = withLastFn.call({}, "not array", {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when options not provided", () => {
+		const result = withLastFn.call({}, ["a", "b"], undefined);
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when fn not provided", () => {
+		const result = withLastFn.call({}, ["a", "b"], {});
+		expect(result).toBe("");
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withLast array}}" + "{{this}}" + "{{/withLast}}",
+		);
+
+		expect(template({ array: ["a", "b", "c"] })).toBe("c");
+	});
+
+	it("works with Handlebars markup template with n parameter", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withLast array 3}}" + "{{this}}" + "{{/withLast}}",
+		);
+
+		expect(template({ array: ["a", "b", "c", "d"] })).toBe("bcd");
+	});
+});
+
+describe("withGroup", () => {
+	type WithGroupHelper = (
+		this: unknown,
+		array: unknown,
+		size: number,
+		options?: BlockHelperOptions,
+	) => string;
+
+	const withGroupFn = getHelper("withGroup") as WithGroupHelper;
+
+	it("groups array elements by specified size", () => {
+		const groups: unknown[][] = [];
+
+		const result = withGroupFn.call({}, ["a", "b", "c", "d", "e", "f"], 2, {
+			fn(context) {
+				const group = context as unknown[];
+				groups.push(group);
+				return `${group.join(",")};`;
+			},
+		});
+
+		expect(result).toBe("a,b;c,d;e,f;");
+		expect(groups).toEqual([
+			["a", "b"],
+			["c", "d"],
+			["e", "f"],
+		]);
+	});
+
+	it("handles partial groups", () => {
+		const groups: unknown[][] = [];
+
+		const result = withGroupFn.call({}, ["a", "b", "c", "d", "e"], 2, {
+			fn(context) {
+				const group = context as unknown[];
+				groups.push(group);
+				return `${group.join(",")};`;
+			},
+		});
+
+		expect(result).toBe("a,b;c,d;e;");
+		expect(groups).toEqual([["a", "b"], ["c", "d"], ["e"]]);
+	});
+
+	it("renders inverse for empty arrays", () => {
+		const result = withGroupFn.call({}, [], 2, {
+			fn() {
+				return "found";
+			},
+			inverse() {
+				return "empty";
+			},
+		});
+
+		expect(result).toBe("empty");
+	});
+
+	it("returns empty string for non-arrays", () => {
+		const result = withGroupFn.call({}, "not array", 2, {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string for invalid size", () => {
+		const result = withGroupFn.call({}, ["a", "b"], 0, {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when options not provided", () => {
+		const result = withGroupFn.call({}, ["a", "b"], 2, undefined);
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when fn not provided", () => {
+		const result = withGroupFn.call({}, ["a", "b"], 2, {});
+		expect(result).toBe("");
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withGroup array 3}}" +
+				"{{#each this}}{{.}}{{/each}}" +
+				"<br>" +
+				"{{/withGroup}}",
+		);
+
+		expect(template({ array: ["a", "b", "c", "d", "e", "f", "g", "h"] })).toBe(
+			"abc<br>def<br>gh<br>",
+		);
+	});
+});
+
+describe("withSort", () => {
+	type WithSortHelper = (
+		this: unknown,
+		array: unknown,
+		prop?: string | BlockHelperOptions,
+		options?: BlockHelperOptions,
+	) => string;
+
+	const withSortFn = getHelper("withSort") as WithSortHelper;
+
+	it("sorts primitive array", () => {
+		const result = withSortFn.call({}, ["c", "a", "b"], {
+			fn(context) {
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("abc");
+	});
+
+	it("sorts array by property", () => {
+		const items = [{ name: "Charlie" }, { name: "Alice" }, { name: "Bob" }];
+
+		const result = withSortFn.call({}, items, "name", {
+			fn(context) {
+				return (context as { name: string }).name;
+			},
+		});
+
+		expect(result).toBe("AliceBobCharlie");
+	});
+
+	it("sorts in reverse when reverse option is true", () => {
+		const result = withSortFn.call({}, ["a", "b", "c"], {
+			hash: { reverse: true },
+			fn(context) {
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("cba");
+	});
+
+	it("sorts in reverse when reverse option is string 'true'", () => {
+		const result = withSortFn.call({}, ["a", "b", "c"], {
+			hash: { reverse: "true" },
+			fn(context) {
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("cba");
+	});
+
+	it("handles null values in sort", () => {
+		const result = withSortFn.call({}, ["b", null, "a", undefined], {
+			fn(context) {
+				return context == null ? "null" : (context as string);
+			},
+		});
+
+		expect(result).toBe("abnullnull");
+	});
+
+	it("handles null property values in sort", () => {
+		const items = [{ val: "b" }, { val: null }, { val: "a" }];
+
+		const result = withSortFn.call({}, items, "val", {
+			fn(context) {
+				const val = (context as { val: string | null }).val;
+				return val == null ? "null" : val;
+			},
+		});
+
+		expect(result).toBe("abnull");
+	});
+
+	it("renders inverse for empty arrays", () => {
+		const result = withSortFn.call({}, [], {
+			fn() {
+				return "found";
+			},
+			inverse() {
+				return "empty";
+			},
+		});
+
+		expect(result).toBe("empty");
+	});
+
+	it("returns empty string for non-arrays", () => {
+		const result = withSortFn.call({}, "not array", {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when options not provided", () => {
+		const result = withSortFn.call({}, ["a", "b"], undefined);
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when fn not provided", () => {
+		const result = withSortFn.call({}, ["a", "b"], {});
+		expect(result).toBe("");
+	});
+
+	it("sorts numbers correctly", () => {
+		const result = withSortFn.call({}, [3, 1, 2], {
+			fn(context) {
+				return String(context);
+			},
+		});
+
+		expect(result).toBe("123");
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withSort array}}" + "{{this}}" + "{{/withSort}}",
+		);
+
+		expect(template({ array: ["b", "a", "c"] })).toBe("abc");
+	});
+
+	it("works with Handlebars markup template with reverse", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#withSort array reverse=true}}" + "{{this}}" + "{{/withSort}}",
+		);
+
+		expect(template({ array: ["a", "b", "c"] })).toBe("cba");
+	});
+});
