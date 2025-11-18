@@ -6,7 +6,8 @@ import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
 import type { Helper } from "../helper-registry.js";
 
-// Enable dayjs plugins
+// Enable dayjs plugins once at module initialization
+// dayjs.extend() is idempotent and safe to call multiple times
 dayjs.extend(relativeTime);
 dayjs.extend(isBetween);
 dayjs.extend(utc);
