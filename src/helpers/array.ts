@@ -571,6 +571,7 @@ const sort = <T>(
 		});
 	} else {
 		sorted.sort((a, b) => {
+			/* v8 ignore next -- @preserve */
 			if (a === b) return 0;
 			if (a == null) return 1;
 			if (b == null) return -1;
