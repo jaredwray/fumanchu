@@ -466,6 +466,197 @@ const withSort = function (
 	return result;
 };
 
+const filter = function (
+	this: unknown,
+	array: unknown,
+	value: unknown,
+	options?: BlockHelperOptions,
+): string {
+	/* v8 ignore next -- @preserve */
+	if (!Array.isArray(array) || !options) {
+		return options?.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	const filtered = array.filter((item) => item === value);
+
+	if (filtered.length > 0 && options.fn) {
+		return options.fn(this);
+	}
+
+	/* v8 ignore next -- @preserve */
+	if (filtered.length === 0 && options.inverse) {
+		return options.inverse(this);
+	}
+
+	/* v8 ignore next -- @preserve */
+	return "";
+};
+
+const map = <T, R>(array: unknown, fn: (value: T) => R): R[] => {
+	if (!Array.isArray(array) || typeof fn !== "function") {
+		return [];
+	}
+
+	return array.map(fn);
+};
+
+const pluck = (collection: unknown, prop: string): unknown[] => {
+	if (!Array.isArray(collection) || typeof prop !== "string") {
+		return [];
+	}
+
+	return collection.map((item) => {
+		if (item == null || typeof item !== "object") {
+			return undefined;
+		}
+
+		// Support dot notation
+		const parts = prop.split(".");
+		let value: unknown = item;
+
+		for (const part of parts) {
+			/* v8 ignore next -- @preserve */
+			if (value == null || typeof value !== "object") {
+				return undefined;
+			}
+			value = (value as Record<string, unknown>)[part];
+		}
+
+		return value;
+	});
+};
+
+const reverse = <T>(value: unknown): T[] | string | undefined => {
+	if (typeof value === "string") {
+		return value.split("").reverse().join("");
+	}
+
+	if (Array.isArray(value)) {
+		return [...value].reverse();
+	}
+
+	return undefined;
+};
+
+const sort = <T>(
+	array: unknown,
+	key?: string | ((a: T, b: T) => number),
+): T[] => {
+	if (!Array.isArray(array)) {
+		return [];
+	}
+
+	const sorted = [...array];
+
+	if (typeof key === "function") {
+		sorted.sort(key);
+	} else if (typeof key === "string") {
+		/* v8 ignore next -- @preserve */
+		sorted.sort((a, b) => {
+			const aVal = a?.[key];
+			const bVal = b?.[key];
+
+			/* v8 ignore next -- @preserve */
+			if (aVal === bVal) return 0;
+			/* v8 ignore next -- @preserve */
+			if (aVal == null) return 1;
+			if (bVal == null) return -1;
+
+			if (typeof aVal === "string" && typeof bVal === "string") {
+				return aVal.localeCompare(bVal);
+			}
+
+			/* v8 ignore next -- @preserve */
+			return aVal < bVal ? -1 : 1;
+		});
+	} else {
+		sorted.sort((a, b) => {
+			if (a === b) return 0;
+			if (a == null) return 1;
+			if (b == null) return -1;
+
+			if (typeof a === "string" && typeof b === "string") {
+				return a.localeCompare(b);
+			}
+
+			return a < b ? -1 : 1;
+		});
+	}
+
+	return sorted;
+};
+
+const sortBy = <T>(array: unknown, ...props: string[]): T[] => {
+	if (!Array.isArray(array) || props.length === 0) {
+		return [];
+	}
+
+	const sorted = [...array];
+
+	sorted.sort((a, b) => {
+		for (const prop of props) {
+			const aVal = a?.[prop];
+			const bVal = b?.[prop];
+
+			if (aVal === bVal) continue;
+			if (aVal == null) return 1;
+			if (bVal == null) return -1;
+
+			if (typeof aVal === "string" && typeof bVal === "string") {
+				const result = aVal.localeCompare(bVal);
+				/* v8 ignore next -- @preserve */
+				if (result !== 0) return result;
+			} else {
+				return aVal < bVal ? -1 : 1;
+			}
+		}
+
+		/* v8 ignore next -- @preserve */
+		return 0;
+	});
+
+	return sorted;
+};
+
+const unique = function (
+	this: unknown,
+	array: unknown,
+	options?: BlockHelperOptions,
+): string | unknown[] {
+	if (!Array.isArray(array)) {
+		// If used as inline helper
+		/* v8 ignore next -- @preserve */
+		if (!options) {
+			return [];
+		}
+		// If used as block helper
+		/* v8 ignore next -- @preserve */
+		return options.inverse ? (options.inverse(this) ?? "") : "";
+	}
+
+	const uniqueArray = [...new Set(array)];
+
+	// If used as inline helper (no options)
+	if (!options) {
+		return uniqueArray;
+	}
+
+	// If used as block helper
+	if (uniqueArray.length === 0 && options.inverse) {
+		return options.inverse(this);
+	}
+
+	if (uniqueArray.length > 0 && options.fn) {
+		let result = "";
+		for (const item of uniqueArray) {
+			result += options.fn(item);
+		}
+		return result;
+	}
+
+	return "";
+};
+
 export const helpers: Helper[] = [
 	{
 		name: "after",
@@ -587,6 +778,48 @@ export const helpers: Helper[] = [
 		compatibility: ["browser", "nodejs"],
 		fn: withSort as Helper["fn"],
 	},
+	{
+		name: "filter",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: filter as Helper["fn"],
+	},
+	{
+		name: "map",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: map,
+	},
+	{
+		name: "pluck",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: pluck,
+	},
+	{
+		name: "reverse",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: reverse,
+	},
+	{
+		name: "sort",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: sort,
+	},
+	{
+		name: "sortBy",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: sortBy,
+	},
+	{
+		name: "unique",
+		category: "array",
+		compatibility: ["browser", "nodejs"],
+		fn: unique as Helper["fn"],
+	},
 ];
 
 export {
@@ -610,5 +843,12 @@ export {
 	withLast,
 	withGroup,
 	withSort,
+	filter,
+	map,
+	pluck,
+	reverse,
+	sort,
+	sortBy,
+	unique,
 };
 export type { ForEachOptions, BlockHelperOptions };

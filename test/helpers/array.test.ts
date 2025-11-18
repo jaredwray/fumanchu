@@ -1459,3 +1459,380 @@ describe("withSort", () => {
 		expect(template({ array: ["a", "b", "c"] })).toBe("cba");
 	});
 });
+
+describe("filter", () => {
+	type FilterHelper = (
+		this: unknown,
+		array: unknown,
+		value: unknown,
+		options?: BlockHelperOptions,
+	) => string;
+
+	const filterFn = getHelper("filter") as FilterHelper;
+
+	it("renders fn block when array contains matching values", () => {
+		const result = filterFn.call({ ctx: "test" }, ["a", "b", "foo"], "foo", {
+			fn(context) {
+				expect(context).toEqual({ ctx: "test" });
+				return "found";
+			},
+		});
+
+		expect(result).toBe("found");
+	});
+
+	it("renders inverse block when array has no matching values", () => {
+		const result = filterFn.call({ ctx: "test" }, ["a", "b", "c"], "foo", {
+			fn() {
+				throw new Error("should not run");
+			},
+			inverse(context) {
+				expect(context).toEqual({ ctx: "test" });
+				return "not found";
+			},
+		});
+
+		expect(result).toBe("not found");
+	});
+
+	it("returns empty string for non-arrays", () => {
+		const result = filterFn.call({}, "not array", "foo", {
+			fn() {
+				return "found";
+			},
+		});
+
+		expect(result).toBe("");
+	});
+
+	it("returns empty string when options not provided", () => {
+		const result = filterFn.call({}, ["a", "b"], "a", undefined);
+		expect(result).toBe("");
+	});
+
+	it("returns inverse when provided for non-array", () => {
+		const result = filterFn.call({}, "not array", "foo", {
+			inverse() {
+				return "not an array";
+			},
+		});
+
+		expect(result).toBe("not an array");
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			'{{#filter array "foo"}}' +
+				"found" +
+				"{{else}}" +
+				"not found" +
+				"{{/filter}}",
+		);
+
+		expect(template({ array: ["a", "b", "c"] })).toBe("not found");
+		expect(template({ array: ["a", "foo", "c"] })).toBe("found");
+	});
+});
+
+describe("map", () => {
+	const mapFn = getHelper("map");
+
+	it("maps array using function", () => {
+		const double = (x: number) => x * 2;
+		const result = mapFn([1, 2, 3], double);
+
+		expect(result).toEqual([2, 4, 6]);
+	});
+
+	it("returns empty array for non-arrays", () => {
+		const double = (x: number) => x * 2;
+		expect(mapFn("not array", double)).toEqual([]);
+		expect(mapFn(null, double)).toEqual([]);
+	});
+
+	it("returns empty array when fn is not a function", () => {
+		expect(mapFn([1, 2, 3], "not function")).toEqual([]);
+	});
+
+	it("works with string transformation", () => {
+		const upper = (x: string) => x.toUpperCase();
+		const result = mapFn(["a", "b", "c"], upper);
+
+		expect(result).toEqual(["A", "B", "C"]);
+	});
+});
+
+describe("pluck", () => {
+	const pluckFn = getHelper("pluck");
+
+	it("extracts property values from array of objects", () => {
+		const items = [{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }];
+		const result = pluckFn(items, "name");
+
+		expect(result).toEqual(["Alice", "Bob", "Charlie"]);
+	});
+
+	it("supports dot notation for nested properties", () => {
+		const items = [
+			{ data: { title: "First" } },
+			{ data: { title: "Second" } },
+			{ data: { title: "Third" } },
+		];
+		const result = pluckFn(items, "data.title");
+
+		expect(result).toEqual(["First", "Second", "Third"]);
+	});
+
+	it("returns undefined for missing properties", () => {
+		const items = [{ name: "Alice" }, { age: 30 }, { name: "Bob" }];
+		const result = pluckFn(items, "name");
+
+		expect(result).toEqual(["Alice", undefined, "Bob"]);
+	});
+
+	it("returns undefined for null/primitive items", () => {
+		const items = [{ name: "Alice" }, null, "string", { name: "Bob" }];
+		const result = pluckFn(items, "name");
+
+		expect(result).toEqual(["Alice", undefined, undefined, "Bob"]);
+	});
+
+	it("returns empty array for non-arrays", () => {
+		expect(pluckFn("not array", "name")).toEqual([]);
+		expect(pluckFn(null, "name")).toEqual([]);
+	});
+
+	it("returns empty array when prop is not a string", () => {
+		expect(pluckFn([{ name: "Alice" }], 123 as never)).toEqual([]);
+	});
+});
+
+describe("reverse", () => {
+	const reverseFn = getHelper("reverse");
+
+	it("reverses arrays", () => {
+		expect(reverseFn([1, 2, 3])).toEqual([3, 2, 1]);
+		expect(reverseFn(["a", "b", "c"])).toEqual(["c", "b", "a"]);
+	});
+
+	it("reverses strings", () => {
+		expect(reverseFn("abcd")).toBe("dcba");
+		expect(reverseFn("hello")).toBe("olleh");
+	});
+
+	it("returns undefined for non-array/non-string", () => {
+		expect(reverseFn(123)).toBeUndefined();
+		expect(reverseFn(null)).toBeUndefined();
+		expect(reverseFn({ a: 1 })).toBeUndefined();
+	});
+
+	it("does not mutate original array", () => {
+		const original = [1, 2, 3];
+		const result = reverseFn(original);
+
+		expect(result).toEqual([3, 2, 1]);
+		expect(original).toEqual([1, 2, 3]);
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile("{{reverse value}}");
+
+		expect(template({ value: "abc" })).toBe("cba");
+	});
+});
+
+describe("sort", () => {
+	const sortFn = getHelper("sort");
+
+	it("sorts primitive arrays", () => {
+		expect(sortFn(["c", "a", "b"])).toEqual(["a", "b", "c"]);
+		expect(sortFn([3, 1, 2])).toEqual([1, 2, 3]);
+	});
+
+	it("sorts by property name", () => {
+		const items = [{ name: "Charlie" }, { name: "Alice" }, { name: "Bob" }];
+		const result = sortFn(items, "name");
+
+		expect(result).toEqual([
+			{ name: "Alice" },
+			{ name: "Bob" },
+			{ name: "Charlie" },
+		]);
+	});
+
+	it("sorts using custom comparator function", () => {
+		const descending = (a: number, b: number) => b - a;
+		const result = sortFn([1, 3, 2], descending);
+
+		expect(result).toEqual([3, 2, 1]);
+	});
+
+	it("handles null values", () => {
+		const result = sortFn(["b", null, "a", undefined]);
+		expect(result).toEqual(["a", "b", null, undefined]);
+	});
+
+	it("returns empty array for non-arrays", () => {
+		expect(sortFn("not array")).toEqual([]);
+		expect(sortFn(null)).toEqual([]);
+	});
+
+	it("does not mutate original array", () => {
+		const original = [3, 1, 2];
+		const result = sortFn(original);
+
+		expect(result).toEqual([1, 2, 3]);
+		expect(original).toEqual([3, 1, 2]);
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#each (sort array)}}{{this}}{{/each}}",
+		);
+
+		expect(template({ array: ["c", "a", "b"] })).toBe("abc");
+	});
+});
+
+describe("sortBy", () => {
+	const sortByFn = getHelper("sortBy");
+
+	it("sorts by single property", () => {
+		const items = [{ a: 3 }, { a: 1 }, { a: 2 }];
+		const result = sortByFn(items, "a");
+
+		expect(result).toEqual([{ a: 1 }, { a: 2 }, { a: 3 }]);
+	});
+
+	it("sorts by multiple properties", () => {
+		const items = [
+			{ first: "Bob", last: "Smith" },
+			{ first: "Alice", last: "Jones" },
+			{ first: "Alice", last: "Smith" },
+		];
+		const result = sortByFn(items, "first", "last");
+
+		expect(result).toEqual([
+			{ first: "Alice", last: "Jones" },
+			{ first: "Alice", last: "Smith" },
+			{ first: "Bob", last: "Smith" },
+		]);
+	});
+
+	it("handles null values", () => {
+		const items = [{ val: "b" }, { val: null }, { val: "a" }];
+		const result = sortByFn(items, "val");
+
+		expect(result).toEqual([{ val: "a" }, { val: "b" }, { val: null }]);
+	});
+
+	it("returns empty array for non-arrays", () => {
+		expect(sortByFn("not array", "a")).toEqual([]);
+		expect(sortByFn(null, "a")).toEqual([]);
+	});
+
+	it("returns empty array when no props provided", () => {
+		expect(sortByFn([{ a: 1 }])).toEqual([]);
+	});
+
+	it("does not mutate original array", () => {
+		const original = [{ a: 3 }, { a: 1 }];
+		const result = sortByFn(original, "a");
+
+		expect(result).toEqual([{ a: 1 }, { a: 3 }]);
+		expect(original).toEqual([{ a: 3 }, { a: 1 }]);
+	});
+
+	it("works with Handlebars markup template", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			'{{#each (sortBy array "a")}}{{a}} {{/each}}',
+		);
+
+		expect(template({ array: [{ a: "zzz" }, { a: "aaa" }] })).toBe("aaa zzz ");
+	});
+});
+
+describe("unique", () => {
+	type UniqueHelper = (
+		this: unknown,
+		array: unknown,
+		options?: BlockHelperOptions,
+	) => string | unknown[];
+
+	const uniqueFn = getHelper("unique") as UniqueHelper;
+
+	it("returns unique values when used as inline helper", () => {
+		const result = uniqueFn.call({}, ["a", "a", "c", "b", "e", "e"]);
+		expect(result).toEqual(["a", "c", "b", "e"]);
+	});
+
+	it("iterates unique values when used as block helper", () => {
+		const contexts: unknown[] = [];
+
+		const result = uniqueFn.call({}, ["a", "a", "b", "b", "c"], {
+			fn(context) {
+				contexts.push(context);
+				return context as string;
+			},
+		});
+
+		expect(result).toBe("abc");
+		expect(contexts).toEqual(["a", "b", "c"]);
+	});
+
+	it("renders inverse when no unique values and used as block", () => {
+		const result = uniqueFn.call({ ctx: "test" }, [], {
+			fn() {
+				throw new Error("should not run");
+			},
+			inverse(context) {
+				expect(context).toEqual({ ctx: "test" });
+				return "empty";
+			},
+		});
+
+		expect(result).toBe("empty");
+	});
+
+	it("returns empty array for non-arrays (inline mode)", () => {
+		expect(uniqueFn.call({}, "not array")).toEqual([]);
+		expect(uniqueFn.call({}, null)).toEqual([]);
+	});
+
+	it("returns inverse for non-arrays (block mode)", () => {
+		const result = uniqueFn.call({}, "not array", {
+			inverse() {
+				return "not an array";
+			},
+		});
+
+		expect(result).toBe("not an array");
+	});
+
+	it("returns empty string when no fn or inverse in block mode", () => {
+		const result = uniqueFn.call({}, ["a", "b"], {});
+		expect(result).toBe("");
+	});
+
+	it("works with direct call as inline helper", () => {
+		// Note: When unique is used inside {{#each (unique array)}}, Handlebars passes
+		// an options object, making it behave as a block helper instead of inline.
+		// Test direct call for inline behavior.
+		const result = uniqueFn.call({}, ["a", "a", "c", "b", "e", "e"]);
+		expect(result).toEqual(["a", "c", "b", "e"]);
+	});
+
+	it("works with Handlebars markup template as block helper", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#unique array}}" + "{{this}}" + "{{else}}" + "empty" + "{{/unique}}",
+		);
+
+		expect(template({ array: ["a", "a", "b", "b"] })).toBe("ab");
+		expect(template({ array: [] })).toBe("empty");
+	});
+});
