@@ -7,9 +7,9 @@ order: 23
 
 ## string
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/string.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/string.js)
+Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/string.ts) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/test/helpers/string.test.ts)
 
-### [{{append}}](lib/string.js#L22)
+### {{append}}
 
 Append the specified `suffix` to the given string.
 
@@ -27,7 +27,7 @@ Append the specified `suffix` to the given string.
 <!-- results in:  'foo.html' -->
 ```
 
-### [{{camelcase}}](lib/string.js#L41)
+### {{camelcase}}
 
 camelCase the characters in the given `string`.
 
@@ -43,7 +43,7 @@ camelCase the characters in the given `string`.
 <!-- results in:  'fooBarBaz' -->
 ```
 
-### [{{capitalize}}](lib/string.js#L60)
+### {{capitalize}}
 
 Capitalize the first word in a sentence.
 
@@ -59,7 +59,7 @@ Capitalize the first word in a sentence.
 <!-- results in:  "Foo bar baz" -->
 ```
 
-### [{{capitalizeAll}}](lib/string.js#L77)
+### {{capitalizeAll}}
 
 Capitalize all words in a string.
 
@@ -75,17 +75,24 @@ Capitalize all words in a string.
 <!-- results in:  "Foo Bar Baz" -->
 ```
 
-### [{{center}}](lib/string.js#L95)
+### {{center}}
 
 Center a string using non-breaking spaces
 
 **Params**
 
 * `str` **{String}**
-* `spaces` **{String}**
+* `spaces` **{Number}**
 * `returns` **{String}**
 
-### [{{chop}}](lib/string.js#L125)
+**Example**
+
+```html
+{{center "foo" 2}}
+<!-- results in:  '&nbsp;&nbsp;foo&nbsp;&nbsp;' -->
+```
+
+### {{chop}}
 
 Like trim, but removes both extraneous whitespace **and non-word characters** from the beginning and end of a string.
 
@@ -107,7 +114,7 @@ Like trim, but removes both extraneous whitespace **and non-word characters** fr
 <!-- results in:  'ABC' -->
 ```
 
-### [{{dashcase}}](lib/string.js#L143)
+### {{dashcase}}
 
 dash-case the characters in `string`. Replaces non-word characters and periods with hyphens.
 
@@ -123,7 +130,7 @@ dash-case the characters in `string`. Replaces non-word characters and periods w
 <!-- results in:  'a-b-c-d-e' -->
 ```
 
-### [{{dotcase}}](lib/string.js#L162)
+### {{dotcase}}
 
 dot.case the characters in `string`.
 
@@ -139,7 +146,7 @@ dot.case the characters in `string`.
 <!-- results in:  'a.b.c.d.e' -->
 ```
 
-### [{{downcase}}](lib/string.js#L182)
+### {{downcase}}
 
 Lowercase all of the characters in the given string. Alias for [lowercase](#lowercase).
 
@@ -155,7 +162,7 @@ Lowercase all of the characters in the given string. Alias for [lowercase](#lowe
 <!-- results in:  'abcdef' -->
 ```
 
-### [{{ellipsis}}](lib/string.js#L202)
+### {{ellipsis}}
 
 Truncates a string to the specified `length`, and appends it with an elipsis, `…`.
 
@@ -174,7 +181,7 @@ Truncates a string to the specified `length`, and appends it with an elipsis, `�
 <!-- results in:  'foo bar…' -->
 ```
 
-### [{{hyphenate}}](lib/string.js#L223)
+### {{hyphenate}}
 
 Replace spaces in a string with hyphens.
 
@@ -190,13 +197,13 @@ Replace spaces in a string with hyphens.
 <!-- results in:  "foo-bar-baz-qux" -->
 ```
 
-### [{{isString}}](lib/string.js#L240)
+### {{isString}}
 
 Return true if `value` is a string.
 
 **Params**
 
-* `value` **{String}**
+* `value` **{Any}**
 * `returns` **{Boolean}**
 
 **Example**
@@ -206,7 +213,7 @@ Return true if `value` is a string.
 <!-- results in:  'true' -->
 ```
 
-### [{{lowercase}}](lib/string.js#L256)
+### {{lowercase}}
 
 Lowercase all characters in the given string.
 
@@ -222,7 +229,7 @@ Lowercase all characters in the given string.
 <!-- results in:  'foo bar baz' -->
 ```
 
-### [{{occurrences}}](lib/string.js#L278)
+### {{occurrences}}
 
 Return the number of occurrences of `substring` within the given `string`.
 
@@ -239,7 +246,7 @@ Return the number of occurrences of `substring` within the given `string`.
 <!-- results in:  2 -->
 ```
 
-### [{{pascalcase}}](lib/string.js#L303)
+### {{pascalcase}}
 
 PascalCase the characters in `string`.
 
@@ -255,7 +262,7 @@ PascalCase the characters in `string`.
 <!-- results in:  'FooBarBaz' -->
 ```
 
-### [{{pathcase}}](lib/string.js#L323)
+### {{pathcase}}
 
 path/case the characters in `string`.
 
@@ -271,13 +278,14 @@ path/case the characters in `string`.
 <!-- results in:  'a/b/c/d/e' -->
 ```
 
-### [{{plusify}}](lib/string.js#L343)
+### {{plusify}}
 
 Replace spaces in the given string with pluses.
 
 **Params**
 
 * `str` **{String}**: The input string
+* `ch` **{String}**: Optional character to replace (defaults to space)
 * `returns` **{String}**: Input string with spaces replaced by plus signs
 
 **Example**
@@ -287,7 +295,7 @@ Replace spaces in the given string with pluses.
 <!-- results in:  'foo+bar+baz' -->
 ```
 
-### [{{prepend}}](lib/string.js#L363)
+### {{prepend}}
 
 Prepends the given `string` with the specified `prefix`.
 
@@ -305,7 +313,7 @@ Prepends the given `string` with the specified `prefix`.
 <!-- results in:  'foo-bar' -->
 ```
 
-### [{{raw}}](lib/string.js#L385)
+### {{raw}}
 
 Render a block without processing mustache templates inside the block.
 
@@ -323,7 +331,7 @@ Render a block without processing mustache templates inside the block.
 <!-- results in:  '{{foo}}' -->
 ```
 
-### [{{remove}}](lib/string.js#L413)
+### {{remove}}
 
 Remove all occurrences of `substring` from the given `str`.
 
@@ -340,7 +348,7 @@ Remove all occurrences of `substring` from the given `str`.
 <!-- results in:  'b b b' -->
 ```
 
-### [{{removeFirst}}](lib/string.js#L432)
+### {{removeFirst}}
 
 Remove the first occurrence of `substring` from the given `str`.
 
@@ -353,11 +361,11 @@ Remove the first occurrence of `substring` from the given `str`.
 **Example**
 
 ```html
-{{remove "a b a b a b" "a"}}
+{{removeFirst "a b a b a b" "a"}}
 <!-- results in:  ' b a b a b' -->
 ```
 
-### [{{replace}}](lib/string.js#L452)
+### {{replace}}
 
 Replace all occurrences of substring `a` with substring `b`.
 
@@ -375,7 +383,7 @@ Replace all occurrences of substring `a` with substring `b`.
 <!-- results in:  'z b z b z b' -->
 ```
 
-### [{{replaceFirst}}](lib/string.js#L473)
+### {{replaceFirst}}
 
 Replace the first occurrence of substring `a` with substring `b`.
 
@@ -389,11 +397,11 @@ Replace the first occurrence of substring `a` with substring `b`.
 **Example**
 
 ```html
-{{replace "a b a b a b" "a" "z"}}
+{{replaceFirst "a b a b a b" "a" "z"}}
 <!-- results in:  'z b a b a b' -->
 ```
 
-### [{{reverse}}](lib/string.js#L492)
+### {{reverse}}
 
 Reverse a string.
 
@@ -409,7 +417,7 @@ Reverse a string.
 <!-- results in:  'edcba' -->
 ```
 
-### [{{sentence}}](lib/string.js#L509)
+### {{sentence}}
 
 Sentence case the given string
 
@@ -425,7 +433,7 @@ Sentence case the given string
 <!-- results in:  'Hello world. Goodbye world.' -->
 ```
 
-### [{{snakecase}}](lib/string.js#L528)
+### {{snakecase}}
 
 snake_case the characters in the given `string`.
 
@@ -441,14 +449,15 @@ snake_case the characters in the given `string`.
 <!-- results in:  'a_b_c_d_e' -->
 ```
 
-### [{{split}}](lib/string.js#L547)
+### {{split}}
 
 Split `string` by the given `character`.
 
 **Params**
 
 * `string` **{String}**: The string to split.
-* `returns` **{String}** `character`: Default is an empty string.
+* `character` **{String}**: The character to split by. Default is an empty string.
+* `returns` **{Array}**: Array of split strings.
 
 **Example**
 
@@ -457,28 +466,27 @@ Split `string` by the given `character`.
 <!-- results in:  ['a', 'b', 'c'] -->
 ```
 
-### [{{startsWith}}](lib/string.js#L572)
+### {{startsWith}}
 
 Tests whether a string begins with the given prefix.
 
 **Params**
 
-* `prefix` **{String}**
-* `testString` **{String}**
-* `options` **{String}**
-* `returns` **{String}**
+* `prefix` **{String}**: The prefix to test for
+* `testString` **{String}**: The string to test
+* `returns` **{Boolean}**: True if testString starts with prefix, false otherwise
 
 **Example**
 
 ```html
-{{#startsWith "Goodbye" "Hello, world!"}}
-  Whoops
-{{else}}
-  Bro, do you even hello world?
-{{/startsWith}}
+{{startsWith "Hello" "Hello, world!"}}
+<!-- results in:  true -->
+
+{{startsWith "Goodbye" "Hello, world!"}}
+<!-- results in:  false -->
 ```
 
-### [{{titleize}}](lib/string.js#L596)
+### {{titleize}}
 
 Title case the given string.
 
@@ -494,7 +502,7 @@ Title case the given string.
 <!-- results in:  'This Is Title Case' -->
 ```
 
-### [{{trim}}](lib/string.js#L623)
+### {{trim}}
 
 Removes extraneous whitespace from the beginning and end of a string.
 
@@ -510,7 +518,7 @@ Removes extraneous whitespace from the beginning and end of a string.
 <!-- results in:  'ABC' -->
 ```
 
-### [{{trimLeft}}](lib/string.js#L639)
+### {{trimLeft}}
 
 Removes extraneous whitespace from the beginning of a string.
 
@@ -522,11 +530,11 @@ Removes extraneous whitespace from the beginning of a string.
 **Example**
 
 ```html
-{{trim " ABC "}}
+{{trimLeft " ABC "}}
 <!-- results in:  'ABC ' -->
 ```
 
-### [{{trimRight}}](lib/string.js#L657)
+### {{trimRight}}
 
 Removes extraneous whitespace from the end of a string.
 
@@ -542,29 +550,9 @@ Removes extraneous whitespace from the end of a string.
 <!-- results in:  ' ABC' -->
 ```
 
-### [{{truncate}}](lib/string.js#L680)
+### {{truncate}}
 
 Truncate a string to the specified `length`. Also see [ellipsis](#ellipsis).
-
-**Params**
-
-* `str` **{String}**
-* `limit` **{Number}**: The desired length of the returned string.
-* `suffix` **{String}**: Optionally supply a string to use as a suffix to denote when the string has been truncated. Otherwise an ellipsis (`…`) will be used.
-* `returns` **{String}**: The truncated string.
-
-**Example**
-
-```html
-truncate("foo bar baz", 7);
-<!-- results in:  'foo bar' -->
-truncate(sanitize("<span>foo bar baz</span>", 7));
-<!-- results in:  'foo bar' -->
-```
-
-### [{{truncateWords}}](lib/string.js#L712)
-
-Truncate a string to have the specified number of words. Also see [truncate](#truncate).
 
 **Params**
 
@@ -576,15 +564,35 @@ Truncate a string to have the specified number of words. Also see [truncate](#tr
 **Example**
 
 ```html
-truncateWords("foo bar baz", 1);
-<!-- results in:  'foo…' -->
-truncateWords("foo bar baz", 2);
-<!-- results in:  'foo bar…' -->
-truncateWords("foo bar baz", 3);
-<!-- results in:  'foo bar baz' -->
+{{truncate "foo bar baz" 7}}
+<!-- results in:  'foo bar' -->
+{{truncate "foo bar baz" 7 "..."}}
+<!-- results in:  'foo ...' -->
 ```
 
-### [{{upcase}}](lib/string.js#L742)
+### {{truncateWords}}
+
+Truncate a string to have the specified number of words. Also see [truncate](#truncate).
+
+**Params**
+
+* `str` **{String}**
+* `limit` **{Number}**: The number of words to keep.
+* `suffix` **{String}**: Optionally supply a string to use as a suffix. Default is '...'.
+* `returns` **{String}**: The truncated string.
+
+**Example**
+
+```html
+{{truncateWords "foo bar baz" 1}}
+<!-- results in:  'foo...' -->
+{{truncateWords "foo bar baz" 2}}
+<!-- results in:  'foo bar...' -->
+{{truncateWords "foo bar baz" 3}}
+<!-- results in:  'foo bar baz...' -->
+```
+
+### {{upcase}}
 
 Uppercase all of the characters in the given string. Alias for [uppercase](#uppercase).
 
@@ -600,7 +608,7 @@ Uppercase all of the characters in the given string. Alias for [uppercase](#uppe
 <!-- results in:  'ABCDEF' -->
 ```
 
-### [{{uppercase}}](lib/string.js#L763)
+### {{uppercase}}
 
 Uppercase all of the characters in the given string. If used as a block helper it will uppercase the entire block. This helper does not support inverse blocks.
 
