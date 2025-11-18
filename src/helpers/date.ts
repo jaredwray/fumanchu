@@ -54,8 +54,7 @@ const convertFormatString = (format: string): string => {
 		.replace(/yy/g, "YY")
 		.replace(/dd/g, "DD")
 		.replace(/mm/g, "MM")
-		.replace(/hh/g, "HH")
-		.replace(/ss/g, "ss"); // Fixed: ss is correct for seconds in dayjs
+		.replace(/hh/g, "HH");
 };
 
 const date = (humanReadableDate?: string, formatString?: string): string => {
