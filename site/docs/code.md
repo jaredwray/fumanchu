@@ -7,9 +7,7 @@ order: 7
 
 # Code Helpers
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/code.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/code.js)
-
-### [{{embed}}](lib/code.js#L23)
+### {{embed}}
 
 Embed code from an external file as preformatted text.
 
@@ -24,10 +22,10 @@ Embed code from an external file as preformatted text.
 ```html
 {{embed 'path/to/file.js'}}
 <!-- optionally specify the language to use -->
-{{embed 'path/to/file.hbs' 'html')}}
+{{embed 'path/to/file.hbs' 'html'}}
 ```
 
-### [{{gist}}](lib/code.js#L45)
+### {{gist}}
 
 Embed a GitHub Gist using only the id of the Gist
 
@@ -42,17 +40,25 @@ Embed a GitHub Gist using only the id of the Gist
 {{gist "12345"}}
 ```
 
-### [{{jsfiddle}}](lib/code.js#L60)
+### {{jsfiddle}}
 
-Generate the HTML for a jsFiddle link with the given `params`
+Generate the HTML for a jsFiddle iframe with the given options.
 
 **Params**
 
-* `params` **{Object}**
+* `id` **{String}**: The jsFiddle id (required)
+* `width` **{String}**: Width of the iframe (default: "100%")
+* `height` **{String}**: Height of the iframe (default: "300")
+* `skin` **{String}**: Skin path (default: "/presentation/")
+* `tabs` **{String}**: Tabs to display (default: "result,js,html,css")
+* `allowfullscreen` **{String}**: Allowfullscreen attribute (default: "allowfullscreen")
+* `frameborder` **{String}**: Frameborder attribute (default: "0")
 * `returns` **{String}**
 
 **Example**
 
 ```html
-{{jsfiddle id="0dfk10ks" tabs="true"}}
+{{jsfiddle id="0dfk10ks"}}
+<!-- with custom options -->
+{{jsfiddle id="0dfk10ks" height="500" tabs="js,result"}}
 ```
