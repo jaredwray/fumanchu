@@ -7,39 +7,83 @@ order: 9
 
 ## collection
 
-Visit the: [collection](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/collection.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/collection.js)
+### {{isEmpty}}
 
-### [{{isEmpty}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/collection.js#L31)
+Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the collection is not empty.
 
-Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the colleciton is not empty.
+A collection is considered empty if:
+- It is `null` or `undefined`
+- It is an array with length 0
+- It is an object with no keys
 
 **Params**
 
-* `collection` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
+* `collection` **{Array|Object}**: The collection to check
+* `returns` **{Boolean}**
 
 **Example**
 
-```html
+```handlebars
 <!-- array: [] -->
-{{#isEmpty array}}AAA{{else}}BBB{{/isEmpty}}
-<!-- results in: 'AAA' -->
+{{#if (isEmpty array)}}
+  Array is empty
+{{else}}
+  Array has items
+{{/if}}
+<!-- results in: 'Array is empty' -->
 
-<!-- array: [] -->
-{{isEmpty array}}
-<!-- results in: true -->
+<!-- object: {} -->
+{{#if (isEmpty object)}}
+  Object is empty
+{{/if}}
+
+<!-- array: ['a', 'b'] -->
+{{#if (isEmpty array)}}
+  Empty
+{{else}}
+  Has {{array.length}} items
+{{/if}}
+<!-- results in: 'Has 2 items' -->
 ```
 
-### [{{iterate}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/collection.js#L59)
+### {{iterate}}
 
-Block helper that iterates over an array or object. If
-an array is given, `.forEach` is called, or if an object
-is given, `.forOwn` is called, otherwise the inverse block
-is returned.
+Block helper that iterates over an array or object. If an array is given, it iterates over each element with its index. If an object is given, it iterates over each key-value pair. If the collection is null/undefined or not iterable, the inverse block is returned.
 
 **Params**
 
 * `collection` **{Object|Array}**: The collection to iterate over
-* `options` **{Object}**
+* `fn` **{Function}**: The block function called for each item, receives `(value, key/index)`
+* `inverse` **{Function}**: Optional inverse block if collection is empty or invalid
 * `returns` **{String}**
+
+**Example**
+
+```handlebars
+<!-- array: ['a', 'b', 'c'] -->
+{{#iterate array}}
+  Index {{@index}}: {{this}}
+{{/iterate}}
+<!-- results in:
+  Index 0: a
+  Index 1: b
+  Index 2: c
+-->
+
+<!-- object: {name: 'John', age: 30} -->
+{{#iterate object}}
+  {{@key}}: {{this}}
+{{/iterate}}
+<!-- results in:
+  name: John
+  age: 30
+-->
+
+<!-- With inverse block for empty/invalid collections -->
+{{#iterate emptyArray}}
+  {{this}}
+{{else}}
+  No items found
+{{/iterate}}
+<!-- results in: 'No items found' -->
+```
