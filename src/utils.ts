@@ -54,3 +54,42 @@ export const getObject = (object: any, path: string | string[]): any => {
 
 	return { [finalKey]: current[finalKey] };
 };
+
+/**
+ * Merges options from multiple sources for Handlebars helpers
+ * Replaces handlebars-utils util.options()
+ * @param thisArg - The context (this) from the helper, may have an options property
+ * @param locals - Local options or a Handlebars options object with hash
+ * @param opts - Additional options or a Handlebars options object with hash
+ * @returns Merged options object
+ */
+// biome-ignore lint/suspicious/noExplicitAny: handlebars helpers use any for context
+export const options = (thisArg: any, locals?: any, opts?: any): any => {
+	// biome-ignore lint/suspicious/noExplicitAny: result needs to be flexible object type
+	const result: any = {};
+
+	// Extract options from thisArg if it has an options property
+	if (thisArg && typeof thisArg === "object" && thisArg.options) {
+		Object.assign(result, thisArg.options);
+	}
+
+	// Handle locals - could be a Handlebars options object with hash, or direct options
+	if (locals && typeof locals === "object") {
+		if ("hash" in locals) {
+			Object.assign(result, locals.hash);
+		} else {
+			Object.assign(result, locals);
+		}
+	}
+
+	// Handle opts parameter - similar logic
+	if (opts && typeof opts === "object") {
+		if ("hash" in opts) {
+			Object.assign(result, opts.hash);
+		} else {
+			Object.assign(result, opts);
+		}
+	}
+
+	return result;
+};

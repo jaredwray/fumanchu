@@ -1,11 +1,9 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
 
 import Handlebars from "handlebars";
-// @ts-expect-error
-import util from "handlebars-utils";
 import kindOf from "kind-of";
 import type { Helper } from "../helper-registry.js";
-import { get } from "../utils.js";
+import { get, options } from "../utils.js";
 
 /**
  * Block helper for exposing private `@` variables on the context
@@ -35,8 +33,8 @@ function frame(this: any, context: any, options: any): any {
 	return options.fn(this, { data });
 }
 
-function option(this: any, prop: string, locals?: any, options?: any): any {
-	return get(util.options(this, locals, options), prop);
+function option(this: any, prop: string, locals?: any, opts?: any): any {
+	return get(options(this, locals, opts), prop);
 }
 
 function noop(this: any, options: { fn: (context: any) => any }): any {

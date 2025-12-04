@@ -1,11 +1,10 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: this is for handlebars
-// @ts-expect-error
-import util from "handlebars-utils";
 import type { Helper } from "../helper-registry.js";
+import { options } from "../utils.js";
 
-const toRegex = (str: string, locals?: any, options?: any): RegExp => {
-	const opts = util.options({}, locals, options);
-	return new RegExp(str, opts.flags);
+const toRegex = (str: string, locals?: any, opts?: any): RegExp => {
+	const mergedOpts = options({}, locals, opts);
+	return new RegExp(str, mergedOpts.flags);
 };
 
 const test = (str: unknown, regex: RegExp): boolean => {

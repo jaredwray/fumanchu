@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { get, getObject } from "../src/utils.js";
+import { get, getObject, options } from "../src/utils.js";
 
 describe("get", () => {
 	it("returns value from nested object using dot notation", () => {
@@ -194,5 +194,77 @@ describe("getObject", () => {
 	it("returns undefined when intermediate value becomes non-object during navigation", () => {
 		const obj = { a: "string" };
 		expect(getObject(obj, "a.b.c")).toBeUndefined();
+	});
+});
+
+describe("options", () => {
+	it("returns empty object when all parameters are undefined", () => {
+		expect(options(undefined, undefined, undefined)).toEqual({});
+	});
+
+	it("returns empty object when all parameters are null", () => {
+		expect(options(null, null, null)).toEqual({});
+	});
+
+	it("extracts options from thisArg.options", () => {
+		const thisArg = { options: { a: { b: { c: "value" } } } };
+		expect(options(thisArg)).toEqual({ a: { b: { c: "value" } } });
+	});
+
+	it("merges locals directly when no hash property", () => {
+		expect(options({}, { flags: "i" })).toEqual({ flags: "i" });
+	});
+
+	it("extracts hash from Handlebars locals object", () => {
+		const locals = { hash: { foo: "bar" } };
+		expect(options({}, locals)).toEqual({ foo: "bar" });
+	});
+
+	it("extracts hash from Handlebars opts object", () => {
+		const opts = { hash: { baz: "qux" } };
+		expect(options({}, undefined, opts)).toEqual({ baz: "qux" });
+	});
+
+	it("merges opts directly when no hash property", () => {
+		expect(options({}, undefined, { flags: "gi" })).toEqual({ flags: "gi" });
+	});
+
+	it("merges all sources together", () => {
+		const thisArg = { options: { from: "thisArg" } };
+		const locals = { from: "locals", extra: "local" };
+		const opts = { extra: "opts", another: "value" };
+		const result = options(thisArg, locals, opts);
+		expect(result).toEqual({
+			from: "locals",
+			extra: "opts",
+			another: "value",
+		});
+	});
+
+	it("later sources override earlier sources", () => {
+		const thisArg = { options: { key: "first" } };
+		const locals = { key: "second" };
+		const opts = { key: "third" };
+		expect(options(thisArg, locals, opts)).toEqual({ key: "third" });
+	});
+
+	it("handles thisArg without options property", () => {
+		const thisArg = { name: "test" };
+		expect(options(thisArg, { foo: "bar" })).toEqual({ foo: "bar" });
+	});
+
+	it("handles empty objects", () => {
+		expect(options({}, {}, {})).toEqual({});
+	});
+
+	it("works with real Handlebars-style usage for toRegex", () => {
+		const result = options({}, { flags: "i" });
+		expect(result.flags).toBe("i");
+	});
+
+	it("works with real Handlebars-style usage for option helper", () => {
+		const thisArg = { options: { a: { b: { c: "ddd" } } } };
+		const result = options(thisArg);
+		expect(result.a.b.c).toBe("ddd");
 	});
 });
