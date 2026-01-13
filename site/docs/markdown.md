@@ -1,45 +1,44 @@
 ---
 title: Markdown Helpers
-description: >
-    Handlebars provides a set of built-in helpers for working with markdown. These helpers are used to format and manipulate markdown content, making it easier to display markdown in a readable format.
+description: Helpers for converting markdown to HTML
 order: 15
 ---
 
 ## markdown
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/md.ts) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/test/md.test.ts)
-
-### [{{markdown}}](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/md.ts)
+### {{markdown}}
 
 Block helper that converts a string of inline markdown to HTML.
 
 **Params**
 
-* `context` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
+* `string` **{String}**: Markdown string to convert
+* `returns` **{String}**: HTML string
 
 **Example**
 
-```html
+```handlebars
 {{#markdown}}
 # Foo
 {{/markdown}}
 <!-- results in: <h1>Foo</h1> -->
 ```
 
-### [{{md}}](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/md.ts)
+### {{md}}
 
-Read a markdown file from the file system and inject its contents after converting it to HTML.
+Converts a markdown string to HTML, or reads a markdown file from the file system and converts its contents to HTML.
 
 **Params**
 
-* `context` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
+* `filepath` **{String}**: Markdown string or path to a markdown file
+* `returns` **{String}**: HTML string
 
 **Example**
 
-```html
+```handlebars
+{{md "# Hello World"}}
+<!-- results in: <h1>Hello World</h1> -->
+
 {{md "foo/bar.md"}}
+<!-- reads file and converts to HTML -->
 ```
