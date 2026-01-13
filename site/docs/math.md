@@ -7,9 +7,7 @@ order: 17
 
 ## math
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/math.js)
-
-### [{{abs}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L15)
+### {{abs}}
 
 Return the magnitude of `a`.
 
@@ -18,7 +16,7 @@ Return the magnitude of `a`.
 * `a` **{Number}**
 * `returns` **{Number}**
 
-### [{{add}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L31)
+### {{add}}
 
 Return the sum of `a` plus `b`.
 
@@ -28,7 +26,7 @@ Return the sum of `a` plus `b`.
 * `b` **{Number}**
 * `returns` **{Number}**
 
-### [{{avg}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L54)
+### {{avg}}
 
 Returns the average of all numbers in the given array.
 
@@ -44,7 +42,7 @@ Returns the average of all numbers in the given array.
 <!-- results in: '3' -->
 ```
 
-### [{{ceil}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L69)
+### {{ceil}}
 
 Get the `Math.ceil()` of the given value.
 
@@ -53,7 +51,7 @@ Get the `Math.ceil()` of the given value.
 * `value` **{Number}**
 * `returns` **{Number}**
 
-### [{{divide}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L84)
+### {{divide}}
 
 Divide `a` by `b`
 
@@ -62,7 +60,7 @@ Divide `a` by `b`
 * `a` **{Number}**: numerator
 * `b` **{Number}**: denominator
 
-### [{{floor}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L102)
+### {{floor}}
 
 Get the `Math.floor()` of the given value.
 
@@ -71,7 +69,7 @@ Get the `Math.floor()` of the given value.
 * `value` **{Number}**
 * `returns` **{Number}**
 
-### [{{minus}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L118)
+### {{minus}}
 
 Return the difference of `a` minus `b`.
 
@@ -80,7 +78,7 @@ Return the difference of `a` minus `b`.
 * `a` **{Number}**
 * `b` **{Number}**
 
-### [{{modulo}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L137)
+### {{modulo}}
 
 Get the remainder of a division operation.
 
@@ -90,7 +88,7 @@ Get the remainder of a division operation.
 * `b` **{Number}**
 * `returns` **{Number}**
 
-### [{{multiply}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L157)
+### {{multiply}}
 
 Return the product of `a` times `b`.
 
@@ -100,7 +98,7 @@ Return the product of `a` times `b`.
 * `b` **{Number}**: multiplier
 * `returns` **{Number}**
 
-### [{{plus}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L175)
+### {{plus}}
 
 Add `a` by `b`.
 
@@ -109,7 +107,7 @@ Add `a` by `b`.
 * `a` **{Number}**: factor
 * `b` **{Number}**: multiplier
 
-### [{{random}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L194)
+### {{random}}
 
 Generate a random number between two values
 
@@ -119,7 +117,7 @@ Generate a random number between two values
 * `max` **{Number}**
 * `returns` **{String}**
 
-### [{{remainder}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L212)
+### {{remainder}}
 
 Get the remainder when `a` is divided by `b`.
 
@@ -128,7 +126,7 @@ Get the remainder when `a` is divided by `b`.
 * `a` **{Number}**: a
 * `b` **{Number}**: b
 
-### [{{round}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L224)
+### {{round}}
 
 Round the given number.
 
@@ -137,7 +135,7 @@ Round the given number.
 * `number` **{Number}**
 * `returns` **{Number}**
 
-### [{{subtract}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L241)
+### {{subtract}}
 
 Return the product of `a` minus `b`.
 
@@ -147,7 +145,7 @@ Return the product of `a` minus `b`.
 * `b` **{Number}**
 * `returns` **{Number}**
 
-### [{{sum}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L263)
+### {{sum}}
 
 Returns the sum of all numbers in the given array.
 
@@ -163,7 +161,7 @@ Returns the sum of all numbers in the given array.
 <!-- results in: '15' -->
 ```
 
-### [{{times}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/math.js#L286)
+### {{times}}
 
 Multiply number `a` by number `b`.
 
