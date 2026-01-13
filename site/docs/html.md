@@ -1,113 +1,321 @@
 ---
 title: Html Helpers
 description: >
-    Handlebars provides a set of built-in helpers for working with HTML. These helpers are used to manipulate and format HTML elements, making it easier to work with HTML data in templates.
+    Helpers for generating and manipulating HTML elements in templates.
 order: 12
 ---
 
-## html
+### {{attr}}
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/html.js)
-
-### [{{attr}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js#L23)
-
-Stringify attributes on the options `hash`.
+Stringify attributes from the options hash into an HTML attribute string.
 
 **Params**
 
-* `options` **{Object}**
-* `returns` **{String}**
+* `options` **{Object}**: Options object with a `hash` property containing key-value pairs
+* `returns` **{String}**: Space-prefixed attribute string, or empty string if no attributes
 
 **Example**
 
-```html
-<!-- value = 'bar' -->
-<div{{attr foo=value}}></div>
-<!-- results in: <div foo="bar"></div>
+```handlebars
+<div{{attr class="container" id="main"}}></div>
 ```
 
-### [{{css}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js#L45)
+**Output**
 
-Add an array of `<link>` tags. Automatically resolves relative paths to `options.assets` if passed on the context.
+```html
+<div class="container" id="main"></div>
+```
+
+You can also use variables:
+
+```handlebars
+<!-- With context: { btnClass: "btn-primary" } -->
+<button{{attr class=btnClass type="submit"}}>Click</button>
+```
+
+**Output**
+
+```html
+<button class="btn-primary" type="submit">Click</button>
+```
+
+### {{css}}
+
+Generate `<link>` tags for stylesheets. Supports both CSS and LESS files.
 
 **Params**
 
-* `list` **{String|Array}**: One or more stylesheet urls.
-* `returns` **{String}**
+* `list` **{String|Array}**: One or more stylesheet paths/URLs
+* `returns` **{String}**: One or more `<link>` tags
 
 **Example**
 
+Single stylesheet:
+
+```handlebars
+{{css "styles/main.css"}}
+```
+
+**Output**
+
 ```html
-<!-- {stylesheets: ['foo.css', 'bar.css']} -->
+<link type="text/css" rel="stylesheet" href="styles/main.css">
+```
+
+Multiple stylesheets:
+
+```handlebars
+<!-- With context: { stylesheets: ["reset.css", "theme.css", "app.css"] } -->
 {{css stylesheets}}
-
-<!-- results in: -->
-<!-- <link type="text/css" rel="stylesheet" href="foo.css"> -->
-<!-- <link type="text/css" rel="stylesheet" href="bar.css"> -->
 ```
 
+**Output**
 
-### [{{js}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js#L89)
+```html
+<link type="text/css" rel="stylesheet" href="reset.css">
+<link type="text/css" rel="stylesheet" href="theme.css">
+<link type="text/css" rel="stylesheet" href="app.css">
+```
 
-Generate one or more `<script></script>` tags with paths/urls to javascript or coffeescript files.
+LESS files are automatically detected:
+
+```handlebars
+{{css "styles/theme.less"}}
+```
+
+**Output**
+
+```html
+<link type="text/css" rel="stylesheet/less" href="styles/theme.less">
+```
+
+### {{js}}
+
+Generate `<script>` tags for JavaScript files.
 
 **Params**
 
-* `context` **{Object}**
-* `returns` **{String}**
+* `context` **{String|Array|Object}**: Script path(s) or options object with `src` attribute
+* `returns` **{String}**: One or more `<script>` tags
 
 **Example**
 
+Single script:
+
+```handlebars
+{{js "app.js"}}
+```
+
+**Output**
+
 ```html
+<script src="app.js"></script>
+```
+
+Multiple scripts:
+
+```handlebars
+<!-- With context: { scripts: ["vendor.js", "utils.js", "app.js"] } -->
 {{js scripts}}
 ```
 
-### [{{sanitize}}](lib/html.js#L121)
+**Output**
 
-Strip HTML tags from a string, so that only the text nodes are preserved.
+```html
+<script src="vendor.js"></script>
+<script src="utils.js"></script>
+<script src="app.js"></script>
+```
+
+Using the `src` attribute:
+
+```handlebars
+{{js src="bundle.js"}}
+```
+
+**Output**
+
+```html
+<script src="bundle.js"></script>
+```
+
+### {{sanitize}}
+
+Strip all HTML tags from a string, preserving only the text content.
 
 **Params**
 
-* `str` **{String}**: The string of HTML to sanitize.
-* `returns` **{String}**
+* `str` **{String}**: The string containing HTML to sanitize
+* `returns` **{String}**: Plain text with all HTML tags removed
 
 **Example**
 
-```html
-{{sanitize "<span>foo</span>"}}
-<!-- results in: 'foo' -->
+```handlebars
+{{sanitize "<p>Hello <strong>World</strong>!</p>"}}
 ```
 
-### [{{ul}}](lib/html.js#L135)
+**Output**
 
-Block helper for creating unordered lists (`<ul></ul>`)
+```
+Hello World!
+```
+
+Extracting text from HTML markup:
+
+```handlebars
+<!-- With context: { richText: "<div class='note'><em>Important:</em> Check the <a href='/docs'>docs</a></div>" } -->
+<p>{{sanitize richText}}</p>
+```
+
+**Output**
+
+```html
+<p>Important: Check the docs</p>
+```
+
+**Note:** This helper removes HTML tags but preserves all text content, including text inside `<script>` or `<style>` tags. It is not a security sanitizer for untrusted input.
+
+### {{ul}}
+
+Block helper for creating unordered lists.
 
 **Params**
 
-* `context` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
+* `context` **{Array}**: Array of items to render as list items
+* `options` **{Object}**: Options object; supports HTML attributes via hash
+* `returns` **{String}**: Complete `<ul>` element with `<li>` children
 
-### [{{ol}}](lib/html.js#L154)
+**Example**
 
-Block helper for creating ordered lists  (`<ol></ol>`)
+With an array of strings:
+
+```handlebars
+<!-- With context: { fruits: ["Apple", "Banana", "Cherry"] } -->
+{{#ul fruits}}{{this}}{{/ul}}
+```
+
+**Output**
+
+```html
+<ul><li>Apple</li>
+<li>Banana</li>
+<li>Cherry</li></ul>
+```
+
+With objects and custom attributes:
+
+```handlebars
+<!-- With context: { users: [{name: "Alice"}, {name: "Bob"}] } -->
+{{#ul users class="user-list"}}{{name}}{{/ul}}
+```
+
+**Output**
+
+```html
+<ul class="user-list"><li>Alice</li>
+<li>Bob</li></ul>
+```
+
+### {{ol}}
+
+Block helper for creating ordered lists.
 
 **Params**
 
-* `context` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
+* `context` **{Array}**: Array of items to render as list items
+* `options` **{Object}**: Options object; supports HTML attributes via hash
+* `returns` **{String}**: Complete `<ol>` element with `<li>` children
 
-### [{{thumbnailImage}}](lib/html.js#L176)
+**Example**
 
-Returns a `<figure>` with a thumbnail linked to a full picture
+```handlebars
+<!-- With context: { steps: ["Mix ingredients", "Bake at 350°F", "Let cool"] } -->
+{{#ol steps class="recipe-steps"}}{{this}}{{/ol}}
+```
+
+**Output**
+
+```html
+<ol class="recipe-steps"><li>Mix ingredients</li>
+<li>Bake at 350°F</li>
+<li>Let cool</li></ol>
+```
+
+### {{thumbnailImage}}
+
+Generate a `<figure>` element with a thumbnail image, optional link to full-size image, and optional caption.
 
 **Params**
 
-* `context` **{Object}**: Object with values/attributes to add to the generated elements:
-* `context.alt` **{String}**
-* `context.src` **{String}**
-* `context.width` **{Number}**
-* `context.height` **{Number}**
-* `returns` **{String}**: HTML `<figure>` element with image and optional caption/link.
+* `context` **{Object}**: Configuration object with the following properties:
+  * `id` **{String}**: Unique identifier for the figure element
+  * `alt` **{String}**: Alt text for the image
+  * `thumbnail` **{String}**: URL of the thumbnail image
+  * `size` **{Object}**: Object with `width` and `height` properties
+  * `full` **{String}** *(optional)*: URL of the full-size image (creates a link if provided)
+  * `caption` **{String}** *(optional)*: Caption text for the image
+  * `classes` **{Object}** *(optional)*: CSS classes for `figure`, `image`, and `link` elements
+* `returns` **{String}**: Complete `<figure>` element
 
+**Example**
+
+Basic thumbnail with link and caption:
+
+```handlebars
+{{thumbnailImage image}}
+```
+
+With context:
+
+```json
+{
+  "image": {
+    "id": "hero",
+    "alt": "Mountain landscape",
+    "thumbnail": "/images/mountain-thumb.jpg",
+    "size": { "width": 200, "height": 150 },
+    "full": "/images/mountain-full.jpg",
+    "caption": "View from the summit"
+  }
+}
+```
+
+**Output**
+
+```html
+<figure id="image-hero">
+<a href="/images/mountain-full.jpg" rel="thumbnail">
+<img alt="Mountain landscape" src="/images/mountain-thumb.jpg" width="200" height="150">
+</a>
+<figcaption>View from the summit</figcaption>
+</figure>
+```
+
+With custom CSS classes:
+
+```json
+{
+  "image": {
+    "id": "profile",
+    "alt": "User avatar",
+    "thumbnail": "/avatars/user.jpg",
+    "size": { "width": 100, "height": 100 },
+    "full": "/avatars/user-large.jpg",
+    "classes": {
+      "figure": ["avatar-container", "rounded"],
+      "image": ["avatar-img"],
+      "link": ["avatar-link"]
+    }
+  }
+}
+```
+
+**Output**
+
+```html
+<figure id="image-profile" class="avatar-container rounded">
+<a href="/avatars/user-large.jpg" rel="thumbnail" class="avatar-link">
+<img alt="User avatar" src="/avatars/user.jpg" width="100" height="100" class="avatar-img">
+</a>
+</figure>
+```
