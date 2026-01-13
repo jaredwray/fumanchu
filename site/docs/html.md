@@ -91,7 +91,7 @@ LESS files are automatically detected:
 
 ### {{js}}
 
-Generate `<script>` tags for JavaScript or CoffeeScript files.
+Generate `<script>` tags for JavaScript files.
 
 **Params**
 
@@ -137,18 +137,6 @@ Using the `src` attribute:
 
 ```html
 <script src="bundle.js"></script>
-```
-
-CoffeeScript files are automatically detected:
-
-```handlebars
-{{js "app.coffee"}}
-```
-
-**Output**
-
-```html
-<script type="text/coffeescript" src="app.coffee"></script>
 ```
 
 ### {{sanitize}}
