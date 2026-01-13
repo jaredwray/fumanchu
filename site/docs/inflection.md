@@ -7,9 +7,7 @@ order: 14
 
 ## inflection
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/inflection.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/inflection.js)
-
-### [{{inflect}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/inflection.js#L30)
+### {{inflect}}
 
 Returns either the `singular` or `plural` inflection of a word based on the given `count`.
 
@@ -18,7 +16,7 @@ Returns either the `singular` or `plural` inflection of a word based on the give
 * `count` **{Number}**
 * `singular` **{String}**: The singular form
 * `plural` **{String}**: The plural form
-* `includeCount` **{String}**
+* `includeCount` **{Boolean}**
 * `returns` **{String}**
 
 **Example**
@@ -36,13 +34,13 @@ Returns either the `singular` or `plural` inflection of a word based on the give
 <!-- "2 strings" -->
 ```
 
-### [{{ordinalize}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/inflection.js#L58)
+### {{ordinalize}}
 
 Returns an ordinalized number as a string.
 
 **Params**
 
-* `val` **{String}**: The value to ordinalize.
+* `value` **{Number|String}**: The value to ordinalize.
 * `returns` **{String}**: The ordinalized number
 
 **Example**
