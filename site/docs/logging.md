@@ -1,13 +1,15 @@
 ---
 title: Logging Helpers
 description: >
-    Handlebars provides a set of built-in helpers for logging and debugging. These helpers output messages to the terminal with various formatting and color options, making it easier to debug templates and display status information.
+    Handlebars provides a set of built-in helpers for logging and debugging. These helpers output messages to the terminal with various formatting and color options, making it easier to debug templates and display status information. Node.js only.
 order: 6
 ---
 
 ## logging
 
-These helpers are designed for Node.js environments and output to the terminal. All logging helpers return an empty string to avoid affecting template output.
+> **Note:** These helpers are only available in Node.js environments. They are not compatible with browser-based Handlebars usage.
+
+These helpers output messages to the terminal with ANSI color formatting. All logging helpers return an empty string to avoid affecting template output.
 
 ### {{log}}
 
