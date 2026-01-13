@@ -162,7 +162,8 @@ describe("logging helpers", () => {
 			const calls = consoleErrorSpy.mock.calls;
 			const hasContext = calls.some(
 				(call) =>
-					call.length > 1 && JSON.stringify(call[1]) === JSON.stringify(context),
+					call.length > 1 &&
+					JSON.stringify(call[1]) === JSON.stringify(context),
 			);
 			expect(hasContext).toBe(true);
 		});
