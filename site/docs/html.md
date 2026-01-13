@@ -5,11 +5,7 @@ description: >
 order: 12
 ---
 
-## html
-
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/html.js)
-
-### [{{attr}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js#L23)
+### {{attr}}
 
 Stringify attributes on the options `hash`.
 
@@ -26,7 +22,7 @@ Stringify attributes on the options `hash`.
 <!-- results in: <div foo="bar"></div>
 ```
 
-### [{{css}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js#L45)
+### {{css}}
 
 Add an array of `<link>` tags. Automatically resolves relative paths to `options.assets` if passed on the context.
 
@@ -47,7 +43,7 @@ Add an array of `<link>` tags. Automatically resolves relative paths to `options
 ```
 
 
-### [{{js}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/html.js#L89)
+### {{js}}
 
 Generate one or more `<script></script>` tags with paths/urls to javascript or coffeescript files.
 
@@ -62,7 +58,7 @@ Generate one or more `<script></script>` tags with paths/urls to javascript or c
 {{js scripts}}
 ```
 
-### [{{sanitize}}](lib/html.js#L121)
+### {{sanitize}}
 
 Strip HTML tags from a string, so that only the text nodes are preserved.
 
@@ -78,7 +74,7 @@ Strip HTML tags from a string, so that only the text nodes are preserved.
 <!-- results in: 'foo' -->
 ```
 
-### [{{ul}}](lib/html.js#L135)
+### {{ul}}
 
 Block helper for creating unordered lists (`<ul></ul>`)
 
@@ -88,7 +84,7 @@ Block helper for creating unordered lists (`<ul></ul>`)
 * `options` **{Object}**
 * `returns` **{String}**
 
-### [{{ol}}](lib/html.js#L154)
+### {{ol}}
 
 Block helper for creating ordered lists  (`<ol></ol>`)
 
@@ -98,7 +94,7 @@ Block helper for creating ordered lists  (`<ol></ol>`)
 * `options` **{Object}**
 * `returns` **{String}**
 
-### [{{thumbnailImage}}](lib/html.js#L176)
+### {{thumbnailImage}}
 
 Returns a `<figure>` with a thumbnail linked to a full picture
 
