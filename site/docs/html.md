@@ -160,18 +160,20 @@ Strip all HTML tags from a string, preserving only the text content.
 Hello World!
 ```
 
-Useful for displaying user content safely:
+Extracting text from HTML markup:
 
 ```handlebars
-<!-- With context: { userComment: "<script>alert('xss')</script>Nice post!" } -->
-<p>{{sanitize userComment}}</p>
+<!-- With context: { richText: "<div class='note'><em>Important:</em> Check the <a href='/docs'>docs</a></div>" } -->
+<p>{{sanitize richText}}</p>
 ```
 
 **Output**
 
 ```html
-<p>Nice post!</p>
+<p>Important: Check the docs</p>
 ```
+
+**Note:** This helper removes HTML tags but preserves all text content, including text inside `<script>` or `<style>` tags. It is not a security sanitizer for untrusted input.
 
 ### {{ul}}
 
