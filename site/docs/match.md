@@ -1,24 +1,21 @@
 ---
 title: Match Helpers
 description: >
-    Handlebars provides a set of built-in helpers for working with markdown. These helpers are used to format and manipulate markdown content, making it easier to display markdown in a readable format.
+    Handlebars helpers for working with glob patterns and file matching. These helpers use micromatch to filter and test file paths against glob patterns.
 order: 16
 ---
 
 ## match
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/match.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/match.js)
+### {{match}}
 
-### [{{match}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/match.js#L23)
-
-Returns an array of strings that match the given glob pattern(s). Options may be passed on the options hash or locals.
+Returns an array of strings that match the given glob pattern(s).
 
 **Params**
 
-* `files` **{Array|String}**
-* `patterns` **{Array|String}**: One or more glob patterns.
-* `locals` **{Object}**
-* `options` **{Object}**
+* `files` **{Array|String}**: Array of file paths or a single file path string.
+* `patterns` **{Array|String}**: One or more glob patterns. Comma-separated strings are also supported.
+* `options` **{Object}**: Options to pass to micromatch.
 * `returns` **{Array}**: Array of matches
 
 **Example**
@@ -28,15 +25,15 @@ Returns an array of strings that match the given glob pattern(s). Options may be
 {{match (readdir "foo") (toRegex "\\.js$")}}
 ```
 
-### [{{isMatch}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/match.js#L47)
+### {{isMatch}}
 
-Returns true if a filepath contains the given pattern. Options may be passed on the options hash or locals.
+Returns true if a filepath matches the given pattern.
 
 **Params**
 
-* `filepath` **{String}**
-* `pattern` **{String}**
-* `options` **{Object}**
+* `filepath` **{String}**: The file path to test.
+* `pattern` **{String|Array}**: The glob pattern(s) to match against.
+* `options` **{Object}**: Options to pass to micromatch.
 * `returns` **{Boolean}**
 
 **Example**
