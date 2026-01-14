@@ -7,9 +7,7 @@ order: 22
 
 ## regex
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/regex.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/regex.js)
-
-### [{{toRegex}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/regex.js#L19)
+### {{toRegex}}
 
 Convert the given string to a regular expression.
 
@@ -25,9 +23,9 @@ Convert the given string to a regular expression.
 <!-- results in: /foo/ -->
 ```
 
-### [{{test}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/regex.js#L42)
+### {{test}}
 
-Returns true if the given `str` matches the given regex. A regex can be passed on the context, or using the [toRegex](#toregex) helper as a subexpression.
+Returns true if the given `str` matches the given regex. A regex can be passed on the context, or using the toRegex helper as a subexpression.
 
 **Params**
 
