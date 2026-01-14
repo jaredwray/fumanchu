@@ -7,9 +7,7 @@ order: 20
 
 ## object
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/object.js)
-
-### [{{extend}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L18)
+### {{extend}}
 
 Extend the context with the properties of other objects.
 A shallow merge is performed to avoid mutating the context.
@@ -19,7 +17,7 @@ A shallow merge is performed to avoid mutating the context.
 * `objects` **{Object}**: One or more objects to extend.
 * `returns` **{Object}**
 
-### [{{forIn}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L55)
+### {{forIn}}
 
 Block helper that iterates over the properties of
 an object, exposing each key and value on the context.
@@ -30,7 +28,7 @@ an object, exposing each key and value on the context.
 * `options` **{Object}**
 * `returns` **{String}**
 
-### [{{forOwn}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L81)
+### {{forOwn}}
 
 Block helper that iterates over the **own** properties of
 an object, exposing each key and value on the context.
@@ -41,7 +39,7 @@ an object, exposing each key and value on the context.
 * `options` **{Object}**
 * `returns` **{String}**
 
-### [{{toPath}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L106)
+### {{toPath}}
 
 Take arguments and, if they are string or number, convert them to a dot-delineated object property path.
 
@@ -50,7 +48,7 @@ Take arguments and, if they are string or number, convert them to a dot-delineat
 * `prop` **{String|Number}**: The property segments to assemble (can be multiple).
 * `returns` **{String}**
 
-### [{{get}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L128)
+### {{get}}
 
 Use property paths (`a.b.c`) to get a value or nested value from
 the context. Works as a regular helper or block helper.
@@ -62,7 +60,7 @@ the context. Works as a regular helper or block helper.
 * `options` **{Object}**: The handlebars options object, if used as a block helper.
 * `returns` **{String}**
 
-### [{{getObject}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L149)
+### {{getObject}}
 
 Use property paths (`a.b.c`) to get an object from
 the context. Differs from the `get` helper in that this
@@ -76,7 +74,7 @@ block helper.
 * `context` **{Object}**: The context object
 * `returns` **{String}**
 
-### [{{hasOwn}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L167)
+### {{hasOwn}}
 
 Return true if `key` is an own, enumerable property of the given `context` object.
 
@@ -92,7 +90,7 @@ Return true if `key` is an own, enumerable property of the given `context` objec
 {{hasOwn context key}}
 ```
 
-### [{{isObject}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L183)
+### {{isObject}}
 
 Return true if `value` is an object.
 
@@ -108,7 +106,7 @@ Return true if `value` is an object.
 //=> false
 ```
 
-### [{{JSONparse}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L201)
+### {{JSONparse}}
 
 Parses the given string using `JSON.parse`.
 
@@ -124,13 +122,30 @@ Parses the given string using `JSON.parse`.
 <!-- results in: { foo: 'bar' } -->
 ```
 
-### [{{JSONstringify}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L218)
+### {{parseJSON}}
+
+Alias for `JSONparse`. Parses the given string using `JSON.parse`.
+
+**Params**
+
+* `string` **{String}**: The string to parse
+
+**Example**
+
+```html
+<!-- string: '{"foo": "bar"}' -->
+{{parseJSON string}}
+<!-- results in: { foo: 'bar' } -->
+```
+
+### {{JSONstringify}}
 
 Stringify an object using `JSON.stringify`.
 
 **Params**
 
 * `obj` **{Object}**: Object to stringify
+* `indent` **{Number}**: Optional number of spaces for indentation
 * `returns` **{String}**
 
 **Example**
@@ -141,7 +156,25 @@ Stringify an object using `JSON.stringify`.
 <!-- results in: '{"foo": "bar"}' -->
 ```
 
-### [{{merge}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L235)
+### {{stringify}}
+
+Alias for `JSONstringify`. Stringify an object using `JSON.stringify`.
+
+**Params**
+
+* `obj` **{Object}**: Object to stringify
+* `indent` **{Number}**: Optional number of spaces for indentation
+* `returns` **{String}**
+
+**Example**
+
+```html
+<!-- object: { foo: 'bar' } -->
+{{stringify object}}
+<!-- results in: '{"foo":"bar"}' -->
+```
+
+### {{merge}}
 
 Deeply merge the properties of the given `objects` with the
 context object.
@@ -152,7 +185,7 @@ context object.
 * `objects` **{Object}**
 * `returns` **{Object}**
 
-### [{{pick}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/object.js#L267)
+### {{pick}}
 
 Pick properties from the context object.
 
