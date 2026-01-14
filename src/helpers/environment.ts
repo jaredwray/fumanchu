@@ -24,7 +24,7 @@ import { helpers as urlHelpers } from "./url.js";
  * Enum representing the runtime compatibility for helpers.
  * Use this to filter helpers based on their compatibility.
  */
-export enum HelperCompatibility {
+export enum HelperEnvironment {
 	/**
 	 * All helpers regardless of environment compatibility.
 	 */
@@ -72,15 +72,15 @@ const getAllHelpers = (): Helper[] => {
 
 /**
  * Get helpers filtered by environment compatibility.
- * @param {HelperCompatibility} environment - The target environment.
+ * @param {HelperEnvironment} environment - The target environment.
  * @returns {Helper[]} Array of helpers compatible with the specified environment.
  */
 export const getHelpersByEnvironment = (
-	environment: HelperCompatibility,
+	environment: HelperEnvironment,
 ): Helper[] => {
 	const allHelpers = getAllHelpers();
 
-	if (environment === HelperCompatibility.ALL) {
+	if (environment === HelperEnvironment.ALL) {
 		return allHelpers;
 	}
 
@@ -96,11 +96,11 @@ export const getHelpersByEnvironment = (
 
 /**
  * Get helper names filtered by environment compatibility.
- * @param {HelperCompatibility} environment - The target environment.
+ * @param {HelperEnvironment} environment - The target environment.
  * @returns {string[]} Array of helper names compatible with the specified environment.
  */
 export const getHelperNamesByEnvironment = (
-	environment: HelperCompatibility,
+	environment: HelperEnvironment,
 ): string[] => {
 	return getHelpersByEnvironment(environment).map((helper) => helper.name);
 };
@@ -110,7 +110,7 @@ export const getHelperNamesByEnvironment = (
  * @returns {string[]} Array of all helper names.
  */
 export const getAllHelperNames = (): string[] => {
-	return getHelperNamesByEnvironment(HelperCompatibility.ALL);
+	return getHelperNamesByEnvironment(HelperEnvironment.ALL);
 };
 
 /**
@@ -126,8 +126,8 @@ export const getNodejsOnlyHelperNames = (): string[] => {
 				return false;
 			}
 			return (
-				helper.compatibility.includes(HelperCompatibility.NODEJS) &&
-				!helper.compatibility.includes(HelperCompatibility.BROWSER)
+				helper.compatibility.includes(HelperEnvironment.NODEJS) &&
+				!helper.compatibility.includes(HelperEnvironment.BROWSER)
 			);
 		})
 		.map((helper) => helper.name);
@@ -146,8 +146,8 @@ export const getBrowserOnlyHelperNames = (): string[] => {
 				return false;
 			}
 			return (
-				helper.compatibility.includes(HelperCompatibility.BROWSER) &&
-				!helper.compatibility.includes(HelperCompatibility.NODEJS)
+				helper.compatibility.includes(HelperEnvironment.BROWSER) &&
+				!helper.compatibility.includes(HelperEnvironment.NODEJS)
 			);
 		})
 		.map((helper) => helper.name);
@@ -168,8 +168,8 @@ export const getUniversalHelperNames = (): string[] => {
 				return true;
 			}
 			return (
-				helper.compatibility.includes(HelperCompatibility.NODEJS) &&
-				helper.compatibility.includes(HelperCompatibility.BROWSER)
+				helper.compatibility.includes(HelperEnvironment.NODEJS) &&
+				helper.compatibility.includes(HelperEnvironment.BROWSER)
 			);
 		})
 		.map((helper) => helper.name);
@@ -178,12 +178,12 @@ export const getUniversalHelperNames = (): string[] => {
 /**
  * Check if a helper is compatible with a specific environment.
  * @param {string} helperName - The name of the helper to check.
- * @param {HelperCompatibility} environment - The target environment.
+ * @param {HelperEnvironment} environment - The target environment.
  * @returns {boolean} True if the helper is compatible with the environment.
  */
 export const isHelperCompatible = (
 	helperName: string,
-	environment: HelperCompatibility,
+	environment: HelperEnvironment,
 ): boolean => {
 	const allHelpers = getAllHelpers();
 	const helper = allHelpers.find((h) => h.name === helperName);
@@ -192,7 +192,7 @@ export const isHelperCompatible = (
 		return false;
 	}
 
-	if (environment === HelperCompatibility.ALL) {
+	if (environment === HelperEnvironment.ALL) {
 		return true;
 	}
 
@@ -207,11 +207,11 @@ export const isHelperCompatible = (
 
 /**
  * Get the count of helpers by environment.
- * @param {HelperCompatibility} environment - The target environment.
+ * @param {HelperEnvironment} environment - The target environment.
  * @returns {number} The number of helpers compatible with the environment.
  */
 export const getHelperCountByEnvironment = (
-	environment: HelperCompatibility,
+	environment: HelperEnvironment,
 ): number => {
 	return getHelpersByEnvironment(environment).length;
 };
@@ -220,7 +220,7 @@ export const getHelperCountByEnvironment = (
  * Get a summary of helper counts by environment.
  * @returns {{ all: number; nodejs: number; browser: number; nodejsOnly: number; browserOnly: number; universal: number }} Object with helper counts.
  */
-export const getHelperCompatibilitySummary = (): {
+export const getHelperEnvironmentSummary = (): {
 	all: number;
 	nodejs: number;
 	browser: number;
@@ -229,9 +229,9 @@ export const getHelperCompatibilitySummary = (): {
 	universal: number;
 } => {
 	return {
-		all: getHelperCountByEnvironment(HelperCompatibility.ALL),
-		nodejs: getHelperCountByEnvironment(HelperCompatibility.NODEJS),
-		browser: getHelperCountByEnvironment(HelperCompatibility.BROWSER),
+		all: getHelperCountByEnvironment(HelperEnvironment.ALL),
+		nodejs: getHelperCountByEnvironment(HelperEnvironment.NODEJS),
+		browser: getHelperCountByEnvironment(HelperEnvironment.BROWSER),
 		nodejsOnly: getNodejsOnlyHelperNames().length,
 		browserOnly: getBrowserOnlyHelperNames().length,
 		universal: getUniversalHelperNames().length,

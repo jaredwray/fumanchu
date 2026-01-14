@@ -3,27 +3,27 @@ import {
 	getAllHelperNames,
 	getAllHelpers,
 	getBrowserOnlyHelperNames,
-	getHelperCompatibilitySummary,
 	getHelperCountByEnvironment,
+	getHelperEnvironmentSummary,
 	getHelperNamesByEnvironment,
 	getHelpersByEnvironment,
 	getNodejsOnlyHelperNames,
 	getUniversalHelperNames,
-	HelperCompatibility,
+	HelperEnvironment,
 	isHelperCompatible,
 } from "../../src/helpers/environment.js";
 
-describe("HelperCompatibility Enum", () => {
+describe("HelperEnvironment Enum", () => {
 	test("should have ALL value", () => {
-		expect(HelperCompatibility.ALL).toBe("all");
+		expect(HelperEnvironment.ALL).toBe("all");
 	});
 
 	test("should have NODEJS value", () => {
-		expect(HelperCompatibility.NODEJS).toBe("nodejs");
+		expect(HelperEnvironment.NODEJS).toBe("nodejs");
 	});
 
 	test("should have BROWSER value", () => {
-		expect(HelperCompatibility.BROWSER).toBe("browser");
+		expect(HelperEnvironment.BROWSER).toBe("browser");
 	});
 });
 
@@ -50,36 +50,36 @@ describe("getAllHelpers", () => {
 
 describe("getHelpersByEnvironment", () => {
 	test("should return all helpers for ALL environment", () => {
-		const helpers = getHelpersByEnvironment(HelperCompatibility.ALL);
+		const helpers = getHelpersByEnvironment(HelperEnvironment.ALL);
 		const allHelpers = getAllHelpers();
 		expect(helpers.length).toBe(allHelpers.length);
 	});
 
 	test("should return nodejs compatible helpers for NODEJS environment", () => {
-		const helpers = getHelpersByEnvironment(HelperCompatibility.NODEJS);
+		const helpers = getHelpersByEnvironment(HelperEnvironment.NODEJS);
 		expect(helpers.length).toBeGreaterThan(150);
 		// All returned helpers should be nodejs compatible
 		for (const helper of helpers) {
 			if (helper.compatibility && helper.compatibility.length > 0) {
-				expect(helper.compatibility).toContain(HelperCompatibility.NODEJS);
+				expect(helper.compatibility).toContain(HelperEnvironment.NODEJS);
 			}
 		}
 	});
 
 	test("should return browser compatible helpers for BROWSER environment", () => {
-		const helpers = getHelpersByEnvironment(HelperCompatibility.BROWSER);
+		const helpers = getHelpersByEnvironment(HelperEnvironment.BROWSER);
 		expect(helpers.length).toBeGreaterThan(100);
 		// All returned helpers should be browser compatible
 		for (const helper of helpers) {
 			if (helper.compatibility && helper.compatibility.length > 0) {
-				expect(helper.compatibility).toContain(HelperCompatibility.BROWSER);
+				expect(helper.compatibility).toContain(HelperEnvironment.BROWSER);
 			}
 		}
 	});
 
 	test("should include helpers with no compatibility set", () => {
-		const browserHelpers = getHelpersByEnvironment(HelperCompatibility.BROWSER);
-		const nodejsHelpers = getHelpersByEnvironment(HelperCompatibility.NODEJS);
+		const browserHelpers = getHelpersByEnvironment(HelperEnvironment.BROWSER);
+		const nodejsHelpers = getHelpersByEnvironment(HelperEnvironment.NODEJS);
 		const allHelpers = getAllHelpers();
 
 		// Helpers without compatibility should be in both browser and nodejs lists
@@ -96,7 +96,7 @@ describe("getHelpersByEnvironment", () => {
 
 describe("getHelperNamesByEnvironment", () => {
 	test("should return array of strings for ALL", () => {
-		const names = getHelperNamesByEnvironment(HelperCompatibility.ALL);
+		const names = getHelperNamesByEnvironment(HelperEnvironment.ALL);
 		expect(Array.isArray(names)).toBe(true);
 		for (const name of names) {
 			expect(typeof name).toBe("string");
@@ -104,22 +104,22 @@ describe("getHelperNamesByEnvironment", () => {
 	});
 
 	test("should return array of strings for NODEJS", () => {
-		const names = getHelperNamesByEnvironment(HelperCompatibility.NODEJS);
+		const names = getHelperNamesByEnvironment(HelperEnvironment.NODEJS);
 		expect(Array.isArray(names)).toBe(true);
 		expect(names.length).toBeGreaterThan(150);
 	});
 
 	test("should return array of strings for BROWSER", () => {
-		const names = getHelperNamesByEnvironment(HelperCompatibility.BROWSER);
+		const names = getHelperNamesByEnvironment(HelperEnvironment.BROWSER);
 		expect(Array.isArray(names)).toBe(true);
 		expect(names.length).toBeGreaterThan(100);
 	});
 
 	test("should match count of getHelpersByEnvironment", () => {
 		for (const env of [
-			HelperCompatibility.ALL,
-			HelperCompatibility.NODEJS,
-			HelperCompatibility.BROWSER,
+			HelperEnvironment.ALL,
+			HelperEnvironment.NODEJS,
+			HelperEnvironment.BROWSER,
 		]) {
 			const helpers = getHelpersByEnvironment(env);
 			const names = getHelperNamesByEnvironment(env);
@@ -215,42 +215,40 @@ describe("getUniversalHelperNames", () => {
 
 describe("isHelperCompatible", () => {
 	test("should return true for ALL environment with any helper", () => {
-		expect(isHelperCompatible("camelcase", HelperCompatibility.ALL)).toBe(true);
-		expect(isHelperCompatible("read", HelperCompatibility.ALL)).toBe(true);
+		expect(isHelperCompatible("camelcase", HelperEnvironment.ALL)).toBe(true);
+		expect(isHelperCompatible("read", HelperEnvironment.ALL)).toBe(true);
 	});
 
 	test("should return true for NODEJS with nodejs helper", () => {
-		expect(isHelperCompatible("read", HelperCompatibility.NODEJS)).toBe(true);
-		expect(isHelperCompatible("absolute", HelperCompatibility.NODEJS)).toBe(
-			true,
-		);
+		expect(isHelperCompatible("read", HelperEnvironment.NODEJS)).toBe(true);
+		expect(isHelperCompatible("absolute", HelperEnvironment.NODEJS)).toBe(true);
 	});
 
 	test("should return true for BROWSER with browser helper", () => {
-		expect(isHelperCompatible("camelcase", HelperCompatibility.BROWSER)).toBe(
+		expect(isHelperCompatible("camelcase", HelperEnvironment.BROWSER)).toBe(
 			true,
 		);
-		expect(isHelperCompatible("uppercase", HelperCompatibility.BROWSER)).toBe(
+		expect(isHelperCompatible("uppercase", HelperEnvironment.BROWSER)).toBe(
 			true,
 		);
 	});
 
 	test("should return false for BROWSER with nodejs-only helper", () => {
-		expect(isHelperCompatible("read", HelperCompatibility.BROWSER)).toBe(false);
-		expect(isHelperCompatible("absolute", HelperCompatibility.BROWSER)).toBe(
+		expect(isHelperCompatible("read", HelperEnvironment.BROWSER)).toBe(false);
+		expect(isHelperCompatible("absolute", HelperEnvironment.BROWSER)).toBe(
 			false,
 		);
 	});
 
 	test("should return false for non-existent helper", () => {
+		expect(isHelperCompatible("nonExistentHelper", HelperEnvironment.ALL)).toBe(
+			false,
+		);
 		expect(
-			isHelperCompatible("nonExistentHelper", HelperCompatibility.ALL),
+			isHelperCompatible("nonExistentHelper", HelperEnvironment.NODEJS),
 		).toBe(false);
 		expect(
-			isHelperCompatible("nonExistentHelper", HelperCompatibility.NODEJS),
-		).toBe(false);
-		expect(
-			isHelperCompatible("nonExistentHelper", HelperCompatibility.BROWSER),
+			isHelperCompatible("nonExistentHelper", HelperEnvironment.BROWSER),
 		).toBe(false);
 	});
 
@@ -262,10 +260,10 @@ describe("isHelperCompatible", () => {
 		);
 
 		for (const helper of helpersWithoutCompatibility) {
-			expect(isHelperCompatible(helper.name, HelperCompatibility.NODEJS)).toBe(
+			expect(isHelperCompatible(helper.name, HelperEnvironment.NODEJS)).toBe(
 				true,
 			);
-			expect(isHelperCompatible(helper.name, HelperCompatibility.BROWSER)).toBe(
+			expect(isHelperCompatible(helper.name, HelperEnvironment.BROWSER)).toBe(
 				true,
 			);
 		}
@@ -274,26 +272,26 @@ describe("isHelperCompatible", () => {
 
 describe("getHelperCountByEnvironment", () => {
 	test("should return count for ALL environment", () => {
-		const count = getHelperCountByEnvironment(HelperCompatibility.ALL);
+		const count = getHelperCountByEnvironment(HelperEnvironment.ALL);
 		const helpers = getAllHelpers();
 		expect(count).toBe(helpers.length);
 	});
 
 	test("should return count for NODEJS environment", () => {
-		const count = getHelperCountByEnvironment(HelperCompatibility.NODEJS);
+		const count = getHelperCountByEnvironment(HelperEnvironment.NODEJS);
 		expect(count).toBeGreaterThan(150);
 	});
 
 	test("should return count for BROWSER environment", () => {
-		const count = getHelperCountByEnvironment(HelperCompatibility.BROWSER);
+		const count = getHelperCountByEnvironment(HelperEnvironment.BROWSER);
 		expect(count).toBeGreaterThan(100);
 	});
 
 	test("should match helper array length", () => {
 		for (const env of [
-			HelperCompatibility.ALL,
-			HelperCompatibility.NODEJS,
-			HelperCompatibility.BROWSER,
+			HelperEnvironment.ALL,
+			HelperEnvironment.NODEJS,
+			HelperEnvironment.BROWSER,
 		]) {
 			const count = getHelperCountByEnvironment(env);
 			const helpers = getHelpersByEnvironment(env);
@@ -302,9 +300,9 @@ describe("getHelperCountByEnvironment", () => {
 	});
 });
 
-describe("getHelperCompatibilitySummary", () => {
+describe("getHelperEnvironmentSummary", () => {
 	test("should return summary object with all properties", () => {
-		const summary = getHelperCompatibilitySummary();
+		const summary = getHelperEnvironmentSummary();
 		expect(summary).toHaveProperty("all");
 		expect(summary).toHaveProperty("nodejs");
 		expect(summary).toHaveProperty("browser");
@@ -314,7 +312,7 @@ describe("getHelperCompatibilitySummary", () => {
 	});
 
 	test("should have correct types for all properties", () => {
-		const summary = getHelperCompatibilitySummary();
+		const summary = getHelperEnvironmentSummary();
 		expect(typeof summary.all).toBe("number");
 		expect(typeof summary.nodejs).toBe("number");
 		expect(typeof summary.browser).toBe("number");
@@ -324,23 +322,23 @@ describe("getHelperCompatibilitySummary", () => {
 	});
 
 	test("should have all count equal to getAllHelpers length", () => {
-		const summary = getHelperCompatibilitySummary();
+		const summary = getHelperEnvironmentSummary();
 		const helpers = getAllHelpers();
 		expect(summary.all).toBe(helpers.length);
 	});
 
 	test("should have nodejs count greater than or equal to nodejsOnly", () => {
-		const summary = getHelperCompatibilitySummary();
+		const summary = getHelperEnvironmentSummary();
 		expect(summary.nodejs).toBeGreaterThanOrEqual(summary.nodejsOnly);
 	});
 
 	test("should have browser count greater than or equal to browserOnly", () => {
-		const summary = getHelperCompatibilitySummary();
+		const summary = getHelperEnvironmentSummary();
 		expect(summary.browser).toBeGreaterThanOrEqual(summary.browserOnly);
 	});
 
 	test("should satisfy: nodejsOnly + browserOnly + universal <= all", () => {
-		const summary = getHelperCompatibilitySummary();
+		const summary = getHelperEnvironmentSummary();
 		expect(summary.nodejsOnly + summary.browserOnly + summary.universal).toBe(
 			summary.all,
 		);
@@ -350,9 +348,7 @@ describe("getHelperCompatibilitySummary", () => {
 describe("Integration tests", () => {
 	test("nodejs-only helpers should not be in browser list", () => {
 		const nodejsOnly = getNodejsOnlyHelperNames();
-		const browserNames = getHelperNamesByEnvironment(
-			HelperCompatibility.BROWSER,
-		);
+		const browserNames = getHelperNamesByEnvironment(HelperEnvironment.BROWSER);
 
 		for (const name of nodejsOnly) {
 			expect(browserNames).not.toContain(name);
@@ -361,7 +357,7 @@ describe("Integration tests", () => {
 
 	test("browser-only helpers should not be in nodejs list", () => {
 		const browserOnly = getBrowserOnlyHelperNames();
-		const nodejsNames = getHelperNamesByEnvironment(HelperCompatibility.NODEJS);
+		const nodejsNames = getHelperNamesByEnvironment(HelperEnvironment.NODEJS);
 
 		for (const name of browserOnly) {
 			expect(nodejsNames).not.toContain(name);
@@ -370,10 +366,8 @@ describe("Integration tests", () => {
 
 	test("universal helpers should be in both browser and nodejs lists", () => {
 		const universal = getUniversalHelperNames();
-		const browserNames = getHelperNamesByEnvironment(
-			HelperCompatibility.BROWSER,
-		);
-		const nodejsNames = getHelperNamesByEnvironment(HelperCompatibility.NODEJS);
+		const browserNames = getHelperNamesByEnvironment(HelperEnvironment.BROWSER);
+		const nodejsNames = getHelperNamesByEnvironment(HelperEnvironment.NODEJS);
 
 		for (const name of universal) {
 			expect(browserNames).toContain(name);

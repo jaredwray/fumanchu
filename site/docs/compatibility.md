@@ -9,7 +9,7 @@ order: 26
 
 Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/environment.ts) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/test/helpers/environment.test.ts)
 
-### HelperCompatibility Enum
+### HelperEnvironment Enum
 
 An enum representing the runtime environment compatibility for helpers.
 
@@ -22,12 +22,12 @@ An enum representing the runtime environment compatibility for helpers.
 **Example**
 
 ```typescript
-import { HelperCompatibility } from "@jaredwray/fumanchu";
+import { HelperEnvironment } from "@jaredwray/fumanchu";
 
 // Use the enum to filter helpers
-const nodeHelpers = getHelpersByEnvironment(HelperCompatibility.NODEJS);
-const browserHelpers = getHelpersByEnvironment(HelperCompatibility.BROWSER);
-const allHelpers = getHelpersByEnvironment(HelperCompatibility.ALL);
+const nodeHelpers = getHelpersByEnvironment(HelperEnvironment.NODEJS);
+const browserHelpers = getHelpersByEnvironment(HelperEnvironment.BROWSER);
+const allHelpers = getHelpersByEnvironment(HelperEnvironment.ALL);
 ```
 
 ### getHelpersByEnvironment
@@ -36,19 +36,19 @@ Get helpers filtered by environment compatibility.
 
 **Params**
 
-* `environment` **{HelperCompatibility}**: The target environment (ALL, NODEJS, or BROWSER)
+* `environment` **{HelperEnvironment}**: The target environment (ALL, NODEJS, or BROWSER)
 * `returns` **{Helper[]}**: Array of helpers compatible with the specified environment
 
 **Example**
 
 ```typescript
-import { getHelpersByEnvironment, HelperCompatibility } from "@jaredwray/fumanchu";
+import { getHelpersByEnvironment, HelperEnvironment } from "@jaredwray/fumanchu";
 
 // Get all Node.js compatible helpers
-const nodeHelpers = getHelpersByEnvironment(HelperCompatibility.NODEJS);
+const nodeHelpers = getHelpersByEnvironment(HelperEnvironment.NODEJS);
 
 // Get all browser compatible helpers
-const browserHelpers = getHelpersByEnvironment(HelperCompatibility.BROWSER);
+const browserHelpers = getHelpersByEnvironment(HelperEnvironment.BROWSER);
 ```
 
 ### getHelperNamesByEnvironment
@@ -57,15 +57,15 @@ Get helper names filtered by environment compatibility.
 
 **Params**
 
-* `environment` **{HelperCompatibility}**: The target environment
+* `environment` **{HelperEnvironment}**: The target environment
 * `returns` **{string[]}**: Array of helper names compatible with the specified environment
 
 **Example**
 
 ```typescript
-import { getHelperNamesByEnvironment, HelperCompatibility } from "@jaredwray/fumanchu";
+import { getHelperNamesByEnvironment, HelperEnvironment } from "@jaredwray/fumanchu";
 
-const browserHelperNames = getHelperNamesByEnvironment(HelperCompatibility.BROWSER);
+const browserHelperNames = getHelperNamesByEnvironment(HelperEnvironment.BROWSER);
 // ['append', 'camelcase', 'capitalize', ...]
 ```
 
@@ -161,17 +161,17 @@ Check if a helper is compatible with a specific environment.
 **Params**
 
 * `helperName` **{string}**: The name of the helper to check
-* `environment` **{HelperCompatibility}**: The target environment
+* `environment` **{HelperEnvironment}**: The target environment
 * `returns` **{boolean}**: True if the helper is compatible with the environment
 
 **Example**
 
 ```typescript
-import { isHelperCompatible, HelperCompatibility } from "@jaredwray/fumanchu";
+import { isHelperCompatible, HelperEnvironment } from "@jaredwray/fumanchu";
 
-isHelperCompatible("camelcase", HelperCompatibility.BROWSER); // true
-isHelperCompatible("read", HelperCompatibility.BROWSER); // false
-isHelperCompatible("read", HelperCompatibility.NODEJS); // true
+isHelperCompatible("camelcase", HelperEnvironment.BROWSER); // true
+isHelperCompatible("read", HelperEnvironment.BROWSER); // false
+isHelperCompatible("read", HelperEnvironment.NODEJS); // true
 ```
 
 ### getHelperCountByEnvironment
@@ -180,20 +180,20 @@ Get the count of helpers by environment.
 
 **Params**
 
-* `environment` **{HelperCompatibility}**: The target environment
+* `environment` **{HelperEnvironment}**: The target environment
 * `returns` **{number}**: The number of helpers compatible with the environment
 
 **Example**
 
 ```typescript
-import { getHelperCountByEnvironment, HelperCompatibility } from "@jaredwray/fumanchu";
+import { getHelperCountByEnvironment, HelperEnvironment } from "@jaredwray/fumanchu";
 
-const nodeCount = getHelperCountByEnvironment(HelperCompatibility.NODEJS);
-const browserCount = getHelperCountByEnvironment(HelperCompatibility.BROWSER);
-const allCount = getHelperCountByEnvironment(HelperCompatibility.ALL);
+const nodeCount = getHelperCountByEnvironment(HelperEnvironment.NODEJS);
+const browserCount = getHelperCountByEnvironment(HelperEnvironment.BROWSER);
+const allCount = getHelperCountByEnvironment(HelperEnvironment.ALL);
 ```
 
-### getHelperCompatibilitySummary
+### getHelperEnvironmentSummary
 
 Get a summary of helper counts by environment.
 
@@ -210,9 +210,9 @@ Get a summary of helper counts by environment.
 **Example**
 
 ```typescript
-import { getHelperCompatibilitySummary } from "@jaredwray/fumanchu";
+import { getHelperEnvironmentSummary } from "@jaredwray/fumanchu";
 
-const summary = getHelperCompatibilitySummary();
+const summary = getHelperEnvironmentSummary();
 // {
 //   all: 205,
 //   nodejs: 205,
@@ -230,10 +230,10 @@ const summary = getHelperCompatibilitySummary();
 When building for the browser, you may want to only include helpers that work in that environment:
 
 ```typescript
-import { fumanchu, HelperCompatibility, getHelperNamesByEnvironment } from "@jaredwray/fumanchu";
+import { fumanchu, HelperEnvironment, getHelperNamesByEnvironment } from "@jaredwray/fumanchu";
 
 // Get only browser-compatible helper names
-const browserHelpers = getHelperNamesByEnvironment(HelperCompatibility.BROWSER);
+const browserHelpers = getHelperNamesByEnvironment(HelperEnvironment.BROWSER);
 
 // Create a Handlebars instance with filtered helpers
 const hbs = fumanchu({
@@ -248,10 +248,10 @@ const hbs = fumanchu({
 You can verify a helper works in your target environment before using it:
 
 ```typescript
-import { isHelperCompatible, HelperCompatibility } from "@jaredwray/fumanchu";
+import { isHelperCompatible, HelperEnvironment } from "@jaredwray/fumanchu";
 
 function safelyUseHelper(helperName: string, isBrowser: boolean) {
-  const env = isBrowser ? HelperCompatibility.BROWSER : HelperCompatibility.NODEJS;
+  const env = isBrowser ? HelperEnvironment.BROWSER : HelperEnvironment.NODEJS;
 
   if (isHelperCompatible(helperName, env)) {
     // Safe to use the helper

@@ -30,13 +30,13 @@ export {
 	getAllHelperNames,
 	getAllHelpers,
 	getBrowserOnlyHelperNames,
-	getHelperCompatibilitySummary,
 	getHelperCountByEnvironment,
+	getHelperEnvironmentSummary,
 	getHelperNamesByEnvironment,
 	getHelpersByEnvironment,
 	getNodejsOnlyHelperNames,
 	getUniversalHelperNames,
-	HelperCompatibility,
+	HelperEnvironment,
 	isHelperCompatible,
 } from "./helpers/environment.js";
 
