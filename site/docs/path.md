@@ -7,31 +7,29 @@ order: 21
 
 ## path
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/path.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/path.js)
+### {{absolute}}
 
-### [{{absolute}}](lib/path.js#L20)
-
-Get the directory path segment from the given `filepath`.
+Resolve an absolute path from the given `filepath`.
 
 **Params**
 
-* `ext` **{String}**
+* `filepath` **{String}**
 * `returns` **{String}**
 
 **Example**
 
 ```html
 {{absolute "docs/toc.md"}}
-<!-- results in: 'docs' -->
+<!-- results in: '/User/dev/docs/toc.md' -->
 ```
 
-### [{{dirname}}](lib/path.js#L40)
+### {{dirname}}
 
 Get the directory path segment from the given `filepath`.
 
 **Params**
 
-* `ext` **{String}**
+* `filepath` **{String}**
 * `returns` **{String}**
 
 **Example**
@@ -41,7 +39,7 @@ Get the directory path segment from the given `filepath`.
 <!-- results in: 'docs' -->
 ```
 
-### [{{relative}}](lib/path.js#L59)
+### {{relative}}
 
 Get the relative filepath from `a` to `b`.
 
@@ -57,13 +55,13 @@ Get the relative filepath from `a` to `b`.
 {{relative a b}}
 ```
 
-### [{{basename}}](lib/path.js#L81)
+### {{basename}}
 
-Get the file extension from the given `filepath`.
+Get the filename from the given `filepath`.
 
 **Params**
 
-* `ext` **{String}**
+* `filepath` **{String}**
 * `returns` **{String}**
 
 **Example**
@@ -73,9 +71,9 @@ Get the file extension from the given `filepath`.
 <!-- results in: 'toc.md' -->
 ```
 
-### [{{stem}}](lib/path.js#L100)
+### {{stem}}
 
-Get the "stem" from the given `filepath`.
+Get the "stem" (filename without extension) from the given `filepath`.
 
 **Params**
 
@@ -89,7 +87,7 @@ Get the "stem" from the given `filepath`.
 <!-- results in: 'toc' -->
 ```
 
-### [{{extname}}](lib/path.js#L119)
+### {{extname}}
 
 Get the file extension from the given `filepath`.
 
@@ -105,7 +103,7 @@ Get the file extension from the given `filepath`.
 <!-- results in: '.md' -->
 ```
 
-### [{{resolve}}](lib/path.js#L138)
+### {{resolve}}
 
 Resolve an absolute path from the given `filepath`.
 
@@ -121,7 +119,7 @@ Resolve an absolute path from the given `filepath`.
 <!-- results in: '/User/dev/docs/toc.md' -->
 ```
 
-### [{{segments}}](lib/path.js#L166)
+### {{segments}}
 
 Get specific (joined) segments of a file path by passing a range of array indices.
 
