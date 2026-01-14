@@ -1,5 +1,19 @@
 import HandlebarsLib from "handlebars";
-import { HelperFilter, HelperRegistry } from "./helper-registry.js";
+import {
+	getAllHelperNames,
+	getAllHelpers,
+	getBrowserOnlyHelperNames,
+	getHelperCompatibilitySummary,
+	getHelperCountByEnvironment,
+	getHelperNamesByEnvironment,
+	getHelpersByEnvironment,
+	getNodejsOnlyHelperNames,
+	getUniversalHelperNames,
+	HelperCompatibility,
+	HelperFilter,
+	HelperRegistry,
+	isHelperCompatible,
+} from "./helper-registry.js";
 
 /**
  * Handlebars library not initiated with helpers
@@ -92,4 +106,18 @@ export function fumanchu(options?: FumanchuOptions) {
 	return handlebars;
 }
 
-export { HelperRegistry, HelperFilter };
+export {
+	HelperRegistry,
+	HelperFilter,
+	HelperCompatibility,
+	getHelpersByEnvironment,
+	getHelperNamesByEnvironment,
+	getAllHelperNames,
+	getNodejsOnlyHelperNames,
+	getBrowserOnlyHelperNames,
+	getUniversalHelperNames,
+	isHelperCompatible,
+	getHelperCountByEnvironment,
+	getHelperCompatibilitySummary,
+	getAllHelpers,
+};

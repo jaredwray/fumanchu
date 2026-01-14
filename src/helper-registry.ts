@@ -26,6 +26,20 @@ export enum HelperRegistryCompatibility {
 	BROWSER = "browser",
 }
 
+export {
+	getAllHelperNames,
+	getAllHelpers,
+	getBrowserOnlyHelperNames,
+	getHelperCompatibilitySummary,
+	getHelperCountByEnvironment,
+	getHelperNamesByEnvironment,
+	getHelpersByEnvironment,
+	getNodejsOnlyHelperNames,
+	getUniversalHelperNames,
+	HelperCompatibility,
+	isHelperCompatible,
+} from "./helpers/environment.js";
+
 export type Helper = {
 	name: string;
 	category: string;
