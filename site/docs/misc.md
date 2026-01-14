@@ -7,9 +7,26 @@ order: 18
 
 ## misc
 
-Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/misc.js) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/helpers/test/misc.js)
+### {{frame}}
 
-### [{{option}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/misc.js.js#L26)
+Block helper for exposing private `@` variables on the context. Creates a new data frame and extends it with hash arguments.
+
+**Params**
+
+* `context` **{Object}**: Optional context data to include in the frame
+* `options` **{Object}**: Handlebars provided options object
+* `returns` **{String}**: Block content with the new frame context
+
+**Example**
+
+```html
+{{#frame site="mysite" value=42}}
+  {{@site}} - {{@value}}
+{{/frame}}
+<!-- results in: 'mysite - 42' -->
+```
+
+### {{option}}
 
 Return the given value of `prop` from `this.options`.
 
@@ -23,10 +40,10 @@ Return the given value of `prop` from `this.options`.
 ```html
 <!-- context = {options: {a: {b: {c: 'ddd'}}}} -->
 {{option "a.b.c"}}
-<!-- results => `ddd` -->
+<!-- results in: 'ddd' -->
 ```
 
-### [{{noop}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/misc.js.js#L39)
+### {{noop}}
 
 Block helper that renders the block without taking any arguments.
 
@@ -35,9 +52,9 @@ Block helper that renders the block without taking any arguments.
 * `options` **{Object}**
 * `returns` **{String}**
 
-### [{{typeOf}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/misc.js.js#L59)
+### {{typeOf}}
 
-Get the native type of the given `value`
+Get the native type of the given `value`.
 
 **Params**
 
@@ -48,18 +65,26 @@ Get the native type of the given `value`
 
 ```html
 {{typeOf 1}}
-//=> 'number'
+<!-- results in: 'number' -->
 {{typeOf "1"}}
-//=> 'string'
+<!-- results in: 'string' -->
 {{typeOf "foo"}}
-//=> 'string'
+<!-- results in: 'string' -->
 ```
 
-### [{{withHash}}](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/misc.js.js#L71)
+### {{withHash}}
 
-Block helper that builds the context for the block
-from the options hash.
+Block helper that builds the context for the block from the options hash.
 
 **Params**
 
 * `options` **{Object}**: Handlebars provided options object.
+
+**Example**
+
+```html
+{{#withHash a=1 b="hello"}}
+  {{a}} - {{b}}
+{{/withHash}}
+<!-- results in: '1 - hello' -->
+```
