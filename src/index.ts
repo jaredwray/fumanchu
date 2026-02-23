@@ -1,3 +1,7 @@
+import {
+	CacheableMemory,
+	type CacheableMemoryOptions,
+} from "@cacheable/memory";
 import HandlebarsLib from "handlebars";
 import { HelperFilter, HelperRegistry } from "./helper-registry.js";
 
@@ -52,26 +56,10 @@ export async function createHandlebars() {
 	return handlebars;
 }
 
-/**
- * @typedef {Object} FumanchuCachingOptions
- * @property {number|string} [ttl] - Time to Live - If you set a number it is miliseconds, if you set a string it is a human-readable
- * format such as `1s` for 1 second or `1h` for 1 hour. Setting undefined means that it will use the default time-to-live. If both are
- * undefined then it will not have a time-to-live.
- * @property {boolean} [useClone] - If true, it will clone the value before returning it. If false, it will return the value directly. Default is true.
- * @property {number} [lruSize] - The size of the LRU cache. If set to 0, it will not use LRU cache. Default is 0.
- * @property {number} [checkInterval] - The interval to check for expired items. If set to 0, it will not check for expired items. Default is 0.
- */
-export type FumanchuCachingOptions = {
-	ttl?: number | string;
-	useClone?: boolean;
-	lruSize?: number;
-	checkInterval?: number;
-};
-
 export type FumanchuOptions = {
 	handlebars?: typeof HandlebarsLib;
 	filter?: HelperFilter;
-	caching?: boolean | FumanchuCachingOptions;
+	caching?: boolean | CacheableMemory | CacheableMemoryOptions;
 };
 
 /**
@@ -89,7 +77,38 @@ export function fumanchu(options?: FumanchuOptions) {
 		handlebars.registerPartial(HandlebarsLib.partials);
 	}
 	registry.load(handlebars);
+
+	if (options?.caching) {
+		let cache: CacheableMemory;
+		if (options.caching instanceof CacheableMemory) {
+			cache = options.caching;
+		} else if (typeof options.caching === "object") {
+			cache = new CacheableMemory({
+				useClone: false,
+				...options.caching,
+			});
+		} else {
+			cache = new CacheableMemory({ useClone: false });
+		}
+
+		const originalCompile = handlebars.compile.bind(handlebars);
+		handlebars.compile = (input: string, compileOptions?: CompileOptions) => {
+			const key = compileOptions
+				? input + JSON.stringify(compileOptions)
+				: String(input);
+			const cached = cache.get<HandlebarsTemplateDelegate>(key);
+			if (cached) {
+				return cached;
+			}
+
+			const compiled = originalCompile(input, compileOptions);
+			cache.set(key, compiled);
+			return compiled;
+		};
+	}
+
 	return handlebars;
 }
 
+export { CacheableMemory, type CacheableMemoryOptions };
 export { HelperRegistry, HelperFilter };

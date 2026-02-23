@@ -7,7 +7,8 @@ Handlebars + Helpers Together
 [![tests](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml/badge.svg)](https://github.com/jaredwray/fumanchu/actions/workflows/tests.yaml)
 [![codecov](https://codecov.io/gh/jaredwray/fumanchu/graph/badge.svg?token=gtYw78huva)](https://codecov.io/gh/jaredwray/fumanchu)
 [![npm version](https://img.shields.io/npm/v/@jaredwray/fumanchu.svg)](https://npmjs.com/package/@jaredwray/fumanchu)
-[![GitHub license](https://img.shields.io/github/license/jaredwray/fumanchu)](https://github.com/jaredwray/fumanchu/blob/master/LICENSE)
+[![NPM License](https://img.shields.io/npm/l/%40jaredwray%2Ffumanchu)
+](https://github.com/jaredwray/fumanchu/blob/main/LICENSE)
 [![npm](https://img.shields.io/npm/dm/@jaredwray/fumanchu)](https://npmjs.com/package/@jaredwray/fumanchu)
 
 [Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. Easily use it as a drop in replacement when using handlebars directly. More than 160 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project. Currently **189 helpers** in **20 categories**! 🎉
@@ -39,6 +40,7 @@ Handlebars + Helpers Together
   * [string](https://fumanchu.org/docs/string/)
   * [url](https://fumanchu.org/docs/url/)
   * [utils](https://fumanchu.org/docs/utils/)
+* [Caching](#caching)
 * [How to Contribute](#how-to-contribute)
 * [License and Copyright](#license-and-copyright)
 
@@ -111,6 +113,53 @@ registry.load(hbs, { names: ['if']}); // Load the helpers into Handlebars
 ```
 
 In addition, we have made the helper functions have a compatibility such as `HelperRegistryCompatibility.NODEJS` or `HelperRegistryCompatibility.BROWSER`. This will allow you to filter out based on your environment!
+
+# Caching
+
+When caching is enabled, Fumanchu wraps the Handlebars `compile()` method to cache compiled template functions using [@cacheable/memory](https://github.com/jaredwray/cacheable/tree/main/packages/memory). If you compile the same template string multiple times, the cached version is returned instead of recompiling. The returned Handlebars instance is fully compatible -- caching is transparent to your existing code.
+
+The `caching` option accepts three types:
+- `boolean` -- `true` enables caching with defaults, `false` disables it
+- `CacheableMemory` -- a pre-configured instance from `@cacheable/memory`
+- `CacheableMemoryOptions` -- an options object passed to `CacheableMemory` (supports `ttl`, `lruSize`, `checkInterval`, etc.)
+
+## Enable caching with default settings
+
+```javascript
+import { fumanchu } from '@jaredwray/fumanchu';
+const handlebars = fumanchu({ caching: true });
+
+const template = handlebars.compile('Hello {{name}}!');
+template({ name: 'World' }); // compiles and caches
+
+const template2 = handlebars.compile('Hello {{name}}!');
+// returns the cached compiled function -- no recompilation
+```
+
+## Pass caching options
+
+```javascript
+import { fumanchu } from '@jaredwray/fumanchu';
+const handlebars = fumanchu({
+  caching: {
+    ttl: '1h',         // Time-to-live in ms or human-readable string like '1h'
+    lruSize: 500,      // LRU cache size limit (0 = unlimited)
+    checkInterval: 0,  // Interval to check for expired items in ms (0 = disabled)
+  },
+});
+```
+
+## Pass a pre-configured `CacheableMemory` instance
+
+This is useful if you want to share a cache across multiple Fumanchu instances or manage the cache lifecycle yourself:
+
+```javascript
+import { fumanchu, CacheableMemory } from '@jaredwray/fumanchu';
+const cache = new CacheableMemory({ ttl: '1h', lruSize: 1000, useClone: false });
+
+const hbs1 = fumanchu({ caching: cache });
+const hbs2 = fumanchu({ caching: cache }); // shares the same cache as hbs1
+```
 
 ## How to Contribute
 Clone the repository locally refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.
