@@ -112,6 +112,39 @@ registry.load(hbs, { names: ['if']}); // Load the helpers into Handlebars
 
 In addition, we have made the helper functions have a compatibility such as `HelperRegistryCompatibility.NODEJS` or `HelperRegistryCompatibility.BROWSER`. This will allow you to filter out based on your environment!
 
+# Caching Options
+
+The `fumanchu()` function accepts a `caching` option that can be a `boolean`, a `CacheableMemory` instance from `@cacheable/memory`, or a `FumanchuCachingOptions` object:
+
+**Enable caching with default settings:**
+
+```javascript
+import { fumanchu } from '@jaredwray/fumanchu';
+const handlebars = fumanchu({ caching: true });
+```
+
+**Pass a pre-configured `CacheableMemory` instance:**
+
+```javascript
+import { fumanchu, CacheableMemory } from '@jaredwray/fumanchu';
+const cache = new CacheableMemory({ ttl: '1h', lruSize: 1000 });
+const handlebars = fumanchu({ caching: cache });
+```
+
+**Pass caching options directly:**
+
+```javascript
+import { fumanchu } from '@jaredwray/fumanchu';
+const handlebars = fumanchu({
+  caching: {
+    ttl: 5000,        // Time-to-live in ms or human-readable string like '1h'
+    useClone: true,    // Clone values before returning (default: true)
+    lruSize: 500,      // LRU cache size limit (0 = unlimited)
+    checkInterval: 0,  // Interval to check for expired items (0 = disabled)
+  },
+});
+```
+
 ## How to Contribute
 Clone the repository locally refer to the [CONTRIBUTING](CONTRIBUTING.md) guide. If you have any questions please feel free to ask by creating an issue and label it `question`.
 

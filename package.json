@@ -63,6 +63,7 @@
     "license"
   ],
   "dependencies": {
+    "@cacheable/memory": "^2.0.7",
     "chrono-node": "2.9.0",
     "dayjs": "^1.11.19",
     "ent": "^2.2.2",

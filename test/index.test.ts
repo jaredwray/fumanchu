@@ -1,6 +1,7 @@
 import Handlebars from "handlebars";
 import { describe, expect, test } from "vitest";
 import {
+	CacheableMemory,
 	createHandlebars,
 	fumanchu,
 	handlebars,
@@ -96,5 +97,25 @@ describe("fumanchu", () => {
 		} finally {
 			Handlebars.unregisterPartial("fumanchuCreatePartial");
 		}
+	});
+
+	test("should export CacheableMemory", () => {
+		expect(CacheableMemory).toBeDefined();
+	});
+
+	test("should accept caching as boolean", () => {
+		const hbs = fumanchu({ caching: true });
+		expect(hbs).toBeDefined();
+	});
+
+	test("should accept caching as CacheableMemory instance", () => {
+		const cache = new CacheableMemory({ ttl: "1h", lruSize: 100 });
+		const hbs = fumanchu({ caching: cache });
+		expect(hbs).toBeDefined();
+	});
+
+	test("should accept caching as FumanchuCachingOptions", () => {
+		const hbs = fumanchu({ caching: { ttl: 1000, useClone: false } });
+		expect(hbs).toBeDefined();
 	});
 });
