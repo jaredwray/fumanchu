@@ -52,7 +52,10 @@
     "util",
     "utility"
   ],
-  "repository": "jaredwray/fumanchu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaredwray/fumanchu.git"
+  },
   "bugs": {
     "url": "https://github.com/jaredwray/fumanchu/issues"
   },
