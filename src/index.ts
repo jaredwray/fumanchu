@@ -56,12 +56,10 @@ export async function createHandlebars() {
 	return handlebars;
 }
 
-export type FumanchuCachingOptions = CacheableMemoryOptions;
-
 export type FumanchuOptions = {
 	handlebars?: typeof HandlebarsLib;
 	filter?: HelperFilter;
-	caching?: boolean | CacheableMemory | FumanchuCachingOptions;
+	caching?: boolean | CacheableMemory | CacheableMemoryOptions;
 };
 
 /**
@@ -79,6 +77,36 @@ export function fumanchu(options?: FumanchuOptions) {
 		handlebars.registerPartial(HandlebarsLib.partials);
 	}
 	registry.load(handlebars);
+
+	if (options?.caching) {
+		let cache: CacheableMemory;
+		if (options.caching instanceof CacheableMemory) {
+			cache = options.caching;
+		} else if (typeof options.caching === "object") {
+			cache = new CacheableMemory({
+				useClone: false,
+				...options.caching,
+			});
+		} else {
+			cache = new CacheableMemory({ useClone: false });
+		}
+
+		const originalCompile = handlebars.compile.bind(handlebars);
+		handlebars.compile = (input: string, compileOptions?: CompileOptions) => {
+			const key = compileOptions
+				? input + JSON.stringify(compileOptions)
+				: String(input);
+			const cached = cache.get<HandlebarsTemplateDelegate>(key);
+			if (cached) {
+				return cached;
+			}
+
+			const compiled = originalCompile(input, compileOptions);
+			cache.set(key, compiled);
+			return compiled;
+		};
+	}
+
 	return handlebars;
 }
 
