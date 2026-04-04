@@ -1,6 +1,6 @@
 ---
-title: 'Breaking Changes from v2 to v3'
-sideBarTitle: 'Changes from v2 to v3'
+title: 'Migrating v3'
+sideBarTitle: 'Migrating v3'
 description: 'This document describes the breaking changes from v2 to v3 of the jaredwray/fumanchu library.'
 order: 3
 ---
