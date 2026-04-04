@@ -90,4 +90,4 @@ export const helpers: Helper[] = [
 	},
 ];
 
-export { frame, option, noop, typeOf, withHash };
+export { frame, noop, option, typeOf, withHash };

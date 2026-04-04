@@ -32,4 +32,4 @@ export const helpers: Helper[] = [
 	},
 ];
 
-export { toRegex, test };
+export { test, toRegex };
