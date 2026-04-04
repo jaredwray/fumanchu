@@ -3,7 +3,7 @@ import {
 	type CacheableMemoryOptions,
 } from "@cacheable/memory";
 import HandlebarsLib from "handlebars";
-import { HelperFilter, HelperRegistry } from "./helper-registry.js";
+import { type HelperFilter, HelperRegistry } from "./helper-registry.js";
 
 /**
  * Handlebars library not initiated with helpers
@@ -113,6 +113,6 @@ export function fumanchu(options?: FumanchuOptions) {
 export {
 	CacheableMemory,
 	type CacheableMemoryOptions,
-	HelperFilter,
+	type HelperFilter,
 	HelperRegistry,
 };
