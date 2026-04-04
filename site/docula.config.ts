@@ -17,7 +17,7 @@ export const onPrepare = async (config: DoculaOptions, console: any) => {
 	const readmePath = path.join(process.cwd(), './README.md');
 	const readmeSitePath = path.join(config.sitePath, 'docs/', 'index.md');
 	const readme = await fs.promises.readFile(readmePath, 'utf8');
-	const updatedReadme = readme.replace('![Fumanchu](site/logo.svg "Fumanchu")\n\n', '');
+	const updatedReadme = readme.replace(/!\[Fumanchu\]\(site\/logo\.svg\s+"Fumanchu"\)\r?\n\r?\n/, '');
 
 	const writr = new Writr(updatedReadme);
 

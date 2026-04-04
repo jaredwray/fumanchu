@@ -28,6 +28,7 @@
     "build": "tsdown ./src/index.ts --format esm,cjs --dts",
     "prepare": "pnpm build",
     "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./site/dist",
+    "website:build": "docula build",
     "website:dev": "docula dev"
   },
   "keywords": [
