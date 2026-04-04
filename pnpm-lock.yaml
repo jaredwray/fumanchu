@@ -21,8 +21,8 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2
       handlebars:
-        specifier: ^4.7.8
-        version: 4.7.8
+        specifier: ^4.7.9
+        version: 4.7.9
       html-tag:
         specifier: ^2.0.0
         version: 2.0.0
@@ -1372,8 +1372,8 @@ packages:
     resolution: {integrity: sha512-d5mmoQXdeEqSKMtQQZ9WkiUcO1E3tPbWxluCK9hVgIDPzQa9WsKo3Lbe/sGflTe7TomHEeZaOgwIkyIr1kfzkw==}
     engines: {node: '>=0.10.0'}
 
-  handlebars@4.7.8:
-    resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
+  handlebars@4.7.9:
+    resolution: {integrity: sha512-4E71E0rpOaQuJR2A3xDZ+GM1HyWYv1clR58tC8emQNeQe3RH7MAzSbat+V0wG78LQBo6m6bzSG/L4pBuCsgnUQ==}
     engines: {node: '>=0.4.7'}
     hasBin: true
 
@@ -2785,7 +2785,7 @@ snapshots:
       chrono-node: 2.9.0
       dayjs: 1.11.20
       ent: 2.2.2
-      handlebars: 4.7.8
+      handlebars: 4.7.9
       handlebars-utils: 1.0.6
       html-tag: 2.0.0
       is-glob: 4.0.3
@@ -3616,7 +3616,7 @@ snapshots:
       kind-of: 6.0.3
       typeof-article: 0.1.1
 
-  handlebars@4.7.8:
+  handlebars@4.7.9:
     dependencies:
       minimist: 1.2.8
       neo-async: 2.6.2
