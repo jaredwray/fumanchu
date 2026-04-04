@@ -68,7 +68,7 @@
   "dependencies": {
     "@cacheable/memory": "^2.0.8",
     "chrono-node": "2.9.0",
-    "dayjs": "^1.11.19",
+    "dayjs": "^1.11.20",
     "ent": "^2.2.2",
     "handlebars": "^4.7.8",
     "html-tag": "^2.0.0",
