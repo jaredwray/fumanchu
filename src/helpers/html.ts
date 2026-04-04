@@ -193,4 +193,4 @@ export const helpers: Helper[] = [
 	},
 ];
 
-export { attr, css, js, sanitize, ul, ol, thumbnailImage };
+export { attr, css, js, ol, sanitize, thumbnailImage, ul };

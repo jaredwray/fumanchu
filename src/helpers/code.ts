@@ -31,7 +31,7 @@ type JsfiddleOptions = {
 };
 
 const jsfiddle = (options: JsfiddleOptions): string => {
-	if (!options || !options.id) {
+	if (!options?.id) {
 		throw new Error("jsfiddle helper expects an `id`");
 	}
 	const {

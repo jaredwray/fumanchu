@@ -108,13 +108,13 @@ export const helpers: Helper[] = [
 ];
 
 export {
+	decodeUri as decodeURI,
 	encodeUri as encodeURI,
 	escapeFn as escape,
-	decodeUri as decodeURI,
-	urlEncode,
-	urlDecode,
-	urlResolve,
-	urlParse,
-	stripQuerystring,
 	stripProtocol,
+	stripQuerystring,
+	urlDecode,
+	urlEncode,
+	urlParse,
+	urlResolve,
 };

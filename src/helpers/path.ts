@@ -143,11 +143,11 @@ export const helpers: Helper[] = [
 
 export {
 	absolute,
-	dirname,
-	relative,
 	basename,
-	stem,
+	dirname,
 	extname,
+	relative,
 	resolveFn as resolve,
 	segments,
+	stem,
 };

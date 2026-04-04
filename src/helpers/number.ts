@@ -141,8 +141,8 @@ export const helpers: Helper[] = [
 ];
 
 export {
-	bytes,
 	addCommas,
+	bytes,
 	phoneNumber,
 	toAbbr,
 	toExponential,

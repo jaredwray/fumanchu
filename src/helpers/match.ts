@@ -50,4 +50,4 @@ export const helpers: Helper[] = [
 	},
 ];
 
-export { match, isMatch, mm };
+export { isMatch, match, mm };

@@ -204,7 +204,6 @@ export {
 	extend,
 	forIn,
 	forOwn,
-	toPath,
 	getHelper as get,
 	getObjectHelper as getObject,
 	hasOwn,
@@ -215,4 +214,5 @@ export {
 	parseJSON,
 	pick,
 	stringify,
+	toPath,
 };

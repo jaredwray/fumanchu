@@ -228,15 +228,15 @@ export const helpers: Helper[] = [
 ];
 
 export {
+	_debug,
+	_inspect,
+	bold,
+	danger,
+	error,
+	info,
 	log,
 	ok,
 	success,
-	info,
-	warning,
 	warn,
-	error,
-	danger,
-	bold,
-	_debug,
-	_inspect,
+	warning,
 };

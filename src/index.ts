@@ -110,5 +110,9 @@ export function fumanchu(options?: FumanchuOptions) {
 	return handlebars;
 }
 
-export { CacheableMemory, type CacheableMemoryOptions };
-export { HelperRegistry, HelperFilter };
+export {
+	CacheableMemory,
+	type CacheableMemoryOptions,
+	HelperFilter,
+	HelperRegistry,
+};
