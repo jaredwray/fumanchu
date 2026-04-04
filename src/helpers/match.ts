@@ -10,8 +10,9 @@ const match = (
 	const pats =
 		typeof patterns === "string"
 			? patterns.split(/, */)
-			: (patterns as micromatch.Pattern | micromatch.Pattern[]);
-	return micromatch(files, pats, options) as string[];
+			: (patterns as string | string[]);
+	const list = typeof files === "string" ? [files] : files;
+	return micromatch(list, pats as string[], options) as string[];
 };
 
 const isMatch = (

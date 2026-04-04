@@ -3,7 +3,13 @@ import type { Helper } from "../helper-registry.js";
 import { get, getObject } from "../utils.js";
 import { arrayify } from "./array.js";
 
-const isOptions = (value: any): value is { hash: Record<string, any> } => {
+const isOptions = (
+	value: any,
+): value is {
+	hash: Record<string, any>;
+	fn: (...args: any[]) => string;
+	inverse?: (...args: any[]) => string;
+} => {
 	return Boolean(value && typeof value === "object" && "hash" in value);
 };
 
@@ -93,7 +99,7 @@ const merge = (context: any, ...objects: any[]): Record<string, any> => {
 		const opts = args.pop() as { hash: Record<string, any> };
 		args.push(opts.hash);
 	}
-	return Object.assign(...args);
+	return Object.assign(args[0] as Record<string, any>, ...args.slice(1));
 };
 
 const parseJSON = JSONparse;
