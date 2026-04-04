@@ -123,6 +123,13 @@ The `caching` option accepts three types:
 - `CacheableMemory` -- a pre-configured instance from `@cacheable/memory`
 - `CacheableMemoryOptions` -- an options object passed to `CacheableMemory` (supports `ttl`, `lruSize`, `checkInterval`, etc.)
 
+Here is an quick benchmark showing the performance advantage:
+
+|                name                |  summary  |  ops/sec  |  time/op  |  margin  |  samples  |
+|------------------------------------|:---------:|----------:|----------:|:--------:|----------:|
+|  compile+render cached (v4.6.0)    |    🥇     |      45K  |     39µs  |  ±0.32%  |      25K  |
+|  compile+render no-cache (v4.6.0)  |   -83%    |       8K  |    166µs  |  ±0.62%  |      10K  |
+
 ## Enable caching with default settings
 
 ```javascript
