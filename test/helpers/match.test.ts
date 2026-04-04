@@ -26,6 +26,9 @@ describe("match", () => {
 		const files = ["a.js", "b.txt", "c.md"];
 		expect(matchFn(files, "*.js, *.md").sort()).toEqual(["a.js", "c.md"]);
 	});
+	it("accepts a single file string instead of an array", () => {
+		expect(matchFn("a.js", "*.js")).toEqual(["a.js"]);
+	});
 	it("passes options to micromatch", () => {
 		const files = [".a.js", "b.txt"];
 		expect(matchFn(files, "*", { dot: true })).toEqual([".a.js", "b.txt"]);

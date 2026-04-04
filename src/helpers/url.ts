@@ -3,7 +3,7 @@ import { escape as qsEscape } from "node:querystring";
 import { format, parse, resolve } from "node:url";
 import type { Helper } from "../helper-registry.js";
 
-const all = ["browser", "nodejs"] as const;
+const all: string[] = ["browser", "nodejs"];
 
 const encodeUri = (str: unknown): string | undefined => {
 	if (typeof str === "string") {
