@@ -80,7 +80,6 @@
     "handlebars": "^4.7.9",
     "micromatch": "^4.0.8",
     "remarkable": "^2.0.1",
-    "striptags": "^3.2.0",
     "to-gfm-code-block": "^0.1.1"
   },
   "devDependencies": {
