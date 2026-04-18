@@ -1,6 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: tests can use any types
 import { describe, expect, it } from "vitest";
-import { helpers } from "../../src/helpers/html.js";
+import { helpers, tag } from "../../src/helpers/html.js";
 
 type HelperFn = (...args: any[]) => any;
 
@@ -9,6 +9,56 @@ const getHelper = (name: string): HelperFn => {
 	if (!helper) throw new Error(`Helper ${name} not found`);
 	return helper.fn as HelperFn;
 };
+
+describe("tag", () => {
+	it("renders a non-void element with string attributes", () => {
+		expect(tag("script", { src: "abc.js" })).toBe(
+			'<script src="abc.js"></script>',
+		);
+	});
+	it("renders a boolean true attribute as a bare attribute", () => {
+		expect(tag("script", { defer: true, src: "x.js" })).toBe(
+			'<script defer src="x.js"></script>',
+		);
+	});
+	it("serializes numeric attribute values", () => {
+		expect(tag("iframe", { width: 100, height: 50 })).toBe(
+			'<iframe width="100" height="50"></iframe>',
+		);
+	});
+	it("skips attributes whose value is false or null", () => {
+		expect(
+			tag("script", { foo: false as any, bar: null as any, baz: undefined }),
+		).toBe("<script></script>");
+	});
+	it("renders a void element without a closing tag", () => {
+		expect(tag("br")).toBe("<br>");
+		expect(tag("img", { src: "a.png" })).toBe('<img src="a.png">');
+	});
+	it("ignores text content for void elements", () => {
+		expect(tag("br", {}, "ignored")).toBe("<br>");
+	});
+	it("treats void-element matching as case-insensitive", () => {
+		expect(tag("IMG", { src: "a.png" })).toBe('<IMG src="a.png">');
+	});
+	it("escapes HTML-special characters in attribute values", () => {
+		expect(tag("a", { href: '"><script>alert(1)</script>' })).toBe(
+			'<a href="&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;"></a>',
+		);
+		expect(tag("a", { href: "?a=1&b=2" })).toBe('<a href="?a=1&amp;b=2"></a>');
+	});
+	it("escapes HTML-special characters in text content", () => {
+		expect(tag("p", {}, "<script>alert(1)</script> & more")).toBe(
+			"<p>&lt;script&gt;alert(1)&lt;/script&gt; &amp; more</p>",
+		);
+	});
+	it("ignores inherited prototype properties on attribs", () => {
+		const proto = { injected: "yes" };
+		const attribs = Object.create(proto);
+		attribs.src = "x.js";
+		expect(tag("script", attribs)).toBe('<script src="x.js"></script>');
+	});
+});
 
 describe("attr", () => {
 	const attrFn = getHelper("attr");

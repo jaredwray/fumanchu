@@ -23,9 +23,6 @@ importers:
       handlebars:
         specifier: ^4.7.9
         version: 4.7.9
-      html-tag:
-        specifier: ^2.0.0
-        version: 2.0.0
       is-glob:
         specifier: ^4.0.3
         version: 4.0.3
@@ -57,9 +54,6 @@ importers:
       '@types/ent':
         specifier: ^2.2.8
         version: 2.2.8
-      '@types/html-tag':
-        specifier: ^2.0.2
-        version: 2.0.2
       '@types/is-glob':
         specifier: ^4.0.4
         version: 4.0.4
@@ -902,9 +896,6 @@ packages:
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
-
-  '@types/html-tag@2.0.2':
-    resolution: {integrity: sha512-eHXXpY43gpBZCBRJzMITUKwu+6rdWIIn5t4efvPUn9teKDv+SFf3M7PZcgmFIl5W2n8vcqFUvKYHRN52xjXk7Q==}
 
   '@types/is-glob@4.0.4':
     resolution: {integrity: sha512-3mFBtIPQ0TQetKRDe94g8YrxJZxdMillMGegyv6zRBXvq4peRRhf2wLZ/Dl53emtTsC29dQQBwYvovS20yXpiQ==}
@@ -3123,8 +3114,6 @@ snapshots:
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.3
-
-  '@types/html-tag@2.0.2': {}
 
   '@types/is-glob@4.0.4': {}
 

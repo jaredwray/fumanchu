@@ -1,9 +1,65 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
 import path from "node:path";
-import tag from "html-tag";
 import striptags from "striptags";
 import type { Helper } from "../helper-registry.js";
 import { arrayify } from "./array.js";
+
+const VOID_ELEMENTS = new Set([
+	"area",
+	"base",
+	"br",
+	"col",
+	"command",
+	"embed",
+	"hr",
+	"img",
+	"input",
+	"keygen",
+	"link",
+	"meta",
+	"param",
+	"source",
+	"track",
+	"wbr",
+	"circle",
+	"ellipse",
+	"line",
+	"path",
+	"polygon",
+	"polyline",
+	"rect",
+	"stop",
+	"use",
+]);
+
+export const tag = (
+	name: string,
+	attribs: Record<string, string | number | boolean> = {},
+	text: string = "",
+): string => {
+	let html = `<${name}`;
+	for (const [key, val] of Object.entries(attribs)) {
+		if (val === true) {
+			html += ` ${key}`;
+		} else if (typeof val === "string" || typeof val === "number") {
+			html += ` ${key}="${escapeAttr(String(val))}"`;
+		}
+	}
+	if (VOID_ELEMENTS.has(name.toLowerCase())) {
+		return `${html}>`;
+	}
+	return `${html}>${escapeText(text)}</${name}>`;
+};
+
+const escapeAttr = (str: string): string =>
+	str
+		.replace(/&/g, "&amp;")
+		.replace(/"/g, "&quot;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;");
+
+const escapeText = (str: string): string =>
+	str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const parseAttributes = (hash: Record<string, unknown> = {}): string =>
 	Object.keys(hash)
