@@ -9,13 +9,7 @@ export type Helper = {
 	name: string;
 	category: string;
 	compatibility?: string[];
-	fn:
-		| ((...arguments_: any[]) => string)
-		| ((...arguments_: any[]) => number)
-		| ((...arguments_: any[]) => boolean)
-		| ((...arguments_: any[]) => unknown)
-		| ((...arguments_: any[]) => number | string)
-		| ((...arguments_: any[]) => any);
+	fn: (...arguments_: any[]) => any;
 };
 
 export type HelperFilter = {
@@ -121,7 +115,6 @@ export class HelperRegistryBase {
 	 */
 	public swap(handlebars: any) {
 		for (const helper of this._helpers) {
-			handlebars.unregisterHelper(helper.name);
 			handlebars.registerHelper(helper.name, helper.fn);
 		}
 	}
