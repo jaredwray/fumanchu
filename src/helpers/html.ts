@@ -1,9 +1,56 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
 import path from "node:path";
-import tag from "html-tag";
 import striptags from "striptags";
 import type { Helper } from "../helper-registry.js";
 import { arrayify } from "./array.js";
+
+const VOID_ELEMENTS = new Set([
+	"area",
+	"base",
+	"br",
+	"col",
+	"command",
+	"embed",
+	"hr",
+	"img",
+	"input",
+	"keygen",
+	"link",
+	"meta",
+	"param",
+	"source",
+	"track",
+	"wbr",
+	"circle",
+	"ellipse",
+	"line",
+	"path",
+	"polygon",
+	"polyline",
+	"rect",
+	"stop",
+	"use",
+]);
+
+export const tag = (
+	name: string,
+	attribs: Record<string, string | boolean> = {},
+	text: string = "",
+): string => {
+	let html = `<${name}`;
+	for (const key in attribs) {
+		const val = attribs[key];
+		if (val === true) {
+			html += ` ${key}`;
+		} else if (typeof val === "string") {
+			html += ` ${key}="${val}"`;
+		}
+	}
+	if (VOID_ELEMENTS.has(name.toLowerCase())) {
+		return `${html}>${text}`;
+	}
+	return `${html}>${text}</${name}>`;
+};
 
 const parseAttributes = (hash: Record<string, unknown> = {}): string =>
 	Object.keys(hash)
