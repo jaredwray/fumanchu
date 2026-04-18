@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+import { HelperRegistryBase } from "../src/helper-registry-base.js";
 import {
 	HelperRegistry,
 	HelperRegistryCompatibility,
@@ -189,6 +190,11 @@ describe("HelperRegistry Filter", () => {
 				compatibility: [HelperRegistryCompatibility.BROWSER],
 			}).length,
 		).toBe(1);
+	});
+
+	test("HelperRegistryBase init is a no-op and registers nothing", () => {
+		const base = new HelperRegistryBase();
+		expect(base.helpers).toEqual([]);
 	});
 
 	test("should be able to swap out helpers", () => {

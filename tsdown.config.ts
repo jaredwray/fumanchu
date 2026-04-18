@@ -16,5 +16,6 @@ export default defineConfig([
 		outDir: "./dist",
 		platform: "browser",
 		fixedExtension: true,
+		minify: true,
 	},
 ]);

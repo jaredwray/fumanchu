@@ -1,3 +1,4 @@
+import { CacheableMemory } from "@cacheable/memory";
 import { describe, expect, it } from "vitest";
 import { fumanchu, HelperRegistry, helpers } from "../../src/browser.js";
 
@@ -97,5 +98,44 @@ describe("browser smoke", () => {
 		};
 		// biome-ignore lint/suspicious/noExplicitAny: minimal test double
 		helpers({ handlebars: fake2 as any });
+		// Exercise the `hbs` alias branch of the nullish coalescing.
+		// biome-ignore lint/suspicious/noExplicitAny: minimal test double
+		helpers({ hbs: fake2 as any });
+	});
+});
+
+describe("browser caching", () => {
+	it("caches compiled templates when caching: true", () => {
+		const hbs = fumanchu({ caching: true });
+		const first = hbs.compile("{{uppercase 'hi'}}");
+		const second = hbs.compile("{{uppercase 'hi'}}");
+		expect(first).toBe(second);
+		expect(first({})).toBe("HI");
+	});
+
+	it("accepts a CacheableMemory options object", () => {
+		const hbs = fumanchu({ caching: { ttl: 1000 } });
+		const tpl = hbs.compile("{{year}}");
+		expect(tpl({})).toMatch(/^\d{4}$/);
+		// Second compile with the same input must return the cached delegate.
+		expect(hbs.compile("{{year}}")).toBe(tpl);
+	});
+
+	it("accepts a CacheableMemory instance", () => {
+		const cache = new CacheableMemory({ useClone: false });
+		const hbs = fumanchu({ caching: cache });
+		const tpl = hbs.compile("{{lowercase 'HI'}}");
+		expect(tpl({})).toBe("hi");
+		expect(hbs.compile("{{lowercase 'HI'}}")).toBe(tpl);
+	});
+
+	it("includes compile options in the cache key", () => {
+		const hbs = fumanchu({ caching: true });
+		const a = hbs.compile("{{year}}", { noEscape: true });
+		const b = hbs.compile("{{year}}", { noEscape: false });
+		// Different options should yield different cached delegates.
+		expect(a).not.toBe(b);
+		// Same options should hit the cache.
+		expect(hbs.compile("{{year}}", { noEscape: true })).toBe(a);
 	});
 });
