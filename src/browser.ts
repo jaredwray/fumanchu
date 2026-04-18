@@ -38,6 +38,32 @@ export function helpers(options: HelpersOptions) {
 	registry.load(options.handlebars ?? options.hbs);
 }
 
+/**
+ * Create a new Handlebars instance with Fumanchu browser-safe helpers.
+ * @returns {Promise<Handlebars>}
+ * @deprecated Will be deprecated in future versions, use `fumanchu()` instead.
+ */
+export async function createHandlebars() {
+	const registry = new HelperRegistryBrowser();
+	const handlebars = HandlebarsLib.create();
+	if (Object.keys(HandlebarsLib.partials).length > 0) {
+		handlebars.registerPartial(HandlebarsLib.partials);
+	}
+	registry.load(handlebars);
+	/* c8 ignore start -- @preserve */
+	if (
+		typeof process !== "undefined" &&
+		process.env?.NODE_ENV === "development"
+	) {
+		console.warn(
+			"createHandlebars will be deprecated in future versions, use `fumanchu` instead.",
+		);
+	}
+	/* c8 ignore stop */
+
+	return handlebars;
+}
+
 export type FumanchuOptions = {
 	handlebars?: typeof HandlebarsLib;
 	filter?: HelperFilter;

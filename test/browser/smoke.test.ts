@@ -1,6 +1,11 @@
 import { CacheableMemory } from "@cacheable/memory";
 import { describe, expect, it } from "vitest";
-import { fumanchu, HelperRegistry, helpers } from "../../src/browser.js";
+import {
+	createHandlebars,
+	fumanchu,
+	HelperRegistry,
+	helpers,
+} from "../../src/browser.js";
 
 describe("browser smoke", () => {
 	it("compiles a template using browser-safe helpers", () => {
@@ -101,6 +106,29 @@ describe("browser smoke", () => {
 		// Exercise the `hbs` alias branch of the nullish coalescing.
 		// biome-ignore lint/suspicious/noExplicitAny: minimal test double
 		helpers({ hbs: fake2 as any });
+	});
+});
+
+describe("browser createHandlebars", () => {
+	it("is exported from the browser entry and registers browser-safe helpers", async () => {
+		const hbs = await createHandlebars();
+		expect(hbs).toBeDefined();
+		const template = hbs.compile("{{uppercase name}}");
+		expect(template({ name: "hi" })).toBe("HI");
+	});
+
+	it("includes existing global partials", async () => {
+		// Import the default Handlebars library to register a global partial,
+		// then confirm createHandlebars propagates it into the new instance.
+		const { default: HandlebarsLib } = await import("handlebars");
+		HandlebarsLib.registerPartial("browserPartial", "Hello {{name}}");
+		try {
+			const hbs = await createHandlebars();
+			const template = hbs.compile("{{> browserPartial}}");
+			expect(template({ name: "world" })).toBe("Hello world");
+		} finally {
+			HandlebarsLib.unregisterPartial("browserPartial");
+		}
 	});
 });
 
