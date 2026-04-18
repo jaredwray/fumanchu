@@ -4,15 +4,9 @@ import path from "node:path";
 import micromatch from "micromatch";
 import type { Helper } from "../helper-registry.js";
 
-const EXTGLOB_PATTERN = /[@?!+*]\(.*\)/;
-const GLOB_CHARS_PATTERN = /[*?{}[\]]/;
+const GLOB_PATTERN = /^!|[*?{}[\]]|[@?!+*]\(.*\)/;
 
-const isGlob = (value: string): boolean => {
-	if (typeof value !== "string" || value === "") return false;
-	if (value[0] === "!") return true;
-	if (EXTGLOB_PATTERN.test(value)) return true;
-	return GLOB_CHARS_PATTERN.test(value);
-};
+const isGlob = (value: string): boolean => GLOB_PATTERN.test(value);
 
 const fileSize = (value: unknown, precision?: unknown): string => {
 	if (value == null) return "0 B";
