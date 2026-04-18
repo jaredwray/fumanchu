@@ -3,7 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import ent from "ent";
 import Handlebars from "handlebars";
-import { Remarkable } from "remarkable";
+import MarkdownIt from "markdown-it";
 import type { Helper } from "../helper-registry.js";
 
 type MarkdownOptions = {
@@ -34,7 +34,7 @@ const renderMarkdown = function (
 	}
 
 	const options_ = { cwd: process.cwd(), ...options };
-	const md = new Remarkable({
+	const md = new MarkdownIt({
 		breaks: true,
 		html: true,
 		langPrefix: "lang-",
