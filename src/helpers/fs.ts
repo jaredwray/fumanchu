@@ -4,9 +4,12 @@ import path from "node:path";
 import micromatch from "micromatch";
 import type { Helper } from "../helper-registry.js";
 
-const GLOB_PATTERN = /^!|[*?{}[\]]|[@?!+*]\(.*\)/;
+const ESCAPE_SEQUENCE = /\\[\s\S]/g;
+const GLOB_PATTERN =
+	/^!|[*?]|\[[^\]]+\]|\{[^}]+\}|[@?!+*]\([^)]*\)|\([^)]*\|[^)]*\)/;
 
-const isGlob = (value: string): boolean => GLOB_PATTERN.test(value);
+const isGlob = (value: string): boolean =>
+	GLOB_PATTERN.test(value.replace(ESCAPE_SEQUENCE, ""));
 
 const fileSize = (value: unknown, precision?: unknown): string => {
 	if (value == null) return "0 B";

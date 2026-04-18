@@ -65,6 +65,20 @@ describe("readdir", () => {
 			libFiles.filter((fp) => /helpers\/lib\/[a-d].*\.js$/.test(fp)),
 		);
 	});
+	it("filters with a regex-group glob", () => {
+		expect(readdirFn(libDir, "src/helpers/(array|code).ts")).toEqual(
+			libFiles.filter((fp) => /src\/helpers\/(?:array|code)\.ts$/.test(fp)),
+		);
+	});
+	it("filters with a negation glob", () => {
+		expect(readdirFn(libDir, "!src/helpers/array.ts")).toEqual(
+			libFiles.filter((fp) => fp !== path.join("src", "helpers", "array.ts")),
+		);
+	});
+	it("treats escaped metacharacters as literal paths", () => {
+		expect(readdirFn(libDir, "src/helpers/\\*.ts")).toEqual(libFiles);
+		expect(readdirFn(libDir, "src/helpers/\\{a,b}.ts")).toEqual(libFiles);
+	});
 	it("filters by stat isFile", () => {
 		expect(readdirFn(libDir, "isFile")).toEqual(
 			libFiles.filter((fp) => fs.statSync(fp).isFile()),
