@@ -1,6 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: tests can use any types
 import { describe, expect, it } from "vitest";
-import { helpers } from "../../src/helpers/html.js";
+import { helpers, tag } from "../../src/helpers/html.js";
 
 type HelperFn = (...args: any[]) => any;
 
@@ -9,6 +9,34 @@ const getHelper = (name: string): HelperFn => {
 	if (!helper) throw new Error(`Helper ${name} not found`);
 	return helper.fn as HelperFn;
 };
+
+describe("tag", () => {
+	it("renders a non-void element with string attributes", () => {
+		expect(tag("script", { src: "abc.js" })).toBe(
+			'<script src="abc.js"></script>',
+		);
+	});
+	it("renders a boolean true attribute as a bare attribute", () => {
+		expect(tag("script", { defer: true, src: "x.js" })).toBe(
+			'<script defer src="x.js"></script>',
+		);
+	});
+	it("skips attributes that are not string or true", () => {
+		expect(tag("script", { foo: false as any, bar: 1 as any })).toBe(
+			"<script></script>",
+		);
+	});
+	it("renders a void element without a closing tag", () => {
+		expect(tag("br")).toBe("<br>");
+		expect(tag("img", { src: "a.png" })).toBe('<img src="a.png">');
+	});
+	it("treats void-element matching as case-insensitive", () => {
+		expect(tag("IMG", { src: "a.png" })).toBe('<IMG src="a.png">');
+	});
+	it("includes the provided text content", () => {
+		expect(tag("p", {}, "hello")).toBe("<p>hello</p>");
+	});
+});
 
 describe("attr", () => {
 	const attrFn = getHelper("attr");
