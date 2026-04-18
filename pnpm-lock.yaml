@@ -23,9 +23,6 @@ importers:
       handlebars:
         specifier: ^4.7.9
         version: 4.7.9
-      kind-of:
-        specifier: ^6.0.3
-        version: 6.0.3
       micromatch:
         specifier: ^4.0.8
         version: 4.0.8
@@ -51,9 +48,6 @@ importers:
       '@types/ent':
         specifier: ^2.2.8
         version: 2.2.8
-      '@types/kind-of':
-        specifier: ^6.0.3
-        version: 6.0.3
       '@types/micromatch':
         specifier: ^4.0.10
         version: 4.0.10
@@ -896,9 +890,6 @@ packages:
 
   '@types/katex@0.16.7':
     resolution: {integrity: sha512-HMwFiRujE5PjrgwHQ25+bsLJgowjGjm5Z8FVSf0N6PwgJrwxH0QxzHYDcKsTfV3wva0vzrpqMTJS2jXPr5BMEQ==}
-
-  '@types/kind-of@6.0.3':
-    resolution: {integrity: sha512-JEwIR1oOC99PjUTd1LUHxq3gd6w9GGJ8nYUTHMfwOLszw6GuQB4ezsnk3WEeMOtOFx12Jk2JWrGttSnwUD4hrQ==}
 
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
@@ -3109,10 +3100,6 @@ snapshots:
   '@types/jsesc@2.5.1': {}
 
   '@types/katex@0.16.7': {}
-
-  '@types/kind-of@6.0.3':
-    dependencies:
-      '@types/node': 25.5.0
 
   '@types/mdast@4.0.4':
     dependencies:
