@@ -79,8 +79,7 @@
     "ent": "^2.2.2",
     "handlebars": "^4.7.9",
     "micromatch": "^4.0.8",
-    "remarkable": "^2.0.1",
-    "to-gfm-code-block": "^0.1.1"
+    "remarkable": "^2.0.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.10",

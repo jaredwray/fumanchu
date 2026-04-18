@@ -1,9 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-// @ts-expect-error
-import codeBlock from "to-gfm-code-block";
 import type { Helper } from "../helper-registry.js";
 import { tag } from "./html.js";
+
+const codeBlock = (code: string, lang?: string): string => {
+	return `\`\`\`${lang ?? ""}\n${code.trim()}\n\`\`\`\n`;
+};
 
 const embed = (filepath: string, language?: string): string => {
 	let ext =

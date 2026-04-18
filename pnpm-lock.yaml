@@ -29,9 +29,6 @@ importers:
       remarkable:
         specifier: ^2.0.1
         version: 2.0.1
-      to-gfm-code-block:
-        specifier: ^0.1.1
-        version: 0.1.1
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.4.10
