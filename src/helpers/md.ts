@@ -13,6 +13,14 @@ type MarkdownOptions = {
 	cwd?: string;
 };
 
+const md = new MarkdownIt({
+	breaks: true,
+	html: true,
+	langPrefix: "lang-",
+	typographer: false,
+	xhtmlOut: false,
+});
+
 const renderMarkdown = function (
 	this: unknown,
 	input?: string | MarkdownOptions,
@@ -34,13 +42,6 @@ const renderMarkdown = function (
 	}
 
 	const options_ = { cwd: process.cwd(), ...options };
-	const md = new MarkdownIt({
-		breaks: true,
-		html: true,
-		langPrefix: "lang-",
-		typographer: false,
-		xhtmlOut: false,
-	});
 
 	let string_ = input as string;
 	// Only check for file existence if input is non-empty
