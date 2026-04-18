@@ -1,8 +1,51 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
 import path from "node:path";
-import striptags from "striptags";
 import type { Helper } from "../helper-registry.js";
 import { arrayify } from "./array.js";
+
+const isTagStart = (ch: string | undefined): boolean =>
+	ch !== undefined &&
+	(ch === "/" || ch === "!" || ch === "?" || /[a-zA-Z]/.test(ch));
+
+const stripTags = (str: string): string => {
+	let result = "";
+	let inTag = false;
+	let inComment = false;
+	let quote: '"' | "'" | null = null;
+	for (let i = 0; i < str.length; i++) {
+		const ch = str[i];
+		if (inComment) {
+			if (ch === "-" && str[i + 1] === "-" && str[i + 2] === ">") {
+				inComment = false;
+				i += 2;
+			}
+			continue;
+		}
+		if (inTag) {
+			if (quote) {
+				if (ch === quote) quote = null;
+			} else if (ch === '"' || ch === "'") {
+				quote = ch;
+			} else if (ch === ">") {
+				inTag = false;
+			}
+			continue;
+		}
+		if (ch === "<") {
+			if (str[i + 1] === "!" && str[i + 2] === "-" && str[i + 3] === "-") {
+				inComment = true;
+				i += 3;
+				continue;
+			}
+			if (isTagStart(str[i + 1])) {
+				inTag = true;
+				continue;
+			}
+		}
+		result += ch;
+	}
+	return result;
+};
 
 const VOID_ELEMENTS = new Set([
 	"area",
@@ -127,7 +170,7 @@ const js = (context: any): string => {
 
 const sanitize = (str?: string): string => {
 	if (typeof str !== "string") return "";
-	return striptags(str).trim();
+	return stripTags(str).trim();
 };
 
 const ul = (
