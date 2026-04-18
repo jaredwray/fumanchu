@@ -79,16 +79,17 @@ export class HelperRegistryBase {
 	public filter(filter: HelperFilter): Helper[] {
 		let result = this._helpers;
 		if (filter.names) {
-			result = result.filter((helper) => filter.names?.includes(helper.name));
+			const names = filter.names;
+			result = result.filter((helper) => names.includes(helper.name));
 		}
 		if (filter.categories) {
-			result = result.filter((helper) =>
-				filter.categories?.includes(helper.category),
-			);
+			const categories = filter.categories;
+			result = result.filter((helper) => categories.includes(helper.category));
 		}
 		if (filter.compatibility) {
+			const compatibility = filter.compatibility;
 			result = result.filter((helper) =>
-				helper.compatibility?.some((c) => filter.compatibility?.includes(c)),
+				helper.compatibility?.some((c) => compatibility.includes(c)),
 			);
 		}
 		return result;

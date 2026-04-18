@@ -5,6 +5,10 @@ import {
 import HandlebarsLib from "handlebars";
 import { type HelperFilter, HelperRegistry } from "./helper-registry.js";
 
+type HbsCompileFn = typeof HandlebarsLib.compile;
+type HbsCompileOptions = Parameters<HbsCompileFn>[1];
+type HbsCompiledTemplate = ReturnType<HbsCompileFn>;
+
 /**
  * Handlebars library not initiated with helpers
  * @type {Handlebars}
@@ -92,11 +96,14 @@ export function fumanchu(options?: FumanchuOptions) {
 		}
 
 		const originalCompile = handlebars.compile.bind(handlebars);
-		handlebars.compile = (input: string, compileOptions?: CompileOptions) => {
+		handlebars.compile = (
+			input: string,
+			compileOptions?: HbsCompileOptions,
+		) => {
 			const key = compileOptions
-				? input + JSON.stringify(compileOptions)
-				: String(input);
-			const cached = cache.get<HandlebarsTemplateDelegate>(key);
+				? `${input}\0${JSON.stringify(compileOptions)}`
+				: input;
+			const cached = cache.get<HbsCompiledTemplate>(key);
 			if (cached) {
 				return cached;
 			}
