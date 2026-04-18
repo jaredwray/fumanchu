@@ -1,9 +1,15 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: this is for handlebars
 import fs from "node:fs";
 import path from "node:path";
-import isGlob from "is-glob";
 import micromatch from "micromatch";
 import type { Helper } from "../helper-registry.js";
+
+const ESCAPE_SEQUENCE = /\\[\s\S]/g;
+const GLOB_PATTERN =
+	/^!|[*?]|\[[^\]]+\]|\{[^}]+\}|[@?!+*]\([^)]*\)|\([^)]*\|[^)]*\)/;
+
+const isGlob = (value: string): boolean =>
+	GLOB_PATTERN.test(value.replace(ESCAPE_SEQUENCE, ""));
 
 const fileSize = (value: unknown, precision?: unknown): string => {
 	if (value == null) return "0 B";
