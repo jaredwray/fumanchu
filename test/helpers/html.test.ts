@@ -155,6 +155,27 @@ describe("sanitize", () => {
 	it("strips html from a string", () => {
 		expect(sanitizeFn("<span>foo</span>")).toBe("foo");
 	});
+	it("strips tags with attributes", () => {
+		expect(sanitizeFn('<a href="http://x.com" title="hi">foo</a>')).toBe("foo");
+	});
+	it("handles > inside double-quoted attribute values", () => {
+		expect(sanitizeFn('<a title="1>2">foo</a>')).toBe("foo");
+	});
+	it("handles > inside single-quoted attribute values", () => {
+		expect(sanitizeFn("<a title='1>2'>foo</a>")).toBe("foo");
+	});
+	it("ignores unterminated quotes until tag closes", () => {
+		expect(sanitizeFn('<a title="x>bar')).toBe("");
+	});
+	it("strips html comments", () => {
+		expect(sanitizeFn("foo<!-- secret -->bar")).toBe("foobar");
+	});
+	it("handles unterminated comments", () => {
+		expect(sanitizeFn("foo<!-- never ends")).toBe("foo");
+	});
+	it("preserves text between tags", () => {
+		expect(sanitizeFn("<b>hi</b> <i>there</i>")).toBe("hi there");
+	});
 });
 
 describe("ul", () => {
