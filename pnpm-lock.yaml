@@ -23,9 +23,6 @@ importers:
       handlebars:
         specifier: ^4.7.9
         version: 4.7.9
-      is-glob:
-        specifier: ^4.0.3
-        version: 4.0.3
       kind-of:
         specifier: ^6.0.3
         version: 6.0.3
@@ -54,9 +51,6 @@ importers:
       '@types/ent':
         specifier: ^2.2.8
         version: 2.2.8
-      '@types/is-glob':
-        specifier: ^4.0.4
-        version: 4.0.4
       '@types/kind-of':
         specifier: ^6.0.3
         version: 6.0.3
@@ -896,9 +890,6 @@ packages:
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
-
-  '@types/is-glob@4.0.4':
-    resolution: {integrity: sha512-3mFBtIPQ0TQetKRDe94g8YrxJZxdMillMGegyv6zRBXvq4peRRhf2wLZ/Dl53emtTsC29dQQBwYvovS20yXpiQ==}
 
   '@types/jsesc@2.5.1':
     resolution: {integrity: sha512-9VN+6yxLOPLOav+7PwjZbxiID2bVaeq0ED4qSQmdQTdjnXJSaCVKTR58t15oqH1H5t8Ng2ZX1SabJVoN9Q34bw==}
@@ -3114,8 +3105,6 @@ snapshots:
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.3
-
-  '@types/is-glob@4.0.4': {}
 
   '@types/jsesc@2.5.1': {}
 
