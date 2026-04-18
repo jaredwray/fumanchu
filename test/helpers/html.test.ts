@@ -21,20 +21,42 @@ describe("tag", () => {
 			'<script defer src="x.js"></script>',
 		);
 	});
-	it("skips attributes that are not string or true", () => {
-		expect(tag("script", { foo: false as any, bar: 1 as any })).toBe(
-			"<script></script>",
+	it("serializes numeric attribute values", () => {
+		expect(tag("iframe", { width: 100, height: 50 })).toBe(
+			'<iframe width="100" height="50"></iframe>',
 		);
+	});
+	it("skips attributes whose value is false or null", () => {
+		expect(
+			tag("script", { foo: false as any, bar: null as any, baz: undefined }),
+		).toBe("<script></script>");
 	});
 	it("renders a void element without a closing tag", () => {
 		expect(tag("br")).toBe("<br>");
 		expect(tag("img", { src: "a.png" })).toBe('<img src="a.png">');
 	});
+	it("ignores text content for void elements", () => {
+		expect(tag("br", {}, "ignored")).toBe("<br>");
+	});
 	it("treats void-element matching as case-insensitive", () => {
 		expect(tag("IMG", { src: "a.png" })).toBe('<IMG src="a.png">');
 	});
-	it("includes the provided text content", () => {
-		expect(tag("p", {}, "hello")).toBe("<p>hello</p>");
+	it("escapes HTML-special characters in attribute values", () => {
+		expect(tag("a", { href: '"><script>alert(1)</script>' })).toBe(
+			'<a href="&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;"></a>',
+		);
+		expect(tag("a", { href: "?a=1&b=2" })).toBe('<a href="?a=1&amp;b=2"></a>');
+	});
+	it("escapes HTML-special characters in text content", () => {
+		expect(tag("p", {}, "<script>alert(1)</script> & more")).toBe(
+			"<p>&lt;script&gt;alert(1)&lt;/script&gt; &amp; more</p>",
+		);
+	});
+	it("ignores inherited prototype properties on attribs", () => {
+		const proto = { injected: "yes" };
+		const attribs = Object.create(proto);
+		attribs.src = "x.js";
+		expect(tag("script", attribs)).toBe('<script src="x.js"></script>');
 	});
 });
 

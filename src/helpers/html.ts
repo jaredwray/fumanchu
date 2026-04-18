@@ -34,23 +34,32 @@ const VOID_ELEMENTS = new Set([
 
 export const tag = (
 	name: string,
-	attribs: Record<string, string | boolean> = {},
+	attribs: Record<string, string | number | boolean> = {},
 	text: string = "",
 ): string => {
 	let html = `<${name}`;
-	for (const key in attribs) {
-		const val = attribs[key];
+	for (const [key, val] of Object.entries(attribs)) {
 		if (val === true) {
 			html += ` ${key}`;
-		} else if (typeof val === "string") {
-			html += ` ${key}="${val}"`;
+		} else if (typeof val === "string" || typeof val === "number") {
+			html += ` ${key}="${escapeAttr(String(val))}"`;
 		}
 	}
 	if (VOID_ELEMENTS.has(name.toLowerCase())) {
-		return `${html}>${text}`;
+		return `${html}>`;
 	}
-	return `${html}>${text}</${name}>`;
+	return `${html}>${escapeText(text)}</${name}>`;
 };
+
+const escapeAttr = (str: string): string =>
+	str
+		.replace(/&/g, "&amp;")
+		.replace(/"/g, "&quot;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;");
+
+const escapeText = (str: string): string =>
+	str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const parseAttributes = (hash: Record<string, unknown> = {}): string =>
 	Object.keys(hash)
