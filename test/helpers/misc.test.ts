@@ -168,6 +168,30 @@ describe("misc helpers", () => {
 			expect(typeOfFn(null)).toBe("null");
 			expect(typeOfFn(true)).toBe("boolean");
 			expect(typeOfFn(Symbol("s"))).toBe("symbol");
+			expect(typeOfFn(BigInt(1))).toBe("bigint");
+		});
+
+		it("identifies date/error/regexp via structural shape", () => {
+			const dateLike = {
+				toDateString: () => "",
+				getDate: () => 0,
+				setDate: () => 0,
+			};
+			expect(typeOfFn(dateLike)).toBe("date");
+
+			class CustomErr {
+				message = "boom";
+				static stackTraceLimit = 10;
+			}
+			expect(typeOfFn(new CustomErr())).toBe("error");
+
+			const regexpLike = {
+				flags: "",
+				ignoreCase: false,
+				multiline: false,
+				global: false,
+			};
+			expect(typeOfFn(regexpLike)).toBe("regexp");
 		});
 
 		it("identifies functions and generator functions", () => {

@@ -22,6 +22,31 @@ function isGeneratorObj(val: any): boolean {
 	);
 }
 
+function isDateLike(val: any): boolean {
+	return (
+		typeof val.toDateString === "function" &&
+		typeof val.getDate === "function" &&
+		typeof val.setDate === "function"
+	);
+}
+
+function isErrorLike(val: any): boolean {
+	return (
+		typeof val.message === "string" &&
+		val.constructor &&
+		typeof val.constructor.stackTraceLimit === "number"
+	);
+}
+
+function isRegexpLike(val: any): boolean {
+	return (
+		typeof val.flags === "string" &&
+		typeof val.ignoreCase === "boolean" &&
+		typeof val.multiline === "boolean" &&
+		typeof val.global === "boolean"
+	);
+}
+
 function kindOf(val: any): string {
 	if (val === undefined) return "undefined";
 	if (val === null) return "null";
@@ -31,6 +56,7 @@ function kindOf(val: any): string {
 	if (type === "string") return "string";
 	if (type === "number") return "number";
 	if (type === "symbol") return "symbol";
+	if (type === "bigint") return "bigint";
 	if (type === "function") {
 		return isGeneratorFn(val) ? "generatorfunction" : "function";
 	}
@@ -38,16 +64,14 @@ function kindOf(val: any): string {
 	if (Array.isArray(val)) return "array";
 	if (typeof Buffer !== "undefined" && Buffer.isBuffer?.(val)) return "buffer";
 	if (
-		typeof val === "object" &&
-		val !== null &&
 		typeof val.length === "number" &&
 		objectToString.call(val) === "[object Arguments]"
 	) {
 		return "arguments";
 	}
-	if (val instanceof Date) return "date";
-	if (val instanceof Error) return "error";
-	if (val instanceof RegExp) return "regexp";
+	if (val instanceof Date || isDateLike(val)) return "date";
+	if (val instanceof Error || isErrorLike(val)) return "error";
+	if (val instanceof RegExp || isRegexpLike(val)) return "regexp";
 
 	switch (ctorName(val)) {
 		case "Promise":
