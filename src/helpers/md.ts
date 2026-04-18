@@ -3,7 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import ent from "ent";
 import Handlebars from "handlebars";
-import { Remarkable } from "remarkable";
+import MarkdownIt from "markdown-it";
 import type { Helper } from "../helper-registry.js";
 
 type MarkdownOptions = {
@@ -12,6 +12,14 @@ type MarkdownOptions = {
 	hash?: Record<string, unknown>;
 	cwd?: string;
 };
+
+const md = new MarkdownIt({
+	breaks: true,
+	html: true,
+	langPrefix: "lang-",
+	typographer: false,
+	xhtmlOut: false,
+});
 
 const renderMarkdown = function (
 	this: unknown,
@@ -34,13 +42,6 @@ const renderMarkdown = function (
 	}
 
 	const options_ = { cwd: process.cwd(), ...options };
-	const md = new Remarkable({
-		breaks: true,
-		html: true,
-		langPrefix: "lang-",
-		typographer: false,
-		xhtmlOut: false,
-	});
 
 	let string_ = input as string;
 	// Only check for file existence if input is non-empty
