@@ -46,15 +46,15 @@ export class HelperRegistryBase {
 	}
 
 	/**
-	 * Register a helper.
+	 * Register a helper. Returns true if the helper was added, false if a
+	 * helper with the same name was already present.
 	 */
 	public register(helper: Helper): boolean {
-		const result = false;
-		if (!this.has(helper.name)) {
-			this._helpers.push(helper);
+		if (this.has(helper.name)) {
+			return false;
 		}
-
-		return result;
+		this._helpers.push(helper);
+		return true;
 	}
 
 	/**
