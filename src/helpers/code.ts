@@ -4,7 +4,7 @@ import type { Helper } from "../helper-registry.js";
 import { tag } from "./html.js";
 
 const codeBlock = (code: string, lang: string): string => {
-	return `\`\`\`${lang}\n${code.trim()}\n\`\`\`\n`;
+	return `\`\`\`${lang}\n${code}\n\`\`\`\n`;
 };
 
 const embed = (filepath: string, language?: string): string => {
