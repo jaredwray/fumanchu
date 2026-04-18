@@ -10,11 +10,13 @@ Handlebars + Helpers Together
 [![NPM License](https://img.shields.io/npm/l/%40jaredwray%2Ffumanchu)
 ](https://github.com/jaredwray/fumanchu/blob/main/LICENSE)
 [![npm](https://img.shields.io/npm/dm/@jaredwray/fumanchu)](https://npmjs.com/package/@jaredwray/fumanchu)
+[![jsDelivr hits](https://img.shields.io/jsdelivr/npm/hm/@jaredwray/fumanchu?label=jsDelivr)](https://www.jsdelivr.com/package/npm/@jaredwray/fumanchu)
 
 [Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. Easily use it as a drop in replacement when using handlebars directly. More than 160 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project. Currently **189 helpers** in **20 categories**! 🎉
 
 # Table of Contents
-* [Using in Nodejs](#using-in-nodejs)
+* [Using in Nodejs](#usage-nodejs)
+* [Using in the Browser](#usage-in-the-browser)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
 * [Migrating from v2 to v3](https://fumanchu.org/docs/v2-to-v3/)
 * [Migrating from v3 to v4](https://fumanchu.org/docs/v3-to-v4/)
@@ -61,6 +63,29 @@ console.log(html); // <p>Foo is bar</p>
 ```
 
 It's just that easy! No need to add Handlebars to your project, it's already included.
+
+# Usage in the Browser
+
+Fumanchu ships a browser-safe build that excludes Node-only helpers (`fs`, `path`, `md`/`markdown`, `logging`, `embed`, `css`, `js`, `escape`, `urlResolve`, `urlParse`, `stripProtocol`). Import it directly via the `/browser` subpath:
+
+```javascript
+import { fumanchu } from '@jaredwray/fumanchu/browser';
+const handlebars = fumanchu();
+const template = handlebars.compile('{{uppercase name}}');
+console.log(template({ name: 'hello' })); // HELLO
+```
+
+The package also sets the `browser` export condition on the main entry, so webpack, Vite, esbuild, Rollup, and other browser-aware bundlers automatically pick up the browser build when you `import '@jaredwray/fumanchu'` from a browser target — no code change required. The public API (`fumanchu`, `helpers`, `HelperRegistry`) is identical to Node; only the set of registered helpers differs.
+
+You can also load the browser build directly from a CDN such as [jsDelivr](https://www.jsdelivr.com/package/npm/@jaredwray/fumanchu) — no bundler required:
+
+```html
+<script type="module">
+  import { fumanchu } from 'https://cdn.jsdelivr.net/npm/@jaredwray/fumanchu/dist/browser.mjs';
+  const handlebars = fumanchu();
+  document.body.textContent = handlebars.compile('{{uppercase name}}')({ name: 'hello' });
+</script>
+```
 
 # Using Handlebars Helpers
 

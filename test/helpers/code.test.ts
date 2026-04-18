@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { helpers } from "../../src/helpers/code.js";
+import { helpers as browserHelpers } from "../../src/helpers/code.js";
+import { helpers as nodeHelpers } from "../../src/helpers/code.node.js";
 
 type HelperFn = (...args: unknown[]) => unknown;
+
+const helpers = [...browserHelpers, ...nodeHelpers];
 
 const getHelper = (name: string): HelperFn => {
 	const helper = helpers.find((h) => h.name === name);

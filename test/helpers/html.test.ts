@@ -1,8 +1,11 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: tests can use any types
 import { describe, expect, it } from "vitest";
-import { helpers, tag } from "../../src/helpers/html.js";
+import { helpers as browserHelpers, tag } from "../../src/helpers/html.js";
+import { helpers as nodeHelpers } from "../../src/helpers/html.node.js";
 
 type HelperFn = (...args: any[]) => any;
+
+const helpers = [...browserHelpers, ...nodeHelpers];
 
 const getHelper = (name: string): HelperFn => {
 	const helper = helpers.find((h) => h.name === name);

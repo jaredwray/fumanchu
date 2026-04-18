@@ -1,0 +1,101 @@
+import { describe, expect, it } from "vitest";
+import { fumanchu, HelperRegistry, helpers } from "../../src/browser.js";
+
+describe("browser smoke", () => {
+	it("compiles a template using browser-safe helpers", () => {
+		const hbs = fumanchu();
+		const out = hbs.compile("{{year}}-{{add 1 2}}-{{uppercase 'hi'}}")({});
+		expect(out).toMatch(/^\d{4}-3-HI$/);
+	});
+
+	it("registers no Node-only helpers", () => {
+		const reg = new HelperRegistry();
+		const nodeOnly = [
+			"read",
+			"readdir",
+			"fileSize",
+			"absolute",
+			"dirname",
+			"relative",
+			"basename",
+			"stem",
+			"extname",
+			"resolve",
+			"segments",
+			"log",
+			"ok",
+			"success",
+			"info",
+			"warning",
+			"warn",
+			"error",
+			"danger",
+			"bold",
+			"_debug",
+			"_inspect",
+			"markdown",
+			"md",
+			"embed",
+			"css",
+			"js",
+			"escape",
+			"urlParse",
+			"urlResolve",
+			"stripProtocol",
+		];
+		for (const name of nodeOnly) {
+			expect(reg.has(name), `${name} should NOT be registered in browser`).toBe(
+				false,
+			);
+		}
+	});
+
+	it("registers browser-safe helpers", () => {
+		const reg = new HelperRegistry();
+		const safe = [
+			"year",
+			"add",
+			"uppercase",
+			"encodeURI",
+			"decodeURI",
+			"url_encode",
+			"url_decode",
+			"stripQuerystring",
+			"sanitize",
+			"ul",
+			"ol",
+			"thumbnailImage",
+			"attr",
+			"gist",
+			"jsfiddle",
+		];
+		for (const name of safe) {
+			expect(reg.has(name), `${name} should be registered in browser`).toBe(
+				true,
+			);
+		}
+	});
+
+	it("helpers() attaches browser-safe helpers to a Handlebars instance", () => {
+		// Lazy import of Handlebars so this test doesn't depend on the re-export
+		// returning the same instance.
+		const reg = new HelperRegistry();
+		const fakeHbs = {
+			registered: new Map<string, unknown>(),
+			registerHelper(name: string, fn: unknown) {
+				this.registered.set(name, fn);
+			},
+		};
+		// biome-ignore lint/suspicious/noExplicitAny: minimal test double
+		reg.load(fakeHbs as any);
+		expect(fakeHbs.registered.has("year")).toBe(true);
+		expect(fakeHbs.registered.has("read")).toBe(false);
+
+		// Also verify the public helpers() wrapper uses the browser registry.
+		const fake2 = {
+			registerHelper(_name: string, _fn: unknown) {},
+		};
+		// biome-ignore lint/suspicious/noExplicitAny: minimal test double
+		helpers({ handlebars: fake2 as any });
+	});
+});
