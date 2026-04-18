@@ -176,6 +176,18 @@ describe("sanitize", () => {
 	it("preserves text between tags", () => {
 		expect(sanitizeFn("<b>hi</b> <i>there</i>")).toBe("hi there");
 	});
+	it("preserves inequality characters in text", () => {
+		expect(sanitizeFn("Use 1 < 2 and 3 > 2")).toBe("Use 1 < 2 and 3 > 2");
+	});
+	it("preserves < when followed by non-tag characters", () => {
+		expect(sanitizeFn("a<5")).toBe("a<5");
+	});
+	it("preserves a trailing <", () => {
+		expect(sanitizeFn("foo<")).toBe("foo<");
+	});
+	it("preserves text content inside script tags", () => {
+		expect(sanitizeFn("<script>if (a < b)</script>")).toBe("if (a < b)");
+	});
 });
 
 describe("ul", () => {

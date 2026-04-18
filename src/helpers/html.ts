@@ -3,6 +3,10 @@ import path from "node:path";
 import type { Helper } from "../helper-registry.js";
 import { arrayify } from "./array.js";
 
+const isTagStart = (ch: string | undefined): boolean =>
+	ch !== undefined &&
+	(ch === "/" || ch === "!" || ch === "?" || /[a-zA-Z]/.test(ch));
+
 const stripTags = (str: string): string => {
 	let result = "";
 	let inTag = false;
@@ -33,8 +37,10 @@ const stripTags = (str: string): string => {
 				i += 3;
 				continue;
 			}
-			inTag = true;
-			continue;
+			if (isTagStart(str[i + 1])) {
+				inTag = true;
+				continue;
+			}
 		}
 		result += ch;
 	}
