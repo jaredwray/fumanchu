@@ -1,9 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { HelperRegistryBase } from "../src/helper-registry-base.js";
 import {
 	HelperRegistry,
 	HelperRegistryCompatibility,
 } from "../src/helper-registry.js";
+import { HelperRegistryBase } from "../src/helper-registry-base.js";
 import { handlebars } from "../src/index.js";
 
 describe("HelperRegistry", () => {
