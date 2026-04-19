@@ -5,7 +5,7 @@ import {
 	fumanchu,
 	HelperRegistry,
 	helpers,
-} from "../../src/browser.js";
+} from "../../src/index.browser.js";
 
 describe("browser smoke", () => {
 	it("compiles a template using browser-safe helpers", () => {

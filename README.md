@@ -81,7 +81,7 @@ You can also load the browser build directly from a CDN such as [jsDelivr](https
 
 ```html
 <script type="module">
-  import { fumanchu } from 'https://cdn.jsdelivr.net/npm/@jaredwray/fumanchu/dist/browser.mjs';
+  import { fumanchu } from 'https://cdn.jsdelivr.net/npm/@jaredwray/fumanchu/dist/index.browser.mjs';
   const handlebars = fumanchu();
   document.body.textContent = handlebars.compile('{{uppercase name}}')({ name: 'hello' });
 </script>

@@ -5,46 +5,46 @@
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "browser": "dist/browser.mjs",
+  "main": "dist/index.node.cjs",
+  "module": "dist/index.node.mjs",
+  "browser": "dist/index.browser.mjs",
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/browser.d.mts",
-        "import": "./dist/browser.mjs",
-        "require": "./dist/browser.cjs",
-        "default": "./dist/browser.mjs"
+        "types": "./dist/index.browser.d.mts",
+        "import": "./dist/index.browser.mjs",
+        "require": "./dist/index.browser.cjs",
+        "default": "./dist/index.browser.mjs"
       },
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/index.node.d.mts",
+        "default": "./dist/index.node.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/index.node.d.cts",
+        "default": "./dist/index.node.cjs"
       }
     },
     "./browser": {
       "import": {
-        "types": "./dist/browser.d.mts",
-        "default": "./dist/browser.mjs"
+        "types": "./dist/index.browser.d.mts",
+        "default": "./dist/index.browser.mjs"
       },
       "require": {
-        "types": "./dist/browser.d.cts",
-        "default": "./dist/browser.cjs"
+        "types": "./dist/index.browser.d.cts",
+        "default": "./dist/index.browser.cjs"
       }
     },
     "./package.json": "./package.json"
   },
-  "types": "dist/index.d.mts",
+  "types": "dist/index.node.d.mts",
   "scripts": {
     "lint": "biome check --write --error-on-warnings",
     "lint:ci": "biome check --error-on-warnings",
     "test": "pnpm lint && vitest run --coverage",
     "test:ci": "pnpm lint:ci && vitest run --coverage",
     "build": "tsdown",
-    "prepare": "pnpm build",
+    "prepublishOnly": "pnpm build",
     "clean": "rimraf ./node_modules ./coverage yarn.lock package-lock.json ./dist ./site/dist",
     "website:build": "docula build",
     "website:dev": "docula dev",

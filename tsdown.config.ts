@@ -2,7 +2,7 @@ import { defineConfig } from "tsdown";
 
 export default defineConfig([
 	{
-		entry: { index: "./src/index.ts" },
+		entry: { "index.node": "./src/index.node.ts" },
 		format: ["esm", "cjs"],
 		dts: true,
 		outDir: "./dist",
@@ -10,7 +10,7 @@ export default defineConfig([
 		fixedExtension: true,
 	},
 	{
-		entry: { browser: "./src/browser.ts" },
+		entry: { "index.browser": "./src/index.browser.ts" },
 		format: ["esm", "cjs"],
 		dts: true,
 		outDir: "./dist",

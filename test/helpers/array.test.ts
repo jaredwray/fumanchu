@@ -4,7 +4,7 @@ import type {
 	ForEachOptions,
 } from "../../src/helpers/array.js";
 import { helpers } from "../../src/helpers/array.js";
-import { fumanchu } from "../../src/index.js";
+import { fumanchu } from "../../src/index.node.js";
 
 type HelperFn = (...args: unknown[]) => unknown;
 

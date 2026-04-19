@@ -4,7 +4,7 @@ import {
 	HelperRegistryCompatibility,
 } from "../src/helper-registry.js";
 import { HelperRegistryBase } from "../src/helper-registry-base.js";
-import { handlebars } from "../src/index.js";
+import { handlebars } from "../src/index.node.js";
 
 describe("HelperRegistry", () => {
 	test("should have helpers", () => {
