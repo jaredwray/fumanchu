@@ -5,6 +5,8 @@ description: >
 order: 17
 ---
 
+> **Availability:** Registered in both the Node and browser builds.
+
 ## math
 
 ### {{abs}}

@@ -5,6 +5,20 @@ description: >
 order: 24
 ---
 
+> **Availability**
+>
+> | Helper | Node | Browser |
+> | --- | :---: | :---: |
+> | `decodeURI` | ✅ | ✅ |
+> | `encodeURI` | ✅ | ✅ |
+> | `escape` | ✅ | — |
+> | `stripProtocol` | ✅ | — |
+> | `stripQuerystring` | ✅ | ✅ |
+> | `urlParse` | ✅ | — |
+> | `urlResolve` | ✅ | — |
+> | `url_decode` | ✅ | ✅ |
+> | `url_encode` | ✅ | ✅ |
+
 ## url
 
 ### {{encodeURI}}

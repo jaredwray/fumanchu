@@ -5,6 +5,8 @@ description: >
 order: 18
 ---
 
+> **Availability:** Registered in both the Node and browser builds.
+
 ## misc
 
 ### {{frame}}

@@ -5,6 +5,8 @@ description: >
 order: 22
 ---
 
+> **Availability:** Registered in both the Node and browser builds.
+
 ## regex
 
 ### {{toRegex}}

@@ -4,6 +4,8 @@ description: Helpers for converting markdown to HTML
 order: 15
 ---
 
+> **Availability:** Registered in the Node build only. Not available in the browser build.
+
 ## markdown
 
 ### {{markdown}}

@@ -5,6 +5,8 @@ description: >
 order: 8
 ---
 
+> **Availability:** Registered in both the Node and browser builds.
+
 ## comparison
 
 ### {{and}}
