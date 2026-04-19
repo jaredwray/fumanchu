@@ -21,4 +21,20 @@ describe("md.node helper", () => {
 		const result = mdHelper?.fn("# Title") as Handlebars.SafeString;
 		expect(result.toHTML()).toBe("<h1>Title</h1>\n");
 	});
+
+	it("should work as a block helper with {{#markdown}}", () => {
+		const markdownHelper = helpers.find((helper) => helper.name === "markdown");
+		const options = { fn: () => "# Block Title" };
+		const result = markdownHelper?.fn.call(
+			{},
+			options,
+		) as Handlebars.SafeString;
+		expect(result.toHTML()).toBe("<h1>Block Title</h1>\n");
+	});
+
+	it("should return empty string for non-string input", () => {
+		const mdHelper = helpers.find((helper) => helper.name === "md");
+		const result = mdHelper?.fn(undefined) as Handlebars.SafeString;
+		expect(result.toHTML()).toBe("");
+	});
 });
