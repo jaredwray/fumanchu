@@ -1,22 +1,5 @@
-import fs from "node:fs";
-import path from "node:path";
-import type { Helper } from "../helper-registry.js";
+import type { Helper } from "../helper-registry-base.js";
 import { tag } from "./html.js";
-
-const codeBlock = (code: string, lang: string): string => {
-	return `\`\`\`${lang}\n${code}\n\`\`\`\n`;
-};
-
-const embed = (filepath: string, language?: string): string => {
-	let ext =
-		typeof language === "string" ? language : path.extname(filepath).slice(1);
-	let code = fs.readFileSync(filepath, "utf8");
-	if (ext === "markdown" || ext === "md") {
-		ext = "markdown";
-		code = code.split("`").join("&#x60");
-	}
-	return `${codeBlock(code, ext).trim()}\n`;
-};
 
 const gist = (id: string): string => {
 	return tag("script", { src: `https://gist.github.com/${id}.js` });
@@ -51,12 +34,6 @@ const jsfiddle = (options: JsfiddleOptions): string => {
 
 export const helpers: Helper[] = [
 	{
-		name: "embed",
-		category: "code",
-		compatibility: ["nodejs"],
-		fn: embed,
-	},
-	{
 		name: "gist",
 		category: "code",
 		compatibility: ["browser", "nodejs"],
@@ -70,4 +47,4 @@ export const helpers: Helper[] = [
 	},
 ];
 
-export { embed, gist, jsfiddle };
+export { gist, jsfiddle };

@@ -6,6 +6,8 @@ description: >
 order: 5
 ---
 
+> **Availability:** Registered in both the Node and browser builds.
+
 ### {{after}}
 
 Returns all of the items in an array after the specified index. Opposite of [before](#before).

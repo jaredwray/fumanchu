@@ -5,6 +5,14 @@ description: >
 order: 7
 ---
 
+> **Availability**
+>
+> | Helper | Node | Browser |
+> | --- | :---: | :---: |
+> | `embed` | ✅ | — |
+> | `gist` | ✅ | ✅ |
+> | `jsfiddle` | ✅ | ✅ |
+
 # Code Helpers
 
 ### {{embed}}

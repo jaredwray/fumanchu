@@ -6,7 +6,7 @@ import {
 	fumanchu,
 	handlebars,
 	helpers,
-} from "../src/index.js";
+} from "../src/index.node.js";
 
 describe("fumanchu", () => {
 	test("should have helpers", () => {

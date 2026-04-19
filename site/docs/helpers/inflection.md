@@ -5,6 +5,8 @@ description: >
 order: 14
 ---
 
+> **Availability:** Registered in both the Node and browser builds.
+
 ## inflection
 
 ### {{inflect}}

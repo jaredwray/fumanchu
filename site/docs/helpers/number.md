@@ -5,6 +5,8 @@ description: >
 order: 19
 ---
 
+> **Availability:** Registered in both the Node and browser builds.
+
 ## number
 
 ### {{bytes}}

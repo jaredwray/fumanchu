@@ -3,7 +3,12 @@ import {
 	type CacheableMemoryOptions,
 } from "@cacheable/memory";
 import HandlebarsLib from "handlebars";
-import { type HelperFilter, HelperRegistry } from "./helper-registry.js";
+import type { HelperFilter } from "./helper-registry-base.js";
+import { HelperRegistryBrowser } from "./helper-registry-browser.js";
+
+type HbsCompileFn = typeof HandlebarsLib.compile;
+type HbsCompileOptions = Parameters<HbsCompileFn>[1];
+type HbsCompiledTemplate = ReturnType<HbsCompileFn>;
 
 /**
  * Handlebars library not initiated with helpers
@@ -26,32 +31,35 @@ export type HelpersOptions = {
 };
 
 /**
- * Register Handlebars helpers
- * @param {HelpersOptions} options - Options for Fumanchu helpers
+ * Register Fumanchu browser-safe Handlebars helpers.
  */
 export function helpers(options: HelpersOptions) {
-	const registry = new HelperRegistry();
+	const registry = new HelperRegistryBrowser();
 	registry.load(options.handlebars ?? options.hbs);
 }
 
 /**
- * Create a new Handlebars instance with Fumanchu helpers
+ * Create a new Handlebars instance with Fumanchu browser-safe helpers.
  * @returns {Promise<Handlebars>}
  * @deprecated Will be deprecated in future versions, use `fumanchu()` instead.
  */
 export async function createHandlebars() {
-	const registry = new HelperRegistry();
+	const registry = new HelperRegistryBrowser();
 	const handlebars = HandlebarsLib.create();
 	if (Object.keys(HandlebarsLib.partials).length > 0) {
 		handlebars.registerPartial(HandlebarsLib.partials);
 	}
 	registry.load(handlebars);
-	/* c8 ignore next -- @preserve */
-	if (process.env.NODE_ENV === "development") {
+	/* c8 ignore start -- @preserve */
+	if (
+		typeof process !== "undefined" &&
+		process.env?.NODE_ENV === "development"
+	) {
 		console.warn(
 			"createHandlebars will be deprecated in future versions, use `fumanchu` instead.",
 		);
 	}
+	/* c8 ignore stop */
 
 	return handlebars;
 }
@@ -63,12 +71,10 @@ export type FumanchuOptions = {
 };
 
 /**
- * Will return a Handlebars instance with Fumanchu helpers (experimental)
- * @param {FumanchuOptions} [options] - Options for Fumanchu
- * @returns {Handlebars} Handlebars instance with helpers
+ * Return a Handlebars instance with Fumanchu browser-safe helpers.
  */
 export function fumanchu(options?: FumanchuOptions) {
-	const registry = new HelperRegistry();
+	const registry = new HelperRegistryBrowser();
 	let handlebars = HandlebarsLib.create();
 	/* c8 ignore next -- @preserve */
 	if (options?.handlebars) {
@@ -92,11 +98,14 @@ export function fumanchu(options?: FumanchuOptions) {
 		}
 
 		const originalCompile = handlebars.compile.bind(handlebars);
-		handlebars.compile = (input: string, compileOptions?: CompileOptions) => {
+		handlebars.compile = (
+			input: string,
+			compileOptions?: HbsCompileOptions,
+		) => {
 			const key = compileOptions
-				? input + JSON.stringify(compileOptions)
-				: String(input);
-			const cached = cache.get<HandlebarsTemplateDelegate>(key);
+				? `${input}\0${JSON.stringify(compileOptions)}`
+				: input;
+			const cached = cache.get<HbsCompiledTemplate>(key);
 			if (cached) {
 				return cached;
 			}
@@ -114,5 +123,5 @@ export {
 	CacheableMemory,
 	type CacheableMemoryOptions,
 	type HelperFilter,
-	HelperRegistry,
+	HelperRegistryBrowser as HelperRegistry,
 };

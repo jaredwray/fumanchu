@@ -3,7 +3,8 @@ import {
 	HelperRegistry,
 	HelperRegistryCompatibility,
 } from "../src/helper-registry.js";
-import { handlebars } from "../src/index.js";
+import { HelperRegistryBase } from "../src/helper-registry-base.js";
+import { handlebars } from "../src/index.node.js";
 
 describe("HelperRegistry", () => {
 	test("should have helpers", () => {
@@ -189,6 +190,11 @@ describe("HelperRegistry Filter", () => {
 				compatibility: [HelperRegistryCompatibility.BROWSER],
 			}).length,
 		).toBe(1);
+	});
+
+	test("HelperRegistryBase init is a no-op and registers nothing", () => {
+		const base = new HelperRegistryBase();
+		expect(base.helpers).toEqual([]);
 	});
 
 	test("should be able to swap out helpers", () => {

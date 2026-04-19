@@ -21,7 +21,8 @@
         "skipLibCheck": true,                     /* Skip type checking all .d.ts files. */
         "lib": [
             "ESNext", "DOM"
-        ]
+        ],
+        "types": ["node"]
     },
     "include": [
         "src/**/*.ts"

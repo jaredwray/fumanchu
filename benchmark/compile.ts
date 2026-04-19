@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { tinybenchPrinter } from "@monstermann/tinybench-pretty-printer";
 import { Bench } from "tinybench";
 import pkg from "../package.json" with { type: "json" };
-import { fumanchu } from "../src/index.js";
+import { fumanchu } from "../src/index.node.js";
 
 const ITERATIONS = 10_000;
 const TEMPLATE_COUNT = 2_000;

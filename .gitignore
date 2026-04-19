@@ -135,6 +135,7 @@ site/README.md
 dist-site
 site/README.md
 site/docs/index.md
+site/docs/project-guidelines/
 
 # AI
 .claude

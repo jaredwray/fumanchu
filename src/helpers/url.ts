@@ -1,19 +1,11 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: this is for handlebars
-import { escape as qsEscape } from "node:querystring";
-import { format, parse, resolve } from "node:url";
-import type { Helper } from "../helper-registry.js";
+import type { Helper } from "../helper-registry-base.js";
 
 const all: string[] = ["browser", "nodejs"];
 
 const encodeUri = (str: unknown): string | undefined => {
 	if (typeof str === "string") {
 		return encodeURIComponent(str);
-	}
-};
-
-const escapeFn = (str: unknown): string | undefined => {
-	if (typeof str === "string") {
-		return qsEscape(str);
 	}
 };
 
@@ -31,22 +23,9 @@ function urlDecode(this: unknown, ...args: unknown[]) {
 	return decodeUri.apply(this, args as [unknown]);
 }
 
-const urlResolve = (base: unknown, href: unknown): string =>
-	resolve(String(base), String(href));
-
-const urlParse = (str: unknown) => parse(String(str));
-
 const stripQuerystring = (str: unknown): string | undefined => {
 	if (typeof str === "string") {
 		return str.split("?")[0];
-	}
-};
-
-const stripProtocol = (str: unknown): string | undefined => {
-	if (typeof str === "string") {
-		const parsed = parse(str);
-		parsed.protocol = "";
-		return format(parsed);
 	}
 };
 
@@ -56,12 +35,6 @@ export const helpers: Helper[] = [
 		category: "url",
 		compatibility: all,
 		fn: encodeUri as any,
-	},
-	{
-		name: "escape",
-		category: "url",
-		compatibility: ["nodejs"],
-		fn: escapeFn as any,
 	},
 	{
 		name: "decodeURI",
@@ -82,39 +55,17 @@ export const helpers: Helper[] = [
 		fn: urlDecode as any,
 	},
 	{
-		name: "urlResolve",
-		category: "url",
-		compatibility: ["nodejs"],
-		fn: urlResolve,
-	},
-	{
-		name: "urlParse",
-		category: "url",
-		compatibility: ["nodejs"],
-		fn: urlParse as any,
-	},
-	{
 		name: "stripQuerystring",
 		category: "url",
 		compatibility: all,
 		fn: stripQuerystring as any,
-	},
-	{
-		name: "stripProtocol",
-		category: "url",
-		compatibility: ["nodejs"],
-		fn: stripProtocol as any,
 	},
 ];
 
 export {
 	decodeUri as decodeURI,
 	encodeUri as encodeURI,
-	escapeFn as escape,
-	stripProtocol,
 	stripQuerystring,
 	urlDecode,
 	urlEncode,
-	urlParse,
-	urlResolve,
 };

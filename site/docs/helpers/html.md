@@ -5,6 +5,18 @@ description: >
 order: 12
 ---
 
+> **Availability**
+>
+> | Helper | Node | Browser |
+> | --- | :---: | :---: |
+> | `attr` | ✅ | ✅ |
+> | `css` | ✅ | — |
+> | `js` | ✅ | — |
+> | `ol` | ✅ | ✅ |
+> | `sanitize` | ✅ | ✅ |
+> | `thumbnailImage` | ✅ | ✅ |
+> | `ul` | ✅ | ✅ |
+
 ### {{attr}}
 
 Stringify attributes from the options hash into an HTML attribute string.

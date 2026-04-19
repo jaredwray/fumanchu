@@ -5,6 +5,8 @@ description: >
 order: 11
 ---
 
+> **Availability:** Registered in the Node build only. Not available in the browser build.
+
 ## fs
 
 ### {{fileSize}}

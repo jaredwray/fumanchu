@@ -5,6 +5,8 @@ description: >
 order: 21
 ---
 
+> **Availability:** Registered in the Node build only. Not available in the browser build.
+
 ## path
 
 ### {{absolute}}
