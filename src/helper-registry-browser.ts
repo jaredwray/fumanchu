@@ -15,6 +15,7 @@ import { helpers as i18nHelpers } from "./helpers/i18n.js";
 import { helpers as inflectionHelpers } from "./helpers/inflection.js";
 import { helpers as matchHelpers } from "./helpers/match.js";
 import { helpers as mathHelpers } from "./helpers/math.js";
+import { helpers as mdHelpers } from "./helpers/md.js";
 import { helpers as miscHelpers } from "./helpers/misc.js";
 import { helpers as numberHelpers } from "./helpers/number.js";
 import { helpers as objectHelpers } from "./helpers/object.js";
@@ -46,6 +47,7 @@ export class HelperRegistryBrowser extends HelperRegistryBase {
 		this.registerHelpers(inflectionHelpers);
 		this.registerHelpers(matchHelpers);
 		this.registerHelpers(mathHelpers);
+		this.registerHelpers(mdHelpers);
 		this.registerHelpers(miscHelpers);
 		this.registerHelpers(numberHelpers);
 		this.registerHelpers(regexHelpers);

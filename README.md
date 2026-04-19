@@ -66,7 +66,7 @@ It's just that easy! No need to add Handlebars to your project, it's already inc
 
 # Usage in the Browser
 
-Fumanchu ships a browser-safe build that excludes Node-only helpers (`fs`, `path`, `md`/`markdown`, `logging`, `embed`, `css`, `js`, `escape`, `urlResolve`, `urlParse`, `stripProtocol`). Import it directly via the `/browser` subpath:
+Fumanchu ships a browser-safe build that excludes Node-only helpers (`fs`, `path`, `logging`, `embed`, `css`, `js`, `escape`, `urlResolve`, `urlParse`, `stripProtocol`). Import it directly via the `/browser` subpath:
 
 ```javascript
 import { fumanchu } from '@jaredwray/fumanchu/browser';

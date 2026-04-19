@@ -39,8 +39,6 @@ describe("browser smoke", () => {
 			"bold",
 			"_debug",
 			"_inspect",
-			"markdown",
-			"md",
 			"embed",
 			"css",
 			"js",
@@ -74,6 +72,8 @@ describe("browser smoke", () => {
 			"attr",
 			"gist",
 			"jsfiddle",
+			"md",
+			"markdown",
 		];
 		for (const name of safe) {
 			expect(reg.has(name), `${name} should be registered in browser`).toBe(

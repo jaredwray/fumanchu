@@ -26,7 +26,6 @@ const NODE_ONLY_HELPERS = [
 	"warn",
 	"_debug",
 	"_inspect",
-	"markdown",
 	"urlParse",
 	"urlResolve",
 	"stripProtocol",
