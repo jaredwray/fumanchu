@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@cacheable/memory':
-        specifier: ^2.0.8
-        version: 2.0.8
+        specifier: ^2.0.9
+        version: 2.0.9
       chrono-node:
         specifier: 2.9.0
         version: 2.9.0
@@ -217,8 +217,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cacheable/memory@2.0.8':
-    resolution: {integrity: sha512-FvEb29x5wVwu/Kf93IWwsOOEuhHh6dYCJF3vcKLzXc0KXIW181AOzv6ceT4ZpBHDvAfG60eqb+ekmrnLHIy+jw==}
+  '@cacheable/memory@2.0.9':
+    resolution: {integrity: sha512-HdMx6DoGywB30vacDbBsITbIX4pgFqj1zsrV58jZBUw3klzkNoXhj7qOqAgledhxG7YZI5rBSJg7Zp8/VG0DuA==}
 
   '@cacheable/net@2.0.8':
     resolution: {integrity: sha512-uSRwS6krnRsOM65F1S2IlkGQA+VoxkrbrkBwmbFxDj/ihdSHtDpLMIaKguM0A++dUXTha2cY146yNOqwv8gAPQ==}
@@ -1618,9 +1618,6 @@ packages:
   hookified@1.15.1:
     resolution: {integrity: sha512-MvG/clsADq1GPM2KGo2nyfaWVyn9naPiXrqIe4jYjXNZQt238kWyOGrsyc/DmRAQ+Re6yeo6yX/yoNCG5KAEVg==}
 
-  hookified@2.1.1:
-    resolution: {integrity: sha512-AHb76R16GB5EsPBE2J7Ko5kiEyXwviB9P5SMrAKcuAu4vJPZttViAbj9+tZeaQE5zjDme+1vcHP78Yj/WoAveA==}
-
   hookified@2.2.0:
     resolution: {integrity: sha512-p/LgFzRN5FeoD3DLS6bkUapeye6E4SI6yJs6KetENd18S+FBthqYq2amJUWpt5z0EQwwHemidjY5OqJGEKm5uA==}
 
@@ -2810,7 +2807,7 @@ snapshots:
   '@biomejs/cli-win32-x64@2.5.0':
     optional: true
 
-  '@cacheable/memory@2.0.8':
+  '@cacheable/memory@2.0.9':
     dependencies:
       '@cacheable/utils': 2.4.1
       '@keyv/bigmap': 1.3.1(keyv@5.6.0)
@@ -3005,7 +3002,7 @@ snapshots:
 
   '@jaredwray/fumanchu@4.7.0':
     dependencies:
-      '@cacheable/memory': 2.0.8
+      '@cacheable/memory': 2.0.9
       chrono-node: 2.9.0
       dayjs: 1.11.20
       ent: 2.2.2
@@ -3511,7 +3508,7 @@ snapshots:
 
   cacheable@2.3.5:
     dependencies:
-      '@cacheable/memory': 2.0.8
+      '@cacheable/memory': 2.0.9
       '@cacheable/utils': 2.4.1
       hookified: 1.15.1
       keyv: 5.6.0
@@ -4030,8 +4027,6 @@ snapshots:
   hookable@6.1.1: {}
 
   hookified@1.15.1: {}
-
-  hookified@2.1.1: {}
 
   hookified@2.2.0: {}
 
@@ -4875,7 +4870,7 @@ snapshots:
 
   qified@0.10.1:
     dependencies:
-      hookified: 2.1.1
+      hookified: 2.2.0
 
   quansync@1.0.0: {}
 
