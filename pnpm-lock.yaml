@@ -12,8 +12,8 @@ importers:
         specifier: ^2.0.9
         version: 2.0.9
       chrono-node:
-        specifier: 2.9.0
-        version: 2.9.0
+        specifier: 2.9.1
+        version: 2.9.1
       dayjs:
         specifier: ^1.11.20
         version: 1.11.20
@@ -1249,6 +1249,10 @@ packages:
 
   chrono-node@2.9.0:
     resolution: {integrity: sha512-glI4YY2Jy6JII5l3d5FN6rcrIbKSQqKPhWsIRYPK2IK8Mm4Q1ZZFdYIaDqglUNf7gNwG+kWIzTn0omzzE0VkvQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  chrono-node@2.9.1:
+    resolution: {integrity: sha512-nqP8Zp11efCYQIESXPxeDM8ikzN5BDb3Zzou+a66fZq+X2hzKFdsNLQE2/uBAh//BZEMbaMo1eTnagK7hOenAg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   cli-boxes@3.0.0:
@@ -3560,6 +3564,8 @@ snapshots:
     optional: true
 
   chrono-node@2.9.0: {}
+
+  chrono-node@2.9.1: {}
 
   cli-boxes@3.0.0: {}
 
