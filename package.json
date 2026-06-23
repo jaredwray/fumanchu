@@ -2,6 +2,7 @@
   "name": "@jaredwray/fumanchu",
   "description": "Handlebars + Helpers = Fumanchu",
   "version": "4.7.0",
+  "packageManager": "pnpm@11.8.0",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "type": "module",
