@@ -22,6 +22,7 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: 24
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Install Dependencies
       run: pnpm install
@@ -32,10 +33,8 @@ jobs:
     - name: Testing
       run: pnpm test:ci
 
+    # Publishes to npm via OIDC trusted publishing with provenance (no NPM_TOKEN).
+    # Requires a trusted publisher to be configured for this workflow at
+    # https://www.npmjs.com/package/@jaredwray/fumanchu/access
     - name: Publish
-      run: |
-        npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-        npm publish --ignore-scripts
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+      run: pnpm publish --provenance --access public --no-git-checks --ignore-scripts
