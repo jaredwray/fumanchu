@@ -1,4 +1,3 @@
-import { decodeHTML } from "entities";
 import Handlebars from "handlebars";
 import MarkdownIt from "markdown-it";
 import type { Helper } from "../helper-registry-base.js";
@@ -18,7 +17,7 @@ export const md = new MarkdownIt({
 });
 
 export function renderString(input: string): Handlebars.SafeString {
-	return new Handlebars.SafeString(decodeHTML(md.render(input)));
+	return new Handlebars.SafeString(md.render(input));
 }
 
 const renderMarkdown = function (
