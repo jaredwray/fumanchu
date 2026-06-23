@@ -17,14 +17,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+
     # Test
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 24
 
-    - name: Install Dependencies  
-      run: npm install -g pnpm && pnpm install
+    - name: Install Dependencies
+      run: pnpm install
       
     - name: Build Website
       run: pnpm website:build
