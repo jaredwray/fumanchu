@@ -23,10 +23,22 @@ describe("md helper", () => {
 		expect(result.toHTML()).toBe("<h1>Title</h1>\n");
 	});
 
-	it("should decode HTML entities", () => {
+	it("should preserve HTML entities instead of decoding them", () => {
 		const mdHelper = helpers.find((helper) => helper.name === "md");
 		const result = mdHelper?.fn("&amp;") as Handlebars.SafeString;
-		expect(result.toHTML()).toBe("<p>&</p>\n");
+		expect(result.toHTML()).toBe("<p>&amp;</p>\n");
+	});
+
+	it("should not allow attribute-breakout XSS via entity decoding", () => {
+		const mdHelper = helpers.find((helper) => helper.name === "md");
+		const result = mdHelper?.fn(
+			'![image" onerror="alert(1)](img.png)',
+		) as Handlebars.SafeString;
+		const html = result.toHTML();
+		// markdown-it escapes the quotes; decoding them would break out of the
+		// alt attribute and inject a live onerror handler.
+		expect(html).toContain("&quot;");
+		expect(html).not.toContain('onerror="alert(1)"');
 	});
 
 	it("should handle undefined input", () => {
