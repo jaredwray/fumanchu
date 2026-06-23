@@ -109,7 +109,7 @@
     "@types/micromatch": "^4.0.10",
     "@types/node": "^24.13.2",
     "@vitest/coverage-v8": "^4.1.9",
-    "docula": "^1.13.0",
+    "docula": "^2.1.0",
     "dotenv": "^17.4.2",
     "happy-dom": "^20.10.6",
     "rimraf": "^6.1.3",
