@@ -17,9 +17,9 @@ importers:
       dayjs:
         specifier: ^1.11.21
         version: 1.11.21
-      ent:
-        specifier: ^2.2.2
-        version: 2.2.2
+      entities:
+        specifier: ^4.5.0
+        version: 4.5.0
       handlebars:
         specifier: ^4.7.9
         version: 4.7.9
@@ -39,9 +39,6 @@ importers:
       '@monstermann/tinybench-pretty-printer':
         specifier: ^0.3.0
         version: 0.3.0(tinybench@6.0.2)
-      '@types/ent':
-        specifier: ^2.2.8
-        version: 2.2.8
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
@@ -973,9 +970,6 @@ packages:
 
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
-
-  '@types/ent@2.2.8':
-    resolution: {integrity: sha512-T7OSxLcPBbcUxTIeJTpmV8cMsFfx/OasIDHlq+PO1choUQnYIcoxQj45n9NpzrR9yOJDwte8tmvs6Y+axitRFg==}
 
   '@types/estree-jsx@1.0.5':
     resolution: {integrity: sha512-52CcUVNFyfb1A2ALocQw/Dd1BQFNmSdkuC3BkZ6iqhdMfQz7JWOFRuJFloOzjk+6WijU56m9oKXFAXc7o3Towg==}
@@ -3284,8 +3278,6 @@ snapshots:
       '@types/ms': 2.1.0
 
   '@types/deep-eql@4.0.2': {}
-
-  '@types/ent@2.2.8': {}
 
   '@types/estree-jsx@1.0.5':
     dependencies:
