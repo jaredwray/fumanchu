@@ -97,7 +97,7 @@
     "dayjs": "^1.11.20",
     "ent": "^2.2.2",
     "handlebars": "^4.7.9",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "^14.2.0",
     "micromatch": "^4.0.8"
   },
   "devDependencies": {
