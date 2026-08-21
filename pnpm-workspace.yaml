@@ -3,6 +3,3 @@ minimumReleaseAgeStrict: true
 minimumReleaseAgeIgnoreMissingTime: false
 allowBuilds:
   esbuild: true
-  unrs-resolver: true
-  sharp: true
-  workerd: true
