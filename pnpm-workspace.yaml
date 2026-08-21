@@ -4,5 +4,6 @@ minimumReleaseAgeIgnoreMissingTime: false
 trustPolicy: no-downgrade
 strictDepBuilds: true
 dangerouslyAllowAllBuilds: false
+blockExoticSubdeps: true
 allowBuilds:
   esbuild: true
