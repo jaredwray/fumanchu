@@ -26,7 +26,7 @@ Profile: npm library · public
 
 ## 4. GitHub Actions
 
-- [ ] `permissions: contents: read` (or `{}` + per-job grants) on every workflow (PR pending)
+- [ ] `permissions: contents: read` (or `{}` + per-job grants) on every workflow (PR #253 pending)
 - [x] No `contents: write` except jobs whose purpose is mutating the repo (GitHub Release, Changesets version PR); generated output is a workflow artifact, never committed back from CI — verified
 - [ ] Every action pinned to a full commit SHA (`npx actions-up`)
 - [ ] Every job installs Socket Firewall (`SocketDev/action` SHA-pinned, `firewall-version` pinned); `pnpm install` / `npm install` run as `sfw pnpm install` / `sfw npm install`
