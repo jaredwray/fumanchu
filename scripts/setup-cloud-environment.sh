@@ -22,7 +22,7 @@ if [[ ! -f pnpm-lock.yaml ]]; then
 fi
 
 if [[ -f package.json ]] && grep -q '"packageManager"' package.json && command -v corepack >/dev/null; then
-  corepack enable
+  corepack enable || true
 fi
 
 if ! command -v pnpm >/dev/null; then
