@@ -20,7 +20,7 @@ Profile: npm library · public
 - [x] 7-day cooldown: `minimumReleaseAge: 10080`, `minimumReleaseAgeStrict: true`, `minimumReleaseAgeIgnoreMissingTime: false`; no first-party `minimumReleaseAgeExclude` — PR #248
 - [x] `trustPolicy: no-downgrade`; no first-party `trustPolicyExclude` — PR #249
 - [x] Lifecycle scripts blocked: `strictDepBuilds: true`, `dangerouslyAllowAllBuilds: false`, `allowBuilds: {}` baseline — PR #250 (third-party `allowBuilds` exception: esbuild)
-- [ ] `blockExoticSubdeps: true` (PR pending)
+- [ ] `blockExoticSubdeps: true` (PR #251 pending)
 - [ ] Lockfile committed; CI installs with `pnpm install --frozen-lockfile`
 - [x] No `.github/dependabot.yml`; other dependency-update tools (if any) open PRs only — never auto-merge — verified
 
