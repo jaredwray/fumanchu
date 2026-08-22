@@ -40,9 +40,9 @@ Profile: npm library · public
 
 - [ ] OIDC trusted publishing configured **stage-only** on npmjs.com for the publish workflow — it can stage, never publish live (manual)
 - [x] `.github/workflows/release.yaml` packs then stages with `pnpm stage publish ./packed/*.tgz --no-git-checks` — PR #259
-- [ ] Maintainer promotes staged versions with 2FA (manual)
-- [ ] Drydock connected — staged releases reviewed before promotion (manual)
-- [ ] No direct publish rights: package requires 2FA and disallows tokens (manual)
+- [x] Maintainer promotes staged versions with 2FA — verified (maintainer)
+- [x] Drydock connected — staged releases reviewed before promotion — verified (maintainer)
+- [x] No direct publish rights: package requires 2FA and disallows tokens — verified (maintainer)
 - [x] `package.json` `repository.url` accurate so provenance maps to this repo — verified
 
 ## 6. Security tooling
