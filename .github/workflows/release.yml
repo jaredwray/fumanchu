@@ -42,8 +42,17 @@ jobs:
     - name: Testing
       run: pnpm test:ci
 
-    # Publishes to npm via OIDC trusted publishing with provenance (no NPM_TOKEN).
-    # Requires a trusted publisher to be configured for this workflow at
+    # Stages to npm via OIDC trusted publishing with provenance (no NPM_TOKEN).
+    # Requires a trusted publisher configured as stage-only for this workflow at
     # https://www.npmjs.com/package/@jaredwray/fumanchu/access
-    - name: Publish
-      run: pnpm publish --provenance --access public --no-git-checks --ignore-scripts
+    # Keep this file named release.yml so the npm trusted publisher keeps matching.
+    - name: Pack
+      run: |
+        mkdir -p packed
+        pnpm pack --pack-destination packed
+        ls -la packed
+
+    - name: Stage publish
+      # pnpm ≥ 11.3. --no-git-checks: git-checks run even for a tarball and
+      # fail on a detached release-tag checkout and on the untracked pack output.
+      run: pnpm stage publish ./packed/*.tgz --access public --provenance --no-git-checks
