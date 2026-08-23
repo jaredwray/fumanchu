@@ -7,3 +7,6 @@ dangerouslyAllowAllBuilds: false
 blockExoticSubdeps: true
 allowBuilds:
   esbuild: true
+  # wrangler-action installs wrangler on site deploy; wrangler needs workerd's
+  # postinstall to unpack the native binary (ERR_PNPM_IGNORED_BUILDS otherwise).
+  workerd: true
