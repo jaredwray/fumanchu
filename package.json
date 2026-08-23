@@ -94,7 +94,7 @@
   "dependencies": {
     "@cacheable/memory": "^2.2.0",
     "chrono-node": "2.10.1",
-    "dayjs": "^1.11.21",
+    "dayjs": "^1.11.22",
     "handlebars": "^4.7.9",
     "markdown-it": "^14.3.0",
     "micromatch": "^4.0.8"
