@@ -87,70 +87,262 @@ See the category pages for parameters and examples.
 
 ### [Array](/docs/helpers/array/)
 
-`after`, `before`, `arrayify`, `first`, `last`, `length`, `join`, `forEach`, `inArray`, `isArray`, `itemAt`, `equalsLength`, `some`, `eachIndex`, `withAfter`, `withBefore`, `withFirst`, `withLast`, `withGroup`, `withSort`, `filter`, `map`, `pluck`, `reverse`, `sort`, `sortBy`, `unique`
+| Helper |
+| --- |
+| `after` |
+| `before` |
+| `arrayify` |
+| `first` |
+| `last` |
+| `length` |
+| `join` |
+| `forEach` |
+| `inArray` |
+| `isArray` |
+| `itemAt` |
+| `equalsLength` |
+| `some` |
+| `eachIndex` |
+| `withAfter` |
+| `withBefore` |
+| `withFirst` |
+| `withLast` |
+| `withGroup` |
+| `withSort` |
+| `filter` |
+| `map` |
+| `pluck` |
+| `reverse` |
+| `sort` |
+| `sortBy` |
+| `unique` |
 
 ### [Code](/docs/helpers/code/)
 
-`gist`, `jsfiddle`
+| Helper |
+| --- |
+| `gist` |
+| `jsfiddle` |
 
 ### [Collection](/docs/helpers/collection/)
 
-`isEmpty`, `iterate`
+| Helper |
+| --- |
+| `isEmpty` |
+| `iterate` |
 
 ### [Comparison](/docs/helpers/comparison/)
 
-`and`, `compare`, `contains`, `default`, `eq`, `gt`, `gte`, `has`, `isFalsey`, `isTruthy`, `ifEven`, `ifNth`, `ifOdd`, `is`, `isnt`, `lt`, `lte`, `neither`, `not`, `or`, `unlessEq`, `unlessGt`, `unlessLt`, `unlessGteq`, `unlessLteq`
+| Helper |
+| --- |
+| `and` |
+| `compare` |
+| `contains` |
+| `default` |
+| `eq` |
+| `gt` |
+| `gte` |
+| `has` |
+| `isFalsey` |
+| `isTruthy` |
+| `ifEven` |
+| `ifNth` |
+| `ifOdd` |
+| `is` |
+| `isnt` |
+| `lt` |
+| `lte` |
+| `neither` |
+| `not` |
+| `or` |
+| `unlessEq` |
+| `unlessGt` |
+| `unlessLt` |
+| `unlessGteq` |
+| `unlessLteq` |
 
 ### [Date](/docs/helpers/date/)
 
-`year`, `date`, `moment`, `timestamp`, `now`, `fromNow`, `toNow`, `ago`, `dateAdd`, `dateSubtract`, `startOf`, `endOf`, `isBefore`, `isAfter`, `isSame`, `isBetween`, `diff`, `toISOString`, `dateTimezone`, `dateLocale`
+| Helper |
+| --- |
+| `year` |
+| `date` |
+| `moment` |
+| `timestamp` |
+| `now` |
+| `fromNow` |
+| `toNow` |
+| `ago` |
+| `dateAdd` |
+| `dateSubtract` |
+| `startOf` |
+| `endOf` |
+| `isBefore` |
+| `isAfter` |
+| `isSame` |
+| `isBetween` |
+| `diff` |
+| `toISOString` |
+| `dateTimezone` |
+| `dateLocale` |
 
 ### [Html](/docs/helpers/html/)
 
-`attr`, `sanitize`, `ul`, `ol`, `thumbnailImage`
+| Helper |
+| --- |
+| `attr` |
+| `sanitize` |
+| `ul` |
+| `ol` |
+| `thumbnailImage` |
 
 ### [i18n](/docs/helpers/i18n/)
 
-`i18n`
+| Helper |
+| --- |
+| `i18n` |
 
 ### [Inflection](/docs/helpers/inflection/)
 
-`inflect`, `ordinalize`
+| Helper |
+| --- |
+| `inflect` |
+| `ordinalize` |
 
 ### [Markdown](/docs/helpers/markdown/)
 
-`md`, `markdown`
+| Helper |
+| --- |
+| `md` |
+| `markdown` |
 
 Inline markdown only. A file path is treated as a string, not read from disk.
 
 ### [Match](/docs/helpers/match/)
 
-`match`, `isMatch`, `mm`
+| Helper |
+| --- |
+| `match` |
+| `isMatch` |
+| `mm` |
 
 ### [Math](/docs/helpers/math/)
 
-`abs`, `add`, `avg`, `ceil`, `divide`, `floor`, `minus`, `modulo`, `multiply`, `plus`, `random`, `remainder`, `round`, `subtract`, `sum`, `times`
+| Helper |
+| --- |
+| `abs` |
+| `add` |
+| `avg` |
+| `ceil` |
+| `divide` |
+| `floor` |
+| `minus` |
+| `modulo` |
+| `multiply` |
+| `plus` |
+| `random` |
+| `remainder` |
+| `round` |
+| `subtract` |
+| `sum` |
+| `times` |
 
 ### [Misc](/docs/helpers/misc/)
 
-`frame`, `option`, `noop`, `typeOf`, `withHash`
+| Helper |
+| --- |
+| `frame` |
+| `option` |
+| `noop` |
+| `typeOf` |
+| `withHash` |
 
 ### [Number](/docs/helpers/number/)
 
-`bytes`, `addCommas`, `phoneNumber`, `toAbbr`, `toExponential`, `toFixed`, `toFloat`, `toInt`, `toPrecision`
+| Helper |
+| --- |
+| `bytes` |
+| `addCommas` |
+| `phoneNumber` |
+| `toAbbr` |
+| `toExponential` |
+| `toFixed` |
+| `toFloat` |
+| `toInt` |
+| `toPrecision` |
 
 ### [Object](/docs/helpers/object/)
 
-`extend`, `forIn`, `forOwn`, `toPath`, `get`, `getObject`, `hasOwn`, `isObject`, `JSONparse`, `JSONstringify`, `merge`, `parseJSON`, `pick`, `stringify`
+| Helper |
+| --- |
+| `extend` |
+| `forIn` |
+| `forOwn` |
+| `toPath` |
+| `get` |
+| `getObject` |
+| `hasOwn` |
+| `isObject` |
+| `JSONparse` |
+| `JSONstringify` |
+| `merge` |
+| `parseJSON` |
+| `pick` |
+| `stringify` |
 
 ### [Regex](/docs/helpers/regex/)
 
-`toRegex`, `test`
+| Helper |
+| --- |
+| `toRegex` |
+| `test` |
 
 ### [String](/docs/helpers/string/)
 
-`append`, `camelcase`, `capitalize`, `capitalizeAll`, `center`, `chop`, `dashcase`, `dotcase`, `ellipsis`, `hyphenate`, `isString`, `lowercase`, `downcase`, `occurrences`, `pascalcase`, `pathcase`, `plusify`, `prepend`, `remove`, `removeFirst`, `replace`, `replaceFirst`, `reverse`, `sentence`, `snakecase`, `trim`, `trimLeft`, `trimRight`, `truncate`, `truncateWords`, `uppercase`, `upcase`, `split`, `startsWith`, `titleize`, `raw`
+| Helper |
+| --- |
+| `append` |
+| `camelcase` |
+| `capitalize` |
+| `capitalizeAll` |
+| `center` |
+| `chop` |
+| `dashcase` |
+| `dotcase` |
+| `ellipsis` |
+| `hyphenate` |
+| `isString` |
+| `lowercase` |
+| `downcase` |
+| `occurrences` |
+| `pascalcase` |
+| `pathcase` |
+| `plusify` |
+| `prepend` |
+| `remove` |
+| `removeFirst` |
+| `replace` |
+| `replaceFirst` |
+| `sentence` |
+| `snakecase` |
+| `trim` |
+| `trimLeft` |
+| `trimRight` |
+| `truncate` |
+| `truncateWords` |
+| `uppercase` |
+| `upcase` |
+| `split` |
+| `startsWith` |
+| `titleize` |
+| `raw` |
 
 ### [Url](/docs/helpers/url/)
 
-`encodeURI`, `decodeURI`, `url_encode`, `url_decode`, `stripQuerystring`
+| Helper |
+| --- |
+| `encodeURI` |
+| `decodeURI` |
+| `url_encode` |
+| `url_decode` |
+| `stripQuerystring` |
