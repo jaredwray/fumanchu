@@ -7,9 +7,9 @@ order: 9
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## collection
+## Table of Contents
 
-### {{isEmpty}}
+## {{isEmpty}}
 
 Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the collection is not empty.
 
@@ -48,7 +48,7 @@ A collection is considered empty if:
 <!-- results in: 'Has 2 items' -->
 ```
 
-### {{iterate}}
+## {{iterate}}
 
 Block helper that iterates over an array or object. If an array is given, it iterates over each element with its index. If an object is given, it iterates over each key-value pair. If the collection is null/undefined or not iterable, the inverse block is returned.
 

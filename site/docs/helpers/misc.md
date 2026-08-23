@@ -7,9 +7,9 @@ order: 18
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## misc
+## Table of Contents
 
-### {{frame}}
+## {{frame}}
 
 Block helper for exposing private `@` variables on the context. Creates a new data frame and extends it with hash arguments.
 
@@ -28,7 +28,7 @@ Block helper for exposing private `@` variables on the context. Creates a new da
 <!-- results in: 'mysite - 42' -->
 ```
 
-### {{option}}
+## {{option}}
 
 Return the given value of `prop` from `this.options`.
 
@@ -45,7 +45,7 @@ Return the given value of `prop` from `this.options`.
 <!-- results in: 'ddd' -->
 ```
 
-### {{noop}}
+## {{noop}}
 
 Block helper that renders the block without taking any arguments.
 
@@ -54,7 +54,7 @@ Block helper that renders the block without taking any arguments.
 * `options` **{Object}**
 * `returns` **{String}**
 
-### {{typeOf}}
+## {{typeOf}}
 
 Get the native type of the given `value`.
 
@@ -74,7 +74,7 @@ Get the native type of the given `value`.
 <!-- results in: 'string' -->
 ```
 
-### {{withHash}}
+## {{withHash}}
 
 Block helper that builds the context for the block from the options hash.
 

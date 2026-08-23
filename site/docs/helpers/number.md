@@ -7,9 +7,9 @@ order: 19
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## number
+## Table of Contents
 
-### {{bytes}}
+## {{bytes}}
 
 Format a number to it's equivalent in bytes. If a string is passed, it's length will be formatted and returned.
 
@@ -25,7 +25,7 @@ Format a number to it's equivalent in bytes. If a string is passed, it's length 
 * `number` **{Number|String}**
 * `returns` **{String}**
 
-### {{addCommas}}
+## {{addCommas}}
 
 Add commas to numbers
 
@@ -34,7 +34,7 @@ Add commas to numbers
 * `num` **{Number}**
 * `returns` **{Number}**
 
-### {{phoneNumber}}
+## {{phoneNumber}}
 
 Convert a string or number to a formatted phone number.
 
@@ -43,7 +43,7 @@ Convert a string or number to a formatted phone number.
 * `num` **{Number|String}**: The phone number to format, e.g. `8005551212`
 * `returns` **{Number}**: Formatted phone number: `(800) 555-1212`
 
-### {{toAbbr}}
+## {{toAbbr}}
 
 Abbreviate numbers to the given number of `precision`. This is for
 general numbers, not size in bytes.
@@ -54,7 +54,7 @@ general numbers, not size in bytes.
 * `precision` **{Number}**
 * `returns` **{String}**
 
-### {{toExponential}}
+## {{toExponential}}
 
 Returns a string representing the given number in exponential notation.
 
@@ -70,7 +70,7 @@ Returns a string representing the given number in exponential notation.
 {{toExponential number digits}};
 ```
 
-### {{toFixed}}
+## {{toFixed}}
 
 Formats the given number using fixed-point notation.
 
@@ -87,21 +87,21 @@ Formats the given number using fixed-point notation.
 //=> '1.12'
 ```
 
-### {{toFloat}}
+## {{toFloat}}
 
 **Params**
 
 * `number` **{Number}**
 * `returns` **{Number}**
 
-### {{toInt}}
+## {{toInt}}
 
 **Params**
 
 * `number` **{Number}**
 * `returns` **{Number}**
 
-### {{toPrecision}}
+## {{toPrecision}}
 
 Returns a string representing the `Number` object to the specified precision.
 

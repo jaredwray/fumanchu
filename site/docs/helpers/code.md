@@ -13,9 +13,9 @@ order: 7
 > | `gist` | ✅ | ✅ |
 > | `jsfiddle` | ✅ | ✅ |
 
-# Code Helpers
+## Table of Contents
 
-### {{embed}}
+## {{embed}}
 
 Embed code from an external file as preformatted text.
 
@@ -33,7 +33,7 @@ Embed code from an external file as preformatted text.
 {{embed 'path/to/file.hbs' 'html'}}
 ```
 
-### {{gist}}
+## {{gist}}
 
 Embed a GitHub Gist using only the id of the Gist
 
@@ -48,7 +48,7 @@ Embed a GitHub Gist using only the id of the Gist
 {{gist "12345"}}
 ```
 
-### {{jsfiddle}}
+## {{jsfiddle}}
 
 Generate the HTML for a jsFiddle iframe with the given options.
 

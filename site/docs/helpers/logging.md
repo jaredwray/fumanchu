@@ -7,13 +7,13 @@ order: 6
 
 > **Availability:** Registered in the Node build only. Not available in the browser build.
 
-## logging
-
 > **Note:** These helpers are only available in Node.js environments. They are not compatible with browser-based Handlebars usage.
 
 These helpers output messages to the terminal with ANSI color formatting. All logging helpers return an empty string to avoid affecting template output.
 
-### {{log}}
+## Table of Contents
+
+## {{log}}
 
 Logs an unstyled message to the terminal via `console.log`.
 
@@ -29,7 +29,7 @@ Logs an unstyled message to the terminal via `console.log`.
 <!-- outputs to console: Processing item: Widget -->
 ```
 
-### {{ok}}
+## {{ok}}
 
 Logs a green colored message preceded by a checkmark to the terminal. Useful for indicating successful operations.
 
@@ -45,7 +45,7 @@ Logs a green colored message preceded by a checkmark to the terminal. Useful for
 <!-- outputs to console: ✓ Build completed successfully (in green) -->
 ```
 
-### {{success}}
+## {{success}}
 
 Logs a green colored message to the terminal. Similar to `ok` but without the checkmark.
 
@@ -61,7 +61,7 @@ Logs a green colored message to the terminal. Similar to `ok` but without the ch
 <!-- outputs to console: All tests passed (in green) -->
 ```
 
-### {{info}}
+## {{info}}
 
 Logs a cyan colored informational message to the terminal.
 
@@ -77,7 +77,7 @@ Logs a cyan colored informational message to the terminal.
 <!-- outputs to console: Processing 42 items (in cyan) -->
 ```
 
-### {{warning}}
+## {{warning}}
 
 Logs a yellow colored warning message to stderr.
 
@@ -93,7 +93,7 @@ Logs a yellow colored warning message to stderr.
 <!-- outputs to stderr: Deprecated feature detected (in yellow) -->
 ```
 
-### {{warn}}
+## {{warn}}
 
 Alias for `{{warning}}`. Logs a yellow colored warning message to stderr.
 
@@ -109,7 +109,7 @@ Alias for `{{warning}}`. Logs a yellow colored warning message to stderr.
 <!-- outputs to stderr: This method will be removed in v5 (in yellow) -->
 ```
 
-### {{error}}
+## {{error}}
 
 Logs a red colored error message to stderr.
 
@@ -125,7 +125,7 @@ Logs a red colored error message to stderr.
 <!-- outputs to stderr: Failed to process item: 123 (in red) -->
 ```
 
-### {{danger}}
+## {{danger}}
 
 Alias for `{{error}}`. Logs a red colored error message to stderr.
 
@@ -141,7 +141,7 @@ Alias for `{{error}}`. Logs a red colored error message to stderr.
 <!-- outputs to stderr: Critical failure in module (in red) -->
 ```
 
-### {{bold}}
+## {{bold}}
 
 Logs a bold formatted message to stderr.
 
@@ -157,7 +157,7 @@ Logs a bold formatted message to stderr.
 <!-- outputs to stderr: Important Notice (in bold) -->
 ```
 
-### {{_debug}}
+## {{_debug}}
 
 Outputs debug information including the provided value and the current Handlebars context. Useful for inspecting template data during development.
 
@@ -178,7 +178,7 @@ CONTEXT: { users: [...], settings: {...} }
 -->
 ```
 
-### {{_inspect}}
+## {{_inspect}}
 
 Formats a value as JSON and returns it for display in the template. Supports different output formats.
 

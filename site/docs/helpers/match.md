@@ -7,9 +7,9 @@ order: 16
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## match
+## Table of Contents
 
-### {{match}}
+## {{match}}
 
 Returns an array of strings that match the given glob pattern(s).
 
@@ -27,7 +27,7 @@ Returns an array of strings that match the given glob pattern(s).
 {{match (readdir "foo") (toRegex "\\.js$")}}
 ```
 
-### {{isMatch}}
+## {{isMatch}}
 
 Returns true if a filepath matches the given pattern.
 

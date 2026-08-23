@@ -7,9 +7,9 @@ order: 17
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## math
+## Table of Contents
 
-### {{abs}}
+## {{abs}}
 
 Return the magnitude of `a`.
 
@@ -18,7 +18,7 @@ Return the magnitude of `a`.
 * `a` **{Number}**
 * `returns` **{Number}**
 
-### {{add}}
+## {{add}}
 
 Return the sum of `a` plus `b`.
 
@@ -28,7 +28,7 @@ Return the sum of `a` plus `b`.
 * `b` **{Number}**
 * `returns` **{Number}**
 
-### {{avg}}
+## {{avg}}
 
 Returns the average of all numbers in the given array.
 
@@ -44,7 +44,7 @@ Returns the average of all numbers in the given array.
 <!-- results in: '3' -->
 ```
 
-### {{ceil}}
+## {{ceil}}
 
 Get the `Math.ceil()` of the given value.
 
@@ -53,7 +53,7 @@ Get the `Math.ceil()` of the given value.
 * `value` **{Number}**
 * `returns` **{Number}**
 
-### {{divide}}
+## {{divide}}
 
 Divide `a` by `b`
 
@@ -62,7 +62,7 @@ Divide `a` by `b`
 * `a` **{Number}**: numerator
 * `b` **{Number}**: denominator
 
-### {{floor}}
+## {{floor}}
 
 Get the `Math.floor()` of the given value.
 
@@ -71,7 +71,7 @@ Get the `Math.floor()` of the given value.
 * `value` **{Number}**
 * `returns` **{Number}**
 
-### {{minus}}
+## {{minus}}
 
 Return the difference of `a` minus `b`.
 
@@ -80,7 +80,7 @@ Return the difference of `a` minus `b`.
 * `a` **{Number}**
 * `b` **{Number}**
 
-### {{modulo}}
+## {{modulo}}
 
 Get the remainder of a division operation.
 
@@ -90,7 +90,7 @@ Get the remainder of a division operation.
 * `b` **{Number}**
 * `returns` **{Number}**
 
-### {{multiply}}
+## {{multiply}}
 
 Return the product of `a` times `b`.
 
@@ -100,7 +100,7 @@ Return the product of `a` times `b`.
 * `b` **{Number}**: multiplier
 * `returns` **{Number}**
 
-### {{plus}}
+## {{plus}}
 
 Add `a` by `b`.
 
@@ -109,7 +109,7 @@ Add `a` by `b`.
 * `a` **{Number}**: factor
 * `b` **{Number}**: multiplier
 
-### {{random}}
+## {{random}}
 
 Generate a random number between two values
 
@@ -119,7 +119,7 @@ Generate a random number between two values
 * `max` **{Number}**
 * `returns` **{String}**
 
-### {{remainder}}
+## {{remainder}}
 
 Get the remainder when `a` is divided by `b`.
 
@@ -128,7 +128,7 @@ Get the remainder when `a` is divided by `b`.
 * `a` **{Number}**: a
 * `b` **{Number}**: b
 
-### {{round}}
+## {{round}}
 
 Round the given number.
 
@@ -137,7 +137,7 @@ Round the given number.
 * `number` **{Number}**
 * `returns` **{Number}**
 
-### {{subtract}}
+## {{subtract}}
 
 Return the product of `a` minus `b`.
 
@@ -147,7 +147,7 @@ Return the product of `a` minus `b`.
 * `b` **{Number}**
 * `returns` **{Number}**
 
-### {{sum}}
+## {{sum}}
 
 Returns the sum of all numbers in the given array.
 
@@ -163,7 +163,7 @@ Returns the sum of all numbers in the given array.
 <!-- results in: '15' -->
 ```
 
-### {{times}}
+## {{times}}
 
 Multiply number `a` by number `b`.
 

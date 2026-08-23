@@ -7,9 +7,9 @@ order: 20
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## object
+## Table of Contents
 
-### {{extend}}
+## {{extend}}
 
 Extend the context with the properties of other objects.
 A shallow merge is performed to avoid mutating the context.
@@ -19,7 +19,7 @@ A shallow merge is performed to avoid mutating the context.
 * `objects` **{Object}**: One or more objects to extend.
 * `returns` **{Object}**
 
-### {{forIn}}
+## {{forIn}}
 
 Block helper that iterates over the properties of
 an object, exposing each key and value on the context.
@@ -30,7 +30,7 @@ an object, exposing each key and value on the context.
 * `options` **{Object}**
 * `returns` **{String}**
 
-### {{forOwn}}
+## {{forOwn}}
 
 Block helper that iterates over the **own** properties of
 an object, exposing each key and value on the context.
@@ -41,7 +41,7 @@ an object, exposing each key and value on the context.
 * `options` **{Object}**
 * `returns` **{String}**
 
-### {{toPath}}
+## {{toPath}}
 
 Take arguments and, if they are string or number, convert them to a dot-delineated object property path.
 
@@ -50,7 +50,7 @@ Take arguments and, if they are string or number, convert them to a dot-delineat
 * `prop` **{String|Number}**: The property segments to assemble (can be multiple).
 * `returns` **{String}**
 
-### {{get}}
+## {{get}}
 
 Use property paths (`a.b.c`) to get a value or nested value from
 the context. Works as a regular helper or block helper.
@@ -62,7 +62,7 @@ the context. Works as a regular helper or block helper.
 * `options` **{Object}**: The handlebars options object, if used as a block helper.
 * `returns` **{String}**
 
-### {{getObject}}
+## {{getObject}}
 
 Use property paths (`a.b.c`) to get an object from
 the context. Differs from the `get` helper in that this
@@ -76,7 +76,7 @@ block helper.
 * `context` **{Object}**: The context object
 * `returns` **{String}**
 
-### {{hasOwn}}
+## {{hasOwn}}
 
 Return true if `key` is an own, enumerable property of the given `context` object.
 
@@ -92,7 +92,7 @@ Return true if `key` is an own, enumerable property of the given `context` objec
 {{hasOwn context key}}
 ```
 
-### {{isObject}}
+## {{isObject}}
 
 Return true if `value` is an object.
 
@@ -108,7 +108,7 @@ Return true if `value` is an object.
 //=> false
 ```
 
-### {{JSONparse}}
+## {{JSONparse}}
 
 Parses the given string using `JSON.parse`.
 
@@ -124,7 +124,7 @@ Parses the given string using `JSON.parse`.
 <!-- results in: { foo: 'bar' } -->
 ```
 
-### {{parseJSON}}
+## {{parseJSON}}
 
 Alias for `JSONparse`. Parses the given string using `JSON.parse`.
 
@@ -140,7 +140,7 @@ Alias for `JSONparse`. Parses the given string using `JSON.parse`.
 <!-- results in: { foo: 'bar' } -->
 ```
 
-### {{JSONstringify}}
+## {{JSONstringify}}
 
 Stringify an object using `JSON.stringify`.
 
@@ -158,7 +158,7 @@ Stringify an object using `JSON.stringify`.
 <!-- results in: '{"foo": "bar"}' -->
 ```
 
-### {{stringify}}
+## {{stringify}}
 
 Alias for `JSONstringify`. Stringify an object using `JSON.stringify`.
 
@@ -176,7 +176,7 @@ Alias for `JSONstringify`. Stringify an object using `JSON.stringify`.
 <!-- results in: '{"foo":"bar"}' -->
 ```
 
-### {{merge}}
+## {{merge}}
 
 Deeply merge the properties of the given `objects` with the
 context object.
@@ -187,7 +187,7 @@ context object.
 * `objects` **{Object}**
 * `returns` **{Object}**
 
-### {{pick}}
+## {{pick}}
 
 Pick properties from the context object.
 

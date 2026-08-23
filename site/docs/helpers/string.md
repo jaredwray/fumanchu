@@ -7,11 +7,11 @@ order: 23
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## string
-
 Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/string.ts) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/test/helpers/string.test.ts)
 
-### {{append}}
+## Table of Contents
+
+## {{append}}
 
 Append the specified `suffix` to the given string.
 
@@ -29,7 +29,7 @@ Append the specified `suffix` to the given string.
 <!-- results in:  'foo.html' -->
 ```
 
-### {{camelcase}}
+## {{camelcase}}
 
 camelCase the characters in the given `string`.
 
@@ -45,7 +45,7 @@ camelCase the characters in the given `string`.
 <!-- results in:  'fooBarBaz' -->
 ```
 
-### {{capitalize}}
+## {{capitalize}}
 
 Capitalize the first word in a sentence.
 
@@ -61,7 +61,7 @@ Capitalize the first word in a sentence.
 <!-- results in:  "Foo bar baz" -->
 ```
 
-### {{capitalizeAll}}
+## {{capitalizeAll}}
 
 Capitalize all words in a string.
 
@@ -77,7 +77,7 @@ Capitalize all words in a string.
 <!-- results in:  "Foo Bar Baz" -->
 ```
 
-### {{center}}
+## {{center}}
 
 Center a string using non-breaking spaces
 
@@ -94,7 +94,7 @@ Center a string using non-breaking spaces
 <!-- results in:  '&nbsp;&nbsp;foo&nbsp;&nbsp;' -->
 ```
 
-### {{chop}}
+## {{chop}}
 
 Like trim, but removes both extraneous whitespace **and non-word characters** from the beginning and end of a string.
 
@@ -116,7 +116,7 @@ Like trim, but removes both extraneous whitespace **and non-word characters** fr
 <!-- results in:  'ABC' -->
 ```
 
-### {{dashcase}}
+## {{dashcase}}
 
 dash-case the characters in `string`. Replaces non-word characters and periods with hyphens.
 
@@ -132,7 +132,7 @@ dash-case the characters in `string`. Replaces non-word characters and periods w
 <!-- results in:  'a-b-c-d-e' -->
 ```
 
-### {{dotcase}}
+## {{dotcase}}
 
 dot.case the characters in `string`.
 
@@ -148,7 +148,7 @@ dot.case the characters in `string`.
 <!-- results in:  'a.b.c.d.e' -->
 ```
 
-### {{downcase}}
+## {{downcase}}
 
 Lowercase all of the characters in the given string. Alias for [lowercase](#lowercase).
 
@@ -164,7 +164,7 @@ Lowercase all of the characters in the given string. Alias for [lowercase](#lowe
 <!-- results in:  'abcdef' -->
 ```
 
-### {{ellipsis}}
+## {{ellipsis}}
 
 Truncates a string to the specified `length`, and appends it with an elipsis, `…`.
 
@@ -183,7 +183,7 @@ Truncates a string to the specified `length`, and appends it with an elipsis, `�
 <!-- results in:  'foo bar…' -->
 ```
 
-### {{hyphenate}}
+## {{hyphenate}}
 
 Replace spaces in a string with hyphens.
 
@@ -199,7 +199,7 @@ Replace spaces in a string with hyphens.
 <!-- results in:  "foo-bar-baz-qux" -->
 ```
 
-### {{isString}}
+## {{isString}}
 
 Return true if `value` is a string.
 
@@ -215,7 +215,7 @@ Return true if `value` is a string.
 <!-- results in:  'true' -->
 ```
 
-### {{lowercase}}
+## {{lowercase}}
 
 Lowercase all characters in the given string.
 
@@ -231,7 +231,7 @@ Lowercase all characters in the given string.
 <!-- results in:  'foo bar baz' -->
 ```
 
-### {{occurrences}}
+## {{occurrences}}
 
 Return the number of occurrences of `substring` within the given `string`.
 
@@ -248,7 +248,7 @@ Return the number of occurrences of `substring` within the given `string`.
 <!-- results in:  2 -->
 ```
 
-### {{pascalcase}}
+## {{pascalcase}}
 
 PascalCase the characters in `string`.
 
@@ -264,7 +264,7 @@ PascalCase the characters in `string`.
 <!-- results in:  'FooBarBaz' -->
 ```
 
-### {{pathcase}}
+## {{pathcase}}
 
 path/case the characters in `string`.
 
@@ -280,7 +280,7 @@ path/case the characters in `string`.
 <!-- results in:  'a/b/c/d/e' -->
 ```
 
-### {{plusify}}
+## {{plusify}}
 
 Replace spaces in the given string with pluses.
 
@@ -297,7 +297,7 @@ Replace spaces in the given string with pluses.
 <!-- results in:  'foo+bar+baz' -->
 ```
 
-### {{prepend}}
+## {{prepend}}
 
 Prepends the given `string` with the specified `prefix`.
 
@@ -315,7 +315,7 @@ Prepends the given `string` with the specified `prefix`.
 <!-- results in:  'foo-bar' -->
 ```
 
-### {{raw}}
+## {{raw}}
 
 Render a block without processing mustache templates inside the block.
 
@@ -333,7 +333,7 @@ Render a block without processing mustache templates inside the block.
 <!-- results in:  '{{foo}}' -->
 ```
 
-### {{remove}}
+## {{remove}}
 
 Remove all occurrences of `substring` from the given `str`.
 
@@ -350,7 +350,7 @@ Remove all occurrences of `substring` from the given `str`.
 <!-- results in:  'b b b' -->
 ```
 
-### {{removeFirst}}
+## {{removeFirst}}
 
 Remove the first occurrence of `substring` from the given `str`.
 
@@ -367,7 +367,7 @@ Remove the first occurrence of `substring` from the given `str`.
 <!-- results in:  ' b a b a b' -->
 ```
 
-### {{replace}}
+## {{replace}}
 
 Replace all occurrences of substring `a` with substring `b`.
 
@@ -385,7 +385,7 @@ Replace all occurrences of substring `a` with substring `b`.
 <!-- results in:  'z b z b z b' -->
 ```
 
-### {{replaceFirst}}
+## {{replaceFirst}}
 
 Replace the first occurrence of substring `a` with substring `b`.
 
@@ -403,7 +403,7 @@ Replace the first occurrence of substring `a` with substring `b`.
 <!-- results in:  'z b a b a b' -->
 ```
 
-### {{reverse}}
+## {{reverse}}
 
 Reverse a string.
 
@@ -419,7 +419,7 @@ Reverse a string.
 <!-- results in:  'edcba' -->
 ```
 
-### {{sentence}}
+## {{sentence}}
 
 Sentence case the given string
 
@@ -435,7 +435,7 @@ Sentence case the given string
 <!-- results in:  'Hello world. Goodbye world.' -->
 ```
 
-### {{snakecase}}
+## {{snakecase}}
 
 snake_case the characters in the given `string`.
 
@@ -451,7 +451,7 @@ snake_case the characters in the given `string`.
 <!-- results in:  'a_b_c_d_e' -->
 ```
 
-### {{split}}
+## {{split}}
 
 Split `string` by the given `character`.
 
@@ -468,7 +468,7 @@ Split `string` by the given `character`.
 <!-- results in:  ['a', 'b', 'c'] -->
 ```
 
-### {{startsWith}}
+## {{startsWith}}
 
 Tests whether a string begins with the given prefix.
 
@@ -488,7 +488,7 @@ Tests whether a string begins with the given prefix.
 <!-- results in:  false -->
 ```
 
-### {{titleize}}
+## {{titleize}}
 
 Title case the given string.
 
@@ -504,7 +504,7 @@ Title case the given string.
 <!-- results in:  'This Is Title Case' -->
 ```
 
-### {{trim}}
+## {{trim}}
 
 Removes extraneous whitespace from the beginning and end of a string.
 
@@ -520,7 +520,7 @@ Removes extraneous whitespace from the beginning and end of a string.
 <!-- results in:  'ABC' -->
 ```
 
-### {{trimLeft}}
+## {{trimLeft}}
 
 Removes extraneous whitespace from the beginning of a string.
 
@@ -536,7 +536,7 @@ Removes extraneous whitespace from the beginning of a string.
 <!-- results in:  'ABC ' -->
 ```
 
-### {{trimRight}}
+## {{trimRight}}
 
 Removes extraneous whitespace from the end of a string.
 
@@ -552,7 +552,7 @@ Removes extraneous whitespace from the end of a string.
 <!-- results in:  ' ABC' -->
 ```
 
-### {{truncate}}
+## {{truncate}}
 
 Truncate a string to the specified `length`. Also see [ellipsis](#ellipsis).
 
@@ -572,7 +572,7 @@ Truncate a string to the specified `length`. Also see [ellipsis](#ellipsis).
 <!-- results in:  'foo ...' -->
 ```
 
-### {{truncateWords}}
+## {{truncateWords}}
 
 Truncate a string to have the specified number of words. Also see [truncate](#truncate).
 
@@ -594,7 +594,7 @@ Truncate a string to have the specified number of words. Also see [truncate](#tr
 <!-- results in:  'foo bar baz...' -->
 ```
 
-### {{upcase}}
+## {{upcase}}
 
 Uppercase all of the characters in the given string. Alias for [uppercase](#uppercase).
 
@@ -610,7 +610,7 @@ Uppercase all of the characters in the given string. Alias for [uppercase](#uppe
 <!-- results in:  'ABCDEF' -->
 ```
 
-### {{uppercase}}
+## {{uppercase}}
 
 Uppercase all of the characters in the given string. If used as a block helper it will uppercase the entire block. This helper does not support inverse blocks.
 

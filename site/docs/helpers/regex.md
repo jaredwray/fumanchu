@@ -7,9 +7,9 @@ order: 22
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## regex
+## Table of Contents
 
-### {{toRegex}}
+## {{toRegex}}
 
 Convert the given string to a regular expression.
 
@@ -25,7 +25,7 @@ Convert the given string to a regular expression.
 <!-- results in: /foo/ -->
 ```
 
-### {{test}}
+## {{test}}
 
 Returns true if the given `str` matches the given regex. A regex can be passed on the context, or using the toRegex helper as a subexpression.
 

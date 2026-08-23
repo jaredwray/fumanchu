@@ -7,9 +7,9 @@ order: 8
 
 > **Availability:** Registered in both the Node and browser builds.
 
-## comparison
+## Table of Contents
 
-### {{and}}
+## {{and}}
 
 Helper that renders the block if **all** of the given values are truthy. If an inverse block is specified it will be rendered when falsy. Works as a block helper, inline helper or subexpression.
 
@@ -30,7 +30,7 @@ Helper that renders the block if **all** of the given values are truthy. If an i
 <!-- results in: 'B' -->
 ```
 
-### {{compare}}
+## {{compare}}
 
 Render a block when a comparison of the first and third arguments returns true. The second argument is the operator to use.
 
@@ -63,7 +63,7 @@ Render a block when a comparison of the first and third arguments returns true. 
 <!-- results in: 'A' -->
 ```
 
-### {{contains}}
+## {{contains}}
 
 Block helper that renders the block if `collection` has the given `value`, otherwise the inverse block is rendered (if specified). If a `startIndex` is specified, the search begins at that index.
 
@@ -95,7 +95,7 @@ Block helper that renders the block if `collection` has the given `value`, other
 {{/if}}
 ```
 
-### {{default}}
+## {{default}}
 
 Returns the first value that is not null or undefined, otherwise returns an empty string.
 
@@ -114,7 +114,7 @@ Returns the first value that is not null or undefined, otherwise returns an empt
 <!-- Returns first non-null value, or "fallback" -->
 ```
 
-### {{eq}}
+## {{eq}}
 
 Block helper that renders a block if `a` is **strictly equal to** `b` (using `===`).
 If an inverse block is specified it will be rendered when falsy.
@@ -135,7 +135,7 @@ If an inverse block is specified it will be rendered when falsy.
 {{/if}}
 ```
 
-### {{gt}}
+## {{gt}}
 
 Block helper that renders a block if `a` is **greater than** `b`.
 
@@ -155,7 +155,7 @@ Block helper that renders a block if `a` is **greater than** `b`.
 {{/if}}
 ```
 
-### {{gte}}
+## {{gte}}
 
 Block helper that renders a block if `a` is **greater than or equal to** `b`.
 
@@ -175,7 +175,7 @@ Block helper that renders a block if `a` is **greater than or equal to** `b`.
 {{/if}}
 ```
 
-### {{has}}
+## {{has}}
 
 Block helper that renders a block if `value` has `pattern`.
 If an inverse block is specified it will be rendered when falsy.
@@ -205,7 +205,7 @@ If an inverse block is specified it will be rendered when falsy.
 {{/if}}
 ```
 
-### {{isFalsey}}
+## {{isFalsey}}
 
 Returns true if the given `value` is falsey. Recognizes common falsey keywords like "false", "no", "none", "null", "0", "nope", etc.
 
@@ -227,7 +227,7 @@ Returns true if the given `value` is falsey. Recognizes common falsey keywords l
 {{/if}}
 ```
 
-### {{isTruthy}}
+## {{isTruthy}}
 
 Returns true if the given `value` is truthy (not falsey).
 
@@ -244,7 +244,7 @@ Returns true if the given `value` is truthy (not falsey).
 {{/if}}
 ```
 
-### {{ifEven}}
+## {{ifEven}}
 
 Returns true if the given value is an even number.
 
@@ -263,7 +263,7 @@ Returns true if the given value is an even number.
 {{/if}}
 ```
 
-### {{ifNth}}
+## {{ifNth}}
 
 Returns true if `b` is divisible by `a` (remainder is zero when `b` is divided by `a`).
 
@@ -281,7 +281,7 @@ Returns true if `b` is divisible by `a` (remainder is zero when `b` is divided b
 {{/if}}
 ```
 
-### {{ifOdd}}
+## {{ifOdd}}
 
 Block helper that renders a block if `value` is **an odd number**.
 
@@ -300,7 +300,7 @@ Block helper that renders a block if `value` is **an odd number**.
 {{/if}}
 ```
 
-### {{is}}
+## {{is}}
 
 Block helper that renders a block if `a` is **equal to** `b` using loose equality (`==`).
 Similar to [eq](#eq) but does not use strict equality.
@@ -319,7 +319,7 @@ Similar to [eq](#eq) but does not use strict equality.
 {{/if}}
 ```
 
-### {{isnt}}
+## {{isnt}}
 
 Block helper that renders a block if `a` is **not equal to** `b` using loose inequality (`!=`).
 Similar to [unlessEq](#unlesseq) but does not use strict equality.
@@ -338,7 +338,7 @@ Similar to [unlessEq](#unlesseq) but does not use strict equality.
 {{/if}}
 ```
 
-### {{lt}}
+## {{lt}}
 
 Block helper that renders a block if `a` is **less than** `b`.
 
@@ -358,7 +358,7 @@ Block helper that renders a block if `a` is **less than** `b`.
 {{/if}}
 ```
 
-### {{lte}}
+## {{lte}}
 
 Block helper that renders a block if `a` is **less than or equal to** `b`.
 
@@ -378,7 +378,7 @@ Block helper that renders a block if `a` is **less than or equal to** `b`.
 {{/if}}
 ```
 
-### {{neither}}
+## {{neither}}
 
 Block helper that renders a block if **neither of** the given values are truthy.
 
@@ -398,7 +398,7 @@ Block helper that renders a block if **neither of** the given values are truthy.
 {{/if}}
 ```
 
-### {{not}}
+## {{not}}
 
 Returns true if `val` is falsey. Works as a block or inline helper.
 
@@ -415,7 +415,7 @@ Returns true if `val` is falsey. Works as a block or inline helper.
 {{/if}}
 ```
 
-### {{or}}
+## {{or}}
 
 Block helper that renders a block if **any of** the given values is truthy.
 
@@ -434,7 +434,7 @@ Block helper that renders a block if **any of** the given values is truthy.
 {{/if}}
 ```
 
-### {{unlessEq}}
+## {{unlessEq}}
 
 Block helper that returns true **unless `a` is strictly equal to `b`** (using `!==`).
 
@@ -452,7 +452,7 @@ Block helper that returns true **unless `a` is strictly equal to `b`** (using `!
 {{/if}}
 ```
 
-### {{unlessGt}}
+## {{unlessGt}}
 
 Block helper that returns true **unless `a` is greater than `b`** (equivalent to `a <= b`).
 
@@ -470,7 +470,7 @@ Block helper that returns true **unless `a` is greater than `b`** (equivalent to
 {{/if}}
 ```
 
-### {{unlessLt}}
+## {{unlessLt}}
 
 Block helper that returns true **unless `a` is less than `b`** (equivalent to `a >= b`).
 
@@ -488,7 +488,7 @@ Block helper that returns true **unless `a` is less than `b`** (equivalent to `a
 {{/if}}
 ```
 
-### {{unlessGteq}}
+## {{unlessGteq}}
 
 Block helper that returns true **unless `a` is greater than or equal to `b`** (equivalent to `a < b`).
 
@@ -506,7 +506,7 @@ Block helper that returns true **unless `a` is greater than or equal to `b`** (e
 {{/if}}
 ```
 
-### {{unlessLteq}}
+## {{unlessLteq}}
 
 Block helper that returns true **unless `a` is less than or equal to `b`** (equivalent to `a > b`).
 

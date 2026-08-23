@@ -6,9 +6,9 @@ order: 15
 
 > **Availability:** Registered in both the Node and browser builds. The browser build renders inline markdown only — the Node build also accepts a file path and will read its contents before rendering.
 
-## markdown
+## Table of Contents
 
-### {{markdown}}
+## {{markdown}}
 
 Block helper that converts a string of inline markdown to HTML.
 
@@ -26,7 +26,7 @@ Block helper that converts a string of inline markdown to HTML.
 <!-- results in: <h1>Foo</h1> -->
 ```
 
-### {{md}}
+## {{md}}
 
 Converts a markdown string to HTML, or reads a markdown file from the file system and converts its contents to HTML.
 

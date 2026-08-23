@@ -17,7 +17,9 @@ order: 12
 > | `thumbnailImage` | ✅ | ✅ |
 > | `ul` | ✅ | ✅ |
 
-### {{attr}}
+## Table of Contents
+
+## {{attr}}
 
 Stringify attributes from the options hash into an HTML attribute string.
 
@@ -51,7 +53,7 @@ You can also use variables:
 <button class="btn-primary" type="submit">Click</button>
 ```
 
-### {{css}}
+## {{css}}
 
 Generate `<link>` tags for stylesheets. Supports both CSS and LESS files.
 
@@ -101,7 +103,7 @@ LESS files are automatically detected:
 <link type="text/css" rel="stylesheet/less" href="styles/theme.less">
 ```
 
-### {{js}}
+## {{js}}
 
 Generate `<script>` tags for JavaScript files.
 
@@ -151,7 +153,7 @@ Using the `src` attribute:
 <script src="bundle.js"></script>
 ```
 
-### {{sanitize}}
+## {{sanitize}}
 
 Strip all HTML tags from a string, preserving only the text content.
 
@@ -187,7 +189,7 @@ Extracting text from HTML markup:
 
 **Note:** This helper removes HTML tags but preserves all text content, including text inside `<script>` or `<style>` tags. It is not a security sanitizer for untrusted input.
 
-### {{ul}}
+## {{ul}}
 
 Block helper for creating unordered lists.
 
@@ -228,7 +230,7 @@ With objects and custom attributes:
 <li>Bob</li></ul>
 ```
 
-### {{ol}}
+## {{ol}}
 
 Block helper for creating ordered lists.
 
@@ -253,7 +255,7 @@ Block helper for creating ordered lists.
 <li>Let cool</li></ol>
 ```
 
-### {{thumbnailImage}}
+## {{thumbnailImage}}
 
 Generate a `<figure>` element with a thumbnail image, optional link to full-size image, and optional caption.
 

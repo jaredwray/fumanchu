@@ -7,9 +7,9 @@ order: 11
 
 > **Availability:** Registered in the Node build only. Not available in the browser build.
 
-## fs
+## Table of Contents
 
-### {{fileSize}}
+## {{fileSize}}
 
 Formats a number of bytes into a human-readable file size string with appropriate units.
 
@@ -50,7 +50,7 @@ B, kB, MB, GB, TB, PB, EB, ZB, YB
 <!-- results in: '0 B' -->
 ```
 
-### {{read}}
+## {{read}}
 
 Read a file from the file system. This is useful in composing "include"-style helpers using sub-expressions.
 
@@ -74,7 +74,7 @@ Read a file from the file system. This is useful in composing "include"-style he
 </script>
 ```
 
-### {{readdir}}
+## {{readdir}}
 
 Return an array of files from the given directory. Supports optional filtering by function, RegExp, glob pattern, or type.
 
