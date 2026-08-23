@@ -10,3 +10,6 @@ allowBuilds:
   # wrangler-action installs wrangler on site deploy; wrangler needs workerd's
   # postinstall to unpack the native binary (ERR_PNPM_IGNORED_BUILDS otherwise).
   workerd: true
+# CVE-2026-33672: micromatch still declares picomatch ^2.3.1
+overrides:
+  picomatch@2.3.1: 2.3.2
