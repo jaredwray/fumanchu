@@ -42,6 +42,13 @@ describe("isMatch", () => {
 	it("returns false when pattern does not match", () => {
 		expect(isMatchFn("foo.js", "*.md")).toBe(false);
 	});
+	it("does not inject inherited Object methods from POSIX classes", () => {
+		// CVE-2026-33672: [[:constructor:]] must not stringify Object.prototype.constructor
+		const files = ["f }]", "n }]", "a", "constructor", "foo.js"];
+		expect(matchFn(files, "[[:constructor:]]")).toEqual([]);
+		expect(isMatchFn("f }]", "[[:constructor:]]")).toBe(false);
+		expect(isMatchFn("a", "[[:alpha:]]")).toBe(true);
+	});
 });
 
 describe("mm", () => {
