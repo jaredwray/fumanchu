@@ -17,8 +17,8 @@ Handlebars + Helpers Together
 Easily use it as a drop in replacement when using handlebars directly. More than 160 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project. Currently **189 helpers** in **20 categories**! 🎉
 
 # Table of Contents
-* [Using in Nodejs](#usage-nodejs)
-* [Using in the Browser](#usage-in-the-browser)
+* [Node.js Support](https://fumanchu.org/docs/nodejs/)
+* [Browser Support](https://fumanchu.org/docs/browser/)
 * [Just using Handlebar Helpers](#using-handlebars-helpers)
 * [Migrating from v2 to v3](https://fumanchu.org/docs/migration/v2-to-v3/)
 * [Migrating from v3 to v4](https://fumanchu.org/docs/migration/v3-to-v4/)
