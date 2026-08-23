@@ -19,6 +19,8 @@ order: 24
 > | `url_decode` | ✅ | ✅ |
 > | `url_encode` | ✅ | ✅ |
 
+## Table of Contents
+
 ## url
 
 ### {{encodeURI}}

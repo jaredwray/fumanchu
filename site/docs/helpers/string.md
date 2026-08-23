@@ -7,6 +7,8 @@ order: 23
 
 > **Availability:** Registered in both the Node and browser builds.
 
+## Table of Contents
+
 ## string
 
 Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/src/helpers/string.ts) | [unit tests](https://github.com/jaredwray/fumanchu/tree/main/test/helpers/string.test.ts)

@@ -7,6 +7,8 @@ order: 6
 
 > **Availability:** Registered in the Node build only. Not available in the browser build.
 
+## Table of Contents
+
 ## logging
 
 > **Note:** These helpers are only available in Node.js environments. They are not compatible with browser-based Handlebars usage.

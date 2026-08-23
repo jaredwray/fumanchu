@@ -5,6 +5,8 @@ description: >
 order: 25
 ---
 
+## Table of Contents
+
 ## Utils
 
 The following utils are exposed on `.utils`.

@@ -7,6 +7,8 @@ order: 8
 
 > **Availability:** Registered in both the Node and browser builds.
 
+## Table of Contents
+
 ## comparison
 
 ### {{and}}

@@ -7,6 +7,8 @@ order: 10
 
 > **Availability:** Registered in both the Node and browser builds.
 
+## Table of Contents
+
 ## Date Helpers
 
 Fumanchu provides powerful date manipulation capabilities using dayjs and chrono-node for natural language date parsing.

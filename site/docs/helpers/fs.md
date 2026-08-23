@@ -7,6 +7,8 @@ order: 11
 
 > **Availability:** Registered in the Node build only. Not available in the browser build.
 
+## Table of Contents
+
 ## fs
 
 ### {{fileSize}}
