@@ -21,9 +21,7 @@ order: 24
 
 ## Table of Contents
 
-## url
-
-### {{encodeURI}}
+## {{encodeURI}}
 
 Encodes a Uniform Resource Identifier (URI) component by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character.
 
@@ -39,7 +37,7 @@ Encodes a Uniform Resource Identifier (URI) component by replacing each instance
 <!-- results in: 'http%3A%2F%2Fexample.com%3Fcomment%3DThyme%20%26time%3Dagain' -->
 ```
 
-### {{escape}}
+## {{escape}}
 
 Escape the given string by replacing characters with escape sequences. Useful for allowing the string to be used in a URL, etc.
 
@@ -55,7 +53,7 @@ Escape the given string by replacing characters with escape sequences. Useful fo
 <!-- results in: 'http%3A%2F%2Fexample.com%3Fcomment%3DThyme%20%26time%3Dagain' -->
 ```
 
-### {{decodeURI}}
+## {{decodeURI}}
 
 Decode a Uniform Resource Identifier (URI) component.
 
@@ -71,15 +69,15 @@ Decode a Uniform Resource Identifier (URI) component.
 <!-- results in: 'http://example.com?comment=Thyme &time=again' -->
 ```
 
-### {{url_encode}}
+## {{url_encode}}
 
 Alias for [encodeURI](#encodeuri).
 
-### {{url_decode}}
+## {{url_decode}}
 
 Alias for [decodeURI](#decodeuri).
 
-### {{urlResolve}}
+## {{urlResolve}}
 
 Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag.
 
@@ -99,7 +97,7 @@ Take a base URL, and a href URL, and resolve them as a browser would for an anch
 <!-- results in: 'http://example.com/one' -->
 ```
 
-### {{urlParse}}
+## {{urlParse}}
 
 Parses a `url` string into an object.
 
@@ -115,7 +113,7 @@ Parses a `url` string into an object.
 <!-- results in an object with: protocol: 'http:', hostname: 'foo.com', pathname: '/bar/baz', query: 'key=value' -->
 ```
 
-### {{stripQuerystring}}
+## {{stripQuerystring}}
 
 Strip the query string from the given `url`.
 
@@ -131,7 +129,7 @@ Strip the query string from the given `url`.
 <!-- results in: 'http://example.com' -->
 ```
 
-### {{stripProtocol}}
+## {{stripProtocol}}
 
 Strip protocol from a `url`. Useful for displaying media that may have an 'http' protocol on secure connections.
 

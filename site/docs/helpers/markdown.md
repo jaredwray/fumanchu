@@ -8,9 +8,7 @@ order: 15
 
 ## Table of Contents
 
-## markdown
-
-### {{markdown}}
+## {{markdown}}
 
 Block helper that converts a string of inline markdown to HTML.
 
@@ -28,7 +26,7 @@ Block helper that converts a string of inline markdown to HTML.
 <!-- results in: <h1>Foo</h1> -->
 ```
 
-### {{md}}
+## {{md}}
 
 Converts a markdown string to HTML, or reads a markdown file from the file system and converts its contents to HTML.
 

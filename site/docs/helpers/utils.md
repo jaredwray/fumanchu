@@ -5,15 +5,13 @@ description: >
 order: 25
 ---
 
-## Table of Contents
-
-## Utils
-
 The following utils are exposed on `.utils`.
 
 Visit the: [code](https://github.com/jaredwray/fumanchu/tree/main/helpers/lib/utils/index.js)
 
-### [{{changecase}}](lib/utils/index.js#L54)
+## Table of Contents
+
+## [{{changecase}}](lib/utils/index.js#L54)
 
 Change casing on the given `string`, optionally passing a delimiter to use between words in the returned string.
 
@@ -32,7 +30,7 @@ utils.changecase('fooBarBaz' '-');
 //=> 'foo-bar-baz'
 ```
 
-### [{{random}}](lib/utils/index.js#L80)
+## [{{random}}](lib/utils/index.js#L80)
 
 Generate a random number
 

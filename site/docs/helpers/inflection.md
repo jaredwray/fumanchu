@@ -9,9 +9,7 @@ order: 14
 
 ## Table of Contents
 
-## inflection
-
-### {{inflect}}
+## {{inflect}}
 
 Returns either the `singular` or `plural` inflection of a word based on the given `count`.
 
@@ -38,7 +36,7 @@ Returns either the `singular` or `plural` inflection of a word based on the give
 <!-- "2 strings" -->
 ```
 
-### {{ordinalize}}
+## {{ordinalize}}
 
 Returns an ordinalized number as a string.
 

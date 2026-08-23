@@ -9,9 +9,7 @@ order: 21
 
 ## Table of Contents
 
-## path
-
-### {{absolute}}
+## {{absolute}}
 
 Resolve an absolute path from the given `filepath`.
 
@@ -27,7 +25,7 @@ Resolve an absolute path from the given `filepath`.
 <!-- results in: '/User/dev/docs/toc.md' -->
 ```
 
-### {{dirname}}
+## {{dirname}}
 
 Get the directory path segment from the given `filepath`.
 
@@ -43,7 +41,7 @@ Get the directory path segment from the given `filepath`.
 <!-- results in: 'docs' -->
 ```
 
-### {{relative}}
+## {{relative}}
 
 Get the relative filepath from `a` to `b`.
 
@@ -59,7 +57,7 @@ Get the relative filepath from `a` to `b`.
 {{relative a b}}
 ```
 
-### {{basename}}
+## {{basename}}
 
 Get the filename from the given `filepath`.
 
@@ -75,7 +73,7 @@ Get the filename from the given `filepath`.
 <!-- results in: 'toc.md' -->
 ```
 
-### {{stem}}
+## {{stem}}
 
 Get the "stem" (filename without extension) from the given `filepath`.
 
@@ -91,7 +89,7 @@ Get the "stem" (filename without extension) from the given `filepath`.
 <!-- results in: 'toc' -->
 ```
 
-### {{extname}}
+## {{extname}}
 
 Get the file extension from the given `filepath`.
 
@@ -107,7 +105,7 @@ Get the file extension from the given `filepath`.
 <!-- results in: '.md' -->
 ```
 
-### {{resolve}}
+## {{resolve}}
 
 Resolve an absolute path from the given `filepath`.
 
@@ -123,7 +121,7 @@ Resolve an absolute path from the given `filepath`.
 <!-- results in: '/User/dev/docs/toc.md' -->
 ```
 
-### {{segments}}
+## {{segments}}
 
 Get specific (joined) segments of a file path by passing a range of array indices.
 

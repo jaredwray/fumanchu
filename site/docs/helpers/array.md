@@ -10,9 +10,7 @@ order: 5
 
 ## Table of Contents
 
-## array
-
-### {{after}}
+## {{after}}
 
 Returns all of the items in an array after the specified index. Opposite of [before](#before).
 
@@ -30,7 +28,7 @@ Returns all of the items in an array after the specified index. Opposite of [bef
 <!-- results in: '["c"]' -->
 ```
 
-### {{arrayify}}
+## {{arrayify}}
 
 Cast the given `value` to an array.
 
@@ -46,7 +44,7 @@ Cast the given `value` to an array.
 <!-- results in: [ "foo" ] -->
 ```
 
-### {{before}}
+## {{before}}
 
 Return all of the items in the collection before the specified count. Opposite of [after](#after).
 
@@ -64,7 +62,7 @@ Return all of the items in the collection before the specified count. Opposite o
 <!-- results in: '["a", "b"]' -->
 ```
 
-### {{eachIndex}}
+## {{eachIndex}}
 
 **Params**
 
@@ -81,7 +79,7 @@ Return all of the items in the collection before the specified count. Opposite o
 {{/eachIndex}}
 ```
 
-### {{filter}}
+## {{filter}}
 
 Block helper that filters the given array and renders the block for values that evaluate to `true`, otherwise the inverse block is returned.
 
@@ -100,7 +98,7 @@ Block helper that filters the given array and renders the block for values that 
 <!-- results in: 'BBB' -->
 ```
 
-### {{first}}
+## {{first}}
 
 Returns the first item, or first `n` items of an array.
 
@@ -117,7 +115,7 @@ Returns the first item, or first `n` items of an array.
 <!-- results in: '["a", "b"]' -->
 ```
 
-### {{forEach}}
+## {{forEach}}
 
 Iterates over each item in an array and exposes the current item in the array as context to the inner block. In addition to the current array item, the helper exposes the following variables to the inner block:
 
@@ -149,7 +147,7 @@ private variables may be defined as hash arguments.
 {{/forEach}}
 ```
 
-### {{inArray}}
+## {{inArray}}
 
 Block helper that renders the block if an array has the given `value`. Optionally specify an inverse block to render when the array does not have the given value.
 
@@ -172,7 +170,7 @@ Block helper that renders the block if an array has the given `value`. Optionall
 <!-- results in: 'bar' -->
 ```
 
-### {{isArray}}
+## {{isArray}}
 
 Returns true if `value` is an es5 array.
 
@@ -192,7 +190,7 @@ Returns true if `value` is an es5 array.
 <!-- results in: true -->
 ```
 
-### {{itemAt}}
+## {{itemAt}}
 
 Returns the item from `array` at index `idx`.
 
@@ -210,7 +208,7 @@ Returns the item from `array` at index `idx`.
 <!-- results in: 'b' -->
 ```
 
-### {{join}}
+## {{join}}
 
 Join all elements of array into a string, optionally using a given separator.
 
@@ -230,7 +228,7 @@ Join all elements of array into a string, optionally using a given separator.
 {{join array '-'}}
 <!-- results in: 'a-b-c' -->
 ```
-### {{equalsLength}}
+## {{equalsLength}}
 
 Returns true if the the length of the given `value` is equal
 to the given `length`. Can be used as a block or inline helper.
@@ -242,7 +240,7 @@ to the given `length`. Can be used as a block or inline helper.
 * `options` **{Object}**
 * `returns` **{String}**
 
-### {{last}}
+## {{last}}
 
 Returns the last item, or last `n` items of an array or string. Opposite of [first](#first).
 
@@ -267,7 +265,7 @@ Returns the last item, or last `n` items of an array or string. Opposite of [fir
 <!-- results in: ['c', 'd', 'e'] -->
 ```
 
-### {{length}}
+## {{length}}
 
 Returns the length of the given string or array.
 
@@ -291,11 +289,11 @@ Returns the length of the given string or array.
 <!-- results in: 2 -->
 ```
 
-### {{lengthEqual}}
+## {{lengthEqual}}
 
 Alias for [equalsLength](#equalsLength)
 
-### {{map}}
+## {{map}}
 
 Returns a new array, created by calling `function` on each element of the given `array`. For example,
 
@@ -314,7 +312,7 @@ fictitious function that duplicates letters -->
 <!-- results in: '["aa", "bb", "cc"]' -->
 ```
 
-### {{pluck}}
+## {{pluck}}
 
 Map over the given object or array or objects and create an array of values from the given `prop`. Dot-notation may be used (as a string) to get nested properties.
 
@@ -331,7 +329,7 @@ Map over the given object or array or objects and create an array of values from
 <!-- results in: '["aa", "bb", "cc"]' -->
 ```
 
-### {{reverse}}
+## {{reverse}}
 
 Reverse the elements in an array, or the characters in a string.
 
@@ -351,7 +349,7 @@ Reverse the elements in an array, or the characters in a string.
 <!-- results in: ['d', 'c', 'b', 'a'] -->
 ```
 
-### {{some}}
+## {{some}}
 
 Block helper that returns the block if the callback returns true for some value in the given array.
 
@@ -374,7 +372,7 @@ Block helper that returns the block if the callback returns true for some value 
 <!-- results in: 'Render me if the array has a string.' -->
 ```
 
-### {{sort}}
+## {{sort}}
 
 Sort the given `array`. If an array of objects is passed, you may optionally pass a `key` to sort on as the second argument. You may alternatively pass a sorting function as the second argument.
 
@@ -391,7 +389,7 @@ Sort the given `array`. If an array of objects is passed, you may optionally pas
 <!-- results in: '["a", "b", "c"]' -->
 ```
 
-### {{sortBy}}
+## {{sortBy}}
 
 Sort an `array`. If an array of objects is passed, you may optionally pass a `key` to sort on as the second argument. You may alternatively pass a sorting function as the second argument.
 
@@ -408,7 +406,7 @@ Sort an `array`. If an array of objects is passed, you may optionally pass a `ke
 <!-- results in: '[{"a":"aaa"}, {"a":"zzz"}]' -->
 ```
 
-### {{withAfter}}
+## {{withAfter}}
 
 Use the items in the array _after_ the specified index as context inside a block. Opposite of [withBefore](#withBefore).
 
@@ -429,7 +427,7 @@ Use the items in the array _after_ the specified index as context inside a block
 <!-- results in: "de" -->
 ```
 
-### {{withBefore}}
+## {{withBefore}}
 
 Use the items in the array _before_ the specified index as context inside a block. Opposite of [withAfter](#withAfter).
 
@@ -450,7 +448,7 @@ Use the items in the array _before_ the specified index as context inside a bloc
 <!-- results in: 'ab' -->
 ```
 
-### {{withFirst}}
+## {{withFirst}}
 
 Use the first item in a collection inside a handlebars block expression. Opposite of [withLast](#withLast).
 
@@ -471,7 +469,7 @@ Use the first item in a collection inside a handlebars block expression. Opposit
 <!-- results in: 'a' -->
 ```
 
-### {{withGroup}}
+## {{withGroup}}
 
 Block helper that groups array elements by given group `size`.
 
@@ -497,7 +495,7 @@ Block helper that groups array elements by given group `size`.
 <!-- 'e','f','g','h'<br> -->
 ```
 
-### {{withLast}}
+## {{withLast}}
 
 Use the last item or `n` items in an array as context inside a block. Opposite of [withFirst](#withFirst).
 
@@ -518,7 +516,7 @@ Use the last item or `n` items in an array as context inside a block. Opposite o
 <!-- results in: 'c' -->
 ```
 
-### {{withSort}}
+## {{withSort}}
 
 Block helper that sorts a collection and exposes the sorted collection as context inside the block.
 
@@ -537,7 +535,7 @@ Block helper that sorts a collection and exposes the sorted collection as contex
 <!-- results in: 'abc' -->
 ```
 
-### {{unique}}
+## {{unique}}
 
 Block helper that return an array with all duplicate values removed. Best used along with a [each](#each) helper.
 

@@ -13,7 +13,7 @@ order: 10
 
 Fumanchu provides powerful date manipulation capabilities using dayjs and chrono-node for natural language date parsing.
 
-### {{year}}
+## {{year}}
 
 Get the current year as a string.
 
@@ -24,7 +24,7 @@ Get the current year as a string.
 <!-- 2025 -->
 ```
 
-### {{date}}
+## {{date}}
 
 Format a date with support for human-readable date strings, Date objects, timestamps, or defaults to current date.
 
@@ -60,7 +60,7 @@ Format a date with support for human-readable date strings, Date objects, timest
 <!-- 15/01/2023 -->
 ```
 
-### {{moment}}
+## {{moment}}
 
 Legacy alias for `{{date}}`. Works exactly the same as the date helper.
 
@@ -75,7 +75,7 @@ Legacy alias for `{{date}}`. Works exactly the same as the date helper.
 
 ## Current Time Helpers
 
-### {{timestamp}}
+## {{timestamp}}
 
 Returns the current Unix timestamp in milliseconds.
 
@@ -86,7 +86,7 @@ Returns the current Unix timestamp in milliseconds.
 <!-- 1700236800000 -->
 ```
 
-### {{now}}
+## {{now}}
 
 Returns the current date/time with optional formatting.
 
@@ -110,7 +110,7 @@ Returns the current date/time with optional formatting.
 
 ## Relative Time Helpers
 
-### {{fromNow}}
+## {{fromNow}}
 
 Display relative time from now (e.g., "5 minutes ago", "in 2 hours").
 
@@ -130,7 +130,7 @@ Display relative time from now (e.g., "5 minutes ago", "in 2 hours").
 <!-- 10 months ago -->
 ```
 
-### {{ago}}
+## {{ago}}
 
 Alias for `{{fromNow}}`. Shows how long ago a date was.
 
@@ -141,7 +141,7 @@ Alias for `{{fromNow}}`. Shows how long ago a date was.
 <!-- 5 minutes ago -->
 ```
 
-### {{toNow}}
+## {{toNow}}
 
 Opposite of `fromNow`. Shows relative time to now (less commonly used).
 
@@ -156,7 +156,7 @@ Opposite of `fromNow`. Shows relative time to now (less commonly used).
 
 ## Date Arithmetic Helpers
 
-### {{dateAdd}}
+## {{dateAdd}}
 
 Add time to a date.
 
@@ -178,7 +178,7 @@ Add time to a date.
 <!-- 2026-11-17 14:30:45 (current date + 1 year) -->
 ```
 
-### {{dateSubtract}}
+## {{dateSubtract}}
 
 Subtract time from a date.
 
@@ -201,7 +201,7 @@ Subtract time from a date.
 
 ## Date Period Helpers
 
-### {{startOf}}
+## {{startOf}}
 
 Get the start of a time period.
 
@@ -222,7 +222,7 @@ Get the start of a time period.
 <!-- 2023-01-15 00:00:00 -->
 ```
 
-### {{endOf}}
+## {{endOf}}
 
 Get the end of a time period.
 
@@ -244,7 +244,7 @@ Get the end of a time period.
 
 ## Date Comparison Helpers
 
-### {{isBefore}}
+## {{isBefore}}
 
 Check if the first date is before the second date.
 
@@ -262,7 +262,7 @@ Check if the first date is before the second date.
 {{/if}}
 ```
 
-### {{isAfter}}
+## {{isAfter}}
 
 Check if the first date is after the second date.
 
@@ -280,7 +280,7 @@ Check if the first date is after the second date.
 {{/if}}
 ```
 
-### {{isSame}}
+## {{isSame}}
 
 Check if two dates are the same, with optional unit precision.
 
@@ -303,7 +303,7 @@ Check if two dates are the same, with optional unit precision.
 {{/if}}
 ```
 
-### {{isBetween}}
+## {{isBetween}}
 
 Check if a date is between two other dates (inclusive).
 
@@ -326,7 +326,7 @@ Check if a date is between two other dates (inclusive).
 
 ## Date Utilities
 
-### {{diff}}
+## {{diff}}
 
 Calculate the difference between two dates.
 
@@ -350,7 +350,7 @@ Calculate the difference between two dates.
 <!-- 2 -->
 ```
 
-### {{toISOString}}
+## {{toISOString}}
 
 Convert a date to ISO 8601 format.
 
@@ -371,7 +371,7 @@ Convert a date to ISO 8601 format.
 
 ## Internationalization Helpers
 
-### {{dateTimezone}}
+## {{dateTimezone}}
 
 Format a date in a specific timezone.
 
@@ -390,7 +390,7 @@ Format a date in a specific timezone.
 <!-- 2023-01-15 00:00:00 -->
 ```
 
-### {{dateLocale}}
+## {{dateLocale}}
 
 Format a date with a specific locale.
 
