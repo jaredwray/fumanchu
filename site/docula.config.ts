@@ -23,7 +23,7 @@ export const options: Partial<DoculaOptions> = {
 	],
 	ai: {
 		provider: 'openai',
-		model: 'gpt-4o-mini',
+		model: 'gpt-5.6-luna',
 		apiKey: process.env.OPENAI_API_KEY,
 	},
 	sections: [
