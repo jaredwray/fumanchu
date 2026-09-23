@@ -96,7 +96,7 @@
     "chrono-node": "2.10.1",
     "dayjs": "^1.11.23",
     "handlebars": "^4.7.9",
-    "markdown-it": "^15.0.0",
+    "markdown-it": "^15.0.2",
     "micromatch": "^4.0.8"
   },
   "devDependencies": {
