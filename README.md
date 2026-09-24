@@ -11,6 +11,7 @@ Handlebars + Helpers Together
 ](https://github.com/jaredwray/fumanchu/blob/main/LICENSE)
 [![npm](https://img.shields.io/npm/dm/@jaredwray/fumanchu)](https://npmjs.com/package/@jaredwray/fumanchu)
 [![](https://data.jsdelivr.com/v1/package/npm/@jaredwray/fumanchu/badge)](https://www.jsdelivr.com/package/npm/@jaredwray/fumanchu)
+[![Drydock review](https://img.shields.io/endpoint?url=https%3A%2F%2Fdrydock.org%2Fpublic%2Fbadge%2Fnpm%2F%40jaredwray%2Ffumanchu)](https://drydock.org/diff/@jaredwray/fumanchu)
 
 [Handlebars](https://github.com/handlebars-lang/handlebars.js) + [Handlebars-helpers](https://github.com/helpers/handlebars-helpers) (helpers are now maintained in this project) combined into a single package. In addition this project has **drastically** reduced the number of dependencies. 
 
