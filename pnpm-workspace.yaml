@@ -1,6 +1,12 @@
 minimumReleaseAge: 10080
 minimumReleaseAgeStrict: true
 minimumReleaseAgeIgnoreMissingTime: false
+# These releases patch published advisories and are still inside the 7-day
+# window. Exempt these versions only so frozen installs can resolve them.
+# argparse@3.0.3 is required by markdown-it@15.0.3 (^3.0.3).
+minimumReleaseAgeExclude:
+  - markdown-it@15.0.3
+  - argparse@3.0.3
 trustPolicy: no-downgrade
 strictDepBuilds: true
 dangerouslyAllowAllBuilds: false
