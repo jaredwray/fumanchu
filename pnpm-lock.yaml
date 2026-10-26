@@ -163,7 +163,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@vitest/mocker>vite': 7.3.7
   vite>postcss: 8.5.29
   postcss>nanoid: 3.3.20
   minimatch@3>brace-expansion: 1.1.21
@@ -1147,7 +1146,7 @@ packages:
     resolution: {integrity: sha512-6K1DoBNAPGvuOcSsGA4D6x+5zEEff/KmOOP3uetT2TrGpVfI+HRHRnJJfKi5ib/g1vx8IYHQD8s0pbJz8WQI7Q==}
     peerDependencies:
       msw: ^2.4.9
-      vite: 7.3.7
+      vite: ^6.0.0 || ^7.0.0 || ^8.0.0
     peerDependenciesMeta:
       msw:
         optional: true
