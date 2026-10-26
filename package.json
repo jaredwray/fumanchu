@@ -89,7 +89,7 @@
   "files": [
     "dist",
     "site/logo.svg",
-    "license"
+    "LICENSE"
   ],
   "dependencies": {
     "@cacheable/memory": "^2.2.0",
