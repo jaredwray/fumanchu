@@ -163,7 +163,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@ai-sdk/provider-utils>undici': 7.30.0
   vitest>vite: 7.3.7
   '@vitest/mocker>vite': 7.3.7
   vite>postcss: 8.5.29

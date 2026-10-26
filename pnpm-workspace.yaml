@@ -20,7 +20,6 @@ allowBuilds:
 # (undici 8.x, and brace-expansion 1.x vs 5.x).
 # Versions are the newest releases that satisfy the 7-day minimumReleaseAge.
 overrides:
-  "@ai-sdk/provider-utils>undici": 7.30.0
   "vitest>vite": 7.3.7
   "@vitest/mocker>vite": 7.3.7
   "vite>postcss": 8.5.29
