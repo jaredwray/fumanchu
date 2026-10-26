@@ -93,7 +93,7 @@
   ],
   "dependencies": {
     "@cacheable/memory": "^2.2.0",
-    "chrono-node": "2.10.1",
+    "chrono-node": "2.10.3",
     "dayjs": "^1.11.23",
     "handlebars": "^4.7.10",
     "markdown-it": "^15.0.3",
