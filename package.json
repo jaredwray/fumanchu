@@ -2,7 +2,7 @@
   "name": "@jaredwray/fumanchu",
   "description": "Handlebars + Helpers = Fumanchu",
   "version": "4.7.4",
-  "packageManager": "pnpm@12.4.2+sha512.08adc6613180275c7c9edada39dcf08c9c61ad4e7eaf330a4f3461f102b0f907423454d117f98e72d47fef0616070644d7bffc973a6a57f5090a6d7c368b07c9",
+  "packageManager": "pnpm@12.14.0+sha512.c18ba6d87993d3d164cb5e8948f32b2c06ee854487e06cd8d86781342fb3e5bb4634367034711e86802baa9c37bea906ce1929ad08d70884c97d801df13389a6",
   "homepage": "https://github.com/jaredwray/fumanchu",
   "author": "Jared Wray (me@jaredwray.com)",
   "type": "module",
