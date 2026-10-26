@@ -162,9 +162,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  minimatch@10>brace-expansion: 5.0.12
-
 importers:
 
   .:
