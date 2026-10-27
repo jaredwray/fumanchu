@@ -4,9 +4,11 @@ minimumReleaseAgeIgnoreMissingTime: false
 # These releases patch published advisories and are still inside the 7-day
 # window. Exempt these versions only so frozen installs can resolve them.
 # argparse@3.0.3 is required by markdown-it@15.0.3 (^3.0.3).
+# happy-dom@21.0.4 patches GHSA-834v-8h66-3h79 (CVE-2026-115895).
 minimumReleaseAgeExclude:
   - markdown-it@15.0.3
   - argparse@3.0.3
+  - happy-dom@21.0.4
 trustPolicy: no-downgrade
 strictDepBuilds: true
 dangerouslyAllowAllBuilds: false
