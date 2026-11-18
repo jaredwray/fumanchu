@@ -1,4 +1,5 @@
 import type { Helper } from "../helper-registry.js";
+import { isHandlebarsOptions } from "../utils.js";
 
 type ForEachOptions<T> = {
 	fn?: (context: T, frame?: { data: Record<string, unknown> }) => string;
@@ -58,10 +59,11 @@ const length = (value: unknown): number => {
 	return 0;
 };
 
-const join = (array: unknown, separator = ", "): string => {
+const join = (array: unknown, separator: unknown = ", "): string => {
 	if (typeof array === "string") return array;
 	if (!Array.isArray(array)) return "";
-	return array.join(separator);
+	const sep = isHandlebarsOptions(separator) ? ", " : String(separator);
+	return array.join(sep);
 };
 
 const forEach = function <T extends Record<string, unknown>>(
@@ -624,38 +626,24 @@ const unique = function (
 	array: unknown,
 	options?: BlockHelperOptions,
 ): string | unknown[] {
-	if (!Array.isArray(array)) {
-		// If used as inline helper
-		/* v8 ignore next -- @preserve */
-		if (!options) {
-			return [];
+	if (typeof options?.fn === "function") {
+		if (!Array.isArray(array) || array.length === 0) {
+			// biome-ignore lint/style/noNonNullAssertion: inverse is present when fn is present
+			return options.inverse!(this);
 		}
-		// If used as block helper
-		/* v8 ignore next -- @preserve */
-		return options.inverse ? (options.inverse(this) ?? "") : "";
-	}
 
-	const uniqueArray = [...new Set(array)];
-
-	// If used as inline helper (no options)
-	if (!options) {
-		return uniqueArray;
-	}
-
-	// If used as block helper
-	if (uniqueArray.length === 0 && options.inverse) {
-		return options.inverse(this);
-	}
-
-	if (uniqueArray.length > 0 && options.fn) {
 		let result = "";
-		for (const item of uniqueArray) {
+		for (const item of new Set(array)) {
 			result += options.fn(item);
 		}
 		return result;
 	}
 
-	return "";
+	if (!Array.isArray(array)) {
+		return [];
+	}
+
+	return [...new Set(array)];
 };
 
 export const helpers: Helper[] = [

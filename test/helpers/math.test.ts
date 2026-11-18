@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { helpers } from "../../src/helpers/math.js";
+import { fumanchu } from "../../src/index.node.js";
 
 type HelperFn = (...args: unknown[]) => unknown;
 
@@ -37,6 +38,13 @@ describe("avg", () => {
 	});
 	it("averages arrays", () => {
 		expect(fn([1, 3, 6, 9])).toBe(4.75);
+	});
+	it("ignores the Handlebars options object", () => {
+		const handlebars = fumanchu();
+		expect(handlebars.compile("{{avg nums}}")({ nums: [1, 2, 3, 4, 5] })).toBe(
+			"3",
+		);
+		expect(handlebars.compile("{{avg 10 20}}")({})).toBe("15");
 	});
 });
 
