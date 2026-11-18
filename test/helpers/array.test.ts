@@ -1823,6 +1823,17 @@ describe("unique", () => {
 		expect(result).toBe("not an array");
 	});
 
+	it("returns an empty string when a block has no inverse", () => {
+		const options = {
+			fn() {
+				throw new Error("should not run");
+			},
+		};
+
+		expect(uniqueFn.call({}, [], options)).toBe("");
+		expect(uniqueFn.call({}, "not array", options)).toBe("");
+	});
+
 	it("returns unique values from a subexpression", () => {
 		const handlebars = fumanchu();
 		const template = handlebars.compile(

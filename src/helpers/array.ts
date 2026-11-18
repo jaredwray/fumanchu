@@ -628,8 +628,10 @@ const unique = function (
 ): string | unknown[] {
 	if (typeof options?.fn === "function") {
 		if (!Array.isArray(array) || array.length === 0) {
-			// biome-ignore lint/style/noNonNullAssertion: inverse is present when fn is present
-			return options.inverse!(this);
+			if (typeof options.inverse !== "function") {
+				return "";
+			}
+			return options.inverse(this);
 		}
 
 		let result = "";
