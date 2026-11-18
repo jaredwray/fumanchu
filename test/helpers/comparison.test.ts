@@ -148,7 +148,7 @@ describe("utility helpers", () => {
 		expect(fn(null)).toBe(false);
 		expect(fn(false, { a: 1 })).toBe(true);
 	});
-	it("ignores the Handlebars options object", () => {
+	it("or ignores the Handlebars options object", () => {
 		const handlebars = fumanchu();
 		const template = handlebars.compile("{{#if (or a b)}}yes{{else}}no{{/if}}");
 		expect(template({ a: false, b: false })).toBe("no");
