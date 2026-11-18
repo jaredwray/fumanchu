@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { falsey, helpers } from "../../src/helpers/comparison.js";
+import { fumanchu } from "../../src/index.node.js";
 
 type HelperFn = (...args: unknown[]) => unknown;
 
@@ -144,6 +145,17 @@ describe("utility helpers", () => {
 		const fn = getHelper("or");
 		expect(fn(false, 0, "a")).toBe(true);
 		expect(fn(false, 0, "")).toBe(false);
+		expect(fn(null)).toBe(false);
+		expect(fn(false, { a: 1 })).toBe(true);
+	});
+	it("or ignores the Handlebars options object", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile("{{#if (or a b)}}yes{{else}}no{{/if}}");
+		expect(template({ a: false, b: false })).toBe("no");
+		expect(template({ a: false, b: true })).toBe("yes");
+		expect(handlebars.compile("{{#if (or)}}yes{{else}}no{{/if}}")({})).toBe(
+			"no",
+		);
 	});
 	it("unless helpers", () => {
 		const unlessEq = getHelper("unlessEq");

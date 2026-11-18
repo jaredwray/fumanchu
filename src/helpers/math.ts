@@ -1,4 +1,5 @@
 import type { Helper } from "../helper-registry.js";
+import { isHandlebarsOptions } from "../utils.js";
 
 const isNumeric = (value: unknown): value is number | string =>
 	(typeof value === "number" && !Number.isNaN(value)) ||
@@ -25,8 +26,10 @@ const add = (a: unknown, b: unknown): number | "" => {
 	return "";
 };
 
-const avg = (...values: Array<number | number[]>): number => {
-	const flat: number[] = values.flat().map((n) => Number(n));
+const avg = (...values: unknown[]): number => {
+	const last = values[values.length - 1];
+	const data = isHandlebarsOptions(last) ? values.slice(0, -1) : values;
+	const flat = data.flat().map((value) => Number(value));
 	return sum(flat) / flat.length;
 };
 

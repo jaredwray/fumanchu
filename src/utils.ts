@@ -93,3 +93,10 @@ export const options = (thisArg: any, locals?: any, opts?: any): any => {
 
 	return result;
 };
+
+/**
+ * The function returns true when the value is the Handlebars options object.
+ */
+export const isHandlebarsOptions = (value: unknown): boolean =>
+	typeof (value as { lookupProperty?: unknown } | null)?.lookupProperty ===
+	"function";

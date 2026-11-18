@@ -90,6 +90,13 @@ describe("join", () => {
 	const joinFn = getHelper("join");
 	it("joins arrays", () => {
 		expect(joinFn(["a", "b"], "-")).toBe("a-b");
+		expect(joinFn(["a", "b", "c"])).toBe("a, b, c");
+	});
+	it("ignores the Handlebars options object", () => {
+		const handlebars = fumanchu();
+		expect(
+			handlebars.compile("{{join letters}}")({ letters: ["a", "b", "c"] }),
+		).toBe("a, b, c");
 	});
 	it("echoes string input", () => {
 		expect(joinFn("hi")).toBe("hi");
@@ -1805,6 +1812,9 @@ describe("unique", () => {
 
 	it("returns inverse for non-arrays (block mode)", () => {
 		const result = uniqueFn.call({}, "not array", {
+			fn() {
+				throw new Error("should not run");
+			},
 			inverse() {
 				return "not an array";
 			},
@@ -1813,17 +1823,24 @@ describe("unique", () => {
 		expect(result).toBe("not an array");
 	});
 
-	it("returns empty string when no fn or inverse in block mode", () => {
-		const result = uniqueFn.call({}, ["a", "b"], {});
-		expect(result).toBe("");
+	it("returns an empty string when a block has no inverse", () => {
+		const options = {
+			fn() {
+				throw new Error("should not run");
+			},
+		};
+
+		expect(uniqueFn.call({}, [], options)).toBe("");
+		expect(uniqueFn.call({}, "not array", options)).toBe("");
 	});
 
-	it("works with direct call as inline helper", () => {
-		// Note: When unique is used inside {{#each (unique array)}}, Handlebars passes
-		// an options object, making it behave as a block helper instead of inline.
-		// Test direct call for inline behavior.
-		const result = uniqueFn.call({}, ["a", "a", "c", "b", "e", "e"]);
-		expect(result).toEqual(["a", "c", "b", "e"]);
+	it("returns unique values from a subexpression", () => {
+		const handlebars = fumanchu();
+		const template = handlebars.compile(
+			"{{#each (unique array)}}{{.}}{{/each}}",
+		);
+
+		expect(template({ array: ["a", "a", "c", "b", "e", "e"] })).toBe("acbe");
 	});
 
 	it("works with Handlebars markup template as block helper", () => {

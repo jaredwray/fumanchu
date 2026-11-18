@@ -1,5 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny lint/suspicious/noDoubleEquals: helpers accept any values
 import type { Helper } from "../helper-registry.js";
+import { isHandlebarsOptions } from "../utils.js";
 
 const and = (...values: any[]): boolean => values.every(Boolean);
 
@@ -120,7 +121,11 @@ const neither = (a: any, b: any): boolean => !a && !b;
 
 const not = (val: any): boolean => !val;
 
-const or = (...values: any[]): boolean => values.some(Boolean);
+const or = (...values: any[]): boolean => {
+	const last = values[values.length - 1];
+	const args = isHandlebarsOptions(last) ? values.slice(0, -1) : values;
+	return args.some(Boolean);
+};
 
 const unlessEq = (a: any, b: any): boolean => a !== b;
 
