@@ -10,3 +10,7 @@ allowBuilds:
   # wrangler-action installs wrangler on site deploy; wrangler needs workerd's
   # postinstall to unpack the native binary (ERR_PNPM_IGNORED_BUILDS otherwise).
   workerd: true
+# GHSA-p4f5-76q4-ffq7: vitest peers vite with a range that still resolves 7.3.7.
+overrides:
+  "vite@^6.4.0 || ^7.0.0 || ^8.0.0": 7.3.8
+  "vite@^6.0.0 || ^7.0.0 || ^8.0.0": 7.3.8
