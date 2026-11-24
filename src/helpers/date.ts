@@ -48,13 +48,14 @@ const parseDateInput = (input: DateInput): dayjs.Dayjs => {
 
 const year = () => new Date().getFullYear().toString();
 
-// Convert lowercase format tokens to uppercase for dayjs compatibility
+// Change legacy date tokens to Day.js tokens.
+// Keep minutes in time patterns, such as HH:mm and mm:ss.
 const convertFormatString = (format: string): string => {
 	return format
 		.replace(/yyyy/g, "YYYY")
 		.replace(/yy/g, "YY")
 		.replace(/dd/g, "DD")
-		.replace(/mm/g, "MM")
+		.replace(/[Hh]:mm|mm:ss|mm/g, (token) => (token === "mm" ? "MM" : token))
 		.replace(/hh/g, "HH");
 };
 

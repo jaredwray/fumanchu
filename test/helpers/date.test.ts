@@ -4,7 +4,7 @@ import isBetween from "dayjs/plugin/isBetween.js";
 import relativeTime from "dayjs/plugin/relativeTime.js";
 import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { helpers } from "../../src/helpers/date.js";
 
 // Enable dayjs plugins for testing
@@ -106,10 +106,7 @@ describe("date", () => {
 			"January 15, 2023 14:30:45",
 			"yyyy-mm-dd hh:mm:ss",
 		);
-		const expectedDate = dayjs(parseDate("January 15, 2023 14:30:45")).format(
-			"YYYY-MM-DD HH:MM:ss",
-		);
-		expect(formattedDate).toBe(expectedDate);
+		expect(formattedDate).toBe("2023-01-15 14:30:45");
 	});
 
 	it("should use default format when no format is provided", () => {
@@ -219,9 +216,13 @@ describe("now", () => {
 		const nowHelper = helpers.find((helper) => helper.name === "now");
 		expect(nowHelper).toBeDefined();
 
-		const result = nowHelper?.fn();
-		// Just check the format is correct, not the exact time
-		expect(result).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/);
+		vi.useFakeTimers();
+		try {
+			vi.setSystemTime(new Date(2023, 10, 15, 14, 5, 7));
+			expect(nowHelper?.fn()).toBe("2023-11-15 14:05:07");
+		} finally {
+			vi.useRealTimers();
+		}
 	});
 
 	it("should return current date with custom format", () => {
@@ -689,18 +690,61 @@ describe("dateTimezone", () => {
 		expect(typeof dateTimezoneHelper?.fn).toBe("function");
 	});
 
-	it("should format date in specific timezone", () => {
+	it.each([
+		["HH:mm:ss", "09:05:07"],
+		["HH:m:ss", "09:5:07"],
+		["HH:mm", "09:05"],
+		["H:mm:ss", "9:05:07"],
+		["mm:ss", "05:07"],
+		["YYYY-MM-DD HH:mm:ss", "2023-11-15 09:05:07"],
+		["yyyy-mm-dd hh:mm:ss", "2023-11-15 09:05:07"],
+		["yyyy-mm-dd", "2023-11-15"],
+		["dd/mm/yyyy", "15/11/2023"],
+		["mm/dd/yy", "11/15/23"],
+		["mm", "11"],
+	])("formats %s in the specified timezone", (format, expected) => {
 		const dateTimezoneHelper = helpers.find(
 			(helper) => helper.name === "dateTimezone",
 		);
 		expect(dateTimezoneHelper).toBeDefined();
 
 		const result = dateTimezoneHelper?.fn(
-			"2023-01-15 12:00:00",
+			new Date("2023-11-15T14:05:07Z"),
 			"America/New_York",
-			"YYYY-MM-DD HH:mm:ss",
+			format,
 		);
-		expect(result).toMatch(/2023-01-15 \d{2}:\d{2}:\d{2}/);
+		expect(result).toBe(expected);
+	});
+
+	it.each(["00", "05", "09", "30", "59"])(
+		"formats %s minutes with two digits",
+		(minutes) => {
+			const dateTimezoneHelper = helpers.find(
+				(helper) => helper.name === "dateTimezone",
+			);
+			expect(dateTimezoneHelper).toBeDefined();
+
+			const result = dateTimezoneHelper?.fn(
+				new Date(`2023-11-15T14:${minutes}:07Z`),
+				"UTC",
+				"HH:mm:ss",
+			);
+			expect(result).toBe(`14:${minutes}:07`);
+		},
+	);
+
+	it("keeps the legacy 24-hour format for hh", () => {
+		const dateTimezoneHelper = helpers.find(
+			(helper) => helper.name === "dateTimezone",
+		);
+		expect(dateTimezoneHelper).toBeDefined();
+
+		const result = dateTimezoneHelper?.fn(
+			new Date("2023-11-15T14:05:07Z"),
+			"UTC",
+			"hh:mm:ss",
+		);
+		expect(result).toBe("14:05:07");
 	});
 
 	it("should use default format when not provided", () => {
@@ -709,8 +753,11 @@ describe("dateTimezone", () => {
 		);
 		expect(dateTimezoneHelper).toBeDefined();
 
-		const result = dateTimezoneHelper?.fn("2023-01-15", "UTC");
-		expect(result).toMatch(/2023-01-15 \d{2}:\d{2}:\d{2}/);
+		const result = dateTimezoneHelper?.fn(
+			new Date("2023-11-15T14:05:07Z"),
+			"UTC",
+		);
+		expect(result).toBe("2023-11-15 14:05:07");
 	});
 });
 
@@ -741,7 +788,7 @@ describe("dateLocale", () => {
 		);
 		expect(dateLocaleHelper).toBeDefined();
 
-		const result = dateLocaleHelper?.fn("2023-01-15", "en");
-		expect(result).toMatch(/2023-01-15 \d{2}:\d{2}:\d{2}/);
+		const result = dateLocaleHelper?.fn(new Date(2023, 10, 15, 14, 5, 7), "en");
+		expect(result).toBe("2023-11-15 14:05:07");
 	});
 });

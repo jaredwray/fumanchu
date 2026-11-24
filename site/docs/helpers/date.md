@@ -35,11 +35,14 @@ Format a date with support for human-readable date strings, Date objects, timest
 **Supported format tokens:**
 - `YYYY` or `yyyy`: 4-digit year
 - `YY` or `yy`: 2-digit year
-- `MM` or `mm`: Month (01-12)
+- `MM`: Month (01-12)
 - `DD` or `dd`: Day of month (01-31)
 - `HH` or `hh`: Hour (00-23)
 - `mm`: Minute (00-59)
 - `ss`: Second (00-59)
+
+Legacy date formats such as `yyyy-mm-dd` and `dd/mm/yyyy` also accept `mm` for the month.
+The converter treats `mm` as minutes after `H:` or `h:`, or before `:ss`.
 
 **Examples**
 
