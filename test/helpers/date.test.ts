@@ -694,6 +694,7 @@ describe("dateTimezone", () => {
 		["HH:mm:ss", "09:05:07"],
 		["HH:m:ss", "09:5:07"],
 		["HH:mm", "09:05"],
+		["hh:mm", "09:05"],
 		["H:mm:ss", "9:05:07"],
 		["mm:ss", "05:07"],
 		["YYYY-MM-DD HH:mm:ss", "2023-11-15 09:05:07"],
@@ -732,20 +733,6 @@ describe("dateTimezone", () => {
 			expect(result).toBe(`14:${minutes}:07`);
 		},
 	);
-
-	it("keeps the legacy 24-hour format for hh", () => {
-		const dateTimezoneHelper = helpers.find(
-			(helper) => helper.name === "dateTimezone",
-		);
-		expect(dateTimezoneHelper).toBeDefined();
-
-		const result = dateTimezoneHelper?.fn(
-			new Date("2023-11-15T14:05:07Z"),
-			"UTC",
-			"hh:mm:ss",
-		);
-		expect(result).toBe("14:05:07");
-	});
 
 	it("should use default format when not provided", () => {
 		const dateTimezoneHelper = helpers.find(
