@@ -6,6 +6,7 @@ import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
 import { describe, expect, it, vi } from "vitest";
 import { helpers } from "../../src/helpers/date.js";
+import { fumanchu } from "../../src/index.node.js";
 
 // Enable dayjs plugins for testing
 dayjs.extend(relativeTime);
@@ -109,21 +110,20 @@ describe("date", () => {
 		expect(formattedDate).toBe("2023-01-15 14:30:45");
 	});
 
-	it("should use default format when no format is provided", () => {
-		const dateHelper = helpers.find((helper) => helper.name === "date");
-		expect(dateHelper).toBeDefined();
-
-		const formattedDate = dateHelper?.fn("January 15, 2023");
-		expect(formattedDate).toBe("2023-01-15");
+	it("uses the default format when the template supplies only a date", () => {
+		const render = fumanchu().compile("{{date value}}");
+		expect(render({ value: "January 15, 2023" })).toBe("2023-01-15");
 	});
 
-	it("should default to current date when no date is provided", () => {
-		const dateHelper = helpers.find((helper) => helper.name === "date");
-		expect(dateHelper).toBeDefined();
-
-		const formattedDate = dateHelper?.fn();
-		const expectedDate = dayjs().format("YYYY-MM-DD");
-		expect(formattedDate).toBe(expectedDate);
+	it("uses the current date when the template omits both arguments", () => {
+		const render = fumanchu().compile("{{date}}");
+		vi.useFakeTimers();
+		try {
+			vi.setSystemTime(new Date(2023, 0, 15));
+			expect(render({})).toBe("2023-01-15");
+		} finally {
+			vi.useRealTimers();
+		}
 	});
 
 	it("should handle Date objects", () => {
@@ -212,14 +212,12 @@ describe("now", () => {
 		expect(typeof nowHelper?.fn).toBe("function");
 	});
 
-	it("should return current date with default format", () => {
-		const nowHelper = helpers.find((helper) => helper.name === "now");
-		expect(nowHelper).toBeDefined();
-
+	it("uses the default format when the template omits the format", () => {
+		const render = fumanchu().compile("{{now}}");
 		vi.useFakeTimers();
 		try {
 			vi.setSystemTime(new Date(2023, 10, 15, 14, 5, 7));
-			expect(nowHelper?.fn()).toBe("2023-11-15 14:05:07");
+			expect(render({})).toBe("2023-11-15 14:05:07");
 		} finally {
 			vi.useRealTimers();
 		}
@@ -694,6 +692,7 @@ describe("dateTimezone", () => {
 		["HH:mm:ss", "09:05:07"],
 		["HH:m:ss", "09:5:07"],
 		["HH:mm", "09:05"],
+		["HHmm", "0905"],
 		["hh:mm", "09:05"],
 		["H:mm:ss", "9:05:07"],
 		["mm:ss", "05:07"],
@@ -704,16 +703,13 @@ describe("dateTimezone", () => {
 		["mm/dd/yy", "11/15/23"],
 		["mm", "11"],
 	])("formats %s in the specified timezone", (format, expected) => {
-		const dateTimezoneHelper = helpers.find(
-			(helper) => helper.name === "dateTimezone",
+		const render = fumanchu().compile(
+			'{{dateTimezone value "America/New_York" format}}',
 		);
-		expect(dateTimezoneHelper).toBeDefined();
-
-		const result = dateTimezoneHelper?.fn(
-			new Date("2023-11-15T14:05:07Z"),
-			"America/New_York",
+		const result = render({
+			value: new Date("2023-11-15T14:05:07Z"),
 			format,
-		);
+		});
 		expect(result).toBe(expected);
 	});
 
@@ -734,17 +730,11 @@ describe("dateTimezone", () => {
 		},
 	);
 
-	it("should use default format when not provided", () => {
-		const dateTimezoneHelper = helpers.find(
-			(helper) => helper.name === "dateTimezone",
+	it("uses the default format when the template omits the format", () => {
+		const render = fumanchu().compile('{{dateTimezone value "UTC"}}');
+		expect(render({ value: new Date("2023-11-15T14:05:07Z") })).toBe(
+			"2023-11-15 14:05:07",
 		);
-		expect(dateTimezoneHelper).toBeDefined();
-
-		const result = dateTimezoneHelper?.fn(
-			new Date("2023-11-15T14:05:07Z"),
-			"UTC",
-		);
-		expect(result).toBe("2023-11-15 14:05:07");
 	});
 });
 
@@ -769,13 +759,10 @@ describe("dateLocale", () => {
 		expect(result).toBe("2023-01-15");
 	});
 
-	it("should use default format when not provided", () => {
-		const dateLocaleHelper = helpers.find(
-			(helper) => helper.name === "dateLocale",
+	it("uses the default format when the template omits the format", () => {
+		const render = fumanchu().compile('{{dateLocale value "en"}}');
+		expect(render({ value: new Date(2023, 10, 15, 14, 5, 7) })).toBe(
+			"2023-11-15 14:05:07",
 		);
-		expect(dateLocaleHelper).toBeDefined();
-
-		const result = dateLocaleHelper?.fn(new Date(2023, 10, 15, 14, 5, 7), "en");
-		expect(result).toBe("2023-11-15 14:05:07");
 	});
 });

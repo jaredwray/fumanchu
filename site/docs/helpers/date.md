@@ -41,8 +41,9 @@ Format a date with support for human-readable date strings, Date objects, timest
 - `mm`: Minute (00-59)
 - `ss`: Second (00-59)
 
-Legacy date formats such as `yyyy-mm-dd` and `dd/mm/yyyy` also accept `mm` for the month.
-The converter treats `mm` as minutes after `H:` or `h:`, or before `:ss`.
+After an hour token, `mm` gives minutes in formats with or without a colon, such as `HH:mm` and `HHmm`.
+It also gives minutes before `:ss`, as in `mm:ss`.
+In other positions, `mm` gives the month, as in `yyyy-mm-dd`, `dd/mm/yyyy`, or `mm` alone.
 
 **Examples**
 
