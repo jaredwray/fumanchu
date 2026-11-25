@@ -5,6 +5,7 @@ import relativeTime from "dayjs/plugin/relativeTime.js";
 import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
 import type { Helper } from "../helper-registry.js";
+import { isHandlebarsOptions } from "../utils.js";
 
 // Enable dayjs plugins once at module initialization
 // dayjs.extend() is idempotent and safe to call multiple times
@@ -48,31 +49,33 @@ const parseDateInput = (input: DateInput): dayjs.Dayjs => {
 
 const year = () => new Date().getFullYear().toString();
 
-// Convert lowercase format tokens to uppercase for dayjs compatibility
-const convertFormatString = (format: string): string => {
+// Change legacy date tokens to Day.js tokens.
+const convertFormatString = (
+	format?: string,
+	defaultFormat = "YYYY-MM-DD HH:mm:ss",
+): string => {
+	if (!format || isHandlebarsOptions(format)) {
+		return defaultFormat;
+	}
+
 	return format
 		.replace(/yyyy/g, "YYYY")
 		.replace(/yy/g, "YY")
 		.replace(/dd/g, "DD")
-		.replace(/mm/g, "MM")
+		.replace(/[Hh]:?mm|mm:ss|mm/g, (token) => (token === "mm" ? "MM" : token))
 		.replace(/hh/g, "HH");
 };
 
-const date = (humanReadableDate?: string, formatString?: string): string => {
-	const defaultFormat = "YYYY-MM-DD";
-	const format = formatString || defaultFormat;
-
-	const parsedDate = parseDateInput(humanReadableDate);
+const date = (dateInput?: DateInput, formatString?: string): string => {
+	const parsedDate = parseDateInput(
+		isHandlebarsOptions(dateInput) ? undefined : dateInput,
+	);
 	/* v8 ignore next -- @preserve */
 	if (!parsedDate.isValid()) {
-		throw new Error(`Unable to parse date: ${humanReadableDate}`);
+		throw new Error(`Unable to parse date: ${dateInput}`);
 	}
 
-	// Convert lowercase format tokens to uppercase for dayjs
-	const convertedFormat = convertFormatString(format);
-
-	// Format the parsed date using `dayjs`
-	return parsedDate.format(convertedFormat);
+	return parsedDate.format(convertFormatString(formatString, "YYYY-MM-DD"));
 };
 
 // Get current timestamp in milliseconds
@@ -82,10 +85,7 @@ const timestamp = (): string => {
 
 // Get current date with optional format
 const now = (formatString?: string): string => {
-	const defaultFormat = "YYYY-MM-DD HH:mm:ss";
-	const format = formatString || defaultFormat;
-	const convertedFormat = convertFormatString(format);
-	return dayjs().format(convertedFormat);
+	return dayjs().format(convertFormatString(formatString));
 };
 
 // Relative time from now (e.g., "5 minutes ago")
@@ -243,17 +243,13 @@ const dateTimezone = (
 	timezoneStr: string,
 	formatString?: string,
 ): string => {
-	const defaultFormat = "YYYY-MM-DD HH:mm:ss";
-	const format = formatString || defaultFormat;
-	const convertedFormat = convertFormatString(format);
-
 	const parsed = parseDateInput(dateInput);
 	/* v8 ignore next -- @preserve */
 	if (!parsed.isValid()) {
 		throw new Error(`Unable to parse date: ${dateInput}`);
 	}
 
-	return parsed.tz(timezoneStr).format(convertedFormat);
+	return parsed.tz(timezoneStr).format(convertFormatString(formatString));
 };
 
 // Format with locale (dayjs uses locale globally, so we'll apply it temporarily)
@@ -262,17 +258,13 @@ const dateLocale = (
 	locale: string,
 	formatString?: string,
 ): string => {
-	const defaultFormat = "YYYY-MM-DD HH:mm:ss";
-	const format = formatString || defaultFormat;
-	const convertedFormat = convertFormatString(format);
-
 	const parsed = parseDateInput(dateInput);
 	/* v8 ignore next -- @preserve */
 	if (!parsed.isValid()) {
 		throw new Error(`Unable to parse date: ${dateInput}`);
 	}
 
-	return parsed.locale(locale).format(convertedFormat);
+	return parsed.locale(locale).format(convertFormatString(formatString));
 };
 
 export const helpers: Helper[] = [
