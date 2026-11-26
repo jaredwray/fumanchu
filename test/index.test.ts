@@ -24,14 +24,14 @@ describe("fumanchu", () => {
 		expect(result2({})).toBe(new Date().getFullYear().toString());
 	});
 
-	test("should be able to createHandlebars", async () => {
+	test("createHandlebars compiles the year helper", async () => {
 		const handlebars = await createHandlebars();
 		expect(handlebars).toBeDefined();
 		const result = handlebars.compile("{{year}}");
 		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
 
-	test("should be able to createHandlebars", async () => {
+	test("createHandlebars compiles a template with year and name", async () => {
 		const handlebars = await createHandlebars();
 		expect(handlebars).toBeDefined();
 		const year = new Date().getFullYear();
