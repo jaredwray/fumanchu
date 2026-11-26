@@ -162,7 +162,7 @@ describe("HelperRegistry Filter", () => {
 		expect(registeredHelpers).to.not.contain("year");
 	});
 
-	test("should filter by compatibility", () => {
+	test("should filter helpers by browser compatibility", () => {
 		const registry = new HelperRegistry();
 		registry.register({
 			name: "demo",
@@ -176,7 +176,7 @@ describe("HelperRegistry Filter", () => {
 		).toBeGreaterThan(130);
 	});
 
-	test("should filter by compatibility", () => {
+	test("should filter one helper by name and compatibility", () => {
 		const registry = new HelperRegistry();
 		registry.register({
 			name: "demo",
