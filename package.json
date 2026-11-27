@@ -107,7 +107,7 @@
     "@types/node": "^24.19.2",
     "@vitest/coverage-v8": "^5.1.1",
     "docula": "^3.0.3",
-    "dotenv": "^18.0.8",
+    "dotenv": "^18.0.10",
     "happy-dom": "^21.0.4",
     "rimraf": "^6.1.4",
     "tinybench": "^6.2.2",
