@@ -213,8 +213,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(vitest@5.1.1)
       docula:
-        specifier: ^3.0.2
-        version: 3.0.2(chokidar@3.6.0)(supports-color@7.2.0)(zod@4.6.7)
+        specifier: ^3.0.3
+        version: 3.0.3(chokidar@3.6.0)(supports-color@7.2.0)(zod@4.6.7)
       dotenv:
         specifier: ^18.0.8
         version: 18.0.8
@@ -584,12 +584,6 @@ packages:
     deprecated: No longer maintained.
     peerDependencies:
       tinybench: ^6.0.0
-
-  '@napi-rs/wasm-runtime@1.1.6':
-    resolution: {integrity: sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==}
-    peerDependencies:
-      '@emnapi/core': ^1.7.1
-      '@emnapi/runtime': ^1.7.1
 
   '@napi-rs/wasm-runtime@1.2.6':
     resolution: {integrity: sha512-mRyDmEw9/fCDXCGfL1sbgIw/GUK0PVxRW4YwgPN61F3LQ+fSyoBFarJVzgGyhF6kRzEQZ0FejDqm4WLXSeqQmw==}
@@ -1447,8 +1441,8 @@ packages:
   doctypes@1.1.0:
     resolution: {integrity: sha512-LLBi6pEqS6Do3EKQ3J0NqHWV5hhb78Pi8vvESYwyOy2c31ZEZVdtitdzsQsKb7878PEERhzUk0ftqGhG6Mz+pQ==}
 
-  docula@3.0.2:
-    resolution: {integrity: sha512-GuT4QRPoYpUZNXXuiL4u8owXZs+5qpfXmocNvbeOWXOFuPMsX9BzePOSiFD5gyZlglPBlGQB4t69P//b6g5Rjw==}
+  docula@3.0.3:
+    resolution: {integrity: sha512-a2c2mKIyoJdWdKHOeCQMQEXcDPgFkwe/5zCpGYTOqhsMIdYRzS49fGHuZjdeDNg3+oIPasz7hf4CJYjJHBaTTg==}
     engines: {node: ^22.19.0 || >=24.0.0}
     hasBin: true
 
@@ -3004,13 +2998,6 @@ snapshots:
       picocolors: 1.1.1
       tinybench: 6.2.2
 
-  '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)':
-    dependencies:
-      '@emnapi/core': 2.0.0-beta.2
-      '@emnapi/runtime': 2.0.0-beta.2
-      '@tybys/wasm-util': 0.10.3
-    optional: true
-
   '@napi-rs/wasm-runtime@1.2.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)':
     dependencies:
       '@emnapi/core': 2.0.0-beta.2
@@ -3119,7 +3106,7 @@ snapshots:
 
   '@rolldown/binding-wasm32-wasi@1.0.0-rc.12(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)':
     dependencies:
-      '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)
+      '@napi-rs/wasm-runtime': 1.2.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)
     transitivePeerDependencies:
       - '@emnapi/core'
       - '@emnapi/runtime'
@@ -3608,7 +3595,7 @@ snapshots:
 
   doctypes@1.1.0: {}
 
-  docula@3.0.2(chokidar@3.6.0)(supports-color@7.2.0)(zod@4.6.7):
+  docula@3.0.3(chokidar@3.6.0)(supports-color@7.2.0)(zod@4.6.7):
     dependencies:
       '@ai-sdk/anthropic': 4.0.55(zod@4.6.7)
       '@ai-sdk/google': 4.0.73(zod@4.6.7)
