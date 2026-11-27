@@ -72,6 +72,13 @@ describe("attr", () => {
 	it("handles undefined options", () => {
 		expect(attrFn()).toBe("");
 	});
+	it("omits an attribute name that adds another attribute", () => {
+		expect(
+			attrFn({
+				hash: { class: "ok", "data-x=y onmouseover": "alert(1)" },
+			}),
+		).toBe(' class="ok"');
+	});
 });
 
 describe("css", () => {

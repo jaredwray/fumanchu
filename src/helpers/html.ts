@@ -102,8 +102,11 @@ const escapeAttr = (str: string): string =>
 const escapeText = (str: string): string =>
 	str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+const SAFE_ATTRIBUTE_NAME = /^[A-Za-z_:][A-Za-z0-9_.:-]*$/;
+
 export const parseAttributes = (hash: Record<string, unknown> = {}): string =>
 	Object.keys(hash)
+		.filter((key) => SAFE_ATTRIBUTE_NAME.test(key))
 		.map((key) => {
 			const raw = String(hash[key]).replace(/^['"]|["']$/g, "");
 			return `${escapeAttr(key)}="${escapeAttr(raw)}"`;
