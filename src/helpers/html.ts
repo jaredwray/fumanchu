@@ -102,9 +102,19 @@ const escapeAttr = (str: string): string =>
 const escapeText = (str: string): string =>
 	str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+const NULL_CHARACTER = String.fromCharCode(0);
+const SAFE_ATTRIBUTE_NAME = /^[^\s"'/>=]+$/;
+
+const isSafeAttributeName = (key: string): boolean =>
+	SAFE_ATTRIBUTE_NAME.test(key) && !key.includes(NULL_CHARACTER);
+
 export const parseAttributes = (hash: Record<string, unknown> = {}): string =>
 	Object.keys(hash)
-		.map((key) => `${key}="${String(hash[key]).replace(/^['"]|["']$/g, "")}"`)
+		.filter((key) => isSafeAttributeName(key))
+		.map((key) => {
+			const raw = String(hash[key]).replace(/^['"]|["']$/g, "");
+			return `${escapeAttr(key)}="${escapeAttr(raw)}"`;
+		})
 		.join(" ");
 
 const attr = (
@@ -125,7 +135,7 @@ const ul = (
 ): string => {
 	const attrs = parseAttributes(options.hash ?? {});
 	const items = context.map((item) =>
-		typeof item === "string" ? item : options.fn(item),
+		typeof item === "string" ? escapeText(item) : options.fn(item),
 	);
 	const open = attrs ? `<ul ${attrs}>` : "<ul>";
 	return `${open}${items.map((i) => `<li>${i}</li>`).join("\n")}</ul>`;
@@ -137,7 +147,7 @@ const ol = (
 ): string => {
 	const attrs = parseAttributes(options.hash ?? {});
 	const items = context.map((item) =>
-		typeof item === "string" ? item : options.fn(item),
+		typeof item === "string" ? escapeText(item) : options.fn(item),
 	);
 	const open = attrs ? `<ol ${attrs}>` : "<ol>";
 	return `${open}${items.map((i) => `<li>${i}</li>`).join("\n")}</ol>`;

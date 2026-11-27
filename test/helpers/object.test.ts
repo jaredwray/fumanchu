@@ -27,6 +27,18 @@ describe("extend", () => {
 			b: 2,
 		});
 	});
+	it("does not copy a prototype key", () => {
+		const marker = "__fumanchu_extend_marker__";
+		const source = Object.create(null) as Record<string, unknown>;
+		Object.defineProperty(source, "__proto__", {
+			value: { [marker]: true },
+			enumerable: true,
+		});
+		const result = extendFn({ a: 1 }, source) as Record<string, unknown>;
+		expect(result).toEqual({ a: 1 });
+		expect(Object.getPrototypeOf(result)).toBe(Object.prototype);
+		expect(result[marker]).toBeUndefined();
+	});
 });
 
 describe("forIn", () => {
@@ -211,6 +223,27 @@ describe("merge", () => {
 		const target = { a: 1 };
 		mergeFn(target, { b: 2 });
 		expect(target).toEqual({ a: 1, b: 2 });
+	});
+	it("does not write a prototype object", () => {
+		const marker = "__fumanchu_merge_marker__";
+		function Box() {}
+		try {
+			const result = mergeFn(Object.prototype, { [marker]: true });
+			expect(result).toEqual({ [marker]: true });
+			expect(Object.hasOwn(Object.prototype, marker)).toBe(false);
+			expect(mergeFn(Array.prototype, { n: 1 })).toEqual({ n: 1 });
+			expect(Object.hasOwn(Array.prototype, "n")).toBe(false);
+			const boxed = mergeFn(Box.prototype, { a: 1 });
+			expect(boxed).toEqual({ a: 1 });
+			expect(Object.hasOwn(Box.prototype, "a")).toBe(false);
+			expect(mergeFn(null, { a: 1 })).toEqual({ a: 1 });
+			expect(mergeFn("nope", { a: 1 })).toEqual({ a: 1 });
+			expect(mergeFn(["x"], { a: 1 })).toEqual({ a: 1 });
+		} finally {
+			delete (Object.prototype as Record<string, unknown>)[marker];
+			delete (Array.prototype as Record<string, unknown>).n;
+			delete (Box.prototype as { a?: number }).a;
+		}
 	});
 });
 

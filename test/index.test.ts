@@ -52,6 +52,14 @@ describe("fumanchu", () => {
 		expect(result({})).toBe(new Date().getFullYear().toString());
 	});
 
+	test("applies the helper filter", () => {
+		const handlebars = fumanchu({ filter: { categories: ["math"] } });
+		expect(typeof handlebars.helpers.add).toBe("function");
+		expect(handlebars.helpers.uppercase).toBeUndefined();
+		expect(handlebars.helpers.read).toBeUndefined();
+		expect(handlebars.helpers.md).toBeUndefined();
+	});
+
 	test("should be able to set helpers", async () => {
 		helpers({ handlebars });
 		const result = handlebars.compile("{{year}}");

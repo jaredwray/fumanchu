@@ -80,7 +80,7 @@ export function fumanchu(options?: FumanchuOptions) {
 	} else if (Object.keys(HandlebarsLib.partials).length > 0) {
 		handlebars.registerPartial(HandlebarsLib.partials);
 	}
-	registry.load(handlebars);
+	registry.load(handlebars, options?.filter);
 
 	if (options?.caching) {
 		let cache: CacheableMemory;

@@ -6,13 +6,14 @@ import { describe, expect, it } from "vitest";
 import { helpers } from "../../src/helpers/md.node.js";
 
 describe("md.node helper", () => {
-	it("should render markdown from a file path", () => {
+	it("renders a file path as markdown text", () => {
 		const mdHelper = helpers.find((helper) => helper.name === "md");
 		const temporaryDir = fs.mkdtempSync(path.join(os.tmpdir(), "mdtest-"));
 		const file = path.join(temporaryDir, "sample.md");
-		fs.writeFileSync(file, "# File");
+		fs.writeFileSync(file, "SENTINEL_NOT_READ");
 		const result = mdHelper?.fn(file) as Handlebars.SafeString;
-		expect(result.toHTML()).toBe("<h1>File</h1>\n");
+		expect(result.toHTML()).not.toContain("SENTINEL_NOT_READ");
+		expect(result.toHTML()).toContain("sample.md");
 		fs.rmSync(temporaryDir, { recursive: true, force: true });
 	});
 

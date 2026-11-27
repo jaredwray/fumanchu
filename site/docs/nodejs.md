@@ -206,7 +206,7 @@ The Node build registers every helper below. See the category pages for paramete
 | [logging](/docs/helpers/logging/) | `bold` | Logs a bold formatted message to stderr. |
 | [logging](/docs/helpers/logging/) | `_debug` | Outputs debug information including the provided value and the current Handlebars context. |
 | [logging](/docs/helpers/logging/) | `_inspect` | Formats a value as JSON and returns it for display in the template. |
-| [markdown](/docs/helpers/markdown/) | `md` | Converts a markdown string to HTML, or reads a markdown file from the file system and converts its contents to HTML. |
+| [markdown](/docs/helpers/markdown/) | `md` | Converts a markdown string to HTML. |
 | [markdown](/docs/helpers/markdown/) | `markdown` | Block helper that converts a string of inline markdown to HTML. |
 | [match](/docs/helpers/match/) | `match` | Returns an array of strings that match the given glob pattern(s). |
 | [match](/docs/helpers/match/) | `isMatch` | Returns true if a filepath matches the given pattern. |

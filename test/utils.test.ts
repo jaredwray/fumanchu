@@ -90,6 +90,12 @@ describe("get", () => {
 		const obj = { arr: [{ nested: "value" }] };
 		expect(get(obj, "arr.0.nested")).toBe("value");
 	});
+
+	it("does not walk prototype keys", () => {
+		expect(get({}, "__proto__")).toBeUndefined();
+		expect(get({}, "constructor")).toBeUndefined();
+		expect(get({ a: {} }, "a.prototype")).toBeUndefined();
+	});
 });
 
 describe("getObject", () => {
@@ -179,6 +185,12 @@ describe("getObject", () => {
 	it("handles nested arrays", () => {
 		const obj = { arr: [{ nested: "value" }] };
 		expect(getObject(obj, "arr.0.nested")).toEqual({ nested: "value" });
+	});
+
+	it("does not return a prototype key", () => {
+		expect(getObject({}, "__proto__")).toBeUndefined();
+		expect(getObject({}, "__proto__.child")).toBeUndefined();
+		expect(getObject({ a: {} }, "a.constructor")).toBeUndefined();
 	});
 
 	it("returns undefined when key does not exist", () => {
