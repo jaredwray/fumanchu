@@ -202,7 +202,7 @@ importers:
         version: 10.6.0
       '@monstermann/tinybench-pretty-printer':
         specifier: ^0.3.0
-        version: 0.3.0(tinybench@6.2.2)
+        version: 0.3.0(tinybench@6.2.4)
       '@types/micromatch':
         specifier: ^4.0.10
         version: 4.0.10
@@ -225,8 +225,8 @@ importers:
         specifier: ^6.1.4
         version: 6.1.4
       tinybench:
-        specifier: ^6.2.2
-        version: 6.2.2
+        specifier: ^6.2.4
+        version: 6.2.4
       tsdown:
         specifier: ^0.23.7
         version: 0.23.7(tsx@4.23.15)(typescript@7.0.2)(unrun@0.2.34(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2))
@@ -2415,10 +2415,6 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  tinybench@6.2.2:
-    resolution: {integrity: sha512-nIZ2N2dFpjBsg2hgitKu7mA+FvsIJuGJOwysRngmVRRmWgR/UyPjwJj8c/fT/dhm8EkHnF5EOogRf+0Z2qrimA==}
-    engines: {node: '>=20.0.0'}
-
   tinybench@6.2.4:
     resolution: {integrity: sha512-SQ52jEncXxbMCzJuY2A/jGIbbAu6NYsBWW7grz2pNE+EnzQdoGaoBfpk4qC/opE7qiUcGmGgaGIz5EoHdS1O9w==}
     engines: {node: '>=20.0.0'}
@@ -2992,11 +2988,11 @@ snapshots:
       picocolors: 1.1.1
       string-width: 7.2.0
 
-  '@monstermann/tinybench-pretty-printer@0.3.0(tinybench@6.2.2)':
+  '@monstermann/tinybench-pretty-printer@0.3.0(tinybench@6.2.4)':
     dependencies:
       '@monstermann/tables': 0.0.0
       picocolors: 1.1.1
-      tinybench: 6.2.2
+      tinybench: 6.2.4
 
   '@napi-rs/wasm-runtime@1.2.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)':
     dependencies:
@@ -5079,8 +5075,6 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
     optional: true
-
-  tinybench@6.2.2: {}
 
   tinybench@6.2.4: {}
 
