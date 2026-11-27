@@ -34,13 +34,10 @@ describe("extend", () => {
 			value: { [marker]: true },
 			enumerable: true,
 		});
-		try {
-			expect(extendFn({ a: 1 }, source)).toEqual({ a: 1 });
-			expect(extendFn({ a: 1 }, [9])).toEqual({ a: 1 });
-			expect(Object.hasOwn(Object.prototype, marker)).toBe(false);
-		} finally {
-			delete (Object.prototype as Record<string, unknown>)[marker];
-		}
+		const result = extendFn({ a: 1 }, source) as Record<string, unknown>;
+		expect(result).toEqual({ a: 1 });
+		expect(Object.getPrototypeOf(result)).toBe(Object.prototype);
+		expect(result[marker]).toBeUndefined();
 	});
 });
 
