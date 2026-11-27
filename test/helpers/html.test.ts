@@ -79,6 +79,17 @@ describe("attr", () => {
 			}),
 		).toBe(' class="ok"');
 	});
+	it("keeps an attribute name that starts with a digit, a hyphen, or a dot", () => {
+		expect(
+			attrFn({
+				hash: { "1data": "a", "-data": "b", ".data": "c" },
+			}),
+		).toBe(' 1data="a" -data="b" .data="c"');
+	});
+	it("omits an attribute name that contains a null character", () => {
+		const name = `data${String.fromCharCode(0)}x`;
+		expect(attrFn({ hash: { [name]: "a", class: "ok" } })).toBe(' class="ok"');
+	});
 });
 
 describe("css", () => {
