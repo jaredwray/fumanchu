@@ -66,6 +66,14 @@ describe("center", () => {
 	it("handles zero spaces", () => {
 		expect(fn("foo", 0)).toBe("foo");
 	});
+	it("returns the string for a non-finite count", () => {
+		expect(fn("foo", Number.POSITIVE_INFINITY)).toBe("foo");
+	});
+	it("caps a very large count", () => {
+		const result = fn("x", 1001);
+		expect(result.startsWith("&nbsp;".repeat(1000))).toBe(true);
+		expect(result).toBe(`${"&nbsp;".repeat(1000)}x${"&nbsp;".repeat(1000)}`);
+	});
 });
 
 describe("chop", () => {
@@ -156,6 +164,12 @@ describe("occurrences", () => {
 	});
 	it("returns empty for non-string", () => {
 		expect(fn(123 as unknown, "a")).toBe("");
+	});
+	it("returns zero for an empty needle", () => {
+		expect(fn("abc123def", "")).toBe(0);
+	});
+	it("returns zero when the needle is not a string", () => {
+		expect(fn("abc123def", 123)).toBe(0);
 	});
 });
 

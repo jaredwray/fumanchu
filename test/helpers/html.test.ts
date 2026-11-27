@@ -212,6 +212,15 @@ describe("ul", () => {
 		const result = ulFn(["A", "B"], { fn: (i: any) => i });
 		expect(result).toBe("<ul><li>A</li>\n<li>B</li></ul>");
 	});
+	it("escapes string items and attribute values", () => {
+		const result = ulFn(["<img src=x onerror=marker>"], {
+			hash: { class: 'x" data-injected="1' },
+			fn: (item: any) => item,
+		});
+		expect(result).toBe(
+			'<ul class="x&quot; data-injected=&quot;1"><li>&lt;img src=x onerror=marker&gt;</li></ul>',
+		);
+	});
 });
 
 describe("ol", () => {
@@ -232,6 +241,10 @@ describe("ol", () => {
 	it("handles string items without attributes", () => {
 		const result = olFn(["A", "B"], { fn: (i: any) => i });
 		expect(result).toBe("<ol><li>A</li>\n<li>B</li></ol>");
+	});
+	it("escapes string items", () => {
+		const result = olFn(["<b>"], { fn: (item: any) => item });
+		expect(result).toBe("<ol><li>&lt;b&gt;</li></ol>");
 	});
 });
 

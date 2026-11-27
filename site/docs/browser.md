@@ -77,7 +77,7 @@ These helpers need Node APIs (`fs`, `path`, the terminal, and related modules) a
 - `css` and `js` from [html](/docs/helpers/html/)
 - `escape`, `urlResolve`, `urlParse`, and `stripProtocol` from [url](/docs/helpers/url/)
 
-[Markdown](/docs/helpers/markdown/) helpers (`md`, `markdown`) **are** registered. They render inline markdown only — unlike Node, they will not read a file path from disk.
+[Markdown](/docs/helpers/markdown/) helpers (`md`, `markdown`) **are** registered. They render the markdown string. They do not read a file.
 
 See [Node.js Support](/docs/nodejs/) for the full helper set, including Node-only helpers.
 

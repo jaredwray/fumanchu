@@ -29,10 +29,15 @@ const capitalizeAll = (str: unknown): string => {
 	return str.replace(/\w\S*/g, (word) => capitalize(word));
 };
 
+const MAX_CENTER_SPACES = 1000;
+
 const center = (str: unknown, spaces: number): string => {
 	if (typeof str !== "string") return "";
+	const count = Number(spaces);
+	if (!Number.isFinite(count) || count <= 0) return str;
+	const spacesCount = Math.min(Math.floor(count), MAX_CENTER_SPACES);
 	let space = "";
-	for (let i = 0; i < spaces; i++) {
+	for (let i = 0; i < spacesCount; i++) {
 		space += "&nbsp;";
 	}
 	return space + str + space;
@@ -90,8 +95,9 @@ const lowercase = (str: unknown): string => {
 
 const downcase = (str: unknown): string => lowercase(str);
 
-const occurrences = (str: unknown, substring: string): number | string => {
+const occurrences = (str: unknown, substring: unknown): number | string => {
 	if (typeof str !== "string") return "";
+	if (typeof substring !== "string" || substring.length === 0) return 0;
 	const len = substring.length;
 	let pos = str.indexOf(substring, 0);
 	let n = 0;

@@ -1,5 +1,5 @@
 import type { Helper } from "../helper-registry.js";
-import { isHandlebarsOptions } from "../utils.js";
+import { isBlockedPropertyKey, isHandlebarsOptions } from "../utils.js";
 
 type ForEachOptions<T> = {
 	fn?: (context: T, frame?: { data: Record<string, unknown> }) => string;
@@ -156,6 +156,7 @@ const isArray = (value: unknown): boolean => {
 
 const itemAt = <T>(array: unknown, idx: number): T | undefined => {
 	if (!Array.isArray(array)) return undefined;
+	if (typeof idx === "string" && isBlockedPropertyKey(idx)) return undefined;
 	return array[idx];
 };
 
@@ -517,6 +518,7 @@ const pluck = (collection: unknown, prop: string): unknown[] => {
 		let value: unknown = item;
 
 		for (const part of parts) {
+			if (isBlockedPropertyKey(part)) return undefined;
 			/* v8 ignore next -- @preserve */
 			if (value == null || typeof value !== "object") {
 				return undefined;

@@ -542,6 +542,10 @@ describe("itemAt", () => {
 		expect(itemAtFn(["a", "b"], -1)).toBeUndefined();
 	});
 
+	it("does not return a prototype object", () => {
+		expect(itemAtFn(["a"], "__proto__")).toBeUndefined();
+	});
+
 	it("returns undefined for non-arrays", () => {
 		expect(itemAtFn("not array", 0)).toBeUndefined();
 		expect(itemAtFn(123, 0)).toBeUndefined();
@@ -1589,6 +1593,11 @@ describe("pluck", () => {
 		const result = pluckFn(items, "data.title");
 
 		expect(result).toEqual(["First", "Second", "Third"]);
+	});
+
+	it("does not read a prototype key", () => {
+		expect(pluckFn([{}], "__proto__")).toEqual([undefined]);
+		expect(pluckFn([{}], "constructor.prototype")).toEqual([undefined]);
 	});
 
 	it("returns undefined for missing properties", () => {

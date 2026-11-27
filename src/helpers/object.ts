@@ -1,6 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: handlebars helpers use any for context
 import type { Helper } from "../helper-registry.js";
-import { get, getObject } from "../utils.js";
+import { get, getObject, isBlockedPropertyKey } from "../utils.js";
 import { arrayify } from "./array.js";
 
 const isOptions = (
@@ -18,6 +18,20 @@ const createFrame = (options: any, hash: any) => ({
 	...hash,
 });
 
+const assignOwn = (target: Record<string, any>, source: any) => {
+	if (!source || typeof source !== "object" || Array.isArray(source)) return;
+	for (const key of Object.keys(source)) {
+		if (isBlockedPropertyKey(key)) continue;
+		target[key] = source[key];
+	}
+};
+
+const isPrototypeObject = (value: object): boolean => {
+	if (value === Object.prototype || value === Array.prototype) return true;
+	const ctor = (value as { constructor?: { prototype?: object } }).constructor;
+	return Boolean(ctor && ctor.prototype === value);
+};
+
 const extend = (...objects: any[]): Record<string, any> => {
 	const args = [...objects];
 	if (args.length && isOptions(args[args.length - 1])) {
@@ -26,9 +40,7 @@ const extend = (...objects: any[]): Record<string, any> => {
 	}
 	const result: Record<string, any> = {};
 	for (const obj of args) {
-		if (obj && typeof obj === "object" && !Array.isArray(obj)) {
-			Object.assign(result, obj);
-		}
+		assignOwn(result, obj);
 	}
 	return result;
 };
@@ -99,7 +111,24 @@ const merge = (context: any, ...objects: any[]): Record<string, any> => {
 		const opts = args.pop() as { hash: Record<string, any> };
 		args.push(opts.hash);
 	}
-	return Object.assign(args[0] as Record<string, any>, ...args.slice(1));
+	const target = args[0];
+	const sources = args.slice(1);
+	if (
+		!target ||
+		typeof target !== "object" ||
+		Array.isArray(target) ||
+		isPrototypeObject(target)
+	) {
+		const result: Record<string, any> = {};
+		for (const source of sources) {
+			assignOwn(result, source);
+		}
+		return result;
+	}
+	for (const source of sources) {
+		assignOwn(target, source);
+	}
+	return target;
 };
 
 const parseJSON = JSONparse;

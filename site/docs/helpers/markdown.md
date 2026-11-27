@@ -4,7 +4,7 @@ description: Helpers for converting markdown to HTML
 order: 15
 ---
 
-> **Availability:** Registered in both the Node and browser builds. The browser build renders inline markdown only — the Node build also accepts a file path and will read its contents before rendering.
+> **Availability:** The Node build and the browser build register these helpers. Both builds render the markdown string. They do not read a file.
 
 ## Table of Contents
 
@@ -28,11 +28,11 @@ Block helper that converts a string of inline markdown to HTML.
 
 ## {{md}}
 
-Converts a markdown string to HTML, or reads a markdown file from the file system and converts its contents to HTML.
+Converts a markdown string to HTML.
 
 **Params**
 
-* `filepath` **{String}**: Markdown string or path to a markdown file
+* `string` **{String}**: Markdown string to convert
 * `returns` **{String}**: HTML string
 
 **Example**
@@ -40,7 +40,4 @@ Converts a markdown string to HTML, or reads a markdown file from the file syste
 ```handlebars
 {{md "# Hello World"}}
 <!-- results in: <h1>Hello World</h1> -->
-
-{{md "foo/bar.md"}}
-<!-- reads file and converts to HTML -->
 ```

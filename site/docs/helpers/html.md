@@ -201,6 +201,8 @@ Block helper for creating unordered lists.
 
 **Example**
 
+The helper escapes string items. It writes the items as text.
+
 With an array of strings:
 
 ```handlebars
@@ -239,6 +241,8 @@ Block helper for creating ordered lists.
 * `context` **{Array}**: Array of items to render as list items
 * `options` **{Object}**: Options object; supports HTML attributes via hash
 * `returns` **{String}**: Complete `<ol>` element with `<li>` children
+
+The helper escapes string items. It writes the items as text.
 
 **Example**
 

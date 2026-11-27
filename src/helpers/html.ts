@@ -104,7 +104,10 @@ const escapeText = (str: string): string =>
 
 export const parseAttributes = (hash: Record<string, unknown> = {}): string =>
 	Object.keys(hash)
-		.map((key) => `${key}="${String(hash[key]).replace(/^['"]|["']$/g, "")}"`)
+		.map((key) => {
+			const raw = String(hash[key]).replace(/^['"]|["']$/g, "");
+			return `${escapeAttr(key)}="${escapeAttr(raw)}"`;
+		})
 		.join(" ");
 
 const attr = (
@@ -125,7 +128,7 @@ const ul = (
 ): string => {
 	const attrs = parseAttributes(options.hash ?? {});
 	const items = context.map((item) =>
-		typeof item === "string" ? item : options.fn(item),
+		typeof item === "string" ? escapeText(item) : options.fn(item),
 	);
 	const open = attrs ? `<ul ${attrs}>` : "<ul>";
 	return `${open}${items.map((i) => `<li>${i}</li>`).join("\n")}</ul>`;
@@ -137,7 +140,7 @@ const ol = (
 ): string => {
 	const attrs = parseAttributes(options.hash ?? {});
 	const items = context.map((item) =>
-		typeof item === "string" ? item : options.fn(item),
+		typeof item === "string" ? escapeText(item) : options.fn(item),
 	);
 	const open = attrs ? `<ol ${attrs}>` : "<ol>";
 	return `${open}${items.map((i) => `<li>${i}</li>`).join("\n")}</ol>`;

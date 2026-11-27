@@ -14,6 +14,13 @@ describe("browser smoke", () => {
 		expect(out).toMatch(/^\d{4}-3-HI$/);
 	});
 
+	it("applies the helper filter", () => {
+		const hbs = fumanchu({ filter: { categories: ["math"] } });
+		expect(typeof hbs.helpers.add).toBe("function");
+		expect(hbs.helpers.uppercase).toBeUndefined();
+		expect(hbs.helpers.read).toBeUndefined();
+	});
+
 	it("registers no Node-only helpers", () => {
 		const reg = new HelperRegistry();
 		const nodeOnly = [
